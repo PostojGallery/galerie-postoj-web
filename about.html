@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>O nás — galerie POSTOJ</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.about-founder{margin-top:60px;padding:3rem 2.5rem 0;}
+.founder-grid{display:grid;grid-template-columns:300px 1fr;gap:4rem;align-items:stretch;}
+.founder-photo{height:100%;display:flex;flex-direction:column;}
+.founder-photo img{width:100%;flex:1;object-fit:cover;object-position:top;min-height:400px;}
+.founder-caption{background:#fff;color:#000;padding:1rem 1.2rem;font-size:0.8rem;font-weight:700;}
+.founder-caption span{display:block;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:400;margin-top:0.2rem;color:rgba(0,0,0,0.5);}
+.founder-right{display:flex;flex-direction:column;justify-content:space-between;padding-bottom:2rem;}
+.founder-eyebrow{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:2rem;}
+.founder-quote{font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.8;color:rgba(255,255,255,0.75);margin-bottom:1.5rem;padding-left:1.5rem;border-left:2px solid rgba(255,255,255,0.12);font-style:italic;}
+.founder-sig{height:50px;width:auto;filter:invert(1);opacity:0.6;margin-bottom:1.2rem;}
+.founder-email a{color:rgba(255,255,255,0.4);text-decoration:none;cursor:none;font-size:0.85rem;border-bottom:1px solid rgba(255,255,255,0.15);transition:color 0.2s;}
+.founder-email a:hover{color:#fff;}
+.founder-logos{margin-top:2.5rem;padding-top:2rem;}
+.founder-logos-label{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1.2rem;}
+.founder-logos-row{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
+.logo-item{opacity:0.3;filter:invert(1) grayscale(1);transition:opacity 0.3s;}
+.logo-item:hover{opacity:0.6;}
+.logo-item img{height:20px;width:auto;object-fit:contain;}
+.about-stats{margin-top:2rem;}
+.stats-grid{display:grid;grid-template-columns:repeat(5,1fr);}
+.stat-item{padding:1.5rem 2.5rem;border-right:1px solid rgba(255,255,255,0.05);display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;box-sizing:border-box;}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-weight:900;line-height:1;letter-spacing:-0.04em;margin-bottom:0.5rem;font-size:5rem;}
+.stat-label{font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.28);line-height:1.6;}
+.about-story{}
+.whw-row{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;}
+.whw-text-col{padding:1.2rem 2.5rem 2rem;}
+.whw-tag{font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1.2rem;}
+.whw-heading{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;line-height:0.92;letter-spacing:-0.03em;margin-bottom:1.5rem;color:#fff;}
+.whw-text{font-size:0.95rem;line-height:1.85;color:rgba(255,255,255,0.5);margin-bottom:0.8rem;}
+.whw-cta{display:inline-block;margin-top:1.5rem;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;cursor:none;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s,border-color 0.2s;}
+.whw-cta:hover{color:#fff;border-color:#fff;}
+.whw-testimonials{display:flex;align-items:center;justify-content:center;padding:2rem 3rem;}
+.ts-eyebrow{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:1.5rem;}
+.ts{display:none;}.ts.active{display:block;}
+.ts-stars{font-size:0.9rem;color:rgba(255,255,255,0.35);margin-bottom:0.6rem;}
+.ts-text{font-size:1rem;line-height:1.7;color:rgba(255,255,255,0.8);font-weight:500;margin-bottom:0.4rem;}
+.ts-author{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.28);}
+.ts-footer{margin-top:1.2rem;}
+.ts-dots{display:flex;gap:0.5rem;}
+.tsd{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);cursor:pointer;transition:background 0.2s;}
+.tsd.active{background:#fff;}
+.whw-oc-col{display:flex;align-items:center;justify-content:center;background:#0a0a0a;}
+.whw-oc{padding:3rem;display:flex;align-items:center;height:100%;}
+.whw-oc-inner{display:flex;align-items:center;gap:2rem;width:100%;}
+.whw-oc-stick{width:130px;filter:invert(1);opacity:0.85;flex-shrink:0;}
+.whw-oc-text-side{flex:1;}
+.whw-oc-heading{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1;letter-spacing:-0.04em;color:#fff;}
+.whw-map-col{overflow:hidden;display:flex;flex-direction:column;}
+.whw-map-col iframe{flex-shrink:0;}
+.whw-address{padding:1.2rem 2.5rem;}
+.whw-address-name{font-size:0.9rem;font-weight:700;color:#fff;margin-bottom:0.3rem;}
+.whw-address-line{font-size:0.82rem;color:rgba(255,255,255,0.4);line-height:1.6;}
+.about-history{padding:3rem 0 2rem;}
+.hist-strip{display:grid;grid-template-columns:repeat(8,1fr);gap:2px;margin-bottom:2rem;}
+.hist-ph{aspect-ratio:3/4;background:rgba(255,255,255,0.03);border:1px dashed rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;}
+.hist-ph span{font-size:0.48rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.08);}
+.hist-real{overflow:hidden;aspect-ratio:3/4;}
+.hist-real img{width:100%;height:100%;object-fit:cover;}
+</style>
+</head>
+<body>
+<div id="cdot"></div><div id="cw"><img src="images/run.png" alt=""></div>
+<nav><a href="index.html" class="nav-logo">galerie POSTOJ</a><ul class="nav-links"><li><a href="artists.html" >Umělci</a></li><li><a href="exhibitions.html" >Výstavy</a></li><li><a href="collectors.html" >Sběratelé</a></li><li><a href="about.html" class=active>O nás</a></li><li><a href="open-call.html" >Open Call</a></li></ul></nav>
+
+<section class="about-founder">
+  <div class="founder-grid">
+    <div class="rv">
+      <div class="founder-photo">
+        <img src="images/founder.jpg" alt="Filip Kolář">
+        <div class="founder-caption">Filip Kolář<span>Zakladatel &amp; Ředitel</span></div>
+      </div>
+    </div>
+    <div class="rv founder-right" style="transition-delay:0.12s">
+      <div>
+        <div class="founder-eyebrow">O zakladateli</div>
+        <blockquote class="founder-quote">"Jsem přesvědčen, že české současné umění patří do světa — a aktivně pracujeme na tom, abychom ho tam dostali. Vymezujeme se vůči uzavřenému galerijnímu systému. Působíme ve veřejném prostoru – v metru – a otevíráme současné umění všem."</blockquote>
+        <img class="founder-sig" src="images/signature.png" alt="">
+        <div class="founder-email"><a href="mailto:filip.kolar@galeriepostoj.cz">filip.kolar@galeriepostoj.cz</a></div>
+      </div>
+      <div class="founder-logos">
+        <div class="founder-logos-label">Psáli o nás</div>
+        <div class="founder-logos-row">
+          <div class="logo-item"><img src="images/logo-respekt.png" alt="Respekt"></div>
+          <div class="logo-item"><img src="images/logo-denikn.png" alt="Deník N"></div>
+          <div class="logo-item"><img src="images/logo-artmap.png" alt="ArtMap"></div>
+          <div class="logo-item"><img src="images/logo-ct.png" alt="ČT"></div>
+          <div class="logo-item"><img src="images/logo-a2.jpg" alt="A2"></div>
+          <div class="logo-item"><img src="images/logo-dp.png" alt="DPP"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="about-stats">
+  <div class="stats-grid">
+    <div class="stat-item rv"><div class="stat-num" data-target="8">0</div><div class="stat-label">Výstav od roku 2022</div></div>
+    <div class="stat-item rv"><div class="stat-num" data-target="11">0</div><div class="stat-label">Umělců</div></div>
+    <div class="stat-item rv"><div class="stat-num" data-target="10000" data-suffix="+">0</div><div class="stat-label">Lidí denně projde kolem</div></div>
+    <div class="stat-item rv"><div class="stat-num" data-target="900">0</div><div class="stat-label">Návštěvníků na vernisážích</div></div>
+    <div class="stat-item rv"><div class="stat-num" data-target="100" data-suffix="+">0</div><div class="stat-label">Přihlášek na open call</div></div>
+  </div>
+</section>
+<section class="about-story">
+  <div class="whw-row rv">
+    <div class="whw-text-col">
+      <div class="whw-tag">Proč — Why</div>
+      <div class="whw-heading">Umění patří všem.</div>
+      <p class="whw-text">Věříme, že současné umění má být přístupné každému — bez ohledu na věk, vzdělání nebo profesi. Tradiční galerie kladou bariéry. My je bouráme.</p>
+      <a href="collectors.html" class="btn" style="margin-top:1.5rem;display:inline-block;">Koupit dílo →</a>
+    </div>
+    <div class="whw-testimonials">
+      <div style="display:flex;align-items:center;gap:2.5rem;width:100%;">
+        <div style="flex:1;">
+          <div class="ts-eyebrow">Co o nás říkají</div>
+          <div class="ts active"><div class="ts-stars">★★★★★</div><p class="ts-text">"Někdy chcete jen projít. Ale uvidíte obraz a musíte přijít blíž."</p><div class="ts-author">Jarmila Č.</div></div>
+          <div class="ts"><div class="ts-stars">★★★★★</div><p class="ts-text">"Skvělý počin! Více umění do veřejného prostoru."</p><div class="ts-author">Václav V.</div></div>
+          <div class="ts"><div class="ts-stars">★★★★★</div><p class="ts-text">"Jedinečný počin! Místo zamyšlení v srdci Prahy."</p><div class="ts-author">Jiří V.</div></div>
+          <div class="ts-footer"><div class="ts-dots"><span class="tsd active"></span><span class="tsd"></span><span class="tsd"></span></div></div>
+        </div>
+        <img src="images/run.png" alt="" style="width:120px;filter:invert(1);flex-shrink:0;align-self:flex-end;">
+      </div>
+    </div>
+  </div>
+  <div class="about-history rv">
+    <div class="hist-strip">
+      <div class="hist-real"><img src="images/vernisaz.jpg" alt="Vernisáž"></div>
+      <div class="hist-ph"><span>Foto brzy</span></div><div class="hist-ph"><span>Foto brzy</span></div><div class="hist-ph"><span>Foto brzy</span></div><div class="hist-ph"><span>Foto brzy</span></div><div class="hist-ph"><span>Foto brzy</span></div><div class="hist-ph"><span>Foto brzy</span></div><div class="hist-ph"><span>Foto brzy</span></div>
+    </div>
+  </div>
+  <div class="whw-row rv">
+    <div class="whw-text-col">
+      <div class="whw-tag">Jak — How</div>
+      <div class="whw-heading">Galerie v&nbsp;metru.</div>
+      <p class="whw-text">V roce 2022 jsem stál v metru na Náměstí Republiky a díval se na prázdnou výlohu. Každý den tudy projdou desítky tisíc lidí. Bylo jasné, že toto místo může být galerií.</p>
+      <a href="artists.html" class="whw-cta">Poznat umělce →</a>
+    </div>
+    <div class="whw-map-col">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1279.8!2d14.4283717!3d50.0881033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b95e62b76736d%3A0x824280b98bcd22c0!2sGalerie+Postoj!5e0!3m2!1scs!2scz!4v1711900000" width="100%" height="280" style="border:0;display:block;filter:grayscale(30%) brightness(0.85) contrast(1.1);" allowfullscreen loading="lazy"></iframe>
+      <div class="whw-address">
+        <div class="whw-address-name">galerie POSTOJ</div>
+        <div class="whw-address-line">Vestibule metra B — Náměstí Republiky</div>
+        <div class="whw-address-line">Praha 1, 110 00</div>
+        <a href="https://maps.app.goo.gl/9uux1FFqeDotEiwm9" target="_blank" class="whw-cta" style="display:inline-block;margin-top:0.8rem;">Zobrazit na mapě →</a>
+      </div>
+    </div>
+  </div>
+  <div class="whw-row rv" style="border-top:1px solid rgba(255,255,255,0.08);">
+    <div class="whw-text-col">
+      <div class="whw-tag">Co — What</div>
+      <div class="whw-heading">První sólové výstavy.</div>
+      <p class="whw-text">Specializujeme se na mladé české umělce při jejich první nebo druhé sólové výstavě. Díla jsou k prodeji za transparentní ceny přímo od umělce.</p>
+      <a href="exhibitions.html" class="whw-cta">Zobrazit výstavy →</a>
+    </div>
+    <div class="whw-oc-col">
+      <div class="whw-oc">
+        <div class="whw-oc-inner">
+          <img src="images/pointing.png" alt="" class="whw-oc-stick">
+          <div class="whw-oc-text-side">
+            <div class="whw-oc-heading">Pošli svoji práci.</div>
+            <a href="open-call.html" class="whw-cta" style="display:inline-block;margin-top:1.2rem;">Open Call →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<site-footer><div class="footer-inner">
+  <span>galerie POSTOJ &copy; 2026</span>
+  <div class="footer-links">
+    <a href="artists.html">Umělci</a><a href="exhibitions.html">Výstavy</a>
+    <a href="collectors.html">Sběratelé</a><a href="about.html">O nás</a>
+    <a href="open-call.html">Open Call</a>
+  </div>
+  <span>Umění pro lidi, ne pro elitu.</span>
+</div></site-footer>
+<script src="cursor.js"></script>
+<script>
+(function(){
+  var slides=document.querySelectorAll('.ts'),dots=document.querySelectorAll('.tsd');
+  if(!slides.length)return;var cur=0;
+  function goTo(n){slides[cur].classList.remove('active');dots[cur].classList.remove('active');cur=n%slides.length;slides[cur].classList.add('active');dots[cur].classList.add('active');}
+  dots.forEach(function(d,i){d.addEventListener('click',function(){goTo(i);});});
+  setInterval(function(){goTo(cur+1);},4500);
+})();
+(function(){
+  function fmt(n,s){return n>=1000?n.toLocaleString('cs-CZ')+(s||''):n+(s||'');}
+  var counters=document.querySelectorAll('.stat-num[data-target]'),started=false;
+  function run(){if(started)return;started=true;counters.forEach(function(el){var t=parseInt(el.getAttribute('data-target')),s=el.getAttribute('data-suffix')||'',st=null;function step(ts){if(!st)st=ts;var p=Math.min(1,(ts-st)/1800),e=1-Math.pow(1-p,3);el.textContent=fmt(Math.round(e*t),s);if(p<1)requestAnimationFrame(step);else el.textContent=fmt(t,s);}requestAnimationFrame(step);});}
+  var obs2=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting)run();});},{threshold:0.3});
+  counters.forEach(function(el){obs2.observe(el);});
+})();
+</script>
+</body>
+</html>

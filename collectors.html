@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sběratelé — galerie POSTOJ</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.collectors-hero{margin-top:60px;padding:3rem 2.5rem 2rem;}
+.collectors-hero-label{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1rem;}
+.collectors-hero-title{font-size:clamp(2.5rem,6vw,5rem);font-weight:900;line-height:1;letter-spacing:-0.04em;}
+.collectors-intro{padding:0 2.5rem 2rem;font-size:0.95rem;color:rgba(255,255,255,0.4);max-width:600px;line-height:1.8;}
+.collectors-intro a{color:rgba(255,255,255,0.6);border-bottom:1px solid rgba(255,255,255,0.2);text-decoration:none;}
+.works-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;}
+.work-card{cursor:none;position:relative;}
+.work-img{position:relative;overflow:hidden;aspect-ratio:3/4;}
+.work-img .img-main,.work-img .img-install{width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;transition:opacity 0.4s;}
+.work-img .img-install{opacity:0;}
+.work-card:hover .img-main{opacity:0;}
+.work-card:hover .img-install{opacity:1;}
+.work-buy-label{position:absolute;bottom:0;left:0;right:0;background:#fff;color:#000;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.8rem 1rem;transform:translateY(100%);transition:transform 0.25s;}
+.work-card:hover .work-buy-label{transform:translateY(0);}
+.work-info{padding:1rem 1.5rem 1.5rem;}
+.work-title{font-size:0.9rem;font-weight:700;margin-bottom:0.2rem;}
+.work-artist-name{font-size:0.7rem;color:rgba(255,255,255,0.35);margin-bottom:0.3rem;}
+.work-price{font-size:0.85rem;color:rgba(255,255,255,0.6);}
+#lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:10000;display:none;align-items:center;justify-content:center;cursor:none;}
+#lightbox.open{display:flex;}
+#lightbox-inner{display:grid;grid-template-columns:1fr 380px;max-width:1000px;width:90vw;gap:3rem;align-items:center;}
+#lb-img{width:100%;max-height:80vh;object-fit:contain;}
+.lightbox-info{padding:2rem 0;}
+.lightbox-title{font-size:1.4rem;font-weight:900;letter-spacing:-0.02em;margin-bottom:0.3rem;}
+.lightbox-artist{font-size:0.8rem;color:rgba(255,255,255,0.4);margin-bottom:1rem;}
+.lightbox-meta{font-size:0.82rem;color:rgba(255,255,255,0.35);line-height:1.7;margin-bottom:1rem;}
+.lightbox-price{font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;}
+#lightbox-close{position:absolute;top:2rem;right:2rem;background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.6);font-family:inherit;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:none;transition:all 0.2s;}
+#lightbox-close:hover{border-color:#fff;color:#fff;}
+.collectors-note{padding:2rem 2.5rem;font-size:0.8rem;color:rgba(255,255,255,0.25);border-top:1px solid rgba(255,255,255,0.06);line-height:1.7;}
+</style>
+</head>
+<body>
+<div id="cdot"></div><div id="cw"><img src="images/run.png" alt=""></div>
+<nav><a href="index.html" class="nav-logo">galerie POSTOJ</a><ul class="nav-links"><li><a href="artists.html" >Umělci</a></li><li><a href="exhibitions.html" >Výstavy</a></li><li><a href="collectors.html" class=active>Sběratelé</a></li><li><a href="about.html" >O nás</a></li><li><a href="open-call.html" >Open Call</a></li></ul></nav>
+
+<div class="collectors-hero rv">
+  <div class="collectors-hero-label">Sběratelé</div>
+  <div class="collectors-hero-title">Díla k prodeji</div>
+</div>
+<p class="collectors-intro rv">Všechna díla jsou originály s certifikátem pravosti. Pro více informací nás kontaktujte na <a href="mailto:info@galeriepostoj.cz">info@galeriepostoj.cz</a>.</p>
+<div class="works-grid">
+  <div class="work-card rv" onclick="openLightbox({img:'images/painting1.webp',title:'Bez názvu I',artist:'Martin Jáchym',meta:'Olej na plátně<br>80 × 60 cm, 2025',price:'12 000 Kč'})">
+    <div class="work-img"><img class="img-main" src="images/painting1.webp" alt=""><img class="img-install" src="images/install4.jpg" alt=""><div class="work-buy-label">Detail & koupit</div></div>
+    <div class="work-info"><div class="work-title">Bez názvu I</div><div class="work-artist-name">Martin Jáchym</div><div class="work-price">12 000 Kč</div></div>
+  </div>
+  <div class="work-card rv" onclick="openLightbox({img:'images/painting3.webp',title:'Bez názvu II',artist:'Martin Jáchym',meta:'Olej na plátně<br>100 × 80 cm, 2025',price:'15 000 Kč'})">
+    <div class="work-img"><img class="img-main" src="images/painting3.webp" alt=""><img class="img-install" src="images/install1.jpg" alt=""><div class="work-buy-label">Detail & koupit</div></div>
+    <div class="work-info"><div class="work-title">Bez názvu II</div><div class="work-artist-name">Martin Jáchym</div><div class="work-price">15 000 Kč</div></div>
+  </div>
+  <div class="work-card rv" onclick="openLightbox({img:'images/painting2.webp',title:'Vlak',artist:'Anna Banytiuk',meta:'Akryl na plátně<br>70 × 50 cm, 2024',price:'8 500 Kč'})">
+    <div class="work-img"><img class="img-main" src="images/painting2.webp" alt=""><img class="img-install" src="images/install2.jpg" alt=""><div class="work-buy-label">Detail & koupit</div></div>
+    <div class="work-info"><div class="work-title">Vlak</div><div class="work-artist-name">Anna Banytiuk</div><div class="work-price">8 500 Kč</div></div>
+  </div>
+  <div class="work-card rv" onclick="openLightbox({img:'images/painting4.webp',title:'Bez názvu III',artist:'Anna Banytiuk',meta:'Akryl na plátně<br>60 × 60 cm, 2024',price:'9 000 Kč'})">
+    <div class="work-img"><img class="img-main" src="images/painting4.webp" alt=""><img class="img-install" src="images/install3.jpg" alt=""><div class="work-buy-label">Detail & koupit</div></div>
+    <div class="work-info"><div class="work-title">Bez názvu III</div><div class="work-artist-name">Anna Banytiuk</div><div class="work-price">9 000 Kč</div></div>
+  </div>
+</div>
+<div class="collectors-note">Doprava po celé ČR zdarma. Možnost osobního odběru v galerii.</div>
+<div id="lightbox">
+  <button id="lightbox-close">Zavřít ×</button>
+  <div id="lightbox-inner">
+    <img id="lb-img" src="" alt="">
+    <div class="lightbox-info">
+      <div class="lightbox-title" id="lb-title"></div>
+      <div class="lightbox-artist" id="lb-artist"></div>
+      <div class="lightbox-meta" id="lb-meta"></div>
+      <div class="lightbox-price" id="lb-price"></div>
+      <a id="lb-mailto" href="#" class="btn">Mám zájem</a>
+    </div>
+  </div>
+</div>
+<site-footer><div class="footer-inner">
+  <span>galerie POSTOJ &copy; 2026</span>
+  <div class="footer-links">
+    <a href="artists.html">Umělci</a><a href="exhibitions.html">Výstavy</a>
+    <a href="collectors.html">Sběratelé</a><a href="about.html">O nás</a>
+    <a href="open-call.html">Open Call</a>
+  </div>
+  <span>Umění pro lidi, ne pro elitu.</span>
+</div></site-footer>
+<script src="cursor.js"></script>
+<script>
+(function(){
+  var lb=document.getElementById('lightbox'),lc=document.getElementById('lightbox-close');
+  if(!lb)return;
+  window.openLightbox=function(data){
+    document.getElementById('lb-img').src=data.img;
+    document.getElementById('lb-title').textContent=data.title;
+    document.getElementById('lb-artist').textContent=data.artist;
+    document.getElementById('lb-meta').innerHTML=data.meta||'';
+    document.getElementById('lb-price').textContent=data.price;
+    document.getElementById('lb-mailto').href='mailto:info@galeriepostoj.cz?subject=Zajem o obraz: '+data.title;
+    lb.classList.add('open');document.body.style.overflow='hidden';
+  };
+  function cl(){lb.classList.remove('open');document.body.style.overflow='';}
+  lc.addEventListener('click',cl);
+  lb.addEventListener('click',function(e){if(e.target===lb)cl();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')cl();});
+})();
+</script>
+</body>
+</html>
