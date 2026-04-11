@@ -7,11 +7,11 @@
 <link rel="stylesheet" href="style.css">
 <style>
 #hero{position:relative;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;}
-#hero-bg{position:absolute;inset:0;background:#111;}
-#hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.5);}
-.hero-content{position:relative;z-index:2;text-align:center;}
-.hero-title{font-size:clamp(3rem,8vw,8rem);font-weight:900;line-height:0.9;letter-spacing:-0.04em;margin-bottom:1.5rem;}
-.hero-sub{font-size:1rem;color:rgba(255,255,255,0.5);margin-bottom:2.5rem;}
+#hero-bg{position:absolute;inset:0;background:#111 url('images/vernisaz.jpg') center/cover no-repeat;}
+#hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.45);}
+#hero-poster-wrap{position:relative;z-index:2;will-change:transform;}
+#hero-poster-link{display:block;cursor:none;}
+#hero-poster-link img{height:72vh;width:auto;display:block;transition:transform 0.4s ease;}
 .sales-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
 .sale-card{position:relative;overflow:hidden;aspect-ratio:3/4;cursor:none;}
 .sale-card img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;transition:opacity 0.4s;}
@@ -50,10 +50,10 @@
 <section id="hero">
   <div id="hero-bg"></div>
   <div id="hero-overlay"></div>
-  <div class="hero-content rv">
-    <div class="hero-title">galerie<br>POSTOJ</div>
-    <p class="hero-sub">Umění pro lidi, ne pro elitu. Metro B — Náměstí Republiky, Praha.</p>
-    <a href="exhibitions.html" class="btn">Aktuální výstava →</a>
+  <div id="hero-poster-wrap">
+    <a href="exhibitions.html" id="hero-poster-link">
+      <img src="images/poster-martin.webp" alt="Break The Pattern, Go To Therapy">
+    </a>
   </div>
 </section>
 <div class="sales-strip">
@@ -99,6 +99,26 @@
   <span>Umění pro lidi, ne pro elitu.</span>
 </div></site-footer>
 <script src="cursor.js"></script>
-
+<script>
+(function(){
+  var wrap=document.getElementById('hero-poster-wrap');
+  var link=document.getElementById('hero-poster-link');
+  if(!wrap)return;
+  // parallax — poster slides up on scroll
+  var ticking=false;
+  window.addEventListener('scroll',function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        wrap.style.transform='translateY(-'+Math.round(window.scrollY*0.55)+'px)';
+        ticking=false;
+      });
+      ticking=true;
+    }
+  },{passive:true});
+  // hover — scale up poster to hint it's clickable
+  link.addEventListener('mouseenter',function(){link.querySelector('img').style.transform='scale(1.05)';});
+  link.addEventListener('mouseleave',function(){link.querySelector('img').style.transform='';});
+})();
+</script>
 </body>
 </html>
