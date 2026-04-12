@@ -7,27 +7,21 @@
 <link rel="stylesheet" href="style.css">
 <style>
 #hero{position:relative;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;}
-#hero-bg{position:absolute;inset:0;background:#111 url('images/vernisaz.jpg') center/cover no-repeat;}
+#hero-bg{position:absolute;inset:0;background:#111 url('images/hero-bg.jpg') center/cover no-repeat;}
 #hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.45);}
+#hero-bottom-fade{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to bottom,transparent,#000);z-index:1;}
 #hero-poster-wrap{position:relative;z-index:2;will-change:transform;}
 #hero-poster-link{display:block;cursor:none;}
-#hero-poster-link img{height:72vh;width:auto;display:block;transition:transform 0.4s ease;}
-.sales-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
-.sale-card{position:relative;overflow:hidden;aspect-ratio:3/4;cursor:none;}
-.sale-card img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;transition:opacity 0.4s;}
-.sale-card .img-install{opacity:0;}
-.sale-card:hover .img-main{opacity:0;}
-.sale-card:hover .img-install{opacity:1;}
-.sale-card-info{position:absolute;bottom:0;left:0;right:0;padding:1rem;background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);z-index:2;}
-.sale-card-title{font-size:0.85rem;font-weight:700;margin-bottom:0.2rem;}
-.sale-card-price{font-size:0.75rem;color:rgba(255,255,255,0.6);}
-.current-exh{display:grid;grid-template-columns:1fr 1fr;align-items:center;}
-.current-exh-info{padding:5rem 3rem;}
-.current-exh-label{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1rem;}
-.current-exh-title{font-size:clamp(2rem,5vw,5rem);font-weight:900;line-height:0.9;letter-spacing:-0.04em;margin-bottom:1.5rem;}
-.current-exh-artist{font-size:0.9rem;color:rgba(255,255,255,0.4);margin-bottom:2rem;}
-.current-exh-img{aspect-ratio:3/4;overflow:hidden;}
-.current-exh-img img{width:100%;height:100%;object-fit:cover;}
+#hero-poster-link img{height:58vh;width:auto;display:block;transition:transform 0.4s ease;}
+.current-exh{display:grid;grid-template-columns:1fr 1.3fr;align-items:stretch;background:#0d0d0d;}
+.current-exh-info{padding:4rem 4rem 4rem 3rem;display:flex;flex-direction:column;justify-content:center;}
+.current-exh-label{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1.5rem;}
+.current-exh-artist{font-size:clamp(3rem,7vw,6.5rem);font-weight:900;line-height:0.88;letter-spacing:-0.04em;margin-bottom:1.2rem;}
+.current-exh-title{font-size:1rem;font-weight:600;color:rgba(255,255,255,0.75);margin-bottom:0.4rem;}
+.current-exh-date{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1.8rem;}
+.current-exh-desc{font-size:0.9rem;line-height:1.7;color:rgba(255,255,255,0.4);max-width:380px;margin-bottom:2.5rem;}
+.current-exh-img{overflow:hidden;min-height:480px;}
+.current-exh-img img{width:100%;height:100%;object-fit:cover;display:block;}
 .photo-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;}
 .photo-strip-item{aspect-ratio:3/4;overflow:hidden;}
 .photo-strip-item img{width:100%;height:100%;object-fit:cover;filter:grayscale(10%);transition:filter 0.4s;}
@@ -50,26 +44,23 @@
 <section id="hero">
   <div id="hero-bg"></div>
   <div id="hero-overlay"></div>
+  <div id="hero-bottom-fade"></div>
   <div id="hero-poster-wrap">
     <a href="exhibitions.html" id="hero-poster-link">
       <img src="images/poster-martin.webp" alt="Break The Pattern, Go To Therapy">
     </a>
   </div>
 </section>
-<div class="sales-strip">
-  <div class="sale-card"><img class="img-main" src="images/painting1.webp" alt=""><img class="img-install" src="images/install4.jpg" alt=""><div class="sale-card-info"><div class="sale-card-title">Bez názvu I — Martin Jáchym</div><div class="sale-card-price">12 000 Kč</div></div></div>
-  <div class="sale-card"><img class="img-main" src="images/painting2.webp" alt=""><img class="img-install" src="images/install2.jpg" alt=""><div class="sale-card-info"><div class="sale-card-title">Vlak — Anna Banytiuk</div><div class="sale-card-price">8 500 Kč</div></div></div>
-  <div class="sale-card"><img class="img-main" src="images/painting3.webp" alt=""><img class="img-install" src="images/install1.jpg" alt=""><div class="sale-card-info"><div class="sale-card-title">Bez názvu II — Martin Jáchym</div><div class="sale-card-price">15 000 Kč</div></div></div>
-  <div class="sale-card"><img class="img-main" src="images/painting4.webp" alt=""><img class="img-install" src="images/install3.jpg" alt=""><div class="sale-card-info"><div class="sale-card-title">Bez názvu III — Anna Banytiuk</div><div class="sale-card-price">9 000 Kč</div></div></div>
-</div>
 <section class="current-exh">
   <div class="current-exh-info rv">
     <div class="current-exh-label">Aktuální výstava</div>
-    <div class="current-exh-title">Break The Pattern,<br>Go To Therapy</div>
-    <div class="current-exh-artist">Martin Jáchym</div>
-    <a href="exhibitions.html" class="btn">Zobrazit výstavu →</a>
+    <div class="current-exh-artist">Martin<br>Jáchym</div>
+    <div class="current-exh-title">Break The Pattern, Go To Therapy</div>
+    <div class="current-exh-date">7. ledna 2026</div>
+    <p class="current-exh-desc">Autorská instalace otevírá téma psychického zdraví a zakořeněných vzorce chování. V prostředí zahlceném tlakem na výkon může být obtížné přiznat si únavu nebo bolest.</p>
+    <a href="exhibitions.html" class="btn">Více o výstavě</a>
   </div>
-  <div class="current-exh-img rv"><img src="images/poster-martin.webp" alt="Break The Pattern"></div>
+  <div class="current-exh-img rv"><img src="images/gallery2.jpg" alt="Break The Pattern"></div>
 </section>
 <div class="photo-strip">
   <div class="photo-strip-item"><img src="images/gallery1.jpg" alt=""></div>
@@ -109,7 +100,7 @@
   window.addEventListener('scroll',function(){
     if(!ticking){
       requestAnimationFrame(function(){
-        wrap.style.transform='translateY(-'+Math.round(window.scrollY*0.55)+'px)';
+        wrap.style.transform='translateY(-'+Math.round(window.scrollY*2.5)+'px)';
         ticking=false;
       });
       ticking=true;
