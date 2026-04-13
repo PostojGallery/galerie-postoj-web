@@ -21,9 +21,12 @@
 .filter-trigger.open .filter-arrow{transform:rotate(180deg);}
 .filter-dropdown{display:none;position:absolute;top:100%;left:0;min-width:200px;background:#111;border:1px solid rgba(255,255,255,0.1);border-top:none;z-index:200;}
 .filter-dropdown.open{display:block;}
-.filter-opt{display:block;width:100%;text-align:left;padding:0.8rem 1.5rem;font-size:0.8rem;color:rgba(255,255,255,0.45);background:none;border:none;font-family:inherit;cursor:none;transition:color 0.15s,background 0.15s;white-space:nowrap;}
+.filter-opt{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;width:100%;text-align:left;padding:0.8rem 1.5rem;font-size:0.8rem;color:rgba(255,255,255,0.45);background:none;border:none;font-family:inherit;cursor:none;transition:color 0.15s,background 0.15s;white-space:nowrap;box-sizing:border-box;}
 .filter-opt:hover{color:#fff;background:rgba(255,255,255,0.05);}
+.filter-opt::after{content:'';width:14px;height:14px;border:1px solid rgba(255,255,255,0.15);border-radius:2px;flex-shrink:0;transition:background 0.15s,border-color 0.15s;}
 .filter-opt.active{color:#fff;}
+.filter-opt.active::after{content:'✓';background:#fff;border-color:#fff;color:#000;font-size:0.6rem;display:flex;align-items:center;justify-content:center;font-weight:700;}
+.filter-count{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:#000;font-size:0.55rem;font-weight:700;border-radius:50%;width:16px;height:16px;margin-left:0.3rem;}
 .works-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;}
 .work-card{cursor:none;position:relative;}
 .work-img{position:relative;overflow:hidden;aspect-ratio:3/4;}
@@ -61,6 +64,14 @@
 </div>
 <p class="collectors-intro rv">Všechna díla jsou originály s certifikátem pravosti. Pro více informací nás kontaktujte na <a href="mailto:info@galeriepostoj.cz">info@galeriepostoj.cz</a>.</p>
 <div class="filters-bar">
+  <div class="filter-group">
+    <button class="filter-trigger" data-group="umelci">Umělci <span class="filter-arrow">▾</span></button>
+    <div class="filter-dropdown" data-group="umelci">
+      <button class="filter-opt active" data-filter="umelci" data-val="vse">Vše</button>
+      <button class="filter-opt" data-filter="umelci" data-val="martin-jachym">Martin Jáchym</button>
+      <button class="filter-opt" data-filter="umelci" data-val="anna-banytiuk">Anna Banytiuk</button>
+    </div>
+  </div>
   <div class="filter-group">
     <button class="filter-trigger" data-group="technika">Technika <span class="filter-arrow">▾</span></button>
     <div class="filter-dropdown" data-group="technika">
@@ -143,8 +154,9 @@
 </div></site-footer>
 <script src="cursor.js"></script>
 <script>
-// Filter dropdowns
+// Filter dropdowns with multi-select
 (function(){
+  var singleSelect=['sort']; // only sort stays single-select
   function closeAll(){
     document.querySelectorAll('.filter-trigger').forEach(function(t){t.classList.remove('open');});
     document.querySelectorAll('.filter-dropdown').forEach(function(d){d.classList.remove('open');});
@@ -162,13 +174,38 @@
     });
   });
   document.querySelectorAll('.filter-opt').forEach(function(btn){
-    btn.addEventListener('click',function(){
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
       var group=btn.getAttribute('data-filter');
-      document.querySelectorAll('.filter-opt[data-filter="'+group+'"]').forEach(function(b){b.classList.remove('active');});
-      btn.classList.add('active');
+      var val=btn.getAttribute('data-val');
+      var opts=document.querySelectorAll('.filter-opt[data-filter="'+group+'"]');
+      if(singleSelect.indexOf(group)>-1){
+        // single select — replace
+        opts.forEach(function(b){b.classList.remove('active');});
+        btn.classList.add('active');
+        closeAll();
+      } else if(val==='vse'){
+        // clicking Vše clears all others
+        opts.forEach(function(b){b.classList.remove('active');});
+        btn.classList.add('active');
+      } else {
+        // toggle this option, remove Vše
+        document.querySelector('.filter-opt[data-filter="'+group+'"][data-val="vse"]').classList.remove('active');
+        btn.classList.toggle('active');
+        // if nothing selected, revert to Vše
+        var anyActive=Array.from(opts).some(function(b){return b.classList.contains('active')&&b.getAttribute('data-val')!=='vse';});
+        if(!anyActive) document.querySelector('.filter-opt[data-filter="'+group+'"][data-val="vse"]').classList.add('active');
+      }
+      // mark trigger with count badge if non-default selection
+      var vseActive=document.querySelector('.filter-opt[data-filter="'+group+'"][data-val="vse"]').classList.contains('active');
       var trigger=document.querySelector('.filter-trigger[data-group="'+group+'"]');
-      trigger.classList.toggle('has-active',btn.getAttribute('data-val')!=='vse');
-      closeAll();
+      trigger.classList.toggle('has-active',!vseActive);
+      var existingBadge=trigger.querySelector('.filter-count');
+      if(existingBadge)existingBadge.remove();
+      if(!vseActive){
+        var activeCount=document.querySelectorAll('.filter-opt[data-filter="'+group+'"].active').length;
+        if(activeCount>1){var badge=document.createElement('span');badge.className='filter-count';badge.textContent=activeCount;trigger.appendChild(badge);}
+      }
     });
   });
   document.addEventListener('click',closeAll);
