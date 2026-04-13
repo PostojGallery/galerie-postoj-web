@@ -13,19 +13,32 @@
 #hero-poster-wrap{position:relative;z-index:2;will-change:transform;}
 #hero-poster-link{display:block;cursor:none;}
 #hero-poster-link img{height:58vh;width:auto;display:block;transition:transform 0.4s ease;}
-.current-exh{display:grid;grid-template-columns:1fr 1.3fr;align-items:stretch;background:#0d0d0d;}
-.current-exh-info{padding:4rem 4rem 4rem 3rem;display:flex;flex-direction:column;justify-content:center;}
+.current-exh{display:grid;grid-template-columns:1fr 1fr;align-items:center;background:#0d0d0d;gap:3rem;padding-right:3rem;}
+.current-exh-info{padding:4rem 2rem 4rem 3rem;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;}
 .current-exh-label{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1.5rem;}
 .current-exh-artist{font-size:clamp(3rem,7vw,6.5rem);font-weight:900;line-height:0.88;letter-spacing:-0.04em;margin-bottom:1.2rem;}
 .current-exh-title{font-size:1rem;font-weight:600;color:rgba(255,255,255,0.75);margin-bottom:0.4rem;}
 .current-exh-date{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1.8rem;}
 .current-exh-desc{font-size:0.9rem;line-height:1.7;color:rgba(255,255,255,0.4);max-width:380px;margin-bottom:2.5rem;}
-.current-exh-img{overflow:hidden;min-height:480px;}
-.current-exh-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.current-exh-video{position:relative;aspect-ratio:16/9;background:#1a1a1a;border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;}
+.current-exh-video-icon{width:52px;height:52px;border:2px solid rgba(255,255,255,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.current-exh-video-icon svg{width:18px;height:18px;fill:rgba(255,255,255,0.4);margin-left:3px;}
+.current-exh-video-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);}
 .photo-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;}
 .photo-strip-item{aspect-ratio:3/4;overflow:hidden;}
-.photo-strip-item img{width:100%;height:100%;object-fit:cover;filter:grayscale(10%);transition:filter 0.4s;}
-.photo-strip-item:hover img{filter:grayscale(0%);}
+.photo-strip-item img{width:100%;height:100%;object-fit:cover;filter:grayscale(10%);transition:filter 0.4s,transform 0.4s;}
+.photo-strip-item:hover img{filter:grayscale(0%);transform:scale(1.07);}
+#lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:20000;align-items:center;justify-content:center;}
+#lightbox.open{display:flex;}
+#lightbox-img{max-height:85vh;max-width:85vw;object-fit:contain;display:block;user-select:none;}
+#lightbox-close{position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:rgba(255,255,255,0.5);cursor:none;line-height:1;transition:color 0.2s;}
+#lightbox-close:hover{color:#fff;}
+#lightbox-prev,#lightbox-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:1.2rem;width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:none;transition:background 0.2s,border-color 0.2s;}
+#lightbox-prev:hover,#lightbox-next:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.5);}
+#lightbox-prev{left:2rem;}
+#lightbox-next{right:2rem;}
+#lightbox-counter{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-size:0.65rem;letter-spacing:0.2em;color:rgba(255,255,255,0.3);}
+.photo-strip-item{cursor:none;}
 #opencall-strip{border-top:1px solid rgba(255,255,255,0.08);}
 .oc-grid{display:grid;grid-template-columns:100px 1fr auto;align-items:center;}
 .oc-stick-col{padding:2.5rem;display:flex;align-items:center;}
@@ -58,9 +71,14 @@
     <div class="current-exh-title">Break The Pattern, Go To Therapy</div>
     <div class="current-exh-date">7. ledna 2026</div>
     <p class="current-exh-desc">Autorská instalace otevírá téma psychického zdraví a zakořeněných vzorce chování. V prostředí zahlceném tlakem na výkon může být obtížné přiznat si únavu nebo bolest.</p>
-    <a href="exhibitions.html" class="btn">Více o výstavě</a>
+    <a href="exhibitions.html" class="btn">Více info</a>
   </div>
-  <div class="current-exh-img rv"><img src="images/gallery2.jpg" alt="Break The Pattern"></div>
+  <div class="current-exh-video rv">
+    <div class="current-exh-video-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="5,3 19,12 5,21"/></svg>
+    </div>
+    <div class="current-exh-video-label">Video bude brzy</div>
+  </div>
 </section>
 <div class="photo-strip">
   <div class="photo-strip-item"><img src="images/gallery1.jpg" alt=""></div>
@@ -89,6 +107,13 @@
   </div>
   <span>Umění pro lidi, ne pro elitu.</span>
 </div></site-footer>
+<div id="lightbox">
+  <span id="lightbox-close">&#215;</span>
+  <button id="lightbox-prev">&#8592;</button>
+  <img id="lightbox-img" src="" alt="">
+  <button id="lightbox-next">&#8594;</button>
+  <div id="lightbox-counter"></div>
+</div>
 <script src="cursor.js"></script>
 <script>
 (function(){
@@ -106,6 +131,23 @@
       ticking=true;
     }
   },{passive:true});
+  // lightbox
+  (function(){
+    var items=Array.from(document.querySelectorAll('.photo-strip-item img'));
+    var lb=document.getElementById('lightbox');
+    var lbImg=document.getElementById('lightbox-img');
+    var lbCounter=document.getElementById('lightbox-counter');
+    var cur=0;
+    function show(i){cur=i;lbImg.src=items[i].src;lbCounter.textContent=(i+1)+' / '+items.length;}
+    function open(i){show(i);lb.classList.add('open');document.body.style.overflow='hidden';}
+    function close(){lb.classList.remove('open');document.body.style.overflow='';}
+    items.forEach(function(img,i){img.parentElement.addEventListener('click',function(){open(i);});});
+    document.getElementById('lightbox-prev').addEventListener('click',function(){show((cur-1+items.length)%items.length);});
+    document.getElementById('lightbox-next').addEventListener('click',function(){show((cur+1)%items.length);});
+    document.getElementById('lightbox-close').addEventListener('click',close);
+    lb.addEventListener('click',function(e){if(e.target===lb)close();});
+    document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='ArrowLeft')show((cur-1+items.length)%items.length);else if(e.key==='ArrowRight')show((cur+1)%items.length);else if(e.key==='Escape')close();});
+  })();
   // hover — scale up poster to hint it's clickable
   link.addEventListener('mouseenter',function(){link.querySelector('img').style.transform='scale(1.05)';});
   link.addEventListener('mouseleave',function(){link.querySelector('img').style.transform='';});
