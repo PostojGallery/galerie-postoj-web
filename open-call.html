@@ -84,12 +84,7 @@ document.getElementById('oc-form').addEventListener('submit',function(e){
   e.preventDefault();
   var n=document.getElementById('oc-name').value,em=document.getElementById('oc-email').value,
       w=document.getElementById('oc-web').value,s=document.getElementById('oc-statement').value;
-  window.location.href='mailto:info@galeriepostoj.cz?subject='+encodeURIComponent('Open Call přihláška: '+n)+'&body='+encodeURIComponent('Jméno: '+n+'
-Email: '+em+'
-Web: '+w+'
-
-Statement:
-'+s);
+  window.location.href='mailto:info@galeriepostoj.cz?subject='+encodeURIComponent('Open Call přihláška: '+n)+'&body='+encodeURIComponent('Jméno: '+n+'\nEmail: '+em+'\nWeb: '+w+'\n\nStatement:\n'+s);
 });
 </script>
 </body>
