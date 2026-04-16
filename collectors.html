@@ -120,23 +120,23 @@
   </div>
 </div>
 <div class="works-grid" style="padding:1.5rem 2.5rem 2.5rem;">
-  <div class="work-card rv" data-umelec="martin-jachym" data-technika="malba" data-velikost="stredni" data-cena="10000-30000" onclick="openLightbox({img:'images/painting1.webp',title:'Bez názvu I',artist:'Martin Jáchym',meta:'Olej na plátně<br>80 × 60 cm, 2025',price:'12 000 Kč'})">
+  <div class="work-card rv" data-umelec="martin-jachym" data-technika="malba" data-velikost="stredni" data-cena="10000-30000" data-price="12000" data-order="0" onclick="openLightbox({img:'images/painting1.webp',title:'Bez názvu I',artist:'Martin Jáchym',meta:'Olej na plátně<br>80 × 60 cm, 2025',price:'12 000 Kč'})">
     <div class="work-img"><img class="img-main" src="images/painting1.webp" alt=""><img class="img-install" src="images/install4.jpg" alt=""><div class="work-buy-label">Detail & koupit</div></div>
     <div class="work-info"><div class="work-title">Bez názvu I</div><div class="work-artist-name">Martin Jáchym</div><div class="work-price">12 000 Kč</div></div>
   </div>
-  <div class="work-card rv" data-umelec="martin-jachym" data-technika="malba" data-velikost="velke" data-cena="10000-30000" onclick="openLightbox({img:'images/painting3.webp',title:'Bez názvu II',artist:'Martin Jáchym',meta:'Olej na plátně<br>100 × 80 cm, 2025',price:'15 000 Kč'})">
+  <div class="work-card rv" data-umelec="martin-jachym" data-technika="malba" data-velikost="velke" data-cena="10000-30000" data-price="15000" data-order="1" onclick="openLightbox({img:'images/painting3.webp',title:'Bez názvu II',artist:'Martin Jáchym',meta:'Olej na plátně<br>100 × 80 cm, 2025',price:'15 000 Kč'})">
     <div class="work-img"><img class="img-main" src="images/painting3.webp" alt=""><img class="img-install" src="images/install1.jpg" alt=""><div class="work-buy-label">Detail & koupit</div></div>
     <div class="work-info"><div class="work-title">Bez názvu II</div><div class="work-artist-name">Martin Jáchym</div><div class="work-price">15 000 Kč</div></div>
   </div>
-  <div class="work-card rv" data-umelec="anna-banytiuk" data-technika="malba" data-velikost="stredni" data-cena="2000-10000" onclick="openLightbox({img:'images/painting2.webp',title:'Vlak',artist:'Anna Banytiuk',meta:'Akryl na plátně<br>70 × 50 cm, 2024',price:'8 500 Kč'})">
+  <div class="work-card rv" data-umelec="anna-banytiuk" data-technika="malba" data-velikost="stredni" data-cena="2000-10000" data-price="8500" data-order="2" onclick="openLightbox({img:'images/painting2.webp',title:'Vlak',artist:'Anna Banytiuk',meta:'Akryl na plátně<br>70 × 50 cm, 2024',price:'8 500 Kč'})">
     <div class="work-img"><img class="img-main" src="images/painting2.webp" alt=""><img class="img-install" src="images/install2.jpg" alt=""><div class="work-buy-label">Detail & koupit</div></div>
     <div class="work-info"><div class="work-title">Vlak</div><div class="work-artist-name">Anna Banytiuk</div><div class="work-price">8 500 Kč</div></div>
   </div>
-  <div class="work-card rv" data-umelec="anna-banytiuk" data-technika="malba" data-velikost="stredni" data-cena="2000-10000" onclick="openLightbox({img:'images/painting4.webp',title:'Bez názvu III',artist:'Anna Banytiuk',meta:'Akryl na plátně<br>60 × 60 cm, 2024',price:'9 000 Kč'})">
+  <div class="work-card rv" data-umelec="anna-banytiuk" data-technika="malba" data-velikost="stredni" data-cena="2000-10000" data-price="9000" data-order="3" onclick="openLightbox({img:'images/painting4.webp',title:'Bez názvu III',artist:'Anna Banytiuk',meta:'Akryl na plátně<br>60 × 60 cm, 2024',price:'9 000 Kč'})">
     <div class="work-img"><img class="img-main" src="images/painting4.webp" alt=""><img class="img-install" src="images/install3.jpg" alt=""><div class="work-buy-label">Detail & koupit</div></div>
     <div class="work-info"><div class="work-title">Bez názvu III</div><div class="work-artist-name">Anna Banytiuk</div><div class="work-price">9 000 Kč</div></div>
   </div>
-  <div class="work-placeholder" data-umelec="none"><span class="work-placeholder-label">Připravujeme</span></div>
+  <div class="work-placeholder" data-umelec="none" data-order="99"><span class="work-placeholder-label">Připravujeme</span></div>
 </div>
 <div class="collectors-note">Doprava po celé ČR zdarma. Možnost osobního odběru v galerii.</div>
 <div id="lightbox">
@@ -222,19 +222,20 @@
   });
   document.addEventListener('click',closeAll);
 
-  // Apply filters to work cards
+  // Apply filters and sort to work cards
   function applyFilters(){
-    var cards=document.querySelectorAll('.work-card');
-    // Collect active values per group
+    var grid=document.querySelector('.works-grid');
+    var allItems=Array.from(grid.children);
+    // Collect active filter values per group
     var active={};
     ['umelci','technika','velikost','cena'].forEach(function(g){
       var vseBtn=document.querySelector('.filter-opt[data-filter="'+g+'"][data-val="vse"]');
       if(vseBtn&&vseBtn.classList.contains('active')){active[g]=null;}
-      else{
-        active[g]=Array.from(document.querySelectorAll('.filter-opt[data-filter="'+g+'"].active')).map(function(b){return b.getAttribute('data-val');});
-      }
+      else{active[g]=Array.from(document.querySelectorAll('.filter-opt[data-filter="'+g+'"].active')).map(function(b){return b.getAttribute('data-val');});}
     });
-    cards.forEach(function(card){
+    // Show/hide
+    allItems.forEach(function(card){
+      if(!card.classList.contains('work-card')){card.style.display='';return;}
       var show=true;
       if(active.umelci&&!active.umelci.includes(card.getAttribute('data-umelec')))show=false;
       if(active.technika&&!active.technika.includes(card.getAttribute('data-technika')))show=false;
@@ -242,6 +243,15 @@
       if(active.cena&&!active.cena.includes(card.getAttribute('data-cena')))show=false;
       card.style.display=show?'':'none';
     });
+    // Sort
+    var sortVal=document.querySelector('.filter-opt[data-filter="sort"].active');
+    sortVal=sortVal?sortVal.getAttribute('data-val'):'nove';
+    allItems.sort(function(a,b){
+      if(sortVal==='cena-asc'){return (+a.getAttribute('data-price')||9999999)-(+b.getAttribute('data-price')||9999999);}
+      if(sortVal==='cena-desc'){return (+b.getAttribute('data-price')||0)-(+a.getAttribute('data-price')||0);}
+      return (+a.getAttribute('data-order')||0)-(+b.getAttribute('data-order')||0);
+    });
+    allItems.forEach(function(el){grid.appendChild(el);});
   }
   document.querySelectorAll('.filter-opt').forEach(function(btn){
     btn.addEventListener('click',function(){setTimeout(applyFilters,0);});

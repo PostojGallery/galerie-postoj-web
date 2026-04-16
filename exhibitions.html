@@ -195,6 +195,13 @@
       <p class="exh-archive-excerpt">První výstava Galerie Postoj.</p>
     </div>
   </div>
+  <div class="exh-photos-outer" style="margin-top:1.5rem;"><div class="exh-photos-scroll">
+    <div class="exh-photo"><img src="images/drevaky-1.jpg" alt="Dřeváky a Medový Klobouk 1"></div>
+    <div class="exh-photo"><img src="images/drevaky-2.jpg" alt="Dřeváky a Medový Klobouk 2"></div>
+    <div class="exh-photo"><img src="images/drevaky-3.jpg" alt="Dřeváky a Medový Klobouk 3"></div>
+    <div class="exh-photo"><img src="images/drevaky-4.jpg" alt="Dřeváky a Medový Klobouk 4"></div>
+    <div class="exh-photo"><img src="images/drevaky-5.jpg" alt="Dřeváky a Medový Klobouk 5"></div>
+  </div></div>
 </div>
   </div>
 </div>
@@ -251,8 +258,14 @@ document.querySelectorAll('.exh-expand-btn,.exh-more-btn').forEach(function(btn)
   document.getElementById('glb-close').onclick=function(e){e.stopPropagation();close();};
   lb.onclick=function(e){if(e.target===lb)close();};
   document.addEventListener('keydown',function(e){if(lb.style.display!=='flex')return;if(e.key==='ArrowLeft'){cur=(cur-1+imgs.length)%imgs.length;show();}else if(e.key==='ArrowRight'){cur=(cur+1)%imgs.length;show();}else if(e.key==='Escape')close();});
-  document.querySelectorAll('.exh-photo').forEach(function(t,i){
-    t.onclick=function(){imgs=Array.from(document.querySelectorAll('.exh-photo img')).map(function(x){return x.src;});cur=i;show();lb.style.display='flex';document.body.style.overflow='hidden';};
+  document.querySelectorAll('.exh-photo').forEach(function(t){
+    t.onclick=function(){
+      var strip=t.closest('.exh-photos-scroll');
+      var stripPhotos=Array.from(strip.querySelectorAll('.exh-photo'));
+      imgs=stripPhotos.map(function(x){return x.querySelector('img').src;});
+      cur=stripPhotos.indexOf(t);
+      show();lb.style.display='flex';document.body.style.overflow='hidden';
+    };
   });
 })();
 </script>
