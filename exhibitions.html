@@ -170,7 +170,12 @@
       <div class="exh-archive-dates">21. 9. – 21. 11. 2023</div>
       <div class="exh-archive-title">Jak se máš?</div>
       <div class="exh-archive-artist"><a href="artists.html">Patrik Antczak & Eva Antczak Hudzieczek</a></div>
-      <p class="exh-archive-excerpt">Dialog o duševním zdraví ve veřejném prostoru.</p>
+      <p class="exh-archive-excerpt">Cílem výstavy bylo ukázat, že ne vždy musí být umění zavřeno za zdmi galerií a obklopeno mnohdy až příliš komplikovanými doprovodnými texty, vysvětlujícími princip výstavy, ale že umění může být také součástí každodenního života a pro skutečně širokou veřejnost.</p>
+      <button class="exh-more-btn">Více</button>
+      <div class="exh-full-text" style="max-width:none;">
+        <p>Vestibul metra, kde pro umění zdánlivě není prostor. Brzké ranní hodiny, stovky rozespalých cestujících, kteří nechtějí být vidět, slyšet a nejraději by se ztratili v anonymním proudu lidí. Rychle proplout prostorem, s nikým nenavazovat oční kontakt, neinteragovat. A tu z ničeho nic otázka do ticha „Jak se máš?". Ano, mám na mysli vás a rád bych od vás slyšel, jak se dneska máte. Frázi, kterou mnohdy v běžném životě používáme spíš jako jakousi konverzační výplň, ve výstavě Jak se máš? Patrik používal zcela záměrně. A myslím ji naprosto vážně se vší svou hloubkou. „Budu vaší knihou pochval a stížností." Pro vaše pocity Patrik vytvořil unikátní škálu emotikonů, které kolemjdoucím měly pomoci vyjádřit, jak se v aktuální chvíli cítili. Dostali od Patrika samolepku, kterou měli přiřadit právě k té emoci, která je v daný moment nejvíce vystihovala.</p>
+        <p>Po této první fázi, která probíhala přibližně týden, vždy zhruba hodinu ráno, následovala vernisáž, v rámci které byly představeny výsledky této ankety. Návštěvníci vernisáže tak mohli zjistit, jak se cestující v daném prostoru a čase cítili. Projekt ilustrátora Patrika Antczaka, který vedla Galerie Postoj, byl součástí doprovodného programu desátého ročníku festivalu ilustrace — LUSTR.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -245,7 +250,7 @@
 document.querySelectorAll('.exh-expand-btn,.exh-more-btn').forEach(function(btn){
   btn.addEventListener('click',function(){
     var t=btn.nextElementSibling,o=t.classList.toggle('open');
-    btn.textContent=o?'Méně ↑':'Celý text výstavy →';
+    btn.textContent=o?'Méně ↑':'Více';
   });
 });
 (function(){
