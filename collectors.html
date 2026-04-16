@@ -27,7 +27,9 @@
 .filter-opt.active{color:#fff;}
 .filter-opt.active::after{content:'✓';background:#fff;border-color:#fff;color:#000;font-size:0.6rem;display:flex;align-items:center;justify-content:center;font-weight:700;}
 .filter-count{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:#000;font-size:0.55rem;font-weight:700;border-radius:50%;width:16px;height:16px;margin-left:0.3rem;}
-.works-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;}
+.works-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
+.work-placeholder{aspect-ratio:3/4;border:1px dashed rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;}
+.work-placeholder-label{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.15);}
 .work-card{cursor:none;position:relative;}
 .work-img{position:relative;overflow:hidden;aspect-ratio:3/4;}
 .work-img .img-main,.work-img .img-install{width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;transition:opacity 0.4s;}
@@ -68,8 +70,14 @@
     <button class="filter-trigger" data-group="umelci">Umělci <span class="filter-arrow">▾</span></button>
     <div class="filter-dropdown" data-group="umelci">
       <button class="filter-opt active" data-filter="umelci" data-val="vse">Vše</button>
-      <button class="filter-opt" data-filter="umelci" data-val="martin-jachym">Martin Jáchym</button>
+      <button class="filter-opt" data-filter="umelci" data-val="patrik-antczak">Patrik Antczak</button>
       <button class="filter-opt" data-filter="umelci" data-val="anna-banytiuk">Anna Banytiuk</button>
+      <button class="filter-opt" data-filter="umelci" data-val="martin-jachym">Martin Jáchym</button>
+      <button class="filter-opt" data-filter="umelci" data-val="anina-menger">Anina Menger</button>
+      <button class="filter-opt" data-filter="umelci" data-val="jitka-petrasova">Jitka Petrášová</button>
+      <button class="filter-opt" data-filter="umelci" data-val="lucie-pouchova">Lucie Pouchová</button>
+      <button class="filter-opt" data-filter="umelci" data-val="helena-tichackova">Helena Ticháčková</button>
+      <button class="filter-opt" data-filter="umelci" data-val="adela-valcharova">Adéla Valchařová</button>
     </div>
   </div>
   <div class="filter-group">
@@ -111,23 +119,24 @@
     </div>
   </div>
 </div>
-<div class="works-grid">
-  <div class="work-card rv" onclick="openLightbox({img:'images/painting1.webp',title:'Bez názvu I',artist:'Martin Jáchym',meta:'Olej na plátně<br>80 × 60 cm, 2025',price:'12 000 Kč'})">
+<div class="works-grid" style="padding:1.5rem 2.5rem 2.5rem;">
+  <div class="work-card rv" data-umelec="martin-jachym" data-technika="malba" data-velikost="stredni" data-cena="10000-30000" onclick="openLightbox({img:'images/painting1.webp',title:'Bez názvu I',artist:'Martin Jáchym',meta:'Olej na plátně<br>80 × 60 cm, 2025',price:'12 000 Kč'})">
     <div class="work-img"><img class="img-main" src="images/painting1.webp" alt=""><img class="img-install" src="images/install4.jpg" alt=""><div class="work-buy-label">Detail & koupit</div></div>
     <div class="work-info"><div class="work-title">Bez názvu I</div><div class="work-artist-name">Martin Jáchym</div><div class="work-price">12 000 Kč</div></div>
   </div>
-  <div class="work-card rv" onclick="openLightbox({img:'images/painting3.webp',title:'Bez názvu II',artist:'Martin Jáchym',meta:'Olej na plátně<br>100 × 80 cm, 2025',price:'15 000 Kč'})">
+  <div class="work-card rv" data-umelec="martin-jachym" data-technika="malba" data-velikost="velke" data-cena="10000-30000" onclick="openLightbox({img:'images/painting3.webp',title:'Bez názvu II',artist:'Martin Jáchym',meta:'Olej na plátně<br>100 × 80 cm, 2025',price:'15 000 Kč'})">
     <div class="work-img"><img class="img-main" src="images/painting3.webp" alt=""><img class="img-install" src="images/install1.jpg" alt=""><div class="work-buy-label">Detail & koupit</div></div>
     <div class="work-info"><div class="work-title">Bez názvu II</div><div class="work-artist-name">Martin Jáchym</div><div class="work-price">15 000 Kč</div></div>
   </div>
-  <div class="work-card rv" onclick="openLightbox({img:'images/painting2.webp',title:'Vlak',artist:'Anna Banytiuk',meta:'Akryl na plátně<br>70 × 50 cm, 2024',price:'8 500 Kč'})">
+  <div class="work-card rv" data-umelec="anna-banytiuk" data-technika="malba" data-velikost="stredni" data-cena="2000-10000" onclick="openLightbox({img:'images/painting2.webp',title:'Vlak',artist:'Anna Banytiuk',meta:'Akryl na plátně<br>70 × 50 cm, 2024',price:'8 500 Kč'})">
     <div class="work-img"><img class="img-main" src="images/painting2.webp" alt=""><img class="img-install" src="images/install2.jpg" alt=""><div class="work-buy-label">Detail & koupit</div></div>
     <div class="work-info"><div class="work-title">Vlak</div><div class="work-artist-name">Anna Banytiuk</div><div class="work-price">8 500 Kč</div></div>
   </div>
-  <div class="work-card rv" onclick="openLightbox({img:'images/painting4.webp',title:'Bez názvu III',artist:'Anna Banytiuk',meta:'Akryl na plátně<br>60 × 60 cm, 2024',price:'9 000 Kč'})">
+  <div class="work-card rv" data-umelec="anna-banytiuk" data-technika="malba" data-velikost="stredni" data-cena="2000-10000" onclick="openLightbox({img:'images/painting4.webp',title:'Bez názvu III',artist:'Anna Banytiuk',meta:'Akryl na plátně<br>60 × 60 cm, 2024',price:'9 000 Kč'})">
     <div class="work-img"><img class="img-main" src="images/painting4.webp" alt=""><img class="img-install" src="images/install3.jpg" alt=""><div class="work-buy-label">Detail & koupit</div></div>
     <div class="work-info"><div class="work-title">Bez názvu III</div><div class="work-artist-name">Anna Banytiuk</div><div class="work-price">9 000 Kč</div></div>
   </div>
+  <div class="work-placeholder" data-umelec="none"><span class="work-placeholder-label">Připravujeme</span></div>
 </div>
 <div class="collectors-note">Doprava po celé ČR zdarma. Možnost osobního odběru v galerii.</div>
 <div id="lightbox">
@@ -150,7 +159,10 @@
     <a href="collectors.html">Sběratelé</a><a href="about.html">O nás</a>
     <a href="open-call.html">Open Call</a>
   </div>
-  <span>Umění pro lidi, ne pro elitu.</span>
+  <div class="footer-links">
+    <a href="https://drive.google.com/drive/u/0/folders/16z95_Pth5_9bxexHs3gC4aYe29cUpJyW" target="_blank" rel="noopener">Press</a>
+    <a href="https://drive.google.com/drive/u/0/folders/1YSo5KLgm94XyLjvp3zUPdmmqJCPQt8IG" target="_blank" rel="noopener">VOP &amp; GDPR</a>
+  </div>
 </div></site-footer>
 <script src="cursor.js"></script>
 <script>
@@ -209,6 +221,31 @@
     });
   });
   document.addEventListener('click',closeAll);
+
+  // Apply filters to work cards
+  function applyFilters(){
+    var cards=document.querySelectorAll('.work-card');
+    // Collect active values per group
+    var active={};
+    ['umelci','technika','velikost','cena'].forEach(function(g){
+      var vseBtn=document.querySelector('.filter-opt[data-filter="'+g+'"][data-val="vse"]');
+      if(vseBtn&&vseBtn.classList.contains('active')){active[g]=null;}
+      else{
+        active[g]=Array.from(document.querySelectorAll('.filter-opt[data-filter="'+g+'"].active')).map(function(b){return b.getAttribute('data-val');});
+      }
+    });
+    cards.forEach(function(card){
+      var show=true;
+      if(active.umelci&&!active.umelci.includes(card.getAttribute('data-umelec')))show=false;
+      if(active.technika&&!active.technika.includes(card.getAttribute('data-technika')))show=false;
+      if(active.velikost&&!active.velikost.includes(card.getAttribute('data-velikost')))show=false;
+      if(active.cena&&!active.cena.includes(card.getAttribute('data-cena')))show=false;
+      card.style.display=show?'':'none';
+    });
+  }
+  document.querySelectorAll('.filter-opt').forEach(function(btn){
+    btn.addEventListener('click',function(){setTimeout(applyFilters,0);});
+  });
 })();
 </script>
 <script>
