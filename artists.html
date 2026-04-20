@@ -9,7 +9,7 @@
 .exh-layout,.artists-layout{display:grid;grid-template-columns:340px 1fr;align-items:start;margin-top:60px;}
 .artists-sidebar,.exh-sidebar{position:sticky;top:60px;height:calc(100vh - 60px);border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;}
 .artists-sidebar::-webkit-scrollbar,.exh-sidebar::-webkit-scrollbar{display:none;}
-.sidebar-hero{padding:2.5rem 2rem 3rem;overflow:hidden;}
+.sidebar-hero{padding:2.5rem 2rem 3rem;}
 .sidebar-label{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1rem;}
 .sidebar-title{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;line-height:1;letter-spacing:-0.04em;color:#fff;}
 .artist-index-row{display:flex;align-items:flex-start;gap:1rem;padding:1rem 2rem;text-decoration:none;cursor:none;transition:background 0.15s,padding-left 0.15s;color:inherit;}
@@ -94,9 +94,11 @@
     </a>
     <a href="#anina-menger" class="artist-index-row"><span class="ai-num">04</span><div class="ai-info"><div class="ai-name">Anina Menger</div><div class="ai-exh">Střípky z Blízkého východu — 2023</div></div></a>
     <a href="#jitka-petrasova" class="artist-index-row"><span class="ai-num">05</span><div class="ai-info"><div class="ai-name">Jitka Petrášová</div><div class="ai-exh">Už ani muk — 2025</div></div></a>
-    <a href="#lucie-pouchova" class="artist-index-row"><span class="ai-num">06</span><div class="ai-info"><div class="ai-name">Lucie Pouchová</div><div class="ai-exh">Něžný Murčik — 2024</div></div></a>
-    <a href="#helena-tichackova" class="artist-index-row"><span class="ai-num">07</span><div class="ai-info"><div class="ai-name">Helena Ticháčková</div><div class="ai-exh">Dřeváky a Medový Klobouk — 2023</div></div></a>
-    <a href="#adela-valcharova" class="artist-index-row"><span class="ai-num">08</span><div class="ai-info"><div class="ai-name">Adéla Valchařová</div><div class="ai-exh">Dřeváky a Medový Klobouk — 2023</div></div></a>
+    <a href="#ondrej-podestat" class="artist-index-row"><span class="ai-num">06</span><div class="ai-info"><div class="ai-name">Václav Podestát</div><div class="ai-exh">Odložte si u pásu 26163 — 2025</div></div></a>
+    <a href="#lucie-pouchova" class="artist-index-row"><span class="ai-num">07</span><div class="ai-info"><div class="ai-name">Lucie Pouchová</div><div class="ai-exh">Něžný Murčik — 2024</div></div></a>
+    <a href="#ondrej-syriste" class="artist-index-row"><span class="ai-num">08</span><div class="ai-info"><div class="ai-name">Ondřej Syřiště</div><div class="ai-exh">Odložte si u pásu 26163 — 2025</div></div></a>
+    <a href="#helena-tichackova" class="artist-index-row"><span class="ai-num">09</span><div class="ai-info"><div class="ai-name">Helena Ticháčková</div><div class="ai-exh">Dřeváky a Medový Klobouk — 2023</div></div></a>
+    <a href="#adela-valcharova" class="artist-index-row"><span class="ai-num">10</span><div class="ai-info"><div class="ai-name">Adéla Valchařová</div><div class="ai-exh">Dřeváky a Medový Klobouk — 2023</div></div></a>
   </aside>
   <div class="artists-content">
     <section class="artist-section" id="patrik-antczak">
@@ -167,9 +169,6 @@
               <div class="artist-exh-date">7. ledna 2026 — probíhá</div>
             </div>
           </a>
-          <div class="artist-ctas">
-            <a href="collectors.html" class="btn">Koupit dílo →</a>
-          </div>
         </div>
       </div>
     </section>
@@ -220,6 +219,29 @@
       </div>
     </section>
     <hr style="border:none;border-top:1px solid rgba(255,255,255,0.1);margin:0;">
+    <section class="artist-section" id="ondrej-podestat">
+      <div class="artist-profile-grid">
+        <div class="rv">
+          <div class="artist-photo-wrap">
+            <img src="images/vaclav-podestat.jpg" alt="Václav Podestát">
+            <div class="artist-photo-caption">Václav Podestát<span>Umělec</span></div>
+          </div>
+        </div>
+        <div class="rv" style="transition-delay:0.12s">
+          <div class="artist-tag">Umělec</div>
+          <div class="artist-name">Václav Podestát</div>
+          <p class="artist-bio"></p>
+          <a href="exhibitions.html#exh-podestal" class="artist-exh-preview-link">
+            <div class="artist-exh-preview">
+              <div class="artist-exh-label">Výstava v galerii POSTOJ</div>
+              <div class="artist-exh-name">Odložte si u pásu 26163</div>
+              <div class="artist-exh-date">2025</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+    <hr style="border:none;border-top:1px solid rgba(255,255,255,0.1);margin:0;">
     <section class="artist-section" id="lucie-pouchova">
       <div class="artist-profile-grid">
         <div class="rv">
@@ -237,6 +259,29 @@
               <div class="artist-exh-label">Výstava v galerii POSTOJ</div>
               <div class="artist-exh-name">Něžný Murčik</div>
               <div class="artist-exh-date">27. 2. – 15. 5. 2024</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+    <hr style="border:none;border-top:1px solid rgba(255,255,255,0.1);margin:0;">
+    <section class="artist-section" id="ondrej-syriste">
+      <div class="artist-profile-grid">
+        <div class="rv">
+          <div class="artist-photo-wrap">
+            <img src="images/ondrej-syriste.jpg" alt="Ondřej Syřiště">
+            <div class="artist-photo-caption">Ondřej Syřiště<span>Umělec</span></div>
+          </div>
+        </div>
+        <div class="rv" style="transition-delay:0.12s">
+          <div class="artist-tag">Umělec</div>
+          <div class="artist-name">Ondřej Syřiště</div>
+          <p class="artist-bio"></p>
+          <a href="exhibitions.html#exh-podestal" class="artist-exh-preview-link">
+            <div class="artist-exh-preview">
+              <div class="artist-exh-label">Výstava v galerii POSTOJ</div>
+              <div class="artist-exh-name">Odložte si u pásu 26163</div>
+              <div class="artist-exh-date">2025</div>
             </div>
           </a>
         </div>
@@ -332,7 +377,11 @@
   window.addEventListener('scroll',function(){
     var sections=document.querySelectorAll('.artist-section[id]');
     var active=null;
-    sections.forEach(function(sec){if(sec.getBoundingClientRect().top<=100)active=sec.id;});
+    if(window.innerHeight+window.scrollY>=document.body.offsetHeight-50){
+      active=sections[sections.length-1].id;
+    } else {
+      sections.forEach(function(sec){if(sec.getBoundingClientRect().top<=100)active=sec.id;});
+    }
     if(active)setActive(active);
   },{passive:true});
 })();
