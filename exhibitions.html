@@ -113,7 +113,7 @@
           <p class="exh-cur-excerpt">"Seš silnej/á! Buď silnej/á! Makej! Přidej! Nebul!" Fráze, které mnozí z nás slyšeli. Tlak na výkon a potlačení emocí.</p>
           <button class="exh-expand-btn">Celý text výstavy →</button>
           <div class="exh-expand-text">Výstava otevírá téma psychického zdraví. V prostředí zahlceném informacemi a tlakem na úspěch může být těžké přiznat si únavu nebo bolest. Nejde o porovnávání bolestí. Jde o uvědomění, že mluvit o tom je v pořádku.</div>
-          <div class="exh-ctas"><a href="collectors.html" class="btn">Koupit dílo →</a></div>
+          <div class="exh-ctas"><a href="artists.html#martin-jachym" class="btn">O umělci →</a></div>
         </div>
       </div>
       <div class="exh-photos-outer"><div class="exh-photos-scroll"><div class="exh-photo"><img src="images/gallery1.jpg" alt="Z instalace 1"></div><div class="exh-photo"><img src="images/gallery2.jpg" alt="Z instalace 2"></div><div class="exh-photo"><img src="images/gallery3.jpg" alt="Z instalace 3"></div><div class="exh-photo"><img src="images/gallery4.jpg" alt="Z instalace 4"></div><div class="exh-photo"><img src="images/gallery5.jpg" alt="Z instalace 5"></div></div></div>
@@ -248,7 +248,11 @@
   });
   window.addEventListener('scroll',function(){
     var sections=document.querySelectorAll('[id^="exh-"]'),active=null;
-    sections.forEach(function(s){if(s.getBoundingClientRect().top<=100)active=s.id;});
+    if(window.innerHeight+window.scrollY>=document.body.offsetHeight-50){
+      active=sections[sections.length-1].id;
+    } else {
+      sections.forEach(function(s){if(s.getBoundingClientRect().top<=100)active=s.id;});
+    }
     if(active)setActive(active);
   },{passive:true});
 })();
