@@ -66,11 +66,27 @@
 #glb-prev{left:1.5rem;}#glb-next{right:1.5rem;}
 #glb-close{position:absolute;top:1.5rem;right:2rem;background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);font-family:inherit;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:none;}
 #glb-count{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);font-family:inherit;}
+@media(max-width:768px){
+  .exh-layout{grid-template-columns:1fr;margin-top:70px;}
+  .exh-sidebar{position:relative;top:auto;height:auto;flex-direction:row;overflow-x:auto;overflow-y:visible;border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);scrollbar-width:none;}
+  .exh-sidebar::-webkit-scrollbar{display:none;}
+  .exh-sidebar-hero{display:none;}
+  .exh-index-row{flex-shrink:0;padding:0.8rem 1rem;white-space:nowrap;}
+  .ei-artist{display:none;}
+  .exh-content{padding-left:0;}
+  .exh-current-section{padding:2rem 1.2rem 1.5rem;}
+  .exh-cur-grid{grid-template-columns:1fr;gap:1.5rem;}
+  .exh-cur-poster img{max-width:180px;margin:0 auto;}
+  .exh-photos-scroll{grid-template-columns:repeat(2,1fr);}
+  .exh-archive-section{padding:1.5rem 1.2rem;}
+  .exh-archive-grid{grid-template-columns:100px 1fr;gap:1rem;}
+  .exh-photos-outer{margin-top:1.5rem;}
+}
 </style>
 </head>
 <body>
 <div id="cdot"></div><div id="cw"><img src="images/run.png" alt=""></div>
-<nav><a href="index.html" class="nav-logo">galerie POSTOJ</a><ul class="nav-links"><li><a href="artists.html" >Umělci</a></li><li><a href="exhibitions.html" class=active>Výstavy</a></li><li><a href="collectors.html" >Sběratelé</a></li><li><a href="about.html" >O nás</a></li><li><a href="open-call.html" >Open Call</a></li></ul></nav>
+<nav><a href="index.html" class="nav-logo">galerie POSTOJ</a><button class="nav-burger" id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button><ul class="nav-links"><li><a href="artists.html" >Umělci</a></li><li><a href="exhibitions.html" class=active>Výstavy</a></li><li><a href="collectors.html" >Sběratelé</a></li><li><a href="about.html" >O nás</a></li><li><a href="open-call.html" >Open Call</a></li></ul></nav>
 
 <div class="exh-layout">
   <aside class="exh-sidebar">

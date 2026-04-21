@@ -56,11 +56,23 @@
 #lightbox-close{position:absolute;top:2rem;right:2rem;background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.6);font-family:inherit;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:none;transition:all 0.2s;}
 #lightbox-close:hover{border-color:#fff;color:#fff;}
 .collectors-note{padding:2rem 2.5rem;font-size:0.8rem;color:rgba(255,255,255,0.25);border-top:1px solid rgba(255,255,255,0.06);line-height:1.7;}
+@media(max-width:768px){
+  .collectors-hero{margin-top:70px;padding:2rem 1.2rem 1rem;}
+  .collectors-intro{padding:0 1.2rem 1rem;max-width:none;}
+  .filters-bar{top:70px;overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap;}
+  .filters-bar::-webkit-scrollbar{display:none;}
+  .filter-trigger{padding:0.9rem 1rem;font-size:0.65rem;}
+  .works-grid{grid-template-columns:repeat(2,1fr);gap:8px;padding:1rem 1.2rem;}
+  #lightbox-inner{grid-template-columns:1fr;width:95vw;gap:1rem;}
+  #lb-img{max-height:50vh;}
+  .lightbox-info{padding:1rem 0;}
+  .collectors-note{padding:1.5rem 1.2rem;}
+}
 </style>
 </head>
 <body>
 <div id="cdot"></div><div id="cw"><img src="images/run.png" alt=""></div>
-<nav><a href="index.html" class="nav-logo">galerie POSTOJ</a><ul class="nav-links"><li><a href="artists.html" >Umělci</a></li><li><a href="exhibitions.html" >Výstavy</a></li><li><a href="collectors.html" class=active>Sběratelé</a></li><li><a href="about.html" >O nás</a></li><li><a href="open-call.html" >Open Call</a></li></ul></nav>
+<nav><a href="index.html" class="nav-logo">galerie POSTOJ</a><button class="nav-burger" id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button><ul class="nav-links"><li><a href="artists.html" >Umělci</a></li><li><a href="exhibitions.html" >Výstavy</a></li><li><a href="collectors.html" class=active>Sběratelé</a></li><li><a href="about.html" >O nás</a></li><li><a href="open-call.html" >Open Call</a></li></ul></nav>
 
 <div class="collectors-hero rv">
   <div class="collectors-hero-label">Sběratelé</div>
