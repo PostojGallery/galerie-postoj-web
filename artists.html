@@ -72,15 +72,18 @@
 #lightbox-close:hover{border-color:#fff;color:#fff;}
 @media(max-width:768px){
   .exh-layout,.artists-layout{grid-template-columns:1fr;margin-top:70px;}
-  .artists-sidebar,.exh-sidebar{position:relative;top:auto;height:auto;flex-direction:row;overflow-x:auto;overflow-y:visible;border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);scrollbar-width:none;}
+  .artists-sidebar{position:sticky;top:60px;height:auto;flex-direction:row;overflow-x:auto;overflow-y:visible;border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);scrollbar-width:none;z-index:90;background:#0a0a0a;box-shadow:inset -60px 0 30px -10px #0a0a0a;}
   .artists-sidebar::-webkit-scrollbar{display:none;}
   .sidebar-hero{display:none;}
-  .artist-index-row{flex-shrink:0;padding:0.8rem 1rem;white-space:nowrap;}
+  .artist-index-row{flex-shrink:0;padding:0.9rem 1.2rem;white-space:nowrap;}
+  .ai-name{font-size:0.9rem;}
+  .artist-index-row.ai-active{background:rgba(255,255,255,0.06);}
   .ai-exh{display:none;}
   .artists-content{padding-left:0;}
-  .artist-section{padding:2rem 1.2rem;}
+  .artist-section{padding:1.2rem 1.2rem;}
   .artist-profile-grid{grid-template-columns:1fr;gap:1.5rem;}
-  .artist-photo-wrap img{aspect-ratio:4/3;}
+  .artist-photo-wrap img{aspect-ratio:3/4;}
+  .artist-photo-caption{display:none;}
   .works-grid{grid-template-columns:repeat(2,1fr);}
   #lightbox-inner{grid-template-columns:1fr;width:95vw;gap:1rem;}
   #lb-img{max-height:50vh;}
@@ -381,7 +384,15 @@
 <script src="cursor.js"></script><script>
 (function(){
   var rows=document.querySelectorAll('.artist-index-row[href^="#"]');
-  function setActive(id){rows.forEach(function(r){r.classList.toggle('ai-active',r.getAttribute('href')==='#'+id);});}
+  function setActive(id){
+    rows.forEach(function(r){
+      var active=r.getAttribute('href')==='#'+id;
+      r.classList.toggle('ai-active',active);
+      if(active&&window.innerWidth<=768){
+        r.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+      }
+    });
+  }
   rows.forEach(function(row){
     row.addEventListener('click',function(e){
       e.preventDefault();
