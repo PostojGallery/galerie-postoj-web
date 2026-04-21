@@ -30,11 +30,17 @@
 .file-upload-label span{display:block;font-size:0.55rem;margin-top:0.3rem;opacity:0.5;}
 .form-submit{width:100%;text-align:center;border:none;cursor:none;}
 .form-note{font-size:0.65rem;color:rgba(255,255,255,0.2);margin-top:1rem;line-height:1.6;}
+@media(max-width:768px){
+  .oc-layout{grid-template-columns:1fr;margin-top:70px;min-height:auto;}
+  .oc-info{padding:2rem 1.2rem;border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);}
+  .oc-desc{max-width:none;}
+  .oc-form-col{padding:2rem 1.2rem 3rem;}
+}
 </style>
 </head>
 <body>
 <div id="cdot"></div><div id="cw"><img src="images/run.png" alt=""></div>
-<nav><a href="index.html" class="nav-logo">galerie POSTOJ</a><ul class="nav-links"><li><a href="artists.html" >Umělci</a></li><li><a href="exhibitions.html" >Výstavy</a></li><li><a href="collectors.html" >Sběratelé</a></li><li><a href="about.html" >O nás</a></li><li><a href="open-call.html" class=active>Open Call</a></li></ul></nav>
+<nav><a href="index.html" class="nav-logo">galerie POSTOJ</a><button class="nav-burger" id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button><ul class="nav-links"><li><a href="artists.html" >Umělci</a></li><li><a href="exhibitions.html" >Výstavy</a></li><li><a href="collectors.html" >Sběratelé</a></li><li><a href="about.html" >O nás</a></li><li><a href="open-call.html" class=active>Open Call</a></li></ul></nav>
 
 <div class="oc-layout">
   <div class="oc-info rv">
