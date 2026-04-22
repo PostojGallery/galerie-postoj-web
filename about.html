@@ -42,7 +42,9 @@
 .whw-cta:hover{color:#fff;border-color:#fff;}
 .whw-testimonials{display:flex;align-items:center;justify-content:center;padding:2rem 3rem;}
 .ts-eyebrow{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:1.5rem;}
-.ts{display:none;}.ts.active{display:block;}
+.ts-slider{position:relative;min-height:140px;}
+.ts{position:absolute;top:0;left:0;width:100%;opacity:0;pointer-events:none;transition:opacity 0.5s;}
+.ts.active{opacity:1;pointer-events:auto;}
 .ts-stars{font-size:0.9rem;color:rgba(255,255,255,0.35);margin-bottom:0.6rem;}
 .ts-text{font-size:1rem;line-height:1.7;color:rgba(255,255,255,0.8);font-weight:500;margin-bottom:0.4rem;}
 .ts-author{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.28);}
@@ -65,8 +67,14 @@
 .hist-strip{display:grid;grid-template-columns:repeat(8,1fr);gap:2px;margin-bottom:2rem;}
 .hist-ph{aspect-ratio:3/4;background:rgba(255,255,255,0.03);border:1px dashed rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;}
 .hist-ph span{font-size:0.48rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.08);}
-.hist-real{overflow:hidden;aspect-ratio:3/4;}
+.hist-real{overflow:hidden;aspect-ratio:3/4;cursor:pointer;}
 .hist-real img{width:100%;height:100%;object-fit:cover;}
+#aglb{position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:10000;display:none;cursor:pointer;}
+#aglb img{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);max-height:90vh;max-width:90vw;object-fit:contain;}
+#aglb-prev,#aglb-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid rgba(255,255,255,0.3);color:#fff;font-size:1.2rem;width:44px;height:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+#aglb-prev{left:1.5rem;}#aglb-next{right:1.5rem;}
+#aglb-close{position:absolute;top:1.5rem;right:2rem;background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);font-family:inherit;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:pointer;}
+#aglb-count{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);font-family:inherit;}
 @media(max-width:768px){
   html,body{overflow-x:hidden;}
   .about-founder{margin-top:70px;padding:1.5rem 1.2rem 0;}
@@ -84,13 +92,16 @@
   .whw-row{grid-template-columns:1fr;}
   .whw-text-col{padding:1.5rem 1.2rem 1rem;}
   .whw-testimonials{padding:1rem 1.2rem 2rem;}
-  .hist-strip{grid-template-columns:repeat(4,1fr);}
+  .hist-strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:4px;scrollbar-width:none;margin-bottom:2rem;}
+  .hist-strip::-webkit-scrollbar{display:none;}
+  .hist-strip .hist-real,.hist-strip .hist-ph{flex:0 0 55%;scroll-snap-align:start;aspect-ratio:4/3;}
   .whw-oc-col{min-height:200px;}
   .whw-oc{padding:2rem 1.2rem;}
   .whw-oc-inner{flex-direction:row;gap:1.5rem;align-items:center;}
   .whw-oc-stick{width:80px;flex-shrink:0;}
   .whw-map-col iframe{width:100%;}
   .whw-address{padding:1rem 1.2rem;}
+  .ts-stick{width:105px!important;max-width:105px!important;transform:translateX(-5mm);}
   .about-history{padding:2rem 0 1rem;}
 }
 </style>
@@ -151,12 +162,14 @@
       <div style="display:flex;align-items:center;gap:2.5rem;width:100%;">
         <div style="flex:1;">
           <div class="ts-eyebrow">Co o nás říkají</div>
+          <div class="ts-slider">
           <div class="ts active"><div class="ts-stars">★★★★★</div><p class="ts-text">"Někdy chcete jen projít. Ale uvidíte obraz a musíte přijít blíž."</p><div class="ts-author">Jarmila Č.</div></div>
           <div class="ts"><div class="ts-stars">★★★★★</div><p class="ts-text">"Skvělý počin! Více umění do veřejného prostoru."</p><div class="ts-author">Václav V.</div></div>
           <div class="ts"><div class="ts-stars">★★★★★</div><p class="ts-text">"Jedinečný počin! Místo zamyšlení v srdci Prahy."</p><div class="ts-author">Jiří V.</div></div>
+          </div>
           <div class="ts-footer"><div class="ts-dots"><span class="tsd active"></span><span class="tsd"></span><span class="tsd"></span></div></div>
         </div>
-        <img src="images/run.png" alt="" style="width:120px;filter:invert(1);flex-shrink:1;align-self:flex-end;max-width:20vw;">
+        <img src="images/run.png" alt="" class="ts-stick" style="width:120px;filter:invert(1);flex-shrink:1;align-self:flex-end;max-width:20vw;">
       </div>
     </div>
   </div>
@@ -203,6 +216,13 @@
     </div>
   </div>
 </section>
+<div id="aglb">
+  <button id="aglb-prev">←</button>
+  <button id="aglb-next">→</button>
+  <button id="aglb-close">Zavřít ×</button>
+  <img id="aglb-img" src="" alt="">
+  <div id="aglb-count"></div>
+</div>
 <site-footer><div class="footer-inner">
   <span>galerie POSTOJ &copy; 2026</span>
   <div class="footer-links">
@@ -230,6 +250,24 @@
   function run(){if(started)return;started=true;counters.forEach(function(el){var t=parseInt(el.getAttribute('data-target')),s=el.getAttribute('data-suffix')||'',st=null;function step(ts){if(!st)st=ts;var p=Math.min(1,(ts-st)/1800),e=1-Math.pow(1-p,3);el.textContent=fmt(Math.round(e*t),s);if(p<1)requestAnimationFrame(step);else el.textContent=fmt(t,s);}requestAnimationFrame(step);});}
   var obs2=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting)run();});},{threshold:0.3});
   counters.forEach(function(el){obs2.observe(el);});
+})();
+(function(){
+  var lb=document.getElementById('aglb'),lbi=document.getElementById('aglb-img'),lbc=document.getElementById('aglb-count');
+  var prev=document.getElementById('aglb-prev'),next=document.getElementById('aglb-next');
+  var imgs=[],cur=0;
+  var photos=Array.from(document.querySelectorAll('.hist-real'));
+  imgs=photos.map(function(p){return p.querySelector('img').src;});
+  function show(){lbi.src=imgs[cur];lbc.textContent=(cur+1)+' / '+imgs.length;}
+  function close(){lb.style.display='none';document.body.style.overflow='';}
+  prev.onclick=function(e){e.stopPropagation();cur=(cur-1+imgs.length)%imgs.length;show();};
+  next.onclick=function(e){e.stopPropagation();cur=(cur+1)%imgs.length;show();};
+  document.getElementById('aglb-close').onclick=function(e){e.stopPropagation();close();};
+  lb.onclick=function(e){if(e.target===lb)close();};
+  document.addEventListener('keydown',function(e){if(lb.style.display!=='flex')return;if(e.key==='ArrowLeft'){cur=(cur-1+imgs.length)%imgs.length;show();}else if(e.key==='ArrowRight'){cur=(cur+1)%imgs.length;show();}else if(e.key==='Escape')close();});
+  var txStart=0;
+  lb.addEventListener('touchstart',function(e){txStart=e.touches[0].clientX;},{passive:true});
+  lb.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-txStart;if(Math.abs(dx)<40)return;if(dx<0){cur=(cur+1)%imgs.length;}else{cur=(cur-1+imgs.length)%imgs.length;}show();},{passive:true});
+  photos.forEach(function(p,i){p.onclick=function(){cur=i;show();lb.style.display='flex';document.body.style.overflow='hidden';};});
 })();
 </script>
 </body>
