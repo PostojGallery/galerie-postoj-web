@@ -2,7 +2,7 @@
   "name": "galerie-postoj-web",
   "version": "1.0.0",
   "scripts": {
-    "dev": "live-server --port=3000 --no-browser"
+    "dev": "live-server --port=3000 --no-browser --ignore=node_modules,.git,.DS_Store,*.DS_Store"
   },
   "devDependencies": {
     "live-server": "^1.2.2"
