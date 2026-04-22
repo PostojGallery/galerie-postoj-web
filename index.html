@@ -164,7 +164,7 @@
   window.addEventListener('scroll',function(){
     if(!ticking){
       requestAnimationFrame(function(){
-        wrap.style.transform='translateY(-'+Math.round(window.scrollY*2.5)+'px)';
+        wrap.style.transform='translate3d(0,-'+Math.round(window.scrollY*2.5)+'px,0)';
         ticking=false;
       });
       ticking=true;
