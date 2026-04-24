@@ -79,7 +79,9 @@
   .exh-photos-scroll .exh-photo:last-child{display:block;}
   .exh-archive-section{padding:1.5rem 1.2rem;}
   .exh-archive-grid{grid-template-columns:140px 1fr;gap:1.2rem;}
-  .exh-archive-excerpt{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;}
+  .exh-archive-excerpt{display:block;-webkit-line-clamp:unset;overflow:visible;}
+  .exh-more-btn{cursor:pointer;display:inline-flex;align-items:center;min-height:44px;padding-bottom:0;}
+  .exh-archive-artist a{cursor:pointer;}
   .exh-photos-outer{margin-top:1.5rem;}
 }
 </style>
@@ -146,7 +148,11 @@
       <div class="exh-archive-dates">5. 11. 2025 – 7. 1. 2026</div>
       <div class="exh-archive-title">Odložte si u pásu 26163</div>
       <div class="exh-archive-artist"><a href="artists.html#ondrej-podestat">Václav Podestát</a> & <a href="artists.html#ondrej-syriste">Ondřej Syřiště</a></div>
-      <p class="exh-archive-excerpt">Instalace zkoumá všudypřítomný příliv vizuálního obsahu formujícího současnou městskou krajinu.</p>
+      <p class="exh-archive-excerpt">Jsme všude a zároveň nikde – ale pořád čteme. Václav Podestát a Ondřej Syřiště ve své výstavě nahlíželi na všudypřítomný příliv vizuálního obsahu, který formoval současnou městskou krajinu i způsob, jakým ji vnímáme.</p>
+      <button class="exh-more-btn">Více</button>
+      <div class="exh-full-text" style="max-width:none;">
+        <p>Instalace vytvořená přímo pro prostor bývalé směnárny ve vestibulu metra sledovala neustálý tok vjemů, které nás prostřednictvím nabízeného obsahu vzdalovaly od přímého prožívání veřejného prostoru. Autoři se zabývali procesy reklamního a informačního odkazování – světem, kde se s pozorností nakládalo jako se zbožím v rukou neodbytného podomního prodejce.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -157,7 +163,12 @@
       <div class="exh-archive-dates">1. 8. – 24. 10. 2025</div>
       <div class="exh-archive-title">Cesty do Neznáma</div>
       <div class="exh-archive-artist"><a href="artists.html#anna-banytiuk">Anna Banytiuk</a></div>
-      <p class="exh-archive-excerpt">Figurativní malířství naplněné emocí a mlčenlivým napětím.</p>
+      <p class="exh-archive-excerpt">Umělkyně Anna Banytiuk byla nucena opustit svůj rodný Charkov kvůli válce. Výstava Cesty do neznáma vznikla z potřeby zpracovat tuto zkušenost – odchod ze své země, opuštění domova a nejbližších.</p>
+      <button class="exh-more-btn">Více</button>
+      <div class="exh-full-text" style="max-width:none;">
+        <p>Díla se nesoustředí na samotný útěk, ale na obyčejné každodenní situace a osobní vzpomínky, které po opuštění Ukrajiny začala vnímat jinak. Výstava ukazuje, jak běžné okamžiky získávají nový význam, když se vše kolem změní – a jak se z osobní paměti skrze zkušenost nuceného odjezdu stává silné umělecké téma.</p>
+        <p>Sláva Ukrajině!</p>
+      </div>
     </div>
   </div>
 </div>
@@ -184,7 +195,12 @@
       <div class="exh-archive-dates">27. 2. – 15. 5. 2024</div>
       <div class="exh-archive-title">Něžný Murčik</div>
       <div class="exh-archive-artist"><a href="artists.html#lucie-pouchova">Lucie Pouchová</a></div>
-      <p class="exh-archive-excerpt">Intimní scény každodenního života. Vztah člověka a zvířete.</p>
+      <p class="exh-archive-excerpt">Výstava Lucie Pouchové se dotkla jednoho z nejintimnějších lidských témat – pouta mezi člověkem a zvířetem a otázky samoty. Název výstavy nese kocour Murčik, který se stal výchozím bodem celého cyklu obrazů.</p>
+      <button class="exh-more-btn">Více</button>
+      <div class="exh-full-text" style="max-width:none;">
+        <p>Pouchová je nejen umělkyně, ale také sociální pracovnice. Právě zkušenosti z této práce ji přivedly k tématu domácích mazlíčků jako jediného plnohodnotného vztahu v životě některých lidí. Na plátnech se proto neobjevovala pouze zvířata, ale i jejich majitelé – postavy se zásadně zavřenýma očima, ponořené do svého vnitřního světa, což výstavě dodávalo osobní a intimní rozměr.</p>
+        <p>Vedle těchto portrétů se Pouchová věnovala také fenoménu stylingu zvířat – záměrnému zdůrazňování lidských rysů u psů a koček, díky kterému jejich majitelé pociťují k nim větší emocionální blízkost a snadněji se s nimi identifikují.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -195,14 +211,21 @@
       <div class="exh-archive-dates">21. 9. – 21. 11. 2023</div>
       <div class="exh-archive-title">Jak se máš?</div>
       <div class="exh-archive-artist"><a href="artists.html#patrik-antczak">Patrik Antczak</a> & Eva Antczak Hudzieczek</div>
-      <p class="exh-archive-excerpt">Cílem výstavy bylo ukázat, že ne vždy musí být umění zavřeno za zdmi galerií a obklopeno mnohdy až příliš komplikovanými doprovodnými texty, vysvětlujícími princip výstavy, ale že umění může být také součástí každodenního života a pro skutečně širokou veřejnost.</p>
+      <p class="exh-archive-excerpt">Výstava ilustrátora Patrika Antczaka proměnila vestibul metra na Náměstí Republiky v místo nečekaného setkání. Uprostřed ranního shonu, stovek rozespalých cestujících a anonymního proudu lidí položil Patrik jednoduchou, ale naléhavou otázku: Jak se máš?</p>
       <button class="exh-more-btn">Více</button>
       <div class="exh-full-text" style="max-width:none;">
-        <p>Vestibul metra, kde pro umění zdánlivě není prostor. Brzké ranní hodiny, stovky rozespalých cestujících, kteří nechtějí být vidět, slyšet a nejraději by se ztratili v anonymním proudu lidí. Rychle proplout prostorem, s nikým nenavazovat oční kontakt, neinteragovat. A tu z ničeho nic otázka do ticha „Jak se máš?". Ano, mám na mysli vás a rád bych od vás slyšel, jak se dneska máte. Frázi, kterou mnohdy v běžném životě používáme spíš jako jakousi konverzační výplň, ve výstavě Jak se máš? Patrik používal zcela záměrně. A myslím ji naprosto vážně se vší svou hloubkou. „Budu vaší knihou pochval a stížností." Pro vaše pocity Patrik vytvořil unikátní škálu emotikonů, které kolemjdoucím měly pomoci vyjádřit, jak se v aktuální chvíli cítili. Dostali od Patrika samolepku, kterou měli přiřadit právě k té emoci, která je v daný moment nejvíce vystihovala.</p>
-        <p>Po této první fázi, která probíhala přibližně týden, vždy zhruba hodinu ráno, následovala vernisáž, v rámci které byly představeny výsledky této ankety. Návštěvníci vernisáže tak mohli zjistit, jak se cestující v daném prostoru a čase cítili. Projekt ilustrátora Patrika Antczaka, který vedla Galerie Postoj, byl součástí doprovodného programu desátého ročníku festivalu ilustrace — LUSTR.</p>
+        <p>Frázi, kterou běžně používáme jako konverzační výplň, uchopil zcela záměrně a s plnou vážností. Pro návštěvníky vytvořil unikátní škálu emotikonů, které jim pomáhaly vyjádřit, jak se v danou chvíli cítí. Každý mohl obdržet samolepku odpovídající emoci, která ho v daný moment nejvíce vystihovala. Výsledky této živé ankety byly následně představeny na vernisáži, kde se ukázalo, jak se cestující v daném prostoru a čase skutečně cítili.</p>
+        <p>Výstava byla součástí doprovodného programu desátého ročníku festivalu ilustrace LUSTR.</p>
       </div>
     </div>
   </div>
+  <div class="exh-photos-outer" style="margin-top:1.5rem;"><div class="exh-photos-scroll">
+    <div class="exh-photo"><img src="images/jaksemas-1.jpg" alt="Jak se máš? 1"></div>
+    <div class="exh-photo"><img src="images/jaksemas-2.jpg" alt="Jak se máš? 2"></div>
+    <div class="exh-photo"><img src="images/jaksemas-3.jpg" alt="Jak se máš? 3"></div>
+    <div class="exh-photo"><img src="images/jaksemas-4.jpg" alt="Jak se máš? 4"></div>
+    <div class="exh-photo"><img src="images/jaksemas-5.jpg" alt="Jak se máš? 5"></div>
+  </div></div>
 </div>
 <div class="exh-archive-section" id="exh-menger">
   <div class="exh-archive-grid">
@@ -211,9 +234,21 @@
       <div class="exh-archive-dates">1. 6. – 30. 7. 2023</div>
       <div class="exh-archive-title">Střípky z Blízkého východu</div>
       <div class="exh-archive-artist"><a href="artists.html#anina-menger">Anina Menger</a></div>
-      <p class="exh-archive-excerpt">Fragmenty měst a krajin zachycené s lehkostí a nostalgii.</p>
+      <p class="exh-archive-excerpt">Výstava Aniny Menger přinesla kus Blízkého východu přímo do Prahy. Díla vytvořená z kusů látek nalezených v ulicích Tel Avivu nebo kamínků z místní pláže představovala hmatatelné střípky izraelské krajiny a kultury.</p>
+      <button class="exh-more-btn">Více</button>
+      <div class="exh-full-text" style="max-width:none;">
+        <p>Tel Aviv Aninu fascinoval svými kontrasty – moderní město ze skla a betonu se tu prolínalo s křivolakými uličkami starobylého přístavu Jaffa. Různorodost místních lidí, náboženství i každodenního ruchu se odrážela v její tvorbě, která zahrnuje malbu, kresbu, litografii i šití.</p>
+        <p>V galerii POSTOJ byla k vidění velkoformátová plátna vznikající v létě 2024, šitý obraz muže v zahradě, sádrová závěsná plastika s atributy slunného Tel Avivu i zástupce série Prázdniny, které se nestaly z roku 2020. Obraz mešity Hassan Bek pak připomínal proměny městské krajiny, kde moderní zástavba postupně nahrazila původní muslimskou čtvrť.</p>
+      </div>
     </div>
   </div>
+  <div class="exh-photos-outer" style="margin-top:1.5rem;"><div class="exh-photos-scroll">
+    <div class="exh-photo"><img src="images/menger-1.jpg" alt="Střípky z Blízkého východu 1"></div>
+    <div class="exh-photo"><img src="images/menger-2.jpg" alt="Střípky z Blízkého východu 2"></div>
+    <div class="exh-photo"><img src="images/menger-3.jpg" alt="Střípky z Blízkého východu 3"></div>
+    <div class="exh-photo"><img src="images/menger-4.jpg" alt="Střípky z Blízkého východu 4"></div>
+    <div class="exh-photo"><img src="images/menger-5.jpg" alt="Střípky z Blízkého východu 5"></div>
+  </div></div>
 </div>
 <div class="exh-archive-section" id="exh-drevaky">
   <div class="exh-archive-grid">
@@ -222,7 +257,11 @@
       <div class="exh-archive-dates">27. 3. – 7. 5. 2023</div>
       <div class="exh-archive-title">Dřeváky a Medový Klobouk</div>
       <div class="exh-archive-artist"><a href="artists.html#adela-valcharova">Adéla Valchařová</a> & <a href="artists.html#helena-tichackova">Helena Ticháčková</a></div>
-      <p class="exh-archive-excerpt">První výstava Galerie Postoj.</p>
+      <p class="exh-archive-excerpt">Dřeváky a medový klobouk byl název výstavy spojující dvě autorky, Helenu Ticháčkovou a Adélu Valchařovou. Obě se ve svých pracech zabývaly putováním – procházením místy příjemnými i těmi strastiplnými, hledáním zázemí a střechy nad hlavou. Jejich tvorba reflektovala zkušenost cesty jako něčeho, co člověka formuje, unavuje i inspiruje zároveň.</p>
+      <button class="exh-more-btn">Více</button>
+      <div class="exh-full-text" style="max-width:none;">
+        <p>Název výstavy byl připodobněním k cestě samotné, která je chůzí náročná a občas bolavá, ale myšlenkou zasněná a odhodlaná i přes všechna příkoří dojít k cíli. Dřeváky – těžké, pevně ukotvené k zemi. Medový klobouk – lehký, zasněný, mířící někam do oblak. Právě v tomto napětí mezi tíhou a touhou se celá výstava odehrávala.</p>
+      </div>
     </div>
   </div>
   <div class="exh-photos-outer" style="margin-top:1.5rem;"><div class="exh-photos-scroll">
