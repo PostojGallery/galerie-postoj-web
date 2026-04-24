@@ -9,10 +9,14 @@ if(!isMobile){
     if(!snapped){cx=mx;cy=my;snapped=true;}
     var dx=mx-lmx;if(dx>2)ldir=1;else if(dx<-2)ldir=-1;lmx=mx;
     _cimg.style.transform='rotate('+(ldir*18)+'deg)';
-    var el=document.elementFromPoint(e.clientX,e.clientY);
-    document.body.classList.toggle('cursor-on-light',bgLuminance(el)>128);
   },{passive:true});
-  (function loop(){cx+=(mx-cx)*0.13;cy+=(my-cy)*0.13;_cw.style.left=cx+'px';_cw.style.top=cy+'px';requestAnimationFrame(loop);})();
+  (function loop(){
+    cx+=(mx-cx)*0.13;cy+=(my-cy)*0.13;
+    _cw.style.left=cx+'px';_cw.style.top=cy+'px';
+    var el=document.elementFromPoint(cx,cy);
+    document.body.classList.toggle('cursor-on-light',bgLuminance(el)>128);
+    requestAnimationFrame(loop);
+  })();
   function bgLuminance(el){
     while(el&&el.tagName!=='HTML'){
       var bg=window.getComputedStyle(el).backgroundColor;
