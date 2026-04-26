@@ -81,7 +81,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 </head>
 <body>
 <div id="cdot"></div><div id="cw"><img src="images/run.png" alt=""></div>
-<nav><a href="index.html" class="nav-logo">galerie POSTOJ</a><button class="nav-burger" id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button><ul class="nav-links"><li><a href="artists.html" >Umělci</a></li><li><a href="exhibitions.html" >Výstavy</a></li><li><a href="collectors.html" >Shop</a></li><li><a href="about.html" >O nás</a></li><li><a href="open-call.html" >Open Call</a></li></ul></nav>
+<nav><a href="index.html" class="nav-logo">galerie POSTOJ</a><button class="nav-burger" id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button><ul class="nav-links"><li><a href="artists.html" >Umělci</a></li><li><a href="exhibitions.html" >Výstavy</a></li><li style="display:none"><a href="collectors.html">Shop</a></li><li><a href="about.html" >O nás</a></li><li><a href="open-call.html" >Open Call</a></li></ul></nav>
 
 <section id="hero">
   <div id="hero-bg"></div>
@@ -135,7 +135,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   <span>galerie POSTOJ &copy; 2026</span>
   <div class="footer-links">
     <a href="artists.html">Umělci</a><a href="exhibitions.html">Výstavy</a>
-    <a href="collectors.html">Shop</a><a href="about.html">O nás</a>
+    <a href="collectors.html" style="display:none">Shop</a><a href="about.html">O nás</a>
     <a href="open-call.html">Open Call</a>
   </div>
   <div class="footer-links">
@@ -200,12 +200,13 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
     var vlb=document.getElementById('video-lb');
     var player=document.getElementById('video-lb-player');
     var closeBtn=document.getElementById('video-lb-close');
-    function openVlb(){vlb.classList.add('open');document.body.style.overflow='hidden';player.currentTime=0;player.play();}
+    function openVlb(){vlb.classList.add('open');document.body.style.overflow='hidden';player.currentTime=0;var p=player.play();if(p!==undefined){p.catch(function(){player.muted=true;player.play();});}}
     function closeVlb(){vlb.classList.remove('open');document.body.style.overflow='';player.pause();player.currentTime=0;}
     trigger.addEventListener('click',openVlb);
     closeBtn.addEventListener('click',closeVlb);
     vlb.addEventListener('click',function(e){if(e.target===vlb)closeVlb();});
     document.addEventListener('keydown',function(e){if(e.key==='Escape'&&vlb.classList.contains('open'))closeVlb();});
+    if(window.location.hash==='#video'){openVlb();}
   })();
 })();
 </script>

@@ -107,7 +107,7 @@
 </head>
 <body>
 <div id="cdot"></div><div id="cw"><img src="images/run.png" alt=""></div>
-<nav><a href="index.html" class="nav-logo">galerie POSTOJ</a><button class="nav-burger" id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button><ul class="nav-links"><li><a href="artists.html" >Umělci</a></li><li><a href="exhibitions.html" >Výstavy</a></li><li><a href="collectors.html" >Shop</a></li><li><a href="about.html" class=active>O nás</a></li><li><a href="open-call.html" >Open Call</a></li></ul></nav>
+<nav><a href="index.html" class="nav-logo">galerie POSTOJ</a><button class="nav-burger" id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button><ul class="nav-links"><li><a href="artists.html" >Umělci</a></li><li><a href="exhibitions.html" >Výstavy</a></li><li style="display:none"><a href="collectors.html">Shop</a></li><li><a href="about.html" class=active>O nás</a></li><li><a href="open-call.html" >Open Call</a></li></ul></nav>
 
 <section class="about-founder">
   <div class="founder-grid">
@@ -144,7 +144,7 @@
     <div class="stat-item rv"><div class="stat-num" data-target="11">0</div><div class="stat-label">Umělců</div></div>
     <div class="stat-item rv"><div class="stat-num" data-target="30000" data-suffix="+">0</div><div class="stat-label">Lidí denně projde kolem</div></div>
     <div class="stat-item rv"><div class="stat-num" data-target="1000" data-suffix="+">0</div><div class="stat-label">Návštěvníků na vernisážích</div></div>
-    <div class="stat-item rv"><div class="stat-num" data-target="100" data-suffix="+">0</div><div class="stat-label">Přihlášek na open call</div></div>
+    <div class="stat-item rv"><div class="stat-num">∞</div><div class="stat-label">Úsměvů a reakcí</div></div>
   </div>
 </section>
 <section class="about-story">
@@ -153,7 +153,7 @@
       <div class="whw-tag">Proč — Why</div>
       <div class="whw-heading">Umění patří všem.</div>
       <p class="whw-text">Věříme, že současné umění má být přístupné každému — bez ohledu na věk, vzdělání nebo profesi. Tradiční galerie kladou bariéry. My je narušujeme.</p>
-      <a href="collectors.html" class="btn" style="margin-top:1.5rem;display:inline-block;">Kup si příběh</a>
+      <button id="about-video-btn" class="btn" style="margin-top:1.5rem;display:inline-block;cursor:none;">Video z poslední výstavy</button>
     </div>
     <div class="whw-testimonials">
       <div style="display:flex;align-items:center;gap:2.5rem;width:100%;">
@@ -220,6 +220,12 @@
     </div>
   </div>
 </section>
+<div id="about-vlb" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.94);z-index:20001;align-items:center;justify-content:center;">
+  <button id="about-vlb-close" style="position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:rgba(255,255,255,0.5);cursor:none;line-height:1;background:none;border:none;font-family:inherit;">&#215;</button>
+  <video id="about-vlb-player" controls playsinline muted style="width:95vw;max-width:1400px;max-height:95vh;display:block;outline:none;">
+    <source src="images/c997f623-4625-49c3-af9b-bb6025155789.mp4" type="video/mp4">
+  </video>
+</div>
 <div id="aglb">
   <button id="aglb-prev">←</button>
   <button id="aglb-next">→</button>
@@ -231,7 +237,7 @@
   <span>galerie POSTOJ &copy; 2026</span>
   <div class="footer-links">
     <a href="artists.html">Umělci</a><a href="exhibitions.html">Výstavy</a>
-    <a href="collectors.html">Shop</a><a href="about.html">O nás</a>
+    <a href="collectors.html" style="display:none">Shop</a><a href="about.html">O nás</a>
     <a href="open-call.html">Open Call</a>
   </div>
   <div class="footer-links">
@@ -272,6 +278,18 @@
   lb.addEventListener('touchstart',function(e){txStart=e.touches[0].clientX;},{passive:true});
   lb.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-txStart;if(Math.abs(dx)<40)return;if(dx<0){cur=(cur+1)%imgs.length;}else{cur=(cur-1+imgs.length)%imgs.length;}show();},{passive:true});
   photos.forEach(function(p,i){p.onclick=function(){cur=i;show();lb.style.display='flex';document.body.style.overflow='hidden';};});
+})();
+(function(){
+  var btn=document.getElementById('about-video-btn');
+  var vlb=document.getElementById('about-vlb');
+  var player=document.getElementById('about-vlb-player');
+  var closeBtn=document.getElementById('about-vlb-close');
+  function openVlb(){vlb.style.display='flex';document.body.style.overflow='hidden';player.currentTime=0;player.play();}
+  function closeVlb(){vlb.style.display='none';document.body.style.overflow='';player.pause();player.currentTime=0;}
+  btn.addEventListener('click',openVlb);
+  closeBtn.addEventListener('click',closeVlb);
+  vlb.addEventListener('click',function(e){if(e.target===vlb)closeVlb();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&vlb.style.display==='flex')closeVlb();});
 })();
 </script>
 </body>
