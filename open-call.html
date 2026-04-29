@@ -83,8 +83,6 @@
 <script src="cursor.js"></script>
 <script src="cookies.js"></script>
 <script>
-var fi=document.getElementById('oc-file'),fl=document.getElementById('file-label-text');
-if(fi)fi.addEventListener('change',function(){fl.textContent=this.files.length?this.files[0].name:'Nahrát portfolio PDF';});
 document.getElementById('oc-form').addEventListener('submit',function(e){
   e.preventDefault();
   var n=document.getElementById('oc-name').value,em=document.getElementById('oc-email').value,
