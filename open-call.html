@@ -59,13 +59,19 @@
   <div class="oc-form-col rv" style="transition-delay:0.1s">
     <div class="oc-form-title">Přihláška</div>
     <div class="oc-form-headline">Přihlásit<br>se.</div>
-    <form id="oc-form" novalidate>
-      <div class="form-group"><label class="form-label" for="oc-name">Jméno a příjmení</label><input class="form-input" type="text" id="oc-name" placeholder="Hugo Provokoval"></div>
-      <div class="form-group"><label class="form-label" for="oc-email">E-mail</label><input class="form-input" type="email" id="oc-email" placeholder="tvuj@email.com"></div>
-      <div class="form-group"><label class="form-label" for="oc-web">Instagram</label><input class="form-input" type="url" id="oc-web" placeholder="https://instagram.com/tvuj_profil"></div>
-      <div class="form-group"><label class="form-label" for="oc-statement">Umělecký statement</label><textarea class="form-textarea" id="oc-statement" placeholder="Co chceš ve výstavě řešit a co si má divák odnést? Chceme emoce. Chceme reakci."></textarea></div>
+    <form id="oc-form" action="https://formspree.io/f/xvzdewkr" method="POST" novalidate>
+      <input type="hidden" name="_language" value="cs">
+      <div class="form-group"><label class="form-label" for="oc-name">Jméno a příjmení</label><input class="form-input" type="text" id="oc-name" name="name" placeholder="Hugo Provokoval"></div>
+      <div class="form-group"><label class="form-label" for="oc-email">E-mail</label><input class="form-input" type="email" id="oc-email" name="email" placeholder="tvuj@email.com"></div>
+      <div class="form-group"><label class="form-label" for="oc-web">Instagram</label><input class="form-input" type="url" id="oc-web" name="instagram" placeholder="https://instagram.com/tvuj_profil"></div>
+      <div class="form-group"><label class="form-label" for="oc-statement">Umělecký statement</label><textarea class="form-textarea" id="oc-statement" name="statement" placeholder="Co chceš ve výstavě řešit a co si má divák odnést? Chceme emoce. Chceme reakci."></textarea></div>
       <button type="submit" class="btn form-submit">Počítejte se mnou</button>
     </form>
+    <div id="oc-success" style="display:none;padding:3rem 0;">
+      <div style="font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;letter-spacing:-0.03em;line-height:0.95;margin-bottom:1.2rem;">Přihláška<br>odeslána.</div>
+      <p style="font-size:1rem;line-height:1.85;color:rgba(255,255,255,0.5);">Ozveme se ti.</p>
+    </div>
+    <div id="oc-error" style="display:none;margin-top:1rem;font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.6;">Něco se pokazilo. Zkus to znovu nebo napiš na <a href="mailto:info@galeriepostoj.cz" style="color:#fff;border-bottom:1px solid rgba(255,255,255,0.3);">info@galeriepostoj.cz</a></div>
   </div>
 </div>
 <site-footer><div class="footer-inner">
@@ -85,9 +91,26 @@
 <script>
 document.getElementById('oc-form').addEventListener('submit',function(e){
   e.preventDefault();
-  var n=document.getElementById('oc-name').value,em=document.getElementById('oc-email').value,
-      w=document.getElementById('oc-web').value,s=document.getElementById('oc-statement').value;
-  window.location.href='mailto:info@galeriepostoj.cz?subject='+encodeURIComponent('Open Call přihláška: '+n)+'&body='+encodeURIComponent('Jméno: '+n+'\nEmail: '+em+'\nWeb: '+w+'\n\nStatement:\n'+s);
+  var form=document.getElementById('oc-form');
+  var btn=form.querySelector('button[type=submit]');
+  btn.disabled=true;
+  document.getElementById('oc-error').style.display='none';
+  fetch('https://formspree.io/f/xvzdewkr',{
+    method:'POST',
+    body:new FormData(form),
+    headers:{Accept:'application/json'}
+  }).then(function(r){
+    if(r.ok){
+      form.style.display='none';
+      document.getElementById('oc-success').style.display='block';
+    } else {
+      document.getElementById('oc-error').style.display='block';
+      btn.disabled=false;
+    }
+  }).catch(function(){
+    document.getElementById('oc-error').style.display='block';
+    btn.disabled=false;
+  });
 });
 </script>
 </body>
