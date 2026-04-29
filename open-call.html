@@ -31,11 +31,16 @@
 .file-upload-label span{display:block;font-size:0.55rem;margin-top:0.3rem;opacity:0.5;}
 .form-submit{width:100%;text-align:center;border:none;cursor:none;}
 .form-note{font-size:0.65rem;color:rgba(255,255,255,0.2);margin-top:1rem;line-height:1.6;}
+.oc-success-grid{display:grid;grid-template-columns:30% 1fr;gap:3rem;align-items:center;padding:3rem 0;}
+.oc-success-img{display:flex;align-items:center;justify-content:center;}
+.oc-success-img img{width:100%;max-width:200px;display:block;}
 @media(max-width:768px){
   .oc-layout{grid-template-columns:1fr;margin-top:70px;min-height:auto;}
   .oc-info{padding:2rem 1.2rem;border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);}
   .oc-desc{max-width:none;}
   .oc-form-col{padding:2rem 1.2rem 3rem;}
+  .oc-success-grid{grid-template-columns:1fr;gap:1.5rem;padding:2rem 0;text-align:center;}
+  .oc-success-img img{max-width:120px;margin:0 auto;}
 }
 </style>
 </head>
@@ -67,9 +72,18 @@
       <div class="form-group"><label class="form-label" for="oc-statement">Umělecký statement</label><textarea class="form-textarea" id="oc-statement" name="statement" placeholder="Co chceš ve výstavě řešit a co si má divák odnést? Chceme emoce. Chceme reakci."></textarea></div>
       <button type="submit" class="btn form-submit">Počítejte se mnou</button>
     </form>
-    <div id="oc-success" style="display:none;padding:3rem 0;">
-      <div style="font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;letter-spacing:-0.03em;line-height:0.95;margin-bottom:1.2rem;">Přihláška<br>odeslána.</div>
-      <p style="font-size:1rem;line-height:1.85;color:rgba(255,255,255,0.5);">Ozveme se ti.</p>
+    <div id="oc-success" style="display:none;opacity:0;transition:opacity 0.4s;">
+      <div class="oc-success-grid">
+        <div class="oc-success-img">
+          <img src="images/stickman-success.png" alt="">
+        </div>
+        <div class="oc-success-text">
+          <div style="font-size:3rem;line-height:1;margin-bottom:1.5rem;color:#fff;">✓</div>
+          <div style="font-size:clamp(1.6rem,2.8vw,2.6rem);font-weight:900;letter-spacing:-0.03em;line-height:0.95;margin-bottom:1.2rem;color:#fff;">Ozveme se ti dřív<br>než se postaví<br>metro D.</div>
+          <p style="font-size:0.95rem;line-height:1.85;color:rgba(255,255,255,0.5);margin-bottom:2rem;">Díky, že chceš být součástí příběhu galerie POSTOJ.</p>
+          <a href="index.html" style="font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:2px;cursor:none;transition:color 0.2s;">← Zpět na hlavní stránku</a>
+        </div>
+      </div>
     </div>
     <div id="oc-error" style="display:none;margin-top:1rem;font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.6;">Něco se pokazilo. Zkus to znovu nebo napiš na <a href="mailto:info@galeriepostoj.cz" style="color:#fff;border-bottom:1px solid rgba(255,255,255,0.3);">info@galeriepostoj.cz</a></div>
   </div>
@@ -101,8 +115,14 @@ document.getElementById('oc-form').addEventListener('submit',function(e){
     headers:{Accept:'application/json'}
   }).then(function(r){
     if(r.ok){
-      form.style.display='none';
-      document.getElementById('oc-success').style.display='block';
+      form.style.transition='opacity 0.3s';
+      form.style.opacity='0';
+      setTimeout(function(){
+        form.style.display='none';
+        var s=document.getElementById('oc-success');
+        s.style.display='block';
+        requestAnimationFrame(function(){s.style.opacity='1';});
+      },300);
     } else {
       document.getElementById('oc-error').style.display='block';
       btn.disabled=false;
