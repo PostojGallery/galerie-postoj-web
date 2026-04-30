@@ -14,7 +14,7 @@
 #hero-bottom-fade{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to bottom,transparent,#0a0a0a);z-index:1;}
 #hero-poster-wrap{position:relative;z-index:2;will-change:transform;}
 #hero-poster-link{display:block;cursor:none;position:relative;text-decoration:none;}
-#hero-poster-link img{height:58vh;width:auto;display:block;transition:transform 0.4s ease;}
+#hero-poster-link img{height:58vh;height:58svh;width:auto;display:block;transition:transform 0.4s ease;}
 #hero-poster-label{text-align:center;font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.35);padding-top:1.6rem;opacity:0;transform:scale(1);transition:opacity 0.4s,transform 0.4s ease;}
 #hero-poster-link:hover #hero-poster-label{opacity:1;transform:scale(1.05);}
 .current-exh{display:grid;grid-template-columns:1fr 1fr;align-items:center;background:#0a0a0a;gap:3rem;padding-right:3rem;}
@@ -66,7 +66,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 .oc-desc{font-size:1rem;line-height:1.7;color:rgba(255,255,255,0.4);max-width:400px;}
 .oc-action{padding:2.5rem 3rem;}
 @media(max-width:768px){
-  #hero-poster-link img{height:45vh;}
+  #hero-poster-link img{height:45vh;height:45svh;}
   .current-exh{grid-template-columns:1fr;gap:0;padding-right:0;}
   .current-exh-info{padding:2rem 1.2rem;}
   .current-exh-desc{max-width:none;}
@@ -82,14 +82,14 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 </head>
 <body>
 <div id="cdot"></div><div id="cw"><img src="images/run.png" alt=""></div>
-<nav><a href="index.html" class="nav-logo">galerie POSTOJ</a><button class="nav-burger" id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button><ul class="nav-links"><li><a href="artists.html" >Umělci</a></li><li><a href="exhibitions.html" >Výstavy</a></li><li style="display:none"><a href="collectors.html">Shop</a></li><li><a href="about.html" >O nás</a></li><li><a href="open-call.html" >Open Call</a></li></ul></nav>
+<nav><a href="/" class="nav-logo">galerie POSTOJ</a><button class="nav-burger" id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button><ul class="nav-links"><li><a href="/artists" >Umělci</a></li><li><a href="/exhibitions" >Výstavy</a></li><li style="display:none"><a href="/collectors">Shop</a></li><li><a href="/about" >O nás</a></li><li><a href="/open-call" >Open Call</a></li></ul></nav>
 
 <section id="hero">
   <div id="hero-bg"></div>
   <div id="hero-overlay"></div>
   <div id="hero-bottom-fade"></div>
   <div id="hero-poster-wrap">
-    <a href="exhibitions.html" id="hero-poster-link">
+    <a href="/exhibitions" id="hero-poster-link">
       <img width="500" src="images/poster-martin.webp" alt="Break The Pattern, Go To Therapy">
       <div id="hero-poster-label">O výstavě →</div>
     </a>
@@ -99,10 +99,10 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   <div class="current-exh-info rv">
     <div class="current-exh-label">Aktuální výstava</div>
     <div class="current-exh-artist">Martin<br>Jáchym</div>
-    <a href="exhibitions.html#exh-current" class="current-exh-title">Break The Pattern, Go To Therapy</a>
+    <a href="/exhibitions#exh-current" class="current-exh-title">Break The Pattern, Go To Therapy</a>
     <div class="current-exh-date">7. ledna 2026</div>
     <p class="current-exh-desc">Autorská instalace otevírá téma psychického zdraví a zakořeněných vzorce chování. V prostředí zahlceném tlakem na výkon může být obtížné přiznat si únavu nebo bolest.</p>
-    <a href="exhibitions.html" class="btn">Chci vědět víc</a>
+    <a href="/exhibitions" class="btn">Chci vědět víc</a>
   </div>
   <div class="current-exh-video rv">
     <video autoplay muted loop playsinline preload="none" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;">
@@ -129,15 +129,15 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
       <div class="oc-title">Pošli svoji práci.</div>
       <p class="oc-desc">Hledáme to, co provokuje. Ne dekoraci.</p>
     </div>
-    <div class="oc-action"><a href="open-call.html" class="btn">Jdu do toho</a></div>
+    <div class="oc-action"><a href="/open-call" class="btn">Jdu do toho</a></div>
   </div>
 </section>
 <site-footer><div class="footer-inner">
   <span>galerie POSTOJ &copy; 2026</span>
   <div class="footer-links">
-    <a href="artists.html">Umělci</a><a href="exhibitions.html">Výstavy</a>
-    <a href="collectors.html" style="display:none">Shop</a><a href="about.html">O nás</a>
-    <a href="open-call.html">Open Call</a>
+    <a href="/artists">Umělci</a><a href="/exhibitions">Výstavy</a>
+    <a href="/collectors" style="display:none">Shop</a><a href="/about">O nás</a>
+    <a href="/open-call">Open Call</a>
   </div>
   <div class="footer-links">
     <a href="https://drive.google.com/drive/u/0/folders/16z95_Pth5_9bxexHs3gC4aYe29cUpJyW" target="_blank" rel="noopener">Press</a>
