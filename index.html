@@ -8,7 +8,7 @@
 <title>Umění pro lidi, ne pro elitu | galerie POSTOJ</title>
 <link rel="stylesheet" href="style.css">
 <style>
-#hero{position:relative;height:100vh;height:100svh;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+#hero{position:relative;height:100vh;height:100svh;height:calc(var(--ivh,1vh)*100);overflow:hidden;display:flex;align-items:center;justify-content:center;}
 #hero-bg{position:absolute;inset:0;background:#0a0a0a url('images/hero-bg.jpg') center/cover no-repeat;}
 #hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.45);}
 #hero-bottom-fade{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to bottom,transparent,#0a0a0a);z-index:1;}
@@ -66,7 +66,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 .oc-desc{font-size:1rem;line-height:1.7;color:rgba(255,255,255,0.4);max-width:400px;}
 .oc-action{padding:2.5rem 3rem;}
 @media(max-width:768px){
-  #hero-poster-link img{height:58vh;height:58svh;}
+  #hero-poster-link img{height:58vh;height:58svh;height:calc(var(--ivh,1vh)*58);}
   .current-exh{grid-template-columns:1fr;gap:0;padding-right:0;}
   .current-exh-info{padding:2rem 1.2rem;}
   .current-exh-desc{max-width:none;}
@@ -81,6 +81,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 </style>
 </head>
 <body>
+<script>document.documentElement.style.setProperty('--ivh',window.innerHeight*0.01+'px');</script>
 <div id="cdot"></div><div id="cw"><img src="images/run.png" alt=""></div>
 <nav><a href="/" class="nav-logo">galerie POSTOJ</a><button class="nav-burger" id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button><ul class="nav-links"><li><a href="/artists" >Umělci</a></li><li><a href="/exhibitions" >Výstavy</a></li><li style="display:none"><a href="/collectors">Shop</a></li><li><a href="/about" >O nás</a></li><li><a href="/open-call" >Open Call</a></li></ul></nav>
 
