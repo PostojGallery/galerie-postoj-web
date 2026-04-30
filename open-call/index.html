@@ -106,14 +106,19 @@
 (function(){
   var ig=document.getElementById('oc-web');
   ig.addEventListener('focus',function(){
-    if(!this.value&&!this.value.startsWith('http'))this.value='@';
+    if(!this.value)this.value='@';
+  });
+  ig.addEventListener('blur',function(){
+    if(this.value==='@')this.value='';
   });
   ig.addEventListener('input',function(){
     if(this.value.startsWith('http'))return;
+    if(this.value===''||this.value==='@')return;
     if(!this.value.startsWith('@'))this.value='@'+this.value.replace(/^@*/,'');
   });
   ig.addEventListener('keydown',function(e){
     if(this.value.startsWith('http'))return;
+    if((e.key==='Backspace'||e.key==='Delete')&&this.value==='@'){this.value='';return;}
     if((e.key==='Backspace'||e.key==='Delete')&&this.selectionStart<=1&&this.selectionEnd<=1)e.preventDefault();
   });
 })();
