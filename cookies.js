@@ -14,7 +14,7 @@
     '#cookie-bar-text{flex:1;}'+
     '#cookie-bar-close{background:none;border:none;padding:0.3rem 0.5rem;'+
     'font-size:1.3rem;line-height:1;color:rgba(0,0,0,0.4);'+
-    'cursor:pointer;font-family:inherit;flex-shrink:0;'+
+    'cursor:none;font-family:inherit;flex-shrink:0;'+
     'transition:color 0.2s;}'+
     '#cookie-bar-close:hover{color:#000;}'+
     '@media(max-width:768px){#cookie-bar{padding:1rem 1.2rem;font-size:0.78rem;}}';
