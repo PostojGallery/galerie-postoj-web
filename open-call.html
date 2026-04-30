@@ -25,6 +25,7 @@
 .form-label{display:block;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.6rem;}
 .form-input,.form-textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.15);color:#fff;font-family:inherit;font-size:1rem;padding:0.8rem 0;transition:border-color 0.2s;outline:none;cursor:none;box-sizing:border-box;}
 .form-input:focus,.form-textarea:focus{border-bottom-color:rgba(255,255,255,0.6);}
+.form-input.input-error{border-bottom-color:#ff4444;}
 .form-input::placeholder,.form-textarea::placeholder{color:rgba(255,255,255,0.15);}
 .form-textarea{resize:none;height:100px;line-height:1.6;}
 .file-upload-label{display:block;border:1px dashed rgba(255,255,255,0.15);padding:1.5rem;text-align:center;cursor:pointer;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1.5rem;}
@@ -67,7 +68,7 @@
     <form id="oc-form" action="https://formspree.io/f/xvzdewkr" method="POST" novalidate>
       <input type="hidden" name="_language" value="cs">
       <div class="form-group"><label class="form-label" for="oc-name">Jméno a příjmení</label><input class="form-input" type="text" id="oc-name" name="name" placeholder="Hugo Provokoval"></div>
-      <div class="form-group"><label class="form-label" for="oc-email">E-mail</label><input class="form-input" type="email" id="oc-email" name="email" placeholder="tvuj@email.com"></div>
+      <div class="form-group"><label class="form-label" for="oc-email">E-mail</label><input class="form-input" type="email" id="oc-email" name="email" placeholder="tvuj@email.com"><span id="oc-email-err" style="display:none;font-size:0.62rem;color:#ff4444;margin-top:0.4rem;letter-spacing:0.06em;display:none;">Tenhle e-mail je abstrakce. Zadej platný e-mail.</span></div>
       <div class="form-group"><label class="form-label" for="oc-web">Instagram</label><input class="form-input" type="text" id="oc-web" name="instagram" placeholder="@tvůj_profil" required><span style="display:block;font-size:0.62rem;color:rgba(255,255,255,0.2);margin-top:0.4rem;letter-spacing:0.06em;">Stačí napsat @handle</span></div>
       <div class="form-group"><label class="form-label" for="oc-statement">Umělecký statement</label><textarea class="form-textarea" id="oc-statement" name="statement" placeholder="Co chceš ve výstavě řešit a co si má divák odnést? Chceme emoce. Chceme reakci."></textarea></div>
       <button type="submit" class="btn form-submit">Počítejte se mnou</button>
@@ -103,8 +104,26 @@
 <script src="cursor.js"></script>
 <script src="cookies.js"></script>
 <script>
+(function(){
+  var emailInput=document.getElementById('oc-email');
+  var emailErr=document.getElementById('oc-email-err');
+  function validateEmail(val){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);}
+  function showEmailError(){emailErr.style.display='block';emailInput.classList.add('input-error');}
+  function hideEmailError(){emailErr.style.display='none';emailInput.classList.remove('input-error');}
+  emailInput.addEventListener('blur',function(){
+    if(this.value&&!validateEmail(this.value))showEmailError();else hideEmailError();
+  });
+  emailInput.addEventListener('input',function(){
+    if(validateEmail(this.value))hideEmailError();
+  });
+})();
 document.getElementById('oc-form').addEventListener('submit',function(e){
   e.preventDefault();
+  var emailInput=document.getElementById('oc-email');
+  var emailErr=document.getElementById('oc-email-err');
+  if(!emailInput.value||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)){
+    emailErr.style.display='block';emailInput.classList.add('input-error');emailInput.focus();return;
+  }
   var form=document.getElementById('oc-form');
   var btn=form.querySelector('button[type=submit]');
   btn.disabled=true;
