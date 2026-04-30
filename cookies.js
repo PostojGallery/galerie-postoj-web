@@ -8,7 +8,7 @@
     'background:#fff;'+
     'border-top:1px solid rgba(0,0,0,0.1);'+
     'padding:1.1rem 2.5rem;'+
-    'display:flex;align-items:center;gap:1.5rem;'+
+    'display:flex;align-items:flex-start;gap:1.5rem;'+
     'font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'+
     'font-size:0.82rem;letter-spacing:0.04em;color:#000;}'+
     '#cookie-bar-text{flex:1;}'+
