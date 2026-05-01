@@ -1,13 +1,6 @@
 var isMobile=window.matchMedia('(max-width:768px)').matches||('ontouchstart' in window);
 var cdot=document.getElementById('cdot');
 if(!isMobile){
-  document.addEventListener('mousedown',function(e){
-    document.documentElement.style.setProperty('cursor','none','important');
-    var tag=e.target.tagName;
-    if(tag==='BUTTON'||(tag==='A'&&e.target.getAttribute('href')&&e.target.getAttribute('href').charAt(0)==='#')){
-      e.preventDefault();
-    }
-  },true);
   var _cw=document.getElementById('cw'),_cimg=_cw.querySelector('img');
   var mx=-200,my=-200,cx=-200,cy=-200,lmx=-200,ldir=0,snapped=false;
   document.addEventListener('mousemove',function(e){
