@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="galerie POSTOJ was born in the Prague metro to bring art to ordinary people. We believe art belongs to everyone, not just elites.">
+<link rel="icon" type="image/png" href="../../images/favicon.png?v=7">
+<title>We believe in art for everyone | galerie POSTOJ</title>
+<link rel="stylesheet" href="../../style.css">
+<style>
+.about-founder{margin-top:60px;padding:3rem 2.5rem 0;}
+.founder-grid{display:grid;grid-template-columns:300px 1fr;gap:4rem;align-items:stretch;}
+.founder-photo{height:100%;display:flex;flex-direction:column;}
+.founder-photo img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;}
+.founder-caption{background:#fff;color:#000;padding:1rem 1.2rem;font-size:0.8rem;font-weight:700;}
+.founder-caption span{display:block;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:400;margin-top:0.2rem;color:rgba(0,0,0,0.5);}
+.founder-right{display:flex;flex-direction:column;justify-content:space-between;padding-bottom:1rem;}
+.founder-eyebrow{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:2rem;}
+.founder-quote{font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.8;color:rgba(255,255,255,0.75);margin-bottom:1.5rem;padding-left:1.5rem;border-left:2px solid rgba(255,255,255,0.12);font-style:italic;}
+.founder-quote p{margin-bottom:1rem;}.founder-quote p:last-child{margin-bottom:0;}
+.founder-sig{height:50px;width:auto;filter:invert(1);opacity:0.6;margin-bottom:1.2rem;}
+.founder-email a{color:rgba(255,255,255,0.4);text-decoration:none;cursor:none;font-size:0.85rem;border-bottom:1px solid rgba(255,255,255,0.15);transition:color 0.2s;}
+.founder-email a:hover{color:#fff;}
+.founder-logos{margin-top:auto;padding-top:1.5rem;}
+.founder-logos-label{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1.2rem;}
+.founder-logos-row{display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;}
+.logo-item{background:#fff;padding:8px 14px;display:inline-flex;align-items:center;justify-content:center;filter:none;}
+.logo-item img{max-height:32px;width:auto;display:block;}
+.about-stats{margin-top:2rem;}
+.stats-grid{display:grid;grid-template-columns:repeat(5,1fr);}
+.stat-item{padding:1.5rem 2.5rem;border-right:1px solid rgba(255,255,255,0.05);display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;box-sizing:border-box;}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-weight:900;line-height:1;letter-spacing:-0.04em;margin-bottom:0.5rem;font-size:5rem;}
+.stat-label{font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.28);line-height:1.6;}
+.about-story{}
+.whw-row{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;}
+.whw-text-col{padding:1.2rem 2.5rem 2rem;}
+.whw-tag{font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1.2rem;}
+.whw-heading{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;line-height:0.92;letter-spacing:-0.03em;margin-bottom:1.5rem;color:#fff;}
+.whw-text{font-size:0.95rem;line-height:1.85;color:rgba(255,255,255,0.5);margin-bottom:0.8rem;}
+.whw-cta{display:inline-block;margin-top:1.5rem;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;cursor:none;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s,border-color 0.2s;}
+.whw-cta:hover{color:#fff;border-color:#fff;}
+.whw-testimonials{display:flex;align-items:center;justify-content:center;padding:2rem 3rem;}
+.ts-eyebrow{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:1.5rem;}
+.ts-slider{position:relative;min-height:140px;}
+.ts{position:absolute;top:0;left:0;width:100%;opacity:0;pointer-events:none;transition:opacity 0.5s;}
+.ts.active{opacity:1;pointer-events:auto;}
+.ts-stars{font-size:0.9rem;color:rgba(255,255,255,0.35);margin-bottom:0.6rem;}
+.ts-text{font-size:1rem;line-height:1.7;color:rgba(255,255,255,0.8);font-weight:500;margin-bottom:0.4rem;}
+.ts-author{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.28);}
+.ts-footer{margin-top:1.2rem;}
+.ts-dots{display:flex;gap:0.5rem;}
+.tsd{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);cursor:pointer;transition:background 0.2s;}
+.tsd.active{background:#fff;}
+.whw-oc-col{display:flex;align-items:center;justify-content:center;background:#0a0a0a;}
+.whw-oc{padding:3rem;display:flex;align-items:center;height:100%;}
+.whw-oc-inner{display:flex;align-items:center;gap:2rem;width:100%;}
+.whw-oc-stick{width:130px;filter:invert(1);opacity:0.85;flex-shrink:0;}
+.whw-oc-text-side{flex:1;}
+.whw-oc-heading{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1;letter-spacing:-0.04em;color:#fff;}
+.whw-map-col{overflow:hidden;display:flex;flex-direction:column;}
+.whw-map-col iframe{flex-shrink:0;}
+.info-bar{display:grid;grid-template-columns:repeat(4,1fr);background:#0a0a0a;}
+.info-col{padding:1.5rem 2rem;border-right:1px solid #1a1a1a;}
+.info-col:first-child{padding-left:2.5rem;}
+.info-col:last-child{border-right:none;}
+.info-col-label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1rem;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;}
+.info-row{margin-bottom:0.8rem;}
+.info-sub{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:#fff;margin-bottom:0.2rem;}
+.info-val{font-size:0.88rem;color:rgba(255,255,255,0.45);font-weight:400;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;margin-bottom:0.8rem;}
+.info-divider{display:none;}
+.info-map-link{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;cursor:none;display:inline-block;margin-top:0.8rem;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s;}
+.info-map-link:hover{color:#fff;}
+.info-val a{color:rgba(255,255,255,0.45)!important;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.12);padding-bottom:1px;transition:color 0.2s;}
+.info-val a:hover{color:#fff!important;}
+@media(max-width:768px){
+  .info-bar{grid-template-columns:1fr 1fr;}
+  .info-col{padding:1.2rem 1.2rem;border-right:none;border-bottom:none;}
+  .info-col:first-child{padding-left:1.2rem;}
+}
+.about-history{padding:3rem 0 2rem;}
+.hist-strip{display:grid;grid-template-columns:repeat(9,1fr);gap:2px;margin-bottom:2rem;}
+.hist-ph{aspect-ratio:3/4;background:rgba(255,255,255,0.03);border:1px dashed rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;}
+.hist-ph span{font-size:0.48rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.08);}
+.hist-real{overflow:hidden;aspect-ratio:3/4;cursor:pointer;}
+.hist-real img{width:100%;height:100%;object-fit:cover;}
+#aglb{position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:10000;display:none;cursor:pointer;}
+#aglb img{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);max-height:90vh;max-width:90vw;object-fit:contain;}
+#aglb-prev,#aglb-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid rgba(255,255,255,0.3);color:#fff;font-size:1.2rem;width:44px;height:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+#aglb-prev{left:1.5rem;}#aglb-next{right:1.5rem;}
+#aglb-close{position:absolute;top:1.5rem;right:2rem;background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);font-family:inherit;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:pointer;}
+#aglb-count{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);font-family:inherit;}
+@media(max-width:768px){
+  html,body{overflow-x:hidden;}
+  .about-founder{margin-top:70px;padding:1.5rem 1.2rem 0;}
+  .founder-grid{grid-template-columns:1fr;gap:2rem;}
+  .founder-right{padding-bottom:1rem;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .stat-num{font-size:clamp(2.8rem,13vw,4rem);white-space:nowrap;}
+  .stat-item{padding:1rem 1.2rem;border-right:none;border-bottom:1px solid rgba(255,255,255,0.05);}
+  .stat-label{font-size:0.5rem;white-space:nowrap;}
+  .stat-item:nth-child(1){order:1;}
+  .stat-item:nth-child(2){order:3;}
+  .stat-item:nth-child(3){order:5;grid-column:1/-1;border-bottom:none;}
+  .stat-item:nth-child(4){order:2;}
+  .stat-item:nth-child(5){order:4;border-bottom:none;}
+  .whw-row{grid-template-columns:1fr;}
+  .whw-text-col{padding:1.5rem 1.2rem 1rem;}
+  .whw-testimonials{padding:1rem 1.2rem 2rem;}
+  .hist-strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:4px;scrollbar-width:none;margin-bottom:2rem;}
+  .hist-strip::-webkit-scrollbar{display:none;}
+  .hist-strip .hist-real,.hist-strip .hist-ph{flex:0 0 55%;scroll-snap-align:start;aspect-ratio:4/3;}
+  .whw-oc-col{min-height:200px;}
+  .whw-oc{padding:2rem 1.2rem;}
+  .whw-oc-inner{flex-direction:row;gap:1.5rem;align-items:center;}
+  .whw-oc-stick{width:80px;flex-shrink:0;}
+  .whw-map-col iframe{width:100%;}
+  .ts-stick{width:105px!important;max-width:105px!important;transform:translateX(-5mm);}
+  .about-history{padding:2rem 0 1rem;}
+}
+</style>
+</head>
+<body>
+<div id="cdot"></div><div id="cw"><img src="../../images/run.png" alt=""></div>
+<nav><a href="/en" class="nav-logo">galerie POSTOJ</a><button class="nav-burger" id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button><ul class="nav-links"><li><a href="/en/artists">Artists</a></li><li><a href="/en/exhibitions">Exhibitions</a></li><li style="display:none"><a href="/collectors">Shop</a></li><li><a href="/en/about" class=active>About</a></li><li><a href="/en/open-call">Open Call</a></li><li class="nav-lang"><a href="/about">CZ</a></li></ul></nav>
+
+<section class="about-founder">
+  <div class="founder-grid">
+    <div class="rv">
+      <div class="founder-photo">
+        <img width="1141" src="../../images/founder.webp" alt="Filip Kolář">
+        <div class="founder-caption">Filip Kolář<span>Founder. Art enthusiast.</span></div>
+      </div>
+    </div>
+    <div class="rv founder-right" style="transition-delay:0.12s">
+      <div>
+        <div class="founder-eyebrow">A stance on art</div>
+        <blockquote class="founder-quote"><p>Art at galerie POSTOJ is here to provoke.</p>
+        <p>We're not a traditional gallery — elite, closed off. I believe art is for everyone, which is why we're in the metro, in public space, and our exhibitions focus on topics that resonate in contemporary society.</p>
+        <p>We support young artists and students from art schools — here and abroad. I'm convinced that's exactly where Czech art belongs. And I'll do everything I can to get it there even more.</p></blockquote>
+        <img width="1397" height="690" class="founder-sig" src="../../images/signature.png" alt="">
+        <div class="founder-email"><a href="mailto:filip.kolar@galeriepostoj.cz">filip.kolar@galeriepostoj.cz</a></div>
+      </div>
+      <div class="founder-logos">
+        <div class="founder-logos-row">
+          <div class="logo-item"><img width="2000" height="600" src="../../images/logo-respekt-v2.png" alt="Respekt"></div>
+          <div class="logo-item"><img width="2000" height="429" src="../../images/logo-denikn-v2.png" alt="Deník N"></div>
+          <div class="logo-item"><img width="355" height="111" src="../../images/logo-artmap-v2.png" alt="ArtMap"></div>
+          <div class="logo-item" style="width:160px;padding:13px 14px;"><img width="1892" height="312" src="../../images/logo-ct-v2.png" alt="ČT" style="width:100%;height:auto;display:block;"></div>
+          <div class="logo-item"><img width="2000" height="1447" src="../../images/logo-a2.png" alt="A2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="about-stats">
+  <div class="stats-grid">
+    <div class="stat-item rv"><div class="stat-num" data-target="8">0</div><div class="stat-label">Exhibitions since 2022</div></div>
+    <div class="stat-item rv"><div class="stat-num" data-target="11">0</div><div class="stat-label">Artists</div></div>
+    <div class="stat-item rv"><div class="stat-num" data-target="30000" data-suffix="+">0</div><div class="stat-label">People passing by daily</div></div>
+    <div class="stat-item rv"><div class="stat-num" data-target="1000" data-suffix="+">0</div><div class="stat-label">Visitors at openings</div></div>
+    <div class="stat-item rv"><div class="stat-num">∞</div><div class="stat-label">Smiles and reactions</div></div>
+  </div>
+</section>
+<section class="about-story">
+  <div class="whw-row rv">
+    <div class="whw-text-col">
+      <div class="whw-tag">Why</div>
+      <div class="whw-heading">Art belongs to everyone.</div>
+      <p class="whw-text">We believe contemporary art should be accessible to everyone — regardless of age, education or profession. Traditional galleries put up barriers. We break them down.</p>
+      <button id="about-video-btn" class="btn" style="margin-top:1.5rem;display:inline-block;cursor:none;">Video from the latest exhibition</button>
+    </div>
+    <div class="whw-testimonials">
+      <div style="display:flex;align-items:center;gap:2.5rem;width:100%;">
+        <div style="flex:1;">
+          <div class="ts-eyebrow">What people say</div>
+          <div class="ts-slider">
+          <div class="ts active"><div class="ts-stars">★★★★★</div><p class="ts-text">"Sometimes you just want to get through. Then you see a painting and you have to come closer."</p><div class="ts-author">Jarmila Č.</div></div>
+          <div class="ts"><div class="ts-stars">★★★★★</div><p class="ts-text">"Brilliant initiative! More art in public spaces."</p><div class="ts-author">Václav V.</div></div>
+          <div class="ts"><div class="ts-stars">★★★★★</div><p class="ts-text">"Unique initiative! A place to pause in the heart of Prague."</p><div class="ts-author">Jiří V.</div></div>
+          </div>
+          <div class="ts-footer"><div class="ts-dots"><span class="tsd active"></span><span class="tsd"></span><span class="tsd"></span></div></div>
+        </div>
+        <img src="../../images/run.png" alt="" class="ts-stick" style="width:120px;filter:invert(1);flex-shrink:1;align-self:flex-end;max-width:20vw;">
+      </div>
+    </div>
+  </div>
+  <div class="about-history rv">
+    <div class="hist-strip">
+      <div class="hist-real"><img loading="lazy" src="../../images/about-us/1.webp" alt=""></div>
+      <div class="hist-real"><img loading="lazy" src="../../images/about-us/2.webp" alt=""></div>
+      <div class="hist-real"><img loading="lazy" src="../../images/about-us/3.webp" alt=""></div>
+      <div class="hist-real"><img loading="lazy" src="../../images/about-us/4.webp" alt=""></div>
+      <div class="hist-real"><img loading="lazy" src="../../images/about-us/5.webp" alt=""></div>
+      <div class="hist-real"><img loading="lazy" src="../../images/about-us/6.webp" alt=""></div>
+      <div class="hist-real"><img loading="lazy" src="../../images/about-us/7.webp" alt=""></div>
+      <div class="hist-real"><img loading="lazy" src="../../images/about-us/8.webp" alt=""></div>
+      <div class="hist-real"><img loading="lazy" src="../../images/about-us/9.webp" alt=""></div>
+    </div>
+  </div>
+  <div class="whw-row rv">
+    <div class="whw-text-col">
+      <div class="whw-tag">How</div>
+      <div class="whw-heading">A gallery in&nbsp;the metro.</div>
+      <p class="whw-text">In 2022 I was standing one evening in the metro at Náměstí Republiky, staring at an empty shop window. A former currency exchange that ripped off tourists. Dark, messy, nothing more. That evening I knew we'd turn that space into a gallery. For people, not elites.</p>
+      <a href="/en/exhibitions" class="btn" style="margin-top:1.5rem;display:inline-block;">Explore exhibitions</a>
+    </div>
+    <div class="whw-map-col">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1279.8!2d14.4283717!3d50.0881033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b95e62b76736d%3A0x824280b98bcd22c0!2sGalerie+Postoj!5e0!3m2!1scs!2scz!4v1711900000" width="100%" height="280" style="border:0;display:block;filter:grayscale(30%) brightness(0.85) contrast(1.1);" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+  <div class="info-bar rv">
+    <div class="info-col">
+      <div class="info-col-label">Address</div>
+      <div class="info-val" style="margin-bottom:0.3rem;color:#fff;">galerie POSTOJ</div>
+      <div class="info-val">Metro B vestibule / Náměstí Republiky / Praha 1, 110 00</div>
+      <a href="https://maps.app.goo.gl/9uux1FFqeDotEiwm9" target="_blank" rel="noopener" class="info-map-link">View on map →</a>
+    </div>
+    <div class="info-col">
+      <div class="info-col-label">Opening hours</div>
+      <div class="info-row">
+        <div class="info-sub">Mon — Sun</div>
+        <div class="info-val">24 / 7</div>
+      </div>
+      <div class="info-row">
+        <div class="info-sub">Entry</div>
+        <div class="info-val">Free</div>
+      </div>
+    </div>
+    <div class="info-col">
+      <div class="info-col-label">Contact</div>
+      <div class="info-row">
+        <div class="info-sub">Email</div>
+        <div class="info-val"><a href="mailto:info@galeriepostoj.cz" style="color:#fff;text-decoration:none;cursor:none;">info@galeriepostoj.cz</a></div>
+      </div>
+    </div>
+    <div class="info-col">
+      <div class="info-col-label">Follow us</div>
+      <div class="info-row">
+        <div class="info-sub">Instagram</div>
+        <div class="info-val"><a href="https://www.instagram.com/galeriepostoj/" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;cursor:none;">@galeriepostoj</a></div>
+      </div>
+      <div class="info-row">
+        <div class="info-sub">Facebook</div>
+        <div class="info-val"><a href="https://www.facebook.com/galeriepostoj/" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;cursor:none;">galerie POSTOJ</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="whw-row rv">
+    <div class="whw-text-col">
+      <div class="whw-tag">What</div>
+      <div class="whw-heading">First exhibitions.</div>
+      <p class="whw-text">We support young artists — whether it's your first or fifth show. Freedom of concept, no compromises. We believe in honesty, and we're here to back you up.</p>
+      <a href="/en/artists" class="btn" style="margin-top:1.5rem;display:inline-block;">Meet the artists</a>
+    </div>
+    <div class="whw-oc-col">
+      <div class="whw-oc">
+        <div class="whw-oc-inner">
+          <img width="200" loading="lazy" src="../../images/pointing.webp" alt="" class="whw-oc-stick">
+          <div class="whw-oc-text-side">
+            <div class="whw-oc-heading">Send us your work.</div>
+            <a href="/en/open-call" class="whw-cta" style="display:inline-block;margin-top:1.2rem;">Open Call →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div id="about-vlb" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.94);z-index:20001;align-items:center;justify-content:center;">
+  <button id="about-vlb-close" style="position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:rgba(255,255,255,0.5);cursor:none;line-height:1;background:none;border:none;font-family:inherit;">&#215;</button>
+  <video id="about-vlb-player" controls playsinline muted style="width:95vw;max-width:1400px;max-height:95vh;display:block;outline:none;">
+    <source src="../../images/c997f623-4625-49c3-af9b-bb6025155789.mp4" type="video/mp4">
+  </video>
+</div>
+<div id="aglb">
+  <button id="aglb-prev">←</button>
+  <button id="aglb-next">→</button>
+  <button id="aglb-close">Close ×</button>
+  <img id="aglb-img" src="" alt="">
+  <div id="aglb-count"></div>
+</div>
+<site-footer><div class="footer-inner">
+  <span>galerie POSTOJ &copy; 2026</span>
+  <div class="footer-links">
+    <a href="/en/artists">Artists</a><a href="/en/exhibitions">Exhibitions</a>
+    <a href="/collectors" style="display:none">Shop</a><a href="/en/about">About</a>
+    <a href="/en/open-call">Open Call</a>
+  </div>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/galeriepostoj/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.facebook.com/galeriepostoj/" target="_blank" rel="noopener">Facebook</a>
+  </div>
+  <div class="footer-links">
+    <a href="https://drive.google.com/drive/u/0/folders/16z95_Pth5_9bxexHs3gC4aYe29cUpJyW" target="_blank" rel="noopener">Press</a>
+    <a href="https://drive.google.com/drive/u/0/folders/1YSo5KLgm94XyLjvp3zUPdmmqJCPQt8IG" target="_blank" rel="noopener">VOP &amp; GDPR</a>
+  </div>
+</div></site-footer>
+<script src="../../cursor.js"></script>
+<script src="../../cookies.en.js"></script>
+<script>
+(function(){
+  var slides=document.querySelectorAll('.ts'),dots=document.querySelectorAll('.tsd');
+  if(!slides.length)return;var cur=0;
+  function goTo(n){slides[cur].classList.remove('active');dots[cur].classList.remove('active');cur=n%slides.length;slides[cur].classList.add('active');dots[cur].classList.add('active');}
+  dots.forEach(function(d,i){d.addEventListener('click',function(){goTo(i);});});
+  setInterval(function(){goTo(cur+1);},4500);
+})();
+(function(){
+  function fmt(n,s){return n>=1000?n.toLocaleString('en-GB')+(s||''):n+(s||'');}
+  var counters=document.querySelectorAll('.stat-num[data-target]'),started=false;
+  function run(){if(started)return;started=true;counters.forEach(function(el){var t=parseInt(el.getAttribute('data-target')),s=el.getAttribute('data-suffix')||'',st=null;function step(ts){if(!st)st=ts;var p=Math.min(1,(ts-st)/1800),e=1-Math.pow(1-p,3);el.textContent=fmt(Math.round(e*t),s);if(p<1)requestAnimationFrame(step);else el.textContent=fmt(t,s);}requestAnimationFrame(step);});}
+  var obs2=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting)run();});},{threshold:0.3});
+  counters.forEach(function(el){obs2.observe(el);});
+})();
+(function(){
+  var lb=document.getElementById('aglb'),lbi=document.getElementById('aglb-img'),lbc=document.getElementById('aglb-count');
+  var prev=document.getElementById('aglb-prev'),next=document.getElementById('aglb-next');
+  var imgs=[],cur=0;
+  var photos=Array.from(document.querySelectorAll('.hist-real'));
+  imgs=photos.map(function(p){return p.querySelector('img').src;});
+  function show(){lbi.src=imgs[cur];lbc.textContent=(cur+1)+' / '+imgs.length;}
+  function close(){lb.style.display='none';document.body.style.overflow='';}
+  prev.onclick=function(e){e.stopPropagation();cur=(cur-1+imgs.length)%imgs.length;show();};
+  next.onclick=function(e){e.stopPropagation();cur=(cur+1)%imgs.length;show();};
+  document.getElementById('aglb-close').onclick=function(e){e.stopPropagation();close();};
+  lb.onclick=function(e){if(e.target===lb)close();};
+  document.addEventListener('keydown',function(e){if(lb.style.display!=='flex')return;if(e.key==='ArrowLeft'){cur=(cur-1+imgs.length)%imgs.length;show();}else if(e.key==='ArrowRight'){cur=(cur+1)%imgs.length;show();}else if(e.key==='Escape')close();});
+  var txStart=0;
+  lb.addEventListener('touchstart',function(e){txStart=e.touches[0].clientX;},{passive:true});
+  lb.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-txStart;if(Math.abs(dx)<40)return;if(dx<0){cur=(cur+1)%imgs.length;}else{cur=(cur-1+imgs.length)%imgs.length;}show();},{passive:true});
+  photos.forEach(function(p,i){p.onclick=function(){cur=i;show();lb.style.display='flex';document.body.style.overflow='hidden';};});
+})();
+(function(){
+  var btn=document.getElementById('about-video-btn');
+  var vlb=document.getElementById('about-vlb');
+  var player=document.getElementById('about-vlb-player');
+  var closeBtn=document.getElementById('about-vlb-close');
+  function openVlb(){vlb.style.display='flex';document.body.style.overflow='hidden';player.currentTime=0;player.play();}
+  function closeVlb(){vlb.style.display='none';document.body.style.overflow='';player.pause();player.currentTime=0;}
+  btn.addEventListener('click',openVlb);
+  closeBtn.addEventListener('click',closeVlb);
+  vlb.addEventListener('click',function(e){if(e.target===vlb)closeVlb();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&vlb.style.display==='flex')closeVlb();});
+})();
+</script>
+</body>
+</html>

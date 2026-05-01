@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Current and archived exhibitions at galerie POSTOJ in the Prague metro — Náměstí Republiky. Contemporary art accessible every day, for everyone.">
+<link rel="icon" type="image/png" href="../../images/favicon.png?v=7">
+<title>Exhibitions that move society | galerie POSTOJ</title>
+<link rel="stylesheet" href="../../style.css">
+<style>
+.exh-layout{display:grid;grid-template-columns:340px 1fr;align-items:start;margin-top:60px;}
+.exh-sidebar{position:sticky;top:60px;height:calc(100vh - 60px);border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;}
+.exh-sidebar::-webkit-scrollbar{display:none;}
+.exh-sidebar-hero{padding:2.5rem 2rem 3rem;}
+.exh-sidebar-label{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1rem;}
+.exh-sidebar-title{font-size:clamp(2.5rem,5vw,5rem);font-weight:900;line-height:1;letter-spacing:-0.04em;color:#fff;}
+.exh-index-row{display:flex;align-items:flex-start;gap:1rem;padding:0.9rem 2rem;text-decoration:none;cursor:none;color:inherit;transition:background 0.15s,padding-left 0.15s;}
+.exh-index-row:hover{background:rgba(255,255,255,0.03);padding-left:2.3rem;}
+.exh-index-row.ei-active{background:rgba(255,255,255,0.05);padding-left:2.3rem;}
+.exh-index-row.ei-active .ei-title{color:#fff;}
+.ei-year{font-size:0.65rem;letter-spacing:0.1em;color:rgba(255,255,255,0.2);flex-shrink:0;padding-top:0.2rem;width:2.5rem;}
+.ei-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#fff;animation:pulse 2s ease-in-out infinite;margin-right:0.4rem;vertical-align:middle;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.2;}}
+.ei-info{flex:1;min-width:0;}
+.ei-title{font-size:1rem;font-weight:700;color:rgba(255,255,255,0.5);transition:color 0.15s;line-height:1.2;margin-bottom:0.2rem;}
+.ei-artist{font-size:0.72rem;color:rgba(255,255,255,0.25);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.exh-content{min-width:0;padding-left:3rem;}
+.exh-current-section{padding:3rem 2.5rem 3rem 0;border-bottom:1px solid rgba(255,255,255,0.08);}
+.exh-cur-grid{display:grid;grid-template-columns:300px 1fr;gap:3rem;align-items:start;margin-bottom:2.5rem;}
+.exh-cur-poster img{width:100%;object-fit:contain;background:#0a0a0a;aspect-ratio:3/4;}
+.exh-live-tag{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:1.2rem;}
+.exh-live-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:#fff;animation:pulse 2s ease-in-out infinite;}
+.exh-cur-title{font-size:clamp(1.6rem,2.8vw,2.8rem);font-weight:900;line-height:0.92;letter-spacing:-0.03em;margin-bottom:0.7rem;}
+.exh-cur-artist{font-size:0.9rem;color:rgba(255,255,255,0.4);text-decoration:none;cursor:none;border-bottom:1px solid rgba(255,255,255,0.12);transition:color 0.2s;}
+.exh-cur-artist:hover{color:#fff;}
+.exh-cur-dates{font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin:0.5rem 0 1.5rem;}
+.exh-cur-excerpt{font-size:1rem;line-height:1.8;color:rgba(255,255,255,0.5);margin-bottom:0.8rem;}
+.exh-expand-btn{font-size:0.78rem;color:rgba(255,255,255,0.3);background:none;border:none;padding:0;cursor:none;font-family:inherit;margin-bottom:2rem;transition:color 0.2s;}
+.exh-expand-btn:hover{color:#fff;}
+.exh-expand-text{display:none;font-size:0.95rem;line-height:1.85;color:rgba(255,255,255,0.42);margin-bottom:1.5rem;}
+.exh-expand-text.open{display:block;}
+.exh-photos-outer{margin-top:2.5rem;}
+.exh-photos-scroll{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;}
+.exh-photo{aspect-ratio:4/3;overflow:hidden;cursor:none;position:relative;}
+.exh-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(10%);transition:transform 0.5s,filter 0.4s;}
+.exh-photo:hover img{transform:scale(1.04);filter:grayscale(0%);}
+.exh-archive-section{padding:2.5rem 2.5rem 2.5rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+.exh-archive-grid{display:grid;grid-template-columns:220px 1fr;gap:2.5rem;align-items:start;}
+.exh-archive-poster{aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;cursor:none;}
+.exh-archive-poster img{width:100%;height:100%;object-fit:contain;filter:grayscale(20%);transition:filter 0.4s;}
+.exh-archive-section:hover .exh-archive-poster img{filter:grayscale(0%);}
+.exh-cur-poster{cursor:none;}
+.exh-archive-dates{font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:0.4rem;}
+.exh-archive-title{font-size:clamp(1.2rem,1.8vw,1.7rem);font-weight:900;letter-spacing:-0.02em;margin-bottom:0.3rem;line-height:1.1;color:rgba(255,255,255,0.75);}
+.exh-archive-artist{font-size:0.82rem;color:rgba(255,255,255,0.28);}
+.exh-archive-artist a{color:rgba(255,255,255,0.28);text-decoration:none;cursor:none;border-bottom:1px solid rgba(255,255,255,0.1);transition:color 0.2s;}
+.exh-archive-artist a:hover{color:#fff;}
+.exh-archive-excerpt{font-size:0.95rem;line-height:1.75;color:rgba(255,255,255,0.33);margin:0.8rem 0;}
+.exh-archive-ph{flex:0 0 100px;height:66px;background:rgba(255,255,255,0.03);border:1px dashed rgba(255,255,255,0.07);display:inline-block;}
+.exh-more-btn{font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.25);background:none;border:none;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:1px;cursor:none;font-family:inherit;transition:color 0.2s;}
+.exh-more-btn:hover{color:#fff;}
+.exh-full-text{display:none;font-size:0.92rem;line-height:1.82;color:rgba(255,255,255,0.38);margin-top:0.8rem;max-width:500px;}
+.exh-full-text.open{display:block;}
+.exh-ctas{margin-top:1.5rem;}
+.exh-current-section,.exh-archive-section{scroll-margin-top:80px;}
+#glb{position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:10000;display:none;cursor:none;}
+#glb img{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);max-height:90vh;max-width:90vw;object-fit:contain;}
+#glb-prev,#glb-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid rgba(255,255,255,0.3);color:#fff;font-size:1.2rem;width:44px;height:44px;cursor:none;display:flex;align-items:center;justify-content:center;}
+#glb-prev{left:1.5rem;}#glb-next{right:1.5rem;}
+#glb-close{position:absolute;top:1.5rem;right:2rem;background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);font-family:inherit;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:none;}
+#glb-count{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);font-family:inherit;}
+@media(max-width:768px){
+  .exh-layout{grid-template-columns:1fr;margin-top:70px;}
+  .exh-sidebar{display:none;}
+  .exh-content{padding-left:0;}
+  .exh-current-section{padding:2rem 1.2rem 1.5rem;}
+  .exh-cur-grid{grid-template-columns:1fr;gap:1.5rem;}
+  .exh-cur-poster img{max-width:100%;margin:0 auto;}
+  .exh-photos-scroll{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:4px;scrollbar-width:none;}
+  .exh-photos-scroll::-webkit-scrollbar{display:none;}
+  .exh-photos-scroll .exh-photo{flex:0 0 80%;scroll-snap-align:start;}
+  .exh-photos-scroll .exh-photo:last-child{display:block;}
+  .exh-archive-section{padding:1.5rem 1.2rem;}
+  .exh-archive-grid{grid-template-columns:140px 1fr;gap:1.2rem;}
+  .exh-archive-excerpt{display:block;-webkit-line-clamp:unset;overflow:visible;}
+  .exh-more-btn{cursor:pointer;display:inline-flex;align-items:center;min-height:44px;padding-bottom:0;}
+  .exh-archive-artist a{cursor:pointer;}
+  .exh-photos-outer{margin-top:1.5rem;}
+}
+</style>
+</head>
+<body>
+<div id="cdot"></div><div id="cw"><img src="../../images/run.png" alt=""></div>
+<nav><a href="/en" class="nav-logo">galerie POSTOJ</a><button class="nav-burger" id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button><ul class="nav-links"><li><a href="/en/artists">Artists</a></li><li><a href="/en/exhibitions" class=active>Exhibitions</a></li><li style="display:none"><a href="/collectors">Shop</a></li><li><a href="/en/about">About</a></li><li><a href="/en/open-call">Open Call</a></li><li class="nav-lang"><a href="/exhibitions">CZ</a></li></ul></nav>
+
+<div class="exh-layout">
+  <aside class="exh-sidebar">
+    <div class="exh-sidebar-hero">
+      <div class="exh-sidebar-label">Exhibitions</div>
+      <div class="exh-sidebar-title">Exhibitions</div>
+    </div>
+    <a href="#exh-current" class="exh-index-row ei-active">
+      <span class="ei-year"><span class="ei-dot"></span></span>
+      <div class="ei-info"><div class="ei-title">Break The Pattern, Go To Therapy</div><div class="ei-artist">Martin Jáchym</div></div>
+    </a>
+    <a href="#exh-podestal" class="exh-index-row">
+  <span class="ei-year">2025</span>
+  <div class="ei-info"><div class="ei-title">Odložte si u pásu 26163</div><div class="ei-artist">Václav Podestát & Ondřej Syřiště</div></div>
+</a><a href="#exh-banytiuk" class="exh-index-row">
+  <span class="ei-year">2025</span>
+  <div class="ei-info"><div class="ei-title">Cesty do Neznáma</div><div class="ei-artist">Anna Banytiuk</div></div>
+</a><a href="#exh-petrasova" class="exh-index-row">
+  <span class="ei-year">2025</span>
+  <div class="ei-info"><div class="ei-title">Už ani muk</div><div class="ei-artist">Jitka Petrášová</div></div>
+</a><a href="#exh-pouchova" class="exh-index-row">
+  <span class="ei-year">2024</span>
+  <div class="ei-info"><div class="ei-title">Něžný Murčik</div><div class="ei-artist">Lucie Pouchová</div></div>
+</a><a href="#exh-jaksemas" class="exh-index-row">
+  <span class="ei-year">2023</span>
+  <div class="ei-info"><div class="ei-title">Jak se máš?</div><div class="ei-artist">Patrik Antczak & Eva Antczak Hudzieczek</div></div>
+</a><a href="#exh-menger" class="exh-index-row">
+  <span class="ei-year">2023</span>
+  <div class="ei-info"><div class="ei-title">Střípky z Blízkého východu</div><div class="ei-artist">Anina Menger</div></div>
+</a><a href="#exh-drevaky" class="exh-index-row">
+  <span class="ei-year">2023</span>
+  <div class="ei-info"><div class="ei-title">Dřeváky a Medový Klobouk</div><div class="ei-artist">Adéla Valchařová & Helena Ticháčková</div></div>
+</a>
+  </aside>
+  <div class="exh-content">
+    <div class="exh-current-section" id="exh-current">
+      <div class="exh-cur-grid">
+        <div class="exh-cur-poster rv"><img width="500" src="../../images/poster-martin.webp" alt="Break THE Pattern"></div>
+        <div class="rv" style="transition-delay:0.1s">
+          <div class="exh-live-tag">Current exhibition</div>
+          <div class="exh-cur-title">Break The Pattern,<br>Go To Therapy</div>
+          <a href="/en/artists#martin-jachym" class="exh-cur-artist">Martin Jáchym</a>
+          <div class="exh-cur-dates">7 January 2026 — ongoing</div>
+          <p class="exh-cur-excerpt">"You're strong! Be strong! Work harder! Push through! Don't cry!" Phrases many of us have heard. The pressure to perform and suppress emotions.</p>
+          <button class="exh-expand-btn">Full exhibition text →</button>
+          <div class="exh-expand-text">The exhibition opens up the topic of mental health. In an environment saturated with information and the pressure to succeed, admitting exhaustion or pain can be hard. It's not about comparing pain. It's about realising that talking about it is okay.</div>
+          <div class="exh-ctas"><a href="/en/artists#martin-jachym" class="btn">About Martin</a></div>
+        </div>
+      </div>
+      <div class="exh-photos-outer"><div class="exh-photos-scroll"><div class="exh-photo"><img loading="lazy" src="../../images/gallery1.jpg" alt="Installation photo 1"></div><div class="exh-photo"><img loading="lazy" src="../../images/gallery2.jpg" alt="Installation photo 2"></div><div class="exh-photo"><img loading="lazy" src="../../images/gallery3.jpg" alt="Installation photo 3"></div><div class="exh-photo"><img loading="lazy" src="../../images/gallery4.jpg" alt="Installation photo 4"></div><div class="exh-photo"><img loading="lazy" src="../../images/gallery5.jpg" alt="Installation photo 5"></div></div></div>
+    </div>
+
+<div class="exh-archive-section" id="exh-podestal">
+  <div class="exh-archive-grid">
+    <div class="exh-archive-poster"><img loading="lazy" src="../../images/poster-podestal.webp" alt="Odložte si u pásu 26163"></div>
+    <div>
+      <div class="exh-archive-dates">5. 11. 2025 – 7. 1. 2026</div>
+      <div class="exh-archive-title">Odložte si u pásu 26163</div>
+      <div class="exh-archive-artist"><a href="/en/artists#ondrej-podestat">Václav Podestát</a> & <a href="/en/artists#ondrej-syriste">Ondřej Syřiště</a></div>
+      <p class="exh-archive-excerpt">We're everywhere and nowhere at once — but we're always reading. Václav Podestát and Ondřej Syřiště looked at the ever-present flood of visual content shaping the contemporary urban landscape and the way we perceive it.</p>
+      <button class="exh-more-btn">More</button>
+      <div class="exh-full-text" style="max-width:none;">
+        <p>The installation created directly for the space of the former currency exchange in the metro vestibule tracked the constant stream of stimuli that, through offered content, distances us from directly experiencing public space. The artists examined the processes of advertising and information referencing — a world where attention is treated as a commodity in the hands of a relentless door-to-door salesman.</p>
+      </div>
+    </div>
+  </div>
+  <div class="exh-photos-outer" style="margin-top:1.5rem;"><div class="exh-photos-scroll">
+    <div class="exh-photo"><img loading="lazy" src="../../images/exhibitions/odlozte-si-u-pasu/foto1.webp" alt="Odložte si u pásu 26163 1"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/exhibitions/odlozte-si-u-pasu/foto2.webp" alt="Odložte si u pásu 26163 2"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/exhibitions/odlozte-si-u-pasu/foto3.webp" alt="Odložte si u pásu 26163 3"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/exhibitions/odlozte-si-u-pasu/foto4.webp" alt="Odložte si u pásu 26163 4"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/exhibitions/odlozte-si-u-pasu/foto5.webp" alt="Odložte si u pásu 26163 5"></div>
+  </div></div>
+</div>
+<div class="exh-archive-section" id="exh-banytiuk">
+  <div class="exh-archive-grid">
+    <div class="exh-archive-poster"><img loading="lazy" src="../../images/poster-banytiuk.webp" alt="Cesty do Neznáma"></div>
+    <div>
+      <div class="exh-archive-dates">1. 8. – 24. 10. 2025</div>
+      <div class="exh-archive-title">Cesty do Neznáma</div>
+      <div class="exh-archive-artist"><a href="/en/artists#anna-banytiuk">Anna Banytiuk</a></div>
+      <p class="exh-archive-excerpt">Artist Anna Banytiuk was forced to leave her native Kharkiv because of the war. Journeys into the Unknown was born from the need to process that experience — leaving her country, her home, and those closest to her.</p>
+      <button class="exh-more-btn">More</button>
+      <div class="exh-full-text" style="max-width:none;">
+        <p>The works don't focus on the escape itself, but on ordinary everyday situations and personal memories that she began to perceive differently after leaving Ukraine. The exhibition shows how ordinary moments gain new meaning when everything around you changes — and how personal memory, through the experience of forced departure, becomes a powerful artistic subject.</p>
+        <p>Glory to Ukraine!</p>
+      </div>
+    </div>
+  </div>
+  <div class="exh-photos-outer" style="margin-top:1.5rem;"><div class="exh-photos-scroll">
+    <div class="exh-photo"><img loading="lazy" src="../../images/exhibitions/cesty-do-neznama/foto1.webp" alt="Cesty do Neznáma 1"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/exhibitions/cesty-do-neznama/foto2.webp" alt="Cesty do Neznáma 2"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/exhibitions/cesty-do-neznama/foto3.webp" alt="Cesty do Neznáma 3"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/exhibitions/cesty-do-neznama/foto4.webp" alt="Cesty do Neznáma 4"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/exhibitions/cesty-do-neznama/foto5.webp" alt="Cesty do Neznáma 5"></div>
+  </div></div>
+</div>
+<div class="exh-archive-section" id="exh-petrasova">
+  <div class="exh-archive-grid">
+    <div class="exh-archive-poster"><img loading="lazy" src="../../images/poster-petrasova.webp" alt="Už ani muk"></div>
+    <div>
+      <div class="exh-archive-dates">11. 3. – 30. 6. 2025</div>
+      <div class="exh-archive-title">Už ani muk</div>
+      <div class="exh-archive-artist"><a href="/en/artists#jitka-petrasova">Jitka Petrášová</a></div>
+      <p class="exh-archive-excerpt">Jitka Petrášová's exhibition at galerie POSTOJ, titled Už ani muk (Not a Word), presented a previously unseen series of acrylic paintings on canvas, alongside experimental works on paper created using a demanding layered mixed technique inspired by her longstanding experience with textiles.</p>
+      <button class="exh-more-btn">More</button>
+      <div class="exh-full-text" style="max-width:none;">
+        <p>Thematically the exhibition was dedicated to portraiture, whether more realistic or stylised. The human face is ubiquitous in the metro, and the artist is unmistakably fascinated by observing it. How much does a face reveal about us? Is what we see merely a reflection of what we want to see?</p>
+        <p>And do we even want to see anything at all, let alone listen? The exhibition "Už ani muk" may simply be a reflection of today's divided society.</p>
+      </div>
+    </div>
+  </div>
+  <div class="exh-photos-outer" style="margin-top:1.5rem;"><div class="exh-photos-scroll">
+    <div class="exh-photo"><img loading="lazy" src="../../images/exhibitions/uz-ani-muk/foto1.webp" alt="Už ani muk 1"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/exhibitions/uz-ani-muk/foto3.webp" alt="Už ani muk 3"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/exhibitions/uz-ani-muk/foto2.webp" alt="Už ani muk 2"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/exhibitions/uz-ani-muk/foto4.webp" alt="Už ani muk 4"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/exhibitions/uz-ani-muk/foto5.webp" alt="Už ani muk 5"></div>
+  </div></div>
+</div>
+<div class="exh-archive-section" id="exh-pouchova">
+  <div class="exh-archive-grid">
+    <div class="exh-archive-poster"><img loading="lazy" src="../../images/poster-pouchova.webp" alt="Něžný Murčik"></div>
+    <div>
+      <div class="exh-archive-dates">27. 2. – 15. 5. 2024</div>
+      <div class="exh-archive-title">Něžný Murčik</div>
+      <div class="exh-archive-artist"><a href="/en/artists#lucie-pouchova">Lucie Pouchová</a></div>
+      <p class="exh-archive-excerpt">Lucie Pouchová's exhibition touched on one of the most intimate human themes — the bond between humans and animals, and the question of loneliness. The exhibition takes its name from a cat called Murčik, who became the starting point for the entire cycle of paintings.</p>
+      <button class="exh-more-btn">More</button>
+      <div class="exh-full-text" style="max-width:none;">
+        <p>Pouchová is not only an artist but also a social worker. It was her experiences from that work that led her to the subject of pets as the only fully meaningful relationship in some people's lives. The canvases therefore showed not just animals but also their owners — figures with conspicuously closed eyes, immersed in their inner worlds, giving the exhibition a personal and intimate dimension.</p>
+        <p>Alongside these portraits, Pouchová also explored the phenomenon of animal styling — the deliberate accentuation of human traits in dogs and cats, which makes their owners feel greater emotional closeness and more easily identify with them.</p>
+      </div>
+    </div>
+  </div>
+  <div class="exh-photos-outer" style="margin-top:1.5rem;"><div class="exh-photos-scroll">
+    <div class="exh-photo"><img loading="lazy" src="../../images/exhibitions/nezny-murcik/foto1.webp" alt="Něžný Murčik 1"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/exhibitions/nezny-murcik/foto3.webp" alt="Něžný Murčik 3"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/exhibitions/nezny-murcik/foto4.webp" alt="Něžný Murčik 4"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/exhibitions/nezny-murcik/foto2.webp" alt="Něžný Murčik 2"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/exhibitions/nezny-murcik/foto5.webp" alt="Něžný Murčik 5"></div>
+  </div></div>
+</div>
+<div class="exh-archive-section" id="exh-jaksemas">
+  <div class="exh-archive-grid">
+    <div class="exh-archive-poster"><img loading="lazy" src="../../images/poster-jaksemas.webp" alt="Jak se máš?"></div>
+    <div>
+      <div class="exh-archive-dates">21. 9. – 21. 11. 2023</div>
+      <div class="exh-archive-title">Jak se máš?</div>
+      <div class="exh-archive-artist"><a href="/en/artists#patrik-antczak">Patrik Antczak</a> & Eva Antczak Hudzieczek</div>
+      <p class="exh-archive-excerpt">Illustrator Patrik Antczak's exhibition transformed the metro vestibule at Náměstí Republiky into a place of unexpected encounter. In the middle of the morning rush, hundreds of bleary-eyed commuters, and the anonymous flow of people, Patrik posed a simple but urgent question: How are you?</p>
+      <button class="exh-more-btn">More</button>
+      <div class="exh-full-text" style="max-width:none;">
+        <p>A phrase we normally use as conversational filler, he seized deliberately and with full seriousness. He created a unique set of emoticons for visitors to help them express how they were feeling at that moment. Each person could receive a sticker matching the emotion that best described them right then. The results of this live poll were subsequently presented at the opening, revealing how commuters in that space and time were truly feeling.</p>
+        <p>The exhibition was part of the supporting programme of the tenth edition of the LUSTR illustration festival.</p>
+      </div>
+    </div>
+  </div>
+  <div class="exh-photos-outer" style="margin-top:1.5rem;"><div class="exh-photos-scroll">
+    <div class="exh-photo"><img loading="lazy" src="../../images/jaksemas-1.jpg" alt="Jak se máš? 1"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/jaksemas-2.jpg" alt="Jak se máš? 2"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/jaksemas-3.jpg" alt="Jak se máš? 3"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/jaksemas-4.jpg" alt="Jak se máš? 4"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/jaksemas-5.jpg" alt="Jak se máš? 5"></div>
+  </div></div>
+</div>
+<div class="exh-archive-section" id="exh-menger">
+  <div class="exh-archive-grid">
+    <div class="exh-archive-poster"><img loading="lazy" src="../../images/poster-menger.webp" alt="Střípky z Blízkého východu"></div>
+    <div>
+      <div class="exh-archive-dates">1. 6. – 30. 7. 2023</div>
+      <div class="exh-archive-title">Střípky z Blízkého východu</div>
+      <div class="exh-archive-artist"><a href="/en/artists#anina-menger">Anina Menger</a></div>
+      <p class="exh-archive-excerpt">Anina Menger's exhibition brought a piece of the Middle East directly to Prague. Works created from scraps of fabric found in the streets of Tel Aviv or pebbles from a local beach presented tangible fragments of Israeli landscape and culture.</p>
+      <button class="exh-more-btn">More</button>
+      <div class="exh-full-text" style="max-width:none;">
+        <p>Tel Aviv fascinated Anina with its contrasts — a modern city of glass and concrete intertwined with the winding lanes of the ancient port of Jaffa. The diversity of the local people, religions, and everyday bustle was reflected in her work, which encompasses painting, drawing, lithography, and sewing.</p>
+        <p>On show at galerie POSTOJ were large-format canvases created in the summer of 2024, a sewn image of a man in a garden, a plaster hanging sculpture bearing attributes of sunny Tel Aviv, and a representative of the Holidays That Didn't Happen series from 2020. A painting of the Hassan Bek Mosque recalled the transformations of the urban landscape, where modern development has gradually replaced the original Muslim quarter.</p>
+      </div>
+    </div>
+  </div>
+  <div class="exh-photos-outer" style="margin-top:1.5rem;"><div class="exh-photos-scroll">
+    <div class="exh-photo"><img loading="lazy" src="../../images/menger-1.jpg" alt="Střípky z Blízkého východu 1"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/menger-2.jpg" alt="Střípky z Blízkého východu 2"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/menger-3.jpg" alt="Střípky z Blízkého východu 3"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/menger-4.jpg" alt="Střípky z Blízkého východu 4"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/menger-5.jpg" alt="Střípky z Blízkého východu 5"></div>
+  </div></div>
+</div>
+<div class="exh-archive-section" id="exh-drevaky">
+  <div class="exh-archive-grid">
+    <div class="exh-archive-poster"><img loading="lazy" src="../../images/poster-drevaky.webp" alt="Dřeváky a Medový Klobouk"></div>
+    <div>
+      <div class="exh-archive-dates">27. 3. – 7. 5. 2023</div>
+      <div class="exh-archive-title">Dřeváky a Medový Klobouk</div>
+      <div class="exh-archive-artist"><a href="/en/artists#adela-valcharova">Adéla Valchařová</a> & <a href="/en/artists#helena-tichackova">Helena Ticháčková</a></div>
+      <p class="exh-archive-excerpt">Dřeváky a medový klobouk (Clogs and a Honey Hat) was the title of an exhibition joining two artists, Helena Ticháčková and Adéla Valchařová. Both addressed the experience of journeying in their work.</p>
+      <button class="exh-more-btn">More</button>
+      <div class="exh-full-text" style="max-width:none;">
+        <p>Their work reflected the experience of travel as something that shapes, exhausts, and inspires in equal measure — walking through pleasant places and through painful ones, searching for shelter and a roof over your head. The exhibition's title was a metaphor for the journey itself, which is physically demanding and sometimes painful, yet dreamy in thought and determined to reach its destination despite all hardships. Clogs — heavy, firmly rooted to the ground. A honey hat — light, dreamy, aimed somewhere up in the clouds. It was in this tension between weight and longing that the whole exhibition unfolded.</p>
+      </div>
+    </div>
+  </div>
+  <div class="exh-photos-outer" style="margin-top:1.5rem;"><div class="exh-photos-scroll">
+    <div class="exh-photo"><img loading="lazy" src="../../images/drevaky-1.jpg" alt="Dřeváky a Medový Klobouk 1"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/drevaky-2.jpg" alt="Dřeváky a Medový Klobouk 2"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/drevaky-3.jpg" alt="Dřeváky a Medový Klobouk 3"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/drevaky-4.jpg" alt="Dřeváky a Medový Klobouk 4"></div>
+    <div class="exh-photo"><img loading="lazy" src="../../images/drevaky-5.jpg" alt="Dřeváky a Medový Klobouk 5"></div>
+  </div></div>
+</div>
+  </div>
+</div>
+<div id="glb">
+  <button id="glb-prev">←</button>
+  <button id="glb-next">→</button>
+  <button id="glb-close">Close ×</button>
+  <img id="glb-img" src="" alt="">
+  <div id="glb-count"></div>
+</div>
+<site-footer><div class="footer-inner">
+  <span>galerie POSTOJ &copy; 2026</span>
+  <div class="footer-links">
+    <a href="/en/artists">Artists</a><a href="/en/exhibitions">Exhibitions</a>
+    <a href="/collectors" style="display:none">Shop</a><a href="/en/about">About</a>
+    <a href="/en/open-call">Open Call</a>
+  </div>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/galeriepostoj/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.facebook.com/galeriepostoj/" target="_blank" rel="noopener">Facebook</a>
+  </div>
+  <div class="footer-links">
+    <a href="https://drive.google.com/drive/u/0/folders/16z95_Pth5_9bxexHs3gC4aYe29cUpJyW" target="_blank" rel="noopener">Press</a>
+    <a href="https://drive.google.com/drive/u/0/folders/1YSo5KLgm94XyLjvp3zUPdmmqJCPQt8IG" target="_blank" rel="noopener">VOP &amp; GDPR</a>
+  </div>
+</div></site-footer>
+<script src="../../cursor.js"></script>
+<script src="../../cookies.en.js"></script>
+<script>
+(function(){
+  var rows=document.querySelectorAll('.exh-index-row[href^="#"]');
+  function setActive(id){rows.forEach(function(r){r.classList.toggle('ei-active',r.getAttribute('href')==='#'+id);});}
+  rows.forEach(function(row){
+    row.addEventListener('click',function(e){
+      e.preventDefault();var id=row.getAttribute('href').slice(1);
+      var t=document.getElementById(id);if(!t)return;
+      setActive(id);window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-70,behavior:'smooth'});
+    });
+  });
+  var sections=document.querySelectorAll('[id^="exh-"]');
+  var scrollTicking=false;
+  window.addEventListener('scroll',function(){
+    if(scrollTicking)return;
+    scrollTicking=true;
+    requestAnimationFrame(function(){
+      var active=null;
+      if(window.innerHeight+window.scrollY>=document.body.offsetHeight-50){
+        active=sections[sections.length-1].id;
+      } else {
+        sections.forEach(function(s){if(s.getBoundingClientRect().top<=100)active=s.id;});
+      }
+      if(active)setActive(active);
+      scrollTicking=false;
+    });
+  },{passive:true});
+})();
+document.querySelectorAll('.exh-expand-btn,.exh-more-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var t=btn.nextElementSibling,o=t.classList.toggle('open');
+    btn.textContent=o?'Less ↑':'More';
+  });
+});
+(function(){
+  var lb=document.getElementById('glb'),lbi=document.getElementById('glb-img'),lbc=document.getElementById('glb-count');
+  var glbPrev=document.getElementById('glb-prev'),glbNext=document.getElementById('glb-next');
+  var imgs=[],cur=0;
+  function setNav(show){glbPrev.style.display=show?'flex':'none';glbNext.style.display=show?'flex':'none';lbc.style.display=show?'':'none';}
+  function show(){lbi.src=imgs[cur];lbc.textContent=(cur+1)+' / '+imgs.length;}
+  function close(){lb.style.display='none';document.body.style.overflow='';}
+  glbPrev.onclick=function(e){e.stopPropagation();cur=(cur-1+imgs.length)%imgs.length;show();};
+  glbNext.onclick=function(e){e.stopPropagation();cur=(cur+1)%imgs.length;show();};
+  document.getElementById('glb-close').onclick=function(e){e.stopPropagation();close();};
+  lb.onclick=function(e){if(e.target===lb)close();};
+  document.addEventListener('keydown',function(e){if(lb.style.display!=='flex')return;if(e.key==='ArrowLeft'){cur=(cur-1+imgs.length)%imgs.length;show();}else if(e.key==='ArrowRight'){cur=(cur+1)%imgs.length;show();}else if(e.key==='Escape')close();});
+  var txStart=0;
+  lb.addEventListener('touchstart',function(e){txStart=e.touches[0].clientX;},{passive:true});
+  lb.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-txStart;if(Math.abs(dx)<40)return;if(dx<0){cur=(cur+1)%imgs.length;}else{cur=(cur-1+imgs.length)%imgs.length;}show();},{passive:true});
+  document.querySelectorAll('.exh-photo').forEach(function(t){
+    t.onclick=function(){
+      var strip=t.closest('.exh-photos-scroll');
+      var stripPhotos=Array.from(strip.querySelectorAll('.exh-photo'));
+      imgs=stripPhotos.map(function(x){return x.querySelector('img').src;});
+      cur=stripPhotos.indexOf(t);
+      setNav(true);show();lb.style.display='flex';document.body.style.overflow='hidden';
+    };
+  });
+  document.querySelectorAll('.exh-archive-poster, .exh-cur-poster').forEach(function(p){
+    p.onclick=function(){
+      var img=p.querySelector('img');if(!img)return;
+      var section=p.closest('.exh-archive-section,.exh-current-section');
+      var strip=section?section.querySelector('.exh-photos-scroll'):null;
+      if(strip){
+        var stripPhotos=Array.from(strip.querySelectorAll('.exh-photo img'));
+        imgs=[img.src].concat(stripPhotos.map(function(x){return x.src;}));
+        cur=0;setNav(true);
+      } else {
+        imgs=[img.src];cur=0;setNav(false);
+      }
+      show();lb.style.display='flex';document.body.style.overflow='hidden';
+    };
+  });
+})();
+</script>
+</body>
+</html>
