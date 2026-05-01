@@ -1,4 +1,5 @@
-*,*:hover,*:active,*:focus{margin:0;padding:0;box-sizing:border-box;cursor:none!important;}
+*{margin:0;padding:0;box-sizing:border-box;cursor:none!important;}
+*:hover,*:active,*:focus{cursor:none!important;}
 body{user-select:none;-webkit-user-select:none;}
 html{background:#0a0a0a;}
 body{background:#0a0a0a;color:#fff;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.5;overflow-x:hidden;}
