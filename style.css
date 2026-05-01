@@ -1,7 +1,8 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 html{cursor:none;}
 body{background:#0a0a0a;color:#fff;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.5;overflow-x:hidden;}
-a{color:inherit;cursor:none;}
+a,button,input,textarea,select,label{cursor:none;}
+a{color:inherit;}
 img{display:block;}
 #cdot{position:fixed;width:5px;height:5px;background:#fff;border-radius:50%;pointer-events:none;z-index:50001;transform:translate(-50%,-50%);}
 #cw{position:fixed;pointer-events:none;z-index:50000;transform:translate(-50%,-90%);}
