@@ -60,9 +60,24 @@
 .whw-oc-heading{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1;letter-spacing:-0.04em;color:#fff;}
 .whw-map-col{overflow:hidden;display:flex;flex-direction:column;}
 .whw-map-col iframe{flex-shrink:0;}
-.whw-address{padding:1.2rem 2.5rem;}
-.whw-address-name{font-size:0.9rem;font-weight:700;color:#fff;margin-bottom:0.3rem;}
-.whw-address-line{font-size:0.82rem;color:rgba(255,255,255,0.4);line-height:1.6;}
+.info-bar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #1a1a1a;background:#0a0a0a;}
+.info-col{padding:1.5rem 2rem;border-right:1px solid #1a1a1a;}
+.info-col:last-child{border-right:none;}
+.info-col-label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#555;margin-bottom:1rem;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;}
+.info-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.5rem;}
+.info-sub{font-size:0.72rem;color:#555;margin-bottom:0.2rem;}
+.info-val{font-size:0.85rem;color:#fff;font-weight:700;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;}
+.info-val-light{font-size:0.85rem;color:#888;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;}
+.info-divider{border:none;border-top:1px solid #1a1a1a;margin:0.8rem 0;}
+.info-map-link{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:#555;text-decoration:none;cursor:none;display:inline-block;margin-top:0.8rem;border-bottom:1px solid #333;padding-bottom:2px;transition:color 0.2s;}
+.info-map-link:hover{color:#fff;}
+@media(max-width:768px){
+  .info-bar{grid-template-columns:1fr 1fr;}
+  .info-col{border-right:none;border-bottom:1px solid #1a1a1a;padding:1.2rem 1.2rem;}
+  .info-col:nth-child(odd){border-right:1px solid #1a1a1a;}
+  .info-col:last-child{border-bottom:none;}
+  .info-col:nth-last-child(2):nth-child(odd){border-bottom:none;}
+}
 .about-history{padding:3rem 0 2rem;}
 .hist-strip{display:grid;grid-template-columns:repeat(9,1fr);gap:2px;margin-bottom:2rem;}
 .hist-ph{aspect-ratio:3/4;background:rgba(255,255,255,0.03);border:1px dashed rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;}
@@ -100,7 +115,6 @@
   .whw-oc-inner{flex-direction:row;gap:1.5rem;align-items:center;}
   .whw-oc-stick{width:80px;flex-shrink:0;}
   .whw-map-col iframe{width:100%;}
-  .whw-address{padding:1rem 1.2rem;}
   .ts-stick{width:105px!important;max-width:105px!important;transform:translateX(-5mm);}
   .about-history{padding:2rem 0 1rem;}
 }
@@ -193,12 +207,34 @@
     </div>
     <div class="whw-map-col">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1279.8!2d14.4283717!3d50.0881033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b95e62b76736d%3A0x824280b98bcd22c0!2sGalerie+Postoj!5e0!3m2!1scs!2scz!4v1711900000" width="100%" height="280" style="border:0;display:block;filter:grayscale(30%) brightness(0.85) contrast(1.1);" allowfullscreen loading="lazy"></iframe>
-      <div class="whw-address">
-        <div class="whw-address-name">galerie POSTOJ</div>
-        <div class="whw-address-line">Vestibule metra B — Náměstí Republiky</div>
-        <div class="whw-address-line">Praha 1, 110 00</div>
-        <a href="https://maps.app.goo.gl/9uux1FFqeDotEiwm9" target="_blank" class="whw-cta" style="display:inline-block;margin-top:0.8rem;">Zobrazit na mapě →</a>
-      </div>
+    </div>
+  </div>
+  <div class="info-bar rv">
+    <div class="info-col">
+      <div class="info-col-label">Adresa</div>
+      <div class="info-val" style="margin-bottom:0.4rem;">galerie POSTOJ</div>
+      <div class="info-val-light" style="line-height:1.6;">Vestibule metra B / Náměstí Republiky / Praha 1, 110 00</div>
+      <a href="https://maps.app.goo.gl/9uux1FFqeDotEiwm9" target="_blank" rel="noopener" class="info-map-link">Zobrazit na mapě →</a>
+    </div>
+    <div class="info-col">
+      <div class="info-col-label">Otevírací doba</div>
+      <div class="info-row"><span class="info-val-light">Po — Ne</span><span class="info-val">24 / 7</span></div>
+      <hr class="info-divider">
+      <div class="info-row"><span class="info-val-light" style="color:#555;">Vstup</span><span class="info-val">Zdarma</span></div>
+    </div>
+    <div class="info-col">
+      <div class="info-col-label">Kontakt</div>
+      <div class="info-sub">E-mail</div>
+      <div class="info-val" style="margin-bottom:0.8rem;font-weight:400;"><a href="mailto:info@galeriepostoj.cz" style="color:#fff;text-decoration:none;cursor:none;">info@galeriepostoj.cz</a></div>
+      <div class="info-sub">Press &amp; spolupráce</div>
+      <div class="info-val" style="font-weight:400;"><a href="mailto:info@galeriepostoj.cz" style="color:#fff;text-decoration:none;cursor:none;">info@galeriepostoj.cz</a></div>
+    </div>
+    <div class="info-col">
+      <div class="info-col-label">Sleduj nás</div>
+      <div class="info-sub">Instagram</div>
+      <div class="info-val" style="margin-bottom:0.8rem;font-weight:400;"><a href="https://www.instagram.com/galeriepostoj/" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;cursor:none;">@galeriepostoj</a></div>
+      <div class="info-sub">Facebook</div>
+      <div class="info-val" style="font-weight:400;"><a href="https://www.facebook.com/galeriepostoj/" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;cursor:none;">galerie POSTOJ</a></div>
     </div>
   </div>
   <div class="whw-row rv" style="border-top:1px solid rgba(255,255,255,0.08);">
