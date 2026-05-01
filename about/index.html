@@ -61,10 +61,11 @@
 .whw-map-col{overflow:hidden;display:flex;flex-direction:column;}
 .whw-map-col iframe{flex-shrink:0;}
 .info-bar{display:grid;grid-template-columns:repeat(4,1fr);background:#0a0a0a;}
-.info-col{padding:1.5rem 2rem;}
-.info-col-label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#fff;margin-bottom:1rem;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;}
+.info-col{padding:1.5rem 2rem;border-right:1px solid #1a1a1a;}
+.info-col:last-child{border-right:none;}
+.info-col-label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1rem;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;}
 .info-row{margin-bottom:0.8rem;}
-.info-sub{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.2rem;}
+.info-sub{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:#fff;margin-bottom:0.2rem;}
 .info-val{font-size:0.88rem;color:rgba(255,255,255,0.45);font-weight:400;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;margin-bottom:0.8rem;}
 .info-divider{display:none;}
 .info-map-link{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;cursor:none;display:inline-block;margin-top:0.8rem;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s;}
@@ -209,14 +210,8 @@
   <div class="info-bar rv">
     <div class="info-col">
       <div class="info-col-label">Adresa</div>
-      <div class="info-row">
-        <div class="info-sub">Název</div>
-        <div class="info-val">galerie POSTOJ</div>
-      </div>
-      <div class="info-row">
-        <div class="info-sub">Místo</div>
-        <div class="info-val">Vestibule metra B / Náměstí Republiky / Praha 1, 110 00</div>
-      </div>
+      <div class="info-val" style="margin-bottom:0.3rem;">galerie POSTOJ</div>
+      <div class="info-val">Vestibule metra B / Náměstí Republiky / Praha 1, 110 00</div>
       <a href="https://maps.app.goo.gl/9uux1FFqeDotEiwm9" target="_blank" rel="noopener" class="info-map-link">Zobrazit na mapě →</a>
     </div>
     <div class="info-col">
