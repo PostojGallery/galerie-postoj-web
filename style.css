@@ -40,6 +40,7 @@ site-footer{display:block;border-top:1px solid rgba(255,255,255,0.08);}
   .nav-links li{flex-shrink:unset;}
   .nav-links a{font-size:1.4rem;font-weight:700;letter-spacing:0.04em;padding-right:0;color:rgba(255,255,255,0.55);}
   .nav-links a:hover,.nav-links a.active{color:#fff;}
+  .nav-lang a{font-size:0.7rem;font-weight:400;letter-spacing:0.16em;padding:0.3rem 0.6rem;line-height:1;display:inline-flex;align-items:center;}
   nav.mob-open .nav-burger span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
   nav.mob-open .nav-burger span:nth-child(2){opacity:0;}
   nav.mob-open .nav-burger span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
