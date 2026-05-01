@@ -1,10 +1,14 @@
 var isMobile=window.matchMedia('(max-width:768px)').matches||('ontouchstart' in window);
 var cdot=document.getElementById('cdot');
 if(!isMobile){
-  document.addEventListener('mousedown',function(){
+  document.addEventListener('mousedown',function(e){
+    var el=e.target;
+    while(el&&el!==document.documentElement){el.style.setProperty('cursor','none','important');el=el.parentElement;}
     document.documentElement.style.setProperty('cursor','none','important');
   },true);
-  document.addEventListener('mouseup',function(){
+  document.addEventListener('mouseup',function(e){
+    var el=e.target;
+    while(el&&el!==document.documentElement){el.style.removeProperty('cursor');el=el.parentElement;}
     document.documentElement.style.removeProperty('cursor');
   },true);
   var _cw=document.getElementById('cw'),_cimg=_cw.querySelector('img');
