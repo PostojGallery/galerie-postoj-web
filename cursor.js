@@ -69,7 +69,7 @@ document.addEventListener('click',function(e){
   document.documentElement.style.setProperty('cursor','none','important');
   try{sessionStorage.setItem('cmx',mx);sessionStorage.setItem('cmy',my);}catch(e){}
   var pg=document.getElementById('pg');
-  if(pg){pg.style.cssText='position:fixed;inset:0;background:#0a0a0a;z-index:10000;pointer-events:none;opacity:1;animation:none;';}
+  if(pg){pg.style.cssText='position:fixed;inset:0;background:#0a0a0a;z-index:10000;opacity:1;animation:none;cursor:none;';}
   window.location.href=href;
 },false);
 (function(){var pg=document.getElementById('pg');if(pg&&isMobile){pg.addEventListener('animationend',function(){pg.style.display='none';});}})();
