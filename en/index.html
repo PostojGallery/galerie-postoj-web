@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Galerie POSTOJ – současné umění pro každého v pražském metru na Náměstí Republiky. Výstavy mladých českých umělců. Vstup zdarma.">
-<link rel="icon" type="image/png" href="images/favicon.png?v=7">
-<title>Umění pro lidi, ne pro elitu | galerie POSTOJ</title>
-<link rel="stylesheet" href="style.css">
+<meta name="description" content="galerie POSTOJ – contemporary art for everyone in the Prague metro at Náměstí Republiky. Exhibitions by young Czech artists. Free entry.">
+<link rel="icon" type="image/png" href="../images/favicon.png?v=7">
+<title>Art for people, not elites. | galerie POSTOJ</title>
+<link rel="stylesheet" href="../style.css">
 <style>
 #hero{position:relative;height:100vh;height:100svh;height:calc(var(--ivh,1vh)*100);overflow:hidden;display:flex;align-items:center;justify-content:center;}
-#hero-bg{position:absolute;inset:0;background:#0a0a0a url('images/hero-bg.jpg') center/cover no-repeat;}
+#hero-bg{position:absolute;inset:0;background:#0a0a0a url('../images/hero-bg.jpg') center/cover no-repeat;}
 #hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.45);}
 #hero-bottom-fade{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to bottom,transparent,#0a0a0a);z-index:1;}
 #hero-poster-wrap{position:relative;z-index:2;will-change:transform;}
@@ -82,63 +82,63 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 </head>
 <body>
 <script>document.documentElement.style.setProperty('--ivh',window.innerHeight*0.01+'px');</script>
-<div id="cdot"></div><div id="cw"><img src="images/run.png" alt=""></div>
-<nav><a href="/" class="nav-logo">galerie POSTOJ</a><button class="nav-burger" id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button><ul class="nav-links"><li><a href="/artists" >Umělci</a></li><li><a href="/exhibitions" >Výstavy</a></li><li style="display:none"><a href="/collectors">Shop</a></li><li><a href="/about" >O nás</a></li><li><a href="/open-call" >Open Call</a></li><li class="nav-lang"><a href="/en">EN</a></li></ul></nav>
+<div id="cdot"></div><div id="cw"><img src="../images/run.png" alt=""></div>
+<nav><a href="/en" class="nav-logo">galerie POSTOJ</a><button class="nav-burger" id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button><ul class="nav-links"><li><a href="/en/artists">Artists</a></li><li><a href="/en/exhibitions">Exhibitions</a></li><li style="display:none"><a href="/collectors">Shop</a></li><li><a href="/en/about">About</a></li><li><a href="/en/open-call">Open Call</a></li><li class="nav-lang"><a href="/">CZ</a></li></ul></nav>
 
 <section id="hero">
   <div id="hero-bg"></div>
   <div id="hero-overlay"></div>
   <div id="hero-bottom-fade"></div>
   <div id="hero-poster-wrap">
-    <a href="/exhibitions" id="hero-poster-link">
-      <img width="500" src="images/poster-martin.webp" alt="Break The Pattern, Go To Therapy">
-      <div id="hero-poster-label">O výstavě →</div>
+    <a href="/en/exhibitions" id="hero-poster-link">
+      <img width="500" src="../images/poster-martin.webp" alt="Break The Pattern, Go To Therapy">
+      <div id="hero-poster-label">About the exhibition →</div>
     </a>
   </div>
 </section>
 <section class="current-exh">
   <div class="current-exh-info rv">
-    <div class="current-exh-label">Aktuální výstava</div>
+    <div class="current-exh-label">Current exhibition</div>
     <div class="current-exh-artist">Martin<br>Jáchym</div>
-    <a href="/exhibitions#exh-current" class="current-exh-title">Break The Pattern, Go To Therapy</a>
-    <div class="current-exh-date">7. ledna 2026</div>
-    <p class="current-exh-desc">Autorská instalace otevírá téma psychického zdraví a zakořeněných vzorce chování. V prostředí zahlceném tlakem na výkon může být obtížné přiznat si únavu nebo bolest.</p>
-    <a href="/exhibitions" class="btn">Chci vědět víc</a>
+    <a href="/en/exhibitions#exh-current" class="current-exh-title">Break The Pattern, Go To Therapy</a>
+    <div class="current-exh-date">7 January 2026</div>
+    <p class="current-exh-desc">An installation that opens up the topic of mental health and ingrained behaviour patterns. In an environment overwhelmed by pressure to perform, admitting exhaustion or pain can be hard.</p>
+    <a href="/en/exhibitions" class="btn">I want to know more</a>
   </div>
   <div class="current-exh-video rv">
     <video autoplay muted loop playsinline preload="none" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;">
-      <source src="images/c997f623-4625-49c3-af9b-bb6025155789.mp4" type="video/mp4">
+      <source src="../images/c997f623-4625-49c3-af9b-bb6025155789.mp4" type="video/mp4">
     </video>
     <div class="video-play-overlay" id="video-play-trigger">
       <div class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
-      <span class="video-play-text">Přehrát video</span>
+      <span class="video-play-text">Play video</span>
     </div>
   </div>
 </section>
 <div class="photo-strip">
-  <div class="photo-strip-item"><img loading="lazy" src="images/gallery1.jpg" alt=""></div>
-  <div class="photo-strip-item"><img loading="lazy" src="images/gallery2.jpg" alt=""></div>
-  <div class="photo-strip-item"><img loading="lazy" src="images/gallery3.jpg" alt=""></div>
-  <div class="photo-strip-item"><img loading="lazy" src="images/gallery4.jpg" alt=""></div>
-  <div class="photo-strip-item"><img loading="lazy" src="images/gallery5.jpg" alt=""></div>
+  <div class="photo-strip-item"><img loading="lazy" src="../images/gallery1.jpg" alt=""></div>
+  <div class="photo-strip-item"><img loading="lazy" src="../images/gallery2.jpg" alt=""></div>
+  <div class="photo-strip-item"><img loading="lazy" src="../images/gallery3.jpg" alt=""></div>
+  <div class="photo-strip-item"><img loading="lazy" src="../images/gallery4.jpg" alt=""></div>
+  <div class="photo-strip-item"><img loading="lazy" src="../images/gallery5.jpg" alt=""></div>
 </div>
 <section id="opencall-strip">
   <div class="oc-grid">
-    <div class="oc-stick-col"><img width="200" loading="lazy" class="oc-stick" src="images/pointing.webp" alt=""></div>
+    <div class="oc-stick-col"><img width="200" loading="lazy" class="oc-stick" src="../images/pointing.webp" alt=""></div>
     <div class="oc-main">
       <div class="oc-eyebrow">Open Call</div>
-      <div class="oc-title">Pošli svoji práci.</div>
-      <p class="oc-desc">Hledáme to, co provokuje. Ne dekoraci.</p>
+      <div class="oc-title">Send us your work.</div>
+      <p class="oc-desc">We're looking for what provokes. Not decoration.</p>
     </div>
-    <div class="oc-action"><a href="/open-call" class="btn">Jdu do toho</a></div>
+    <div class="oc-action"><a href="/en/open-call" class="btn">I'm in</a></div>
   </div>
 </section>
 <site-footer><div class="footer-inner">
   <span>galerie POSTOJ &copy; 2026</span>
   <div class="footer-links">
-    <a href="/artists">Umělci</a><a href="/exhibitions">Výstavy</a>
-    <a href="/collectors" style="display:none">Shop</a><a href="/about">O nás</a>
-    <a href="/open-call">Open Call</a>
+    <a href="/en/artists">Artists</a><a href="/en/exhibitions">Exhibitions</a>
+    <a href="/collectors" style="display:none">Shop</a><a href="/en/about">About</a>
+    <a href="/en/open-call">Open Call</a>
   </div>
   <div class="footer-links">
     <a href="https://www.instagram.com/galeriepostoj/" target="_blank" rel="noopener">Instagram</a>
@@ -152,7 +152,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 <div id="video-lb">
   <button id="video-lb-close">&#215;</button>
   <video id="video-lb-player" controls preload="none">
-    <source src="images/c997f623-4625-49c3-af9b-bb6025155789.mp4" type="video/mp4">
+    <source src="../images/c997f623-4625-49c3-af9b-bb6025155789.mp4" type="video/mp4">
   </video>
 </div>
 <div id="lightbox">
@@ -162,14 +162,13 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   <button id="lightbox-next">&#8594;</button>
   <div id="lightbox-counter"></div>
 </div>
-<script src="cursor.js"></script>
-<script src="cookies.js"></script>
+<script src="../cursor.js"></script>
+<script src="../cookies.en.js"></script>
 <script>
 (function(){
   var wrap=document.getElementById('hero-poster-wrap');
   var link=document.getElementById('hero-poster-link');
   if(!wrap)return;
-  // parallax — poster slides up on scroll (desktop only)
   var isMob=window.matchMedia('(max-width:768px)').matches||('ontouchstart' in window);
   if(!isMob){
     var ticking=false;
@@ -183,7 +182,6 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
       }
     },{passive:true});
   }
-  // lightbox
   (function(){
     var items=Array.from(document.querySelectorAll('.photo-strip-item img'));
     var lb=document.getElementById('lightbox');
@@ -200,11 +198,9 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
     lb.addEventListener('click',function(e){if(e.target===lb)close();});
     document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='ArrowLeft')show((cur-1+items.length)%items.length);else if(e.key==='ArrowRight')show((cur+1)%items.length);else if(e.key==='Escape')close();});
   })();
-  // hover — scale up poster to hint it's clickable
   link.addEventListener('mouseenter',function(){link.querySelector('img').style.transform='scale(1.05)';});
   link.addEventListener('mouseleave',function(){link.querySelector('img').style.transform='';});
 
-  // video lightbox
   (function(){
     var trigger=document.getElementById('video-play-trigger');
     var vlb=document.getElementById('video-lb');
