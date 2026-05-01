@@ -60,5 +60,17 @@ window.addEventListener('scroll',function(){document.querySelector('nav').classL
     a.addEventListener('click',closeMenu);
   });
 })();
+document.addEventListener('click',function(e){
+  if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+  var a=e.target.closest('a[href]');
+  if(!a)return;
+  var href=a.getAttribute('href');
+  if(!href||href.charAt(0)==='#'||href.startsWith('mailto:')||href.startsWith('tel:')||href.startsWith('http')||a.target==='_blank')return;
+  e.preventDefault();
+  document.documentElement.style.setProperty('cursor','none','important');
+  document.body.style.transition='opacity 0.12s ease';
+  document.body.style.opacity='0';
+  setTimeout(function(){window.location.href=href;},120);
+},false);
 var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0.06});
 document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
