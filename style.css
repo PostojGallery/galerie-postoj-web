@@ -1,8 +1,9 @@
 *{margin:0;padding:0;box-sizing:border-box;cursor:none!important;user-select:none;-webkit-user-select:none;}
 html,body,a,button,input,textarea,select,label,*:hover,*:active,*:focus,*:visited{cursor:none!important;}
 html{background:#0a0a0a;}
-body{background:#0a0a0a;color:#fff;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.5;overflow-x:hidden;animation:pagein 0.25s ease both;}
-@keyframes pagein{from{opacity:0}to{opacity:1}}
+body{background:#0a0a0a;color:#fff;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.5;overflow-x:hidden;}
+#pg{position:fixed;inset:0;background:#0a0a0a;z-index:10000;pointer-events:none;animation:pg-out 0.3s ease 0.05s both;}
+@keyframes pg-out{from{opacity:1}to{opacity:0;}}
 a{color:inherit;}
 input,textarea{user-select:text;-webkit-user-select:text;}
 img{display:block;}
