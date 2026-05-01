@@ -60,23 +60,20 @@
 .whw-oc-heading{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1;letter-spacing:-0.04em;color:#fff;}
 .whw-map-col{overflow:hidden;display:flex;flex-direction:column;}
 .whw-map-col iframe{flex-shrink:0;}
-.info-bar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #1a1a1a;background:#0a0a0a;}
-.info-col{padding:1.5rem 2rem;border-right:1px solid #1a1a1a;}
-.info-col:last-child{border-right:none;}
+.info-bar{display:grid;grid-template-columns:repeat(4,1fr);background:#0a0a0a;}
+.info-col{padding:1.5rem 2rem;}
 .info-col-label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#555;margin-bottom:1rem;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;}
-.info-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.5rem;}
-.info-sub{font-size:0.72rem;color:#555;margin-bottom:0.2rem;}
-.info-val{font-size:0.85rem;color:#fff;font-weight:700;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;}
-.info-val-light{font-size:0.85rem;color:#888;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;}
-.info-divider{border:none;border-top:1px solid #1a1a1a;margin:0.8rem 0;}
+.info-row{margin-bottom:0.8rem;}
+.info-sub{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:#555;margin-bottom:0.2rem;}
+.info-val{font-size:0.88rem;color:#fff;font-weight:400;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;margin-bottom:0.8rem;}
+.info-divider{display:none;}
 .info-map-link{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:#555;text-decoration:none;cursor:none;display:inline-block;margin-top:0.8rem;border-bottom:1px solid #333;padding-bottom:2px;transition:color 0.2s;}
 .info-map-link:hover{color:#fff;}
+.info-val a{color:rgba(255,255,255,0.45)!important;transition:color 0.2s;}
+.info-val a:hover{color:#fff!important;}
 @media(max-width:768px){
   .info-bar{grid-template-columns:1fr 1fr;}
-  .info-col{border-right:none;border-bottom:1px solid #1a1a1a;padding:1.2rem 1.2rem;}
-  .info-col:nth-child(odd){border-right:1px solid #1a1a1a;}
-  .info-col:last-child{border-bottom:none;}
-  .info-col:nth-last-child(2):nth-child(odd){border-bottom:none;}
+  .info-col{padding:1.2rem 1.2rem;}
 }
 .about-history{padding:3rem 0 2rem;}
 .hist-strip{display:grid;grid-template-columns:repeat(9,1fr);gap:2px;margin-bottom:2rem;}
@@ -212,29 +209,44 @@
   <div class="info-bar rv">
     <div class="info-col">
       <div class="info-col-label">Adresa</div>
-      <div class="info-val" style="margin-bottom:0.4rem;">galerie POSTOJ</div>
-      <div class="info-val-light" style="line-height:1.6;">Vestibule metra B / Náměstí Republiky / Praha 1, 110 00</div>
+      <div class="info-row">
+        <div class="info-sub">Název</div>
+        <div class="info-val">galerie POSTOJ</div>
+      </div>
+      <div class="info-row">
+        <div class="info-sub">Místo</div>
+        <div class="info-val">Vestibule metra B / Náměstí Republiky / Praha 1, 110 00</div>
+      </div>
       <a href="https://maps.app.goo.gl/9uux1FFqeDotEiwm9" target="_blank" rel="noopener" class="info-map-link">Zobrazit na mapě →</a>
     </div>
     <div class="info-col">
       <div class="info-col-label">Otevírací doba</div>
-      <div class="info-row"><span class="info-val-light">Po — Ne</span><span class="info-val">24 / 7</span></div>
-      <hr class="info-divider">
-      <div class="info-row"><span class="info-val-light" style="color:#555;">Vstup</span><span class="info-val">Zdarma</span></div>
+      <div class="info-row">
+        <div class="info-sub">Po — Ne</div>
+        <div class="info-val">24 / 7</div>
+      </div>
+      <div class="info-row">
+        <div class="info-sub">Vstup</div>
+        <div class="info-val">Zdarma</div>
+      </div>
     </div>
     <div class="info-col">
       <div class="info-col-label">Kontakt</div>
-      <div class="info-sub">E-mail</div>
-      <div class="info-val" style="margin-bottom:0.8rem;font-weight:400;"><a href="mailto:info@galeriepostoj.cz" style="color:#fff;text-decoration:none;cursor:none;">info@galeriepostoj.cz</a></div>
-      <div class="info-sub">Press &amp; spolupráce</div>
-      <div class="info-val" style="font-weight:400;"><a href="mailto:info@galeriepostoj.cz" style="color:#fff;text-decoration:none;cursor:none;">info@galeriepostoj.cz</a></div>
+      <div class="info-row">
+        <div class="info-sub">E-mail</div>
+        <div class="info-val"><a href="mailto:info@galeriepostoj.cz" style="color:#fff;text-decoration:none;cursor:none;">info@galeriepostoj.cz</a></div>
+      </div>
     </div>
     <div class="info-col">
       <div class="info-col-label">Sleduj nás</div>
-      <div class="info-sub">Instagram</div>
-      <div class="info-val" style="margin-bottom:0.8rem;font-weight:400;"><a href="https://www.instagram.com/galeriepostoj/" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;cursor:none;">@galeriepostoj</a></div>
-      <div class="info-sub">Facebook</div>
-      <div class="info-val" style="font-weight:400;"><a href="https://www.facebook.com/galeriepostoj/" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;cursor:none;">galerie POSTOJ</a></div>
+      <div class="info-row">
+        <div class="info-sub">Instagram</div>
+        <div class="info-val"><a href="https://www.instagram.com/galeriepostoj/" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;cursor:none;">@galeriepostoj</a></div>
+      </div>
+      <div class="info-row">
+        <div class="info-sub">Facebook</div>
+        <div class="info-val"><a href="https://www.facebook.com/galeriepostoj/" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;cursor:none;">galerie POSTOJ</a></div>
+      </div>
     </div>
   </div>
   <div class="whw-row rv" style="border-top:1px solid rgba(255,255,255,0.08);">
