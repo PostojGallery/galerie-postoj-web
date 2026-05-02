@@ -30,6 +30,17 @@
   function lang(){return document.documentElement.lang==='en'?'en':'cs';}
   function s(){return STR[lang()];}
 
+  /* ── Consent Mode v2 — set up dataLayer + gtag + deny everything by default ── */
+  window.dataLayer=window.dataLayer||[];
+  window.gtag=window.gtag||function(){window.dataLayer.push(arguments);};
+  gtag('consent','default',{
+    analytics_storage:'denied',
+    ad_storage:'denied',
+    ad_user_data:'denied',
+    ad_personalization:'denied',
+    wait_for_update:500
+  });
+
   /* ── helpers ── */
   function getConsent(){
     try{
@@ -42,13 +53,19 @@
   function saveConsent(analytics,marketing){
     try{localStorage.setItem(KEY,JSON.stringify({ts:Date.now(),analytics:!!analytics,marketing:!!marketing}));}catch(e){}
   }
+  function updateConsentSignals(analytics,marketing){
+    gtag('consent','update',{
+      analytics_storage:analytics?'granted':'denied',
+      ad_storage:marketing?'granted':'denied',
+      ad_user_data:marketing?'granted':'denied',
+      ad_personalization:marketing?'granted':'denied'
+    });
+  }
   function loadGA(){
     if(window._gaLoaded)return;window._gaLoaded=true;
     var sc=document.createElement('script');sc.async=true;
     sc.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;
     document.head.appendChild(sc);
-    window.dataLayer=window.dataLayer||[];
-    window.gtag=function(){window.dataLayer.push(arguments);};
     gtag('js',new Date());gtag('config',GA_ID);
   }
 
@@ -155,6 +172,7 @@
       var analytics=document.getElementById('cmodal-analytics').checked;
       var marketing=document.getElementById('cmodal-marketing').checked;
       saveConsent(analytics,marketing);
+      updateConsentSignals(analytics,marketing);
       if(analytics)loadGA();
       closeSettings();
       hideBanner();
@@ -181,8 +199,17 @@
         '<button class="cbtn cbtn-text" id="cbar-settings">'+t.settings+'</button>'+
       '</div>';
     document.documentElement.appendChild(_bar);
-    document.getElementById('cbar-accept').addEventListener('click',function(){saveConsent(true,true);loadGA();hideBanner();});
-    document.getElementById('cbar-reject').addEventListener('click',function(){saveConsent(false,false);hideBanner();});
+    document.getElementById('cbar-accept').addEventListener('click',function(){
+      saveConsent(true,true);
+      updateConsentSignals(true,true);
+      loadGA();
+      hideBanner();
+    });
+    document.getElementById('cbar-reject').addEventListener('click',function(){
+      saveConsent(false,false);
+      updateConsentSignals(false,false);
+      hideBanner();
+    });
     document.getElementById('cbar-settings').addEventListener('click',openSettings);
   }
 
@@ -209,6 +236,10 @@
 
   /* ── init ── */
   var consent=getConsent();
-  if(consent){if(consent.analytics)loadGA();return;}
+  if(consent){
+    updateConsentSignals(consent.analytics,consent.marketing);
+    if(consent.analytics)loadGA();
+    return;
+  }
   showBanner();
 })();
