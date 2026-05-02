@@ -65,39 +65,37 @@ function _pjax(href,isPop){
   var pg=document.getElementById('pg');
   if(pg)pg.style.cssText='position:fixed;inset:0;background:#0a0a0a;z-index:10000;opacity:1;animation:none;cursor:none;';
   fetch(href).then(function(r){if(!r.ok)throw 0;return r.text();}).then(function(html){
-    var nd=(new DOMParser()).parseFromString(html,'text/html');
-    // Update head
-    document.title=nd.title;
-    var nm=nd.querySelector('meta[name=description]'),om=document.querySelector('meta[name=description]');
-    if(nm&&om)om.setAttribute('content',nm.getAttribute('content'));
-    document.querySelectorAll('head style').forEach(function(s){s.remove();});
-    nd.querySelectorAll('head style').forEach(function(s){var n=document.createElement('style');n.textContent=s.textContent;document.head.appendChild(n);});
-    // Detach persistent elements before body swap
-    var ePg=document.getElementById('pg'),eCdot=document.getElementById('cdot'),eCw=document.getElementById('cw');
-    if(ePg)ePg.remove();if(eCdot)eCdot.remove();if(eCw)eCw.remove();
-    // Swap body
-    document.body.innerHTML=nd.body.innerHTML;
-    // Re-insert persistent elements (replacing duplicates from new HTML)
-    var nPg=document.getElementById('pg');
-    if(nPg&&ePg)nPg.replaceWith(ePg);else if(ePg)document.body.insertBefore(ePg,document.body.firstChild);
-    var nCdot=document.getElementById('cdot');
-    if(nCdot&&eCdot)nCdot.replaceWith(eCdot);else if(eCdot){var ap=document.getElementById('pg');document.body.insertBefore(eCdot,ap?ap.nextSibling:document.body.firstChild);}
-    var nCw=document.getElementById('cw');
-    if(nCw&&eCw)nCw.replaceWith(eCw);else if(eCw){var ac=document.getElementById('cdot');document.body.insertBefore(eCw,ac?ac.nextSibling:document.body.firstChild);}
-    // Execute page-specific inline scripts
-    nd.querySelectorAll('body script:not([src])').forEach(function(s){var n=document.createElement('script');n.textContent=s.textContent;document.body.appendChild(n);});
-    // Re-init components
-    _initBurger();
-    _initRV();
-    if(!isPop)history.pushState({},document.title,href);
-    window.scrollTo(0,0);
-    // Restart pg fade-out animation
-    if(ePg){
-      ePg.style.animation='none';
-      void ePg.offsetHeight;
-      ePg.style.cssText='';
-    }
-    _pjaxBusy=false;
+    try{
+      var nd=(new DOMParser()).parseFromString(html,'text/html');
+      // Update head
+      document.title=nd.title;
+      var nm=nd.querySelector('meta[name=description]'),om=document.querySelector('meta[name=description]');
+      if(nm&&om)om.setAttribute('content',nm.getAttribute('content'));
+      document.querySelectorAll('head style').forEach(function(s){s.remove();});
+      nd.querySelectorAll('head style').forEach(function(s){var n=document.createElement('style');n.textContent=s.textContent;document.head.appendChild(n);});
+      // Detach persistent elements before body swap
+      var ePg=document.getElementById('pg'),eCdot=document.getElementById('cdot'),eCw=document.getElementById('cw');
+      if(ePg)ePg.remove();if(eCdot)eCdot.remove();if(eCw)eCw.remove();
+      // Swap body
+      document.body.innerHTML=nd.body.innerHTML;
+      // Re-insert persistent elements (replacing duplicates from new HTML)
+      var nPg=document.getElementById('pg');
+      if(nPg&&ePg)nPg.replaceWith(ePg);else if(ePg)document.body.insertBefore(ePg,document.body.firstChild);
+      var nCdot=document.getElementById('cdot');
+      if(nCdot&&eCdot)nCdot.replaceWith(eCdot);else if(eCdot){var ap=document.getElementById('pg');document.body.insertBefore(eCdot,ap?ap.nextSibling:document.body.firstChild);}
+      var nCw=document.getElementById('cw');
+      if(nCw&&eCw)nCw.replaceWith(eCw);else if(eCw){var ac=document.getElementById('cdot');document.body.insertBefore(eCw,ac?ac.nextSibling:document.body.firstChild);}
+      // Execute page-specific inline scripts
+      nd.querySelectorAll('body script:not([src])').forEach(function(s){try{var n=document.createElement('script');n.textContent=s.textContent;document.body.appendChild(n);}catch(ex){}});
+      // Re-init components
+      _initBurger();
+      _initRV();
+      if(!isPop)history.pushState({},document.title,href);
+      window.scrollTo(0,0);
+      // Restart pg fade-out animation
+      if(ePg){ePg.style.animation='none';void ePg.offsetHeight;ePg.style.cssText='';}
+      _pjaxBusy=false;
+    }catch(ex){_pjaxBusy=false;window.location.href=href;}
   }).catch(function(){_pjaxBusy=false;window.location.href=href;});
 }
 (function(){var pg=document.getElementById('pg');if(pg&&isMobile){pg.addEventListener('animationend',function(){pg.style.display='none';});}})();
