@@ -4,6 +4,32 @@
   var EXP=365*24*60*60*1000;
   var _bar=null,_modal=null;
 
+  /* ── strings ── */
+  var STR={
+    cs:{
+      barText:'30\u202f000 lidí denně projde okolo galerie POSTOJ. Online kustod Cookies nám pomáhá zjistit, kolik z nich dorazí i sem. A pokud se mu budeš chtít vyhnout, můžeš tak udělat kdykoliv v patičce webu. U nás v galerii neklademe žádné bariéry.',
+      accept:'Přijmout vše',reject:'Povolit nezbytné',settings:'Nastavení cookies',
+      modalTitle:'Nastavení cookies',
+      modalDesc:'Spravujte své předvolby. Nezbytné cookies jsou nutné pro fungování webu a nelze je vypnout. Ostatní cookies aktivujete dobrovolně.',
+      necessary:'Nezbytné cookies',necessaryDesc:'Základní funkce a zabezpečení webu. Nelze vypnout.',alwaysActive:'Vždy aktivní',
+      analytics:'Analytické cookies',analyticsDesc:'Počítají návštěvnost webu a sběrem anonymních statistik umožňují provozovateli lépe pochopit své návštěvníky a stránky tak neustále vylepšovat.',
+      marketing:'Marketingové cookies',marketingDesc:'Shromažďují informace pro lepší přizpůsobení reklamy vašim zájmům, a to na těchto webových stránkách i mimo ně.',
+      save:'Uložit nastavení'
+    },
+    en:{
+      barText:'30,000 people walk past galerie POSTOJ every day. Our online guard Cookies helps us find out how many of them make it here too. If you\u2019d rather skip it, you can do so at any time in the footer. At our gallery, we put up no barriers.',
+      accept:'Accept all',reject:'Essential only',settings:'Cookie settings',
+      modalTitle:'Cookie settings',
+      modalDesc:'Manage your preferences. Essential cookies are required for the website to function and cannot be disabled. Other cookies are activated voluntarily.',
+      necessary:'Essential cookies',necessaryDesc:'Core functionality and website security. Cannot be disabled.',alwaysActive:'Always active',
+      analytics:'Analytics cookies',analyticsDesc:'Count website visits and collect anonymous statistics to help us better understand our visitors and continuously improve the website.',
+      marketing:'Marketing cookies',marketingDesc:'Collect information to better tailor advertising to your interests, both on and off this website.',
+      save:'Save preferences'
+    }
+  };
+  function lang(){return document.documentElement.lang==='en'?'en':'cs';}
+  function s(){return STR[lang()];}
+
   /* ── helpers ── */
   function getConsent(){
     try{
@@ -18,9 +44,9 @@
   }
   function loadGA(){
     if(window._gaLoaded)return;window._gaLoaded=true;
-    var s=document.createElement('script');s.async=true;
-    s.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;
-    document.head.appendChild(s);
+    var sc=document.createElement('script');sc.async=true;
+    sc.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;
+    document.head.appendChild(sc);
     window.dataLayer=window.dataLayer||[];
     window.gtag=function(){window.dataLayer.push(arguments);};
     gtag('js',new Date());gtag('config',GA_ID);
@@ -92,31 +118,32 @@
     var consent=getConsent();
     var analyticsOn=consent?!!consent.analytics:false;
     var marketingOn=consent?!!consent.marketing:false;
+    var t=s();
     var ov=document.createElement('div');
     ov.id='cmodal-ov';
     ov.innerHTML=
       '<div id="cmodal">'+
-      '<button id="cmodal-close" aria-label="Zavřít">&#215;</button>'+
-      '<h2>Nastavení cookies</h2>'+
-      '<p id="cmodal-desc">Spravujte své předvolby. Nezbytné cookies jsou nutné pro fungování webu a nelze je vypnout. Ostatní cookies aktivujete dobrovolně.</p>'+
+      '<button id="cmodal-close" aria-label="'+t.modalTitle+'">&#215;</button>'+
+      '<h2>'+t.modalTitle+'</h2>'+
+      '<p id="cmodal-desc">'+t.modalDesc+'</p>'+
       '<div class="crow">'+
-        '<div class="crow-info"><strong>Nezbytné cookies</strong>'+
-        '<span>Základní funkce a zabezpečení webu. Nelze vypnout.</span></div>'+
-        '<span class="crow-always">Vždy aktivní</span>'+
+        '<div class="crow-info"><strong>'+t.necessary+'</strong>'+
+        '<span>'+t.necessaryDesc+'</span></div>'+
+        '<span class="crow-always">'+t.alwaysActive+'</span>'+
       '</div>'+
       '<div class="crow">'+
-        '<div class="crow-info"><strong>Analytické cookies</strong>'+
-        '<span>Počítají návštěvnost webu a sběrem anonymních statistik umožňují provozovateli lépe pochopit své návštěvníky a stránky tak neustále vylepšovat.</span></div>'+
+        '<div class="crow-info"><strong>'+t.analytics+'</strong>'+
+        '<span>'+t.analyticsDesc+'</span></div>'+
         '<label class="ctoggle"><input type="checkbox" id="cmodal-analytics">'+
         '<span class="ctoggle-s"></span></label>'+
       '</div>'+
       '<div class="crow">'+
-        '<div class="crow-info"><strong>Marketingové cookies</strong>'+
-        '<span>Shromažďují informace pro lepší přizpůsobení reklamy vašim zájmům, a to na těchto webových stránkách i mimo ně.</span></div>'+
+        '<div class="crow-info"><strong>'+t.marketing+'</strong>'+
+        '<span>'+t.marketingDesc+'</span></div>'+
         '<label class="ctoggle"><input type="checkbox" id="cmodal-marketing">'+
         '<span class="ctoggle-s"></span></label>'+
       '</div>'+
-      '<button id="cmodal-save">Uložit nastavení</button>'+
+      '<button id="cmodal-save">'+t.save+'</button>'+
       '</div>';
     document.documentElement.appendChild(ov);
     _modal=ov;
@@ -145,18 +172,31 @@
   function showBanner(){
     _bar=document.createElement('div');
     _bar.id='cbar';
+    var t=s();
     _bar.innerHTML=
-      '<div id="cbar-text">30\u202f000 lidí denně projde okolo galerie POSTOJ. Online kustod Cookies nám pomáhá zjistit, kolik z nich dorazí i sem. A pokud se mu budeš chtít vyhnout, můžeš tak udělat kdykoliv v patičce webu. U nás v galerii neklademe žádné bariéry.</div>'+
+      '<div id="cbar-text">'+t.barText+'</div>'+
       '<div id="cbar-btns">'+
-        '<button class="cbtn cbtn-primary" id="cbar-accept">Přijmout vše</button>'+
-        '<button class="cbtn cbtn-ghost" id="cbar-reject">Povolit nezbytné</button>'+
-        '<button class="cbtn cbtn-text" id="cbar-settings">Nastavení cookies</button>'+
+        '<button class="cbtn cbtn-primary" id="cbar-accept">'+t.accept+'</button>'+
+        '<button class="cbtn cbtn-ghost" id="cbar-reject">'+t.reject+'</button>'+
+        '<button class="cbtn cbtn-text" id="cbar-settings">'+t.settings+'</button>'+
       '</div>';
     document.documentElement.appendChild(_bar);
     document.getElementById('cbar-accept').addEventListener('click',function(){saveConsent(true,true);loadGA();hideBanner();});
     document.getElementById('cbar-reject').addEventListener('click',function(){saveConsent(false,false);hideBanner();});
     document.getElementById('cbar-settings').addEventListener('click',openSettings);
   }
+
+  /* ── sync banner language after PJAX ── */
+  function syncLang(){
+    if(!_bar)return;
+    var t=s();
+    var el;
+    el=document.getElementById('cbar-text');if(el)el.textContent=t.barText;
+    el=document.getElementById('cbar-accept');if(el)el.textContent=t.accept;
+    el=document.getElementById('cbar-reject');if(el)el.textContent=t.reject;
+    el=document.getElementById('cbar-settings');if(el)el.textContent=t.settings;
+  }
+  window._postojSyncCookieLang=syncLang;
 
   /* ── footer link handler (event delegation — survives PJAX) ── */
   document.addEventListener('click',function(e){

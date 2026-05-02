@@ -91,6 +91,7 @@ function _pjax(href,isPop){
       // Re-init components
       _initBurger();
       _initRV();
+      if(typeof window._postojSyncCookieLang==='function')window._postojSyncCookieLang();
       if(!isPop)history.pushState({},document.title,href);
       if(typeof gtag==='function')gtag('event','page_view',{page_path:location.pathname});
       var hashIdx=href.indexOf('#');
