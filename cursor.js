@@ -67,6 +67,20 @@ function _pjax(href,isPop){
   fetch(href).then(function(r){if(!r.ok)throw 0;return r.text();}).then(function(html){
     try{
       var nd=(new DOMParser()).parseFromString(html,'text/html');
+      // Fix relative src URLs — resolve against the target URL, not the current page URL
+      var _pjaxBase=new URL((href.indexOf('#')!==-1?href.slice(0,href.indexOf('#')):href),location.origin);
+      nd.querySelectorAll('[src]').forEach(function(el){
+        var v=el.getAttribute('src');
+        if(v&&!v.startsWith('data:')&&!v.startsWith('http')&&!v.startsWith('//'))
+          try{el.setAttribute('src',new URL(v,_pjaxBase).href);}catch(ex){}
+      });
+      nd.querySelectorAll('[srcset]').forEach(function(el){
+        var v=el.getAttribute('srcset');
+        if(v)el.setAttribute('srcset',v.replace(/([^,\s]+)(\s[^,]*)?(,|$)/g,function(m,url,w,sep){
+          if(url.startsWith('data:')||url.startsWith('http')||url.startsWith('//'))return m;
+          try{return new URL(url,_pjaxBase).href+(w||'')+sep;}catch(ex){return m;}
+        }));
+      });
       // Update head
       document.title=nd.title;
       var nm=nd.querySelector('meta[name=description]'),om=document.querySelector('meta[name=description]');
