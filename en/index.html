@@ -65,8 +65,9 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 .fs-content{padding:2.5rem 2rem 2.5rem 2rem;display:flex;flex-direction:column;justify-content:center;}
 .fs-text{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.5);margin-bottom:1.4rem;font-style:italic;border-left:2px solid rgba(255,255,255,0.12);padding-left:1.5rem;}
 .fs-sig{height:50px;width:auto;filter:invert(1);opacity:0.6;align-self:flex-start;}
-.fs-mobile-cta{display:none;}
-.fs-action{padding:2.5rem 3rem;display:flex;align-items:center;}
+.fs-mobile-cta{display:inline-block;margin-top:1.5rem;align-self:flex-start;}
+.fs-right-photo{width:clamp(260px,33vw,420px);flex-shrink:0;overflow:hidden;align-self:stretch;}
+.fs-right-photo img{width:100%;height:100%;object-fit:cover;display:block;}
 @media(max-width:768px){
   .founder-stmt{padding-top:1.5rem;}
   .fs-grid{grid-template-columns:100px 1fr;padding-left:1.2rem;padding-right:1.2rem;}
@@ -76,8 +77,8 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   .fs-content{padding:1.2rem 0 0 1rem;justify-content:space-between;}
   .fs-text{font-size:0.82rem;margin-bottom:1.2rem;}
   .fs-sig{display:none;}
-  .fs-mobile-cta{display:block;text-align:center;}
-  .fs-action{display:none;}
+  .fs-mobile-cta{display:block;text-align:center;margin-top:0;}
+  .fs-right-photo{display:none;}
 }
 #opencall-strip{}
 .oc-grid{display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding-left:3rem;}
@@ -156,7 +157,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
       <img width="1397" height="690" class="fs-sig" src="../images/signature.png" alt="">
       <a href="/en/about" class="btn fs-mobile-cta">How it started</a>
     </div>
-    <div class="fs-action rv"><a href="/en/about" class="btn">How it started</a></div>
+    <div class="fs-right-photo rv"><img loading="lazy" src="../images/metro-change.png" alt="Former currency exchange in the metro"></div>
   </div>
 </section>
 <section id="opencall-strip">
