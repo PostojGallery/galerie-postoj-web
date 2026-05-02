@@ -145,7 +145,7 @@
     _bar=document.createElement('div');
     _bar.id='cbar';
     _bar.innerHTML=
-      '<div id="cbar-text">Abychom vám usnadnili procházení stránek, nabídli přizpůsobený obsah nebo reklamu a mohli anonymně analyzovat návštěvnost, využíváme soubory cookies, které sdílíme se svými partnery pro sociální média, inzerci a analýzu. Jejich nastavení upravíte odkazem „Nastavení cookies" a kdykoliv jej můžete změnit v patičce webu. Podrobnější informace najdete v našich Zásadách ochrany osobních údajů a používání souborů cookies. Souhlasíte s používáním cookies?</div>'+
+      '<div id="cbar-text">30\u202f000 lidí denně projde okolo galerie POSTOJ. Online kustod Cookies nám pomáhá zjistit, kolik z nich dorazí i sem. A pokud se mu budeš chtít vyhnout, můžeš tak udělat kdykoliv v patičce webu. U nás v galerii neklademe žádné bariéry.</div>'+
       '<div id="cbar-btns">'+
         '<button class="cbtn cbtn-primary" id="cbar-accept">Přijmout vše</button>'+
         '<button class="cbtn cbtn-ghost" id="cbar-reject">Povolit nezbytné</button>'+
