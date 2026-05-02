@@ -28,6 +28,7 @@
 
   /* ── styles ── */
   var css=document.createElement('style');
+  css.id='postoj-cookie-css';
   css.textContent=
     '#cbar{position:fixed;bottom:0;left:0;right:0;z-index:40000;background:#0a0a0a;'+
     'border-top:1px solid rgba(255,255,255,0.08);padding:1.4rem 2.5rem;'+

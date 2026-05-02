@@ -71,7 +71,7 @@ function _pjax(href,isPop){
       document.title=nd.title;
       var nm=nd.querySelector('meta[name=description]'),om=document.querySelector('meta[name=description]');
       if(nm&&om)om.setAttribute('content',nm.getAttribute('content'));
-      document.querySelectorAll('head style').forEach(function(s){s.remove();});
+      document.querySelectorAll('head style:not(#postoj-cookie-css)').forEach(function(s){s.remove();});
       nd.querySelectorAll('head style').forEach(function(s){var n=document.createElement('style');n.textContent=s.textContent;document.head.appendChild(n);});
       // Move #pg to <html> during swap so it stays in document (cursor stays covered)
       var ePg=document.getElementById('pg'),eCdot=document.getElementById('cdot'),eCw=document.getElementById('cw');
