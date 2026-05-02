@@ -63,7 +63,7 @@ function _pjax(href,isPop){
   if(_pjaxBusy)return;
   _pjaxBusy=true;
   var pg=document.getElementById('pg');
-  if(pg)pg.style.cssText='position:fixed;inset:0;background:#0a0a0a;z-index:10000;opacity:1;animation:none;cursor:none;';
+  if(pg)pg.style.cssText='position:fixed;inset:0;background:#0a0a0a;z-index:10000;opacity:1;animation:none;cursor:url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") 0 0,none;';
   fetch(href).then(function(r){if(!r.ok)throw 0;return r.text();}).then(function(html){
     try{
       var nd=(new DOMParser()).parseFromString(html,'text/html');
