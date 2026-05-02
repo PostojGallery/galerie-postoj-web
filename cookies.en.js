@@ -8,7 +8,7 @@
   var STR={
     cs:{
       barText:'30\u202f000 lidí denně projde okolo galerie POSTOJ. Online kustod Cookies nám pomáhá zjistit, kolik z nich dorazí i sem. A pokud se mu budeš chtít vyhnout, můžeš tak udělat kdykoliv v patičce webu. U nás v galerii neklademe žádné bariéry.',
-      accept:'Přijmout vše',reject:'Povolit nezbytné',settings:'Nastavení cookies',
+      accept:'Povolit vše',reject:'Povolit nezbytné',settings:'Nastavení',
       modalTitle:'Nastavení cookies',
       modalDesc:'Spravujte své předvolby. Nezbytné cookies jsou nutné pro fungování webu a nelze je vypnout. Ostatní cookies aktivujete dobrovolně.',
       necessary:'Nezbytné cookies',necessaryDesc:'Základní funkce a zabezpečení webu. Nelze vypnout.',alwaysActive:'Vždy aktivní',
