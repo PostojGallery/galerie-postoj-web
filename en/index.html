@@ -56,7 +56,25 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 #lightbox-next{right:2rem;}
 #lightbox-counter{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-size:0.65rem;letter-spacing:0.2em;color:rgba(255,255,255,0.3);}
 .photo-strip-item{cursor:none;}
-#opencall-strip{border-top:1px solid rgba(255,255,255,0.08);}
+.founder-stmt{padding-top:2rem;}
+.fs-grid{display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding-left:3rem;}
+.fs-photo-col{width:180px;display:flex;flex-direction:column;flex-shrink:0;}
+.fs-photo-col img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;}
+.fs-caption{background:#fff;color:#000;padding:0.65rem 0.9rem;font-size:0.72rem;font-weight:700;}
+.fs-caption span{display:block;font-size:0.52rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:400;margin-top:0.15rem;color:rgba(0,0,0,0.5);}
+.fs-content{padding:2.5rem 2rem 2.5rem 2rem;display:flex;flex-direction:column;justify-content:center;}
+.fs-text{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.5);margin-bottom:1.4rem;font-style:italic;border-left:2px solid rgba(255,255,255,0.12);padding-left:1.5rem;}
+.fs-sig{height:50px;width:auto;filter:invert(1);opacity:0.6;align-self:flex-start;}
+.fs-action{padding:2.5rem 3rem;display:flex;align-items:center;}
+@media(max-width:768px){
+  .founder-stmt{padding-top:1.5rem;}
+  .fs-grid{grid-template-columns:100px 1fr;padding-left:1.2rem;padding-right:1.2rem;}
+  .fs-photo-col{width:100px;}
+  .fs-content{padding:1.2rem 0 0.5rem 1rem;}
+  .fs-text{font-size:0.82rem;margin-bottom:1rem;}
+  .fs-action{grid-column:1/-1;padding:0.5rem 0 1.5rem 0;}
+}
+#opencall-strip{}
 .oc-grid{display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding-left:3rem;}
 .oc-stick-col{padding:5mm 0.8rem;display:flex;align-items:center;align-self:stretch;}
 .oc-stick{width:90px;height:auto;filter:invert(1);}
@@ -122,6 +140,19 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   <div class="photo-strip-item"><img loading="lazy" src="../images/gallery4.webp" alt=""></div>
   <div class="photo-strip-item"><img loading="lazy" src="../images/gallery5.webp" alt=""></div>
 </div>
+<section class="founder-stmt">
+  <div class="fs-grid">
+    <div class="fs-photo-col rv">
+      <img loading="lazy" src="../images/about-us/final-3.jpg" alt="Filip Kolář">
+      <div class="fs-caption">Filip Kolář<span>Founder.<br>Art enthusiast.</span></div>
+    </div>
+    <div class="fs-content rv">
+      <p class="fs-text">We believe art belongs to everyone.<br><br>That's why we built galerie POSTOJ in the metro – in the space of a former currency exchange that used to rip off tourists. No closed gallery doors. No entry fee.</p>
+      <img width="1397" height="690" class="fs-sig" src="../images/signature.png" alt="">
+    </div>
+    <div class="fs-action rv"><a href="/en/about" class="btn">How it started</a></div>
+  </div>
+</section>
 <section id="opencall-strip">
   <div class="oc-grid">
     <div class="oc-stick-col"><img width="200" loading="lazy" class="oc-stick" src="../images/pointing.webp" alt=""></div>
