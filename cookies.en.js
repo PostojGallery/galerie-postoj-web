@@ -105,7 +105,7 @@
     '#cmodal-close:hover{color:#fff;}'+
     '@media(max-width:768px){'+
     '#cbar{flex-direction:column;align-items:flex-start;padding:1.2rem 1.2rem 1.5rem;gap:1rem;}'+
-    '#cbar-btns{flex-wrap:wrap;gap:0.5rem;width:100%;}'+
+    '#cbar-btns{flex-wrap:wrap;gap:0.5rem;width:100%;align-items:stretch;}'+
     '.cbtn{flex:1;text-align:center;min-width:calc(50% - 0.25rem);}'+
     '.cbtn-text{flex:0 0 100%;text-align:center;}'+
     '#cmodal{padding:2rem 1.5rem;}'+
