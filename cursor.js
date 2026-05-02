@@ -91,7 +91,8 @@ function _pjax(href,isPop){
       _initBurger();
       _initRV();
       if(!isPop)history.pushState({},document.title,href);
-      window.scrollTo(0,0);
+      var hashIdx=href.indexOf('#');
+      if(hashIdx!==-1){var target=document.getElementById(href.slice(hashIdx+1));if(target){target.scrollIntoView();}}else{window.scrollTo(0,0);}
       // Restart pg fade-out animation
       if(ePg){ePg.style.animation='none';void ePg.offsetHeight;ePg.style.cssText='';}
       _pjaxBusy=false;
