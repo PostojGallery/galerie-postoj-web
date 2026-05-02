@@ -56,15 +56,15 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 #lightbox-next{right:2rem;}
 #lightbox-counter{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-size:0.65rem;letter-spacing:0.2em;color:rgba(255,255,255,0.3);}
 .photo-strip-item{cursor:none;}
-.founder-stmt{border-top:1px solid rgba(255,255,255,0.08);padding-top:2rem;}
+.founder-stmt{padding-top:2rem;}
 .fs-grid{display:grid;grid-template-columns:auto 1fr auto;align-items:stretch;padding-left:3rem;}
 .fs-photo-col{width:180px;display:flex;flex-direction:column;flex-shrink:0;}
 .fs-photo-col img{flex:1;width:100%;object-fit:cover;object-position:center top;display:block;min-height:0;}
 .fs-caption{background:#fff;color:#000;padding:0.65rem 0.9rem;font-size:0.72rem;font-weight:700;}
 .fs-caption span{display:block;font-size:0.52rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:400;margin-top:0.15rem;color:rgba(0,0,0,0.5);}
 .fs-content{padding:2.5rem 2rem 2.5rem 2rem;display:flex;flex-direction:column;justify-content:center;}
-.fs-text{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.5);margin-bottom:1.4rem;font-style:italic;}
-.fs-sig{height:44px;width:auto;filter:invert(1);opacity:0.55;display:block;}
+.fs-text{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.5);margin-bottom:1.4rem;font-style:italic;border-left:2px solid rgba(255,255,255,0.12);padding-left:1.5rem;}
+.fs-sig{height:50px;width:auto;filter:invert(1);opacity:0.6;display:block;}
 .fs-action{padding:2.5rem 3rem;display:flex;align-items:center;}
 @media(max-width:768px){
   .founder-stmt{padding-top:1.5rem;}
@@ -72,7 +72,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   .fs-photo-col{width:110px;}
   .fs-content{padding:1.5rem 1rem;}
   .fs-text{font-size:0.82rem;}
-  .fs-action{display:none;}
+  .fs-action{padding:0 1.2rem 1.5rem 1.2rem;display:flex;}
 }
 #opencall-strip{border-top:1px solid rgba(255,255,255,0.08);}
 .oc-grid{display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding-left:3rem;}
@@ -144,13 +144,13 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   <div class="fs-grid">
     <div class="fs-photo-col rv">
       <img loading="lazy" src="images/about-us/final-3.jpg" alt="Filip Kolář">
-      <div class="fs-caption">Filip Kolář<span>Zakladatel. Nadšenec do umění.</span></div>
+      <div class="fs-caption">Filip Kolář<span>Zakladatel.<br>Nadšenec do umění.</span></div>
     </div>
     <div class="fs-content rv">
       <p class="fs-text">Věříme, že české umění patří všem. Proto jsme galerii POSTOJ postavili v metru – v prostoru bývalé směnárny, která dříve okrádala turisty. Podporujeme mladé umělce a studenty uměleckých škol. Jsme přesvědčeni, že začínající čeští umělci mají své místo i ve světě – a uděláme maximum proto, abychom je tam dostali.</p>
       <img width="1397" height="690" class="fs-sig" src="images/signature.png" alt="">
     </div>
-    <div class="fs-action rv"><a href="/about" class="btn">O nás</a></div>
+    <div class="fs-action rv"><a href="/about" class="btn">Jak to začalo</a></div>
   </div>
 </section>
 <section id="opencall-strip">
