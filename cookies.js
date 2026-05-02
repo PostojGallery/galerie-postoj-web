@@ -84,7 +84,7 @@
     'letter-spacing:0.13em;text-transform:uppercase;font-weight:700;cursor:none;'+
     'padding:0.65rem 1.3rem;transition:background 0.2s,color 0.2s,border-color 0.2s;}'+
     '.cbtn-primary{background:#fff;color:#000;border:1px solid #fff;}'+
-    '.cbtn-primary:hover{background:#e8e8e8;}'+
+    '.cbtn-primary:hover{background:#0a0a0a;color:#fff;}'+
     '.cbtn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.3);}'+
     '.cbtn-ghost:hover{border-color:#fff;}'+
     '.cbtn-text{background:transparent;color:rgba(255,255,255,0.35);border:none;'+
