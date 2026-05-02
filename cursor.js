@@ -73,14 +73,15 @@ function _pjax(href,isPop){
       if(nm&&om)om.setAttribute('content',nm.getAttribute('content'));
       document.querySelectorAll('head style').forEach(function(s){s.remove();});
       nd.querySelectorAll('head style').forEach(function(s){var n=document.createElement('style');n.textContent=s.textContent;document.head.appendChild(n);});
-      // Detach persistent elements before body swap
+      // Move #pg to <html> during swap so it stays in document (cursor stays covered)
       var ePg=document.getElementById('pg'),eCdot=document.getElementById('cdot'),eCw=document.getElementById('cw');
-      if(ePg)ePg.remove();if(eCdot)eCdot.remove();if(eCw)eCw.remove();
+      if(ePg)document.documentElement.appendChild(ePg);if(eCdot)eCdot.remove();if(eCw)eCw.remove();
       // Swap body
       document.body.innerHTML=nd.body.innerHTML;
-      // Re-insert persistent elements (replacing duplicates from new HTML)
-      var nPg=document.getElementById('pg');
-      if(nPg&&ePg)nPg.replaceWith(ePg);else if(ePg)document.body.insertBefore(ePg,document.body.firstChild);
+      // Move #pg back to top of body, remove duplicate from new HTML
+      var nPg=document.getElementById('pg');if(nPg)nPg.remove();
+      if(ePg)document.body.insertBefore(ePg,document.body.firstChild);
+      // Re-insert cursor elements
       var nCdot=document.getElementById('cdot');
       if(nCdot&&eCdot)nCdot.replaceWith(eCdot);else if(eCdot){var ap=document.getElementById('pg');document.body.insertBefore(eCdot,ap?ap.nextSibling:document.body.firstChild);}
       var nCw=document.getElementById('cw');
