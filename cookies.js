@@ -1,5 +1,5 @@
 (function(){
-  var KEY='postoj_consent_v3';
+  var KEY='postoj_consent_v4';
   var GA_ID='G-E435HM6L2R';
   var EXP=365*24*60*60*1000;
   var _bar=null,_modal=null;
@@ -13,8 +13,8 @@
     }catch(e){}
     return null;
   }
-  function saveConsent(analytics){
-    try{localStorage.setItem(KEY,JSON.stringify({ts:Date.now(),analytics:!!analytics}));}catch(e){}
+  function saveConsent(analytics,marketing){
+    try{localStorage.setItem(KEY,JSON.stringify({ts:Date.now(),analytics:!!analytics,marketing:!!marketing}));}catch(e){}
   }
   function loadGA(){
     if(window._gaLoaded)return;window._gaLoaded=true;
@@ -26,7 +26,7 @@
     gtag('js',new Date());gtag('config',GA_ID);
   }
 
-  /* ── styles (always injected so settings modal works for returning visitors) ── */
+  /* ── styles ── */
   var css=document.createElement('style');
   css.textContent=
     '#cbar{position:fixed;bottom:0;left:0;right:0;z-index:40000;background:#0a0a0a;'+
@@ -90,6 +90,7 @@
     if(_modal)return;
     var consent=getConsent();
     var analyticsOn=consent?!!consent.analytics:false;
+    var marketingOn=consent?!!consent.marketing:false;
     var ov=document.createElement('div');
     ov.id='cmodal-ov';
     ov.innerHTML=
@@ -104,8 +105,14 @@
       '</div>'+
       '<div class="crow">'+
         '<div class="crow-info"><strong>Analytické cookies</strong>'+
-        '<span>Google Analytics — anonymní statistiky návštěvnosti pro zlepšení webu.</span></div>'+
+        '<span>Počítají návštěvnost webu a sběrem anonymních statistik umožňují provozovateli lépe pochopit své návštěvníky a stránky tak neustále vylepšovat.</span></div>'+
         '<label class="ctoggle"><input type="checkbox" id="cmodal-analytics">'+
+        '<span class="ctoggle-s"></span></label>'+
+      '</div>'+
+      '<div class="crow">'+
+        '<div class="crow-info"><strong>Marketingové cookies</strong>'+
+        '<span>Shromažďují informace pro lepší přizpůsobení reklamy vašim zájmům, a to na těchto webových stránkách i mimo ně.</span></div>'+
+        '<label class="ctoggle"><input type="checkbox" id="cmodal-marketing">'+
         '<span class="ctoggle-s"></span></label>'+
       '</div>'+
       '<button id="cmodal-save">Uložit nastavení</button>'+
@@ -113,11 +120,13 @@
     document.documentElement.appendChild(ov);
     _modal=ov;
     document.getElementById('cmodal-analytics').checked=analyticsOn;
+    document.getElementById('cmodal-marketing').checked=marketingOn;
     ov.addEventListener('click',function(e){if(e.target===ov)closeSettings();});
     document.getElementById('cmodal-close').addEventListener('click',closeSettings);
     document.getElementById('cmodal-save').addEventListener('click',function(){
       var analytics=document.getElementById('cmodal-analytics').checked;
-      saveConsent(analytics);
+      var marketing=document.getElementById('cmodal-marketing').checked;
+      saveConsent(analytics,marketing);
       if(analytics)loadGA();
       closeSettings();
       hideBanner();
@@ -136,15 +145,15 @@
     _bar=document.createElement('div');
     _bar.id='cbar';
     _bar.innerHTML=
-      '<div id="cbar-text">Používáme analytické cookies (Google Analytics) pro zlepšení webu. Vyberte, co povolujete.</div>'+
+      '<div id="cbar-text">Abychom vám usnadnili procházení stránek, nabídli přizpůsobený obsah nebo reklamu a mohli anonymně analyzovat návštěvnost, využíváme soubory cookies, které sdílíme se svými partnery pro sociální média, inzerci a analýzu. Jejich nastavení upravíte odkazem „Nastavení cookies" a kdykoliv jej můžete změnit v patičce webu. Podrobnější informace najdete v našich Zásadách ochrany osobních údajů a používání souborů cookies. Souhlasíte s používáním cookies?</div>'+
       '<div id="cbar-btns">'+
         '<button class="cbtn cbtn-primary" id="cbar-accept">Přijmout vše</button>'+
-        '<button class="cbtn cbtn-ghost" id="cbar-reject">Odmítnout vše</button>'+
+        '<button class="cbtn cbtn-ghost" id="cbar-reject">Povolit nezbytné</button>'+
         '<button class="cbtn cbtn-text" id="cbar-settings">Nastavení cookies</button>'+
       '</div>';
     document.documentElement.appendChild(_bar);
-    document.getElementById('cbar-accept').addEventListener('click',function(){saveConsent(true);loadGA();hideBanner();});
-    document.getElementById('cbar-reject').addEventListener('click',function(){saveConsent(false);hideBanner();});
+    document.getElementById('cbar-accept').addEventListener('click',function(){saveConsent(true,true);loadGA();hideBanner();});
+    document.getElementById('cbar-reject').addEventListener('click',function(){saveConsent(false,false);hideBanner();});
     document.getElementById('cbar-settings').addEventListener('click',openSettings);
   }
 
