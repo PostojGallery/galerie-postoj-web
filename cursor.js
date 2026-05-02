@@ -92,6 +92,7 @@ function _pjax(href,isPop){
       _initBurger();
       _initRV();
       if(!isPop)history.pushState({},document.title,href);
+      if(typeof gtag==='function')gtag('event','page_view',{page_path:location.pathname});
       var hashIdx=href.indexOf('#');
       if(hashIdx!==-1){var target=document.getElementById(href.slice(hashIdx+1));if(target){target.scrollIntoView();}}else{window.scrollTo(0,0);}
       // Restart pg fade-out animation
