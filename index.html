@@ -56,6 +56,18 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 #lightbox-next{right:2rem;}
 #lightbox-counter{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-size:0.65rem;letter-spacing:0.2em;color:rgba(255,255,255,0.3);}
 .photo-strip-item{cursor:none;}
+.founder-stmt{background:#0a0a0a;}
+.fs-grid{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;min-height:520px;}
+.fs-photo{overflow:hidden;}
+.fs-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+.fs-content{padding:4rem 4rem 4rem 3.5rem;display:flex;flex-direction:column;justify-content:center;}
+.fs-text{font-size:1.05rem;line-height:1.85;color:rgba(255,255,255,0.6);margin-bottom:2rem;font-style:italic;}
+.fs-sig{height:46px;width:auto;filter:invert(1);opacity:0.55;}
+@media(max-width:768px){
+  .fs-grid{grid-template-columns:1fr;}
+  .fs-photo{aspect-ratio:4/3;}
+  .fs-content{padding:2rem 1.2rem;}
+}
 #opencall-strip{border-top:1px solid rgba(255,255,255,0.08);}
 .oc-grid{display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding-left:3rem;}
 .oc-stick-col{padding:5mm 0.8rem;display:flex;align-items:center;align-self:stretch;}
@@ -122,6 +134,17 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   <div class="photo-strip-item"><img loading="lazy" src="images/gallery4.webp" alt=""></div>
   <div class="photo-strip-item"><img loading="lazy" src="images/gallery5.webp" alt=""></div>
 </div>
+<section class="founder-stmt">
+  <div class="fs-grid">
+    <div class="fs-photo rv">
+      <img loading="lazy" src="images/about-us/final-3.jpg" alt="Filip Kolář">
+    </div>
+    <div class="fs-content rv">
+      <p class="fs-text">Věříme, že české umění patří všem. Proto jsme galerii POSTOJ postavili v metru – v prostoru bývalé směnárny, která dříve okrádala turisty. Podporujeme mladé umělce a studenty uměleckých škol. Jsme přesvědčeni, že začínající čeští umělci mají své místo i ve světě – a uděláme maximum proto, abychom je tam dostali.</p>
+      <img class="fs-sig" src="images/signature.png" alt="">
+    </div>
+  </div>
+</section>
 <section id="opencall-strip">
   <div class="oc-grid">
     <div class="oc-stick-col"><img width="200" loading="lazy" class="oc-stick" src="images/pointing.webp" alt=""></div>
