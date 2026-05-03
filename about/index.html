@@ -249,8 +249,8 @@
   </div>
   <div class="about-history rv">
     <div class="hist-strip">
-      <div class="hist-real"><img loading="lazy" src="../images/about-us/re-building/build-1.webp" alt=""></div>
       <div class="hist-real"><img loading="lazy" src="../images/about-us/re-building/build-9.webp" alt=""></div>
+      <div class="hist-real"><img loading="lazy" src="../images/about-us/re-building/build-1.webp" alt=""></div>
       <div class="hist-real"><img loading="lazy" src="../images/about-us/re-building/build-3.webp" alt=""></div>
       <div class="hist-real"><img loading="lazy" src="../images/about-us/re-building/build-4.webp" alt=""></div>
       <div class="hist-real"><img loading="lazy" src="../images/about-us/re-building/build-5.webp" alt=""></div>
@@ -331,8 +331,6 @@
   var lb=document.getElementById('aglb'),lbi=document.getElementById('aglb-img'),lbc=document.getElementById('aglb-count');
   var prev=document.getElementById('aglb-prev'),next=document.getElementById('aglb-next');
   var imgs=[],cur=0;
-  var photos=Array.from(document.querySelectorAll('.hist-real'));
-  imgs=photos.map(function(p){return p.querySelector('img').src;});
   function show(){lbi.src=imgs[cur];lbc.textContent=(cur+1)+' / '+imgs.length;}
   function close(){lb.style.display='none';document.body.style.overflow='';}
   prev.onclick=function(e){e.stopPropagation();cur=(cur-1+imgs.length)%imgs.length;show();};
@@ -343,7 +341,14 @@
   var txStart=0;
   lb.addEventListener('touchstart',function(e){txStart=e.touches[0].clientX;},{passive:true});
   lb.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-txStart;if(Math.abs(dx)<40)return;if(dx<0){cur=(cur+1)%imgs.length;}else{cur=(cur-1+imgs.length)%imgs.length;}show();},{passive:true});
-  photos.forEach(function(p,i){p.onclick=function(){cur=i;show();lb.style.display='flex';document.body.style.overflow='hidden';};});
+  var photos=Array.from(document.querySelectorAll('.hist-real'));
+  photos.forEach(function(p){p.onclick=function(){
+    var strip=p.closest('.hist-strip');
+    var stripPhotos=Array.from(strip.querySelectorAll('.hist-real'));
+    imgs=stripPhotos.map(function(sp){return sp.querySelector('img').src;});
+    cur=stripPhotos.indexOf(p);
+    show();lb.style.display='flex';document.body.style.overflow='hidden';
+  };});
 })();
 (function(){
   var btn=document.getElementById('about-video-btn');
