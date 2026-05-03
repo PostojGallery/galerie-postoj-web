@@ -84,6 +84,7 @@
 .hist-ph span{font-size:0.48rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.08);}
 .hist-real{overflow:hidden;aspect-ratio:3/4;cursor:none;}
 .hist-real img{width:100%;height:100%;object-fit:cover;}
+.hist-pos-right img{object-position:right center;}
 #aglb{position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:10000;display:none;cursor:none;}
 #aglb img{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);max-height:90vh;max-width:90vw;object-fit:contain;}
 #aglb-prev,#aglb-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid rgba(255,255,255,0.3);color:#fff;font-size:1.2rem;width:44px;height:44px;cursor:none;display:flex;align-items:center;justify-content:center;}
@@ -110,6 +111,7 @@
   .hist-strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:4px;scrollbar-width:none;margin-bottom:2rem;}
   .hist-strip::-webkit-scrollbar{display:none;}
   .hist-strip .hist-real,.hist-strip .hist-ph{flex:0 0 55%;scroll-snap-align:start;aspect-ratio:4/3;}
+  .hist-pos-right img{object-position:center center;}
   .whw-oc-col{min-height:200px;}
   .whw-oc{padding:2rem 1.2rem;}
   .whw-oc-inner{flex-direction:row;gap:1.5rem;align-items:center;}
@@ -249,7 +251,7 @@
   </div>
   <div class="about-history rv">
     <div class="hist-strip">
-      <div class="hist-real"><img loading="lazy" src="../../images/about-us/re-building/build-10.webp" alt=""></div>
+      <div class="hist-real hist-pos-right"><img loading="lazy" src="../../images/about-us/re-building/build-10.webp" alt=""></div>
       <div class="hist-real"><img loading="lazy" src="../../images/about-us/re-building/build-9.webp" alt=""></div>
       <div class="hist-real"><img loading="lazy" src="../../images/about-us/re-building/build-1.webp" alt=""></div>
       <div class="hist-real"><img loading="lazy" src="../../images/about-us/re-building/build-3.webp" alt=""></div>
