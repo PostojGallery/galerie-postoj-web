@@ -66,8 +66,9 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 .fs-text{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.5);margin-bottom:1.4rem;font-style:italic;border-left:2px solid rgba(255,255,255,0.12);padding-left:1.5rem;}
 .fs-sig{height:50px;width:auto;filter:invert(1);opacity:0.6;align-self:flex-start;}
 .fs-mobile-cta{display:inline-block;margin-top:auto;align-self:flex-start;}
-.fs-right-photo{flex-shrink:0;align-self:start;}
-.fs-right-photo img{width:auto;height:302px;display:block;}
+.fs-right-photo{flex-shrink:0;align-self:start;overflow:hidden;cursor:none;}
+.fs-right-photo img{width:auto;height:302px;display:block;transition:transform 0.4s ease;}
+.fs-right-photo:hover img{transform:scale(1.05);}
 @media(max-width:768px){
   .founder-stmt{padding-top:1.5rem;}
   .fs-grid{grid-template-columns:100px 1fr;padding-left:1.2rem;padding-right:1.2rem;}
@@ -225,6 +226,8 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   // lightbox
   (function(){
     var items=Array.from(document.querySelectorAll('.photo-strip-item img'));
+    var rightPhotoEl=document.querySelector('.fs-right-photo');
+    if(rightPhotoEl){var rImg=rightPhotoEl.querySelector('img');if(rImg)items.push(rImg);}
     var lb=document.getElementById('lightbox');
     var lbImg=document.getElementById('lightbox-img');
     var lbCounter=document.getElementById('lightbox-counter');
@@ -233,6 +236,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
     function open(i){show(i);lb.classList.add('open');document.body.style.overflow='hidden';}
     function close(){lb.classList.remove('open');document.body.style.overflow='';}
     items.forEach(function(img,i){img.parentElement.addEventListener('click',function(){open(i);});});
+    if(rightPhotoEl){rightPhotoEl.addEventListener('click',function(){open(items.length-1);});}
     document.getElementById('lightbox-prev').addEventListener('click',function(){show((cur-1+items.length)%items.length);});
     document.getElementById('lightbox-next').addEventListener('click',function(){show((cur+1)%items.length);});
     document.getElementById('lightbox-close').addEventListener('click',close);
