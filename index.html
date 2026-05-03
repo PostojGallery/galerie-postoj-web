@@ -65,7 +65,8 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 .fs-content{padding:2.5rem 2rem 0 2rem;display:flex;flex-direction:column;justify-content:flex-start;align-self:stretch;}
 .fs-text{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.5);margin-bottom:1.4rem;font-style:italic;border-left:2px solid rgba(255,255,255,0.12);padding-left:1.5rem;}
 .fs-sig{height:50px;width:auto;filter:invert(1);opacity:0.6;align-self:flex-start;}
-.fs-mobile-cta{display:inline-block;margin-top:auto;align-self:flex-start;}
+.fs-desktop-cta{display:inline-block;margin-top:auto;align-self:flex-start;}
+.fs-mobile-cta{display:none;}
 .fs-right-photo{flex-shrink:0;align-self:start;overflow:hidden;cursor:none;}
 .fs-right-photo img{width:auto;height:302px;display:block;transition:transform 0.4s ease;}
 .fs-right-photo:hover img{transform:scale(1.05);}
@@ -76,9 +77,10 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   .fs-grid{align-items:stretch;}
   .fs-photo-col{justify-content:flex-end;}
   .fs-content{padding:1.2rem 0 0 1rem;justify-content:space-between;}
-  .fs-text{font-size:0.82rem;margin-bottom:1.2rem;}
+  .fs-text{font-size:1rem;margin-bottom:1.2rem;}
   .fs-sig{display:none;}
-  .fs-mobile-cta{display:block;text-align:center;margin-top:0;}
+  .fs-desktop-cta{display:none;}
+  .fs-mobile-cta{display:block;grid-column:1/-1;text-align:center;padding:1.5rem 0;}
   .fs-right-photo{display:block;grid-column:1/-1;margin-top:1.2rem;}
   .fs-right-photo img{width:100%;height:auto;}
 }
@@ -157,9 +159,10 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
     <div class="fs-content rv">
       <p class="fs-text">Věříme, že umění patří všem.<br><br>Proto jsme galerii POSTOJ postavili v metru – v prostoru bývalé směnárny, která dříve okrádala turisty. Žádné zavřené galerijní dveře. Žádný vstup.</p>
       <img width="1397" height="690" class="fs-sig" src="images/signature.png" alt="">
-      <a href="/about" class="btn fs-mobile-cta">Jak to začalo</a>
+      <a href="/about" class="btn fs-desktop-cta">Jak to začalo</a>
     </div>
     <div class="fs-right-photo rv"><img loading="lazy" src="images/metro-change.png" alt="Bývalá směnárna v metru"></div>
+    <a href="/about" class="btn fs-mobile-cta">Jak to začalo</a>
   </div>
 </section>
 <section id="opencall-strip">
