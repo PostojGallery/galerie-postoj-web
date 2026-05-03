@@ -166,7 +166,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
       <img width="1397" height="690" class="fs-sig" src="images/signature.png" alt="">
       <a href="/about" class="btn fs-desktop-cta">Jak to začalo</a>
     </div>
-    <div class="fs-right-photo rv"><img loading="lazy" src="images/metro-change.webp" width="2000" height="1122" alt="Bývalá směnárna v metru"></div>
+    <div class="fs-right-photo rv"><a href="/about" style="display:block;"><img loading="lazy" src="images/metro-change.webp" width="2000" height="1122" alt="Bývalá směnárna v metru"></a></div>
   </div>
 </section>
 <section id="opencall-strip">
@@ -244,8 +244,6 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
     function open(i){show(i);lb.classList.add('open');document.body.style.overflow='hidden';}
     function close(){lb.classList.remove('open');document.body.style.overflow='';lbPrev.style.display='';lbNext.style.display='';}
     items.forEach(function(img,i){img.parentElement.addEventListener('click',function(){open(i);});});
-    var rightPhotoEl=document.querySelector('.fs-right-photo');
-    if(rightPhotoEl){rightPhotoEl.addEventListener('click',function(){lbImg.src=rightPhotoEl.querySelector('img').src;lbCounter.textContent='';lbPrev.style.display='none';lbNext.style.display='none';lb.classList.add('open');document.body.style.overflow='hidden';});}
     document.getElementById('lightbox-prev').addEventListener('click',function(){show((cur-1+items.length)%items.length);});
     document.getElementById('lightbox-next').addEventListener('click',function(){show((cur+1)%items.length);});
     document.getElementById('lightbox-close').addEventListener('click',close);
