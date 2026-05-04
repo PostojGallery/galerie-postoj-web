@@ -174,6 +174,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 <style>
 #game-wrap{position:relative;width:100%;line-height:0;background:#0a0a0a;}
 #game-wrap canvas{display:block;width:100%;height:auto;}
+@media(max-width:768px){#game-wrap{margin-top:2rem;}}
 </style>
 <div id="game-wrap"><canvas id="c"></canvas></div>
 <section id="opencall-strip">
@@ -284,7 +285,7 @@ const ctx    = canvas.getContext('2d');
 
 const MOB = window.innerWidth < 600;
 const CW = MOB ? 480 : 800;
-const CH = MOB ? 240 : 320;
+const CH = MOB ? 300 : 320;
 const DPR = 2;
 canvas.width = CW * DPR; canvas.height = CH * DPR;
 ctx.scale(DPR, DPR);
