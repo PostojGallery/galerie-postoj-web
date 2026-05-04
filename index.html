@@ -402,7 +402,7 @@ function drawOverlay() {
   if (state === 'idle') {
     ctx.fillStyle = '#ffffff';
     ctx.font      = `500 ${MOB ? 22 : 12}px "Helvetica Neue",Helvetica,Arial,sans-serif`;
-    ctx.fillText('PRESS SPACE OR TAP TO START', CW / 2, GROUND / 2 + 6);
+    ctx.fillText(MOB ? 'Tap to start' : 'Press Space or tap to start', CW / 2, GROUND / 2 + 6);
   } else if (state === 'dead') {
     ctx.fillStyle = '#fff';
     ctx.font      = `700 ${MOB ? 34 : 18}px "Helvetica Neue",Helvetica,Arial,sans-serif`;
