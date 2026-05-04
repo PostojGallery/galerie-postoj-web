@@ -168,6 +168,12 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
     <div class="fs-right-photo rv"><a href="/about" style="display:block;"><img loading="lazy" src="images/metro-change.webp" width="2000" height="1122" alt="Bývalá směnárna v metru"></a></div>
   </div>
 </section>
+<style>
+#game-wrap{position:relative;width:100%;line-height:0;background:#0a0a0a;}
+#game-wrap canvas{display:block;width:100%;height:auto;}
+@media(max-width:768px){#game-wrap canvas{height:55vw;}}
+</style>
+<div id="game-wrap"><canvas id="c"></canvas></div>
 <section id="opencall-strip">
   <div class="oc-grid">
     <div class="oc-stick-col"><img width="200" loading="lazy" class="oc-stick" src="images/pointing.webp" alt=""></div>
@@ -269,16 +275,6 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   })();
 })();
 </script>
-<style>
-#wrap{width:100%;max-width:860px;padding:0 28px;display:flex;flex-direction:column;}
-#game-wrap{position:relative;width:100%;line-height:0;}
-#game-wrap canvas{display:block;width:100%;height:auto;}
-</style>
-<div id="wrap">
-  <div id="game-wrap">
-    <canvas id="c"></canvas>
-  </div>
-</div>
 <script>
 (function(){
 const canvas = document.getElementById('c');
