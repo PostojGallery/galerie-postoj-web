@@ -279,13 +279,14 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 const canvas = document.getElementById('c');
 const ctx    = canvas.getContext('2d');
 
-const CW = 800, CH = 320;
+const MOB = window.innerWidth < 600;
+const CW = MOB ? 480 : 800;
+const CH = MOB ? 240 : 320;
 const DPR = 2;
 canvas.width = CW * DPR; canvas.height = CH * DPR;
 ctx.scale(DPR, DPR);
 
 const GROUND = CH - 50;
-const MOB = window.innerWidth < 600;
 const PXBASE = 96;
 const GRAV   = 0.90;
 const J1     = -15.5;
