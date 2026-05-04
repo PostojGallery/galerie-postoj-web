@@ -285,6 +285,7 @@ canvas.width = CW * DPR; canvas.height = CH * DPR;
 ctx.scale(DPR, DPR);
 
 const GROUND = CH - 50;
+const MOB = window.innerWidth < 600;
 const PXBASE = 96;
 const GRAV   = 0.90;
 const J1     = -15.5;
@@ -367,12 +368,13 @@ function drawStickman() {
 }
 
 function drawScore() {
+  const sf = MOB ? 26 : 14;
   ctx.textAlign = 'right';
-  ctx.font      = '700 14px "Helvetica Neue",Helvetica,Arial,sans-serif';
+  ctx.font      = `700 ${sf}px "Helvetica Neue",Helvetica,Arial,sans-serif`;
   ctx.fillStyle = '#2a2a2a';
-  ctx.fillText('HI ' + String(hiScore).padStart(5, '0'), CW - 14, 22);
+  ctx.fillText('HI ' + String(hiScore).padStart(5, '0'), CW - 14, MOB ? 32 : 22);
   ctx.fillStyle = '#ffffff';
-  ctx.fillText(String(score).padStart(5, '0'), CW - 14, 40);
+  ctx.fillText(String(score).padStart(5, '0'), CW - 14, MOB ? 62 : 40);
   ctx.textAlign = 'left';
 }
 
@@ -398,21 +400,22 @@ function drawOverlay() {
   ctx.textAlign = 'center';
   if (state === 'idle') {
     ctx.fillStyle = '#ffffff';
-    ctx.font      = '500 12px "Helvetica Neue",Helvetica,Arial,sans-serif';
+    ctx.font      = `500 ${MOB ? 22 : 12}px "Helvetica Neue",Helvetica,Arial,sans-serif`;
     ctx.fillText('PRESS SPACE OR TAP TO START', CW / 2, GROUND / 2 + 6);
   } else if (state === 'dead') {
     ctx.fillStyle = '#fff';
-    ctx.font      = '700 18px "Helvetica Neue",Helvetica,Arial,sans-serif';
-    ctx.fillText('GAME  OVER', CW / 2, CH / 2 - 16);
-    const bx = CW / 2 - 20, by = CH / 2 - 2;
+    ctx.font      = `700 ${MOB ? 34 : 18}px "Helvetica Neue",Helvetica,Arial,sans-serif`;
+    ctx.fillText('GAME  OVER', CW / 2, CH / 2 - (MOB ? 28 : 16));
+    const bw = MOB ? 72 : 40, bh = MOB ? 54 : 34;
+    const bx = CW / 2 - bw / 2, by = CH / 2 - (MOB ? 4 : 2);
     ctx.strokeStyle = '#2e2e2e';
-    ctx.lineWidth   = 1.5;
+    ctx.lineWidth   = MOB ? 2.5 : 1.5;
     ctx.beginPath();
-    ctx.roundRect(bx, by, 40, 34, 4);
+    ctx.roundRect(bx, by, bw, bh, 4);
     ctx.stroke();
     ctx.fillStyle = '#fff';
-    ctx.font      = '22px "Helvetica Neue",Helvetica,Arial,sans-serif';
-    ctx.fillText('↺', CW / 2, by + 25);
+    ctx.font      = `${MOB ? 40 : 22}px "Helvetica Neue",Helvetica,Arial,sans-serif`;
+    ctx.fillText('↺', CW / 2, by + (MOB ? 42 : 25));
   }
   ctx.textAlign = 'left';
 }
