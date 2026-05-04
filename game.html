@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GALERIE POSTOJ</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: #0a0a0a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    overflow: hidden;
+    user-select: none;
+  }
+  #wrap {
+    width: 100%;
+    max-width: 860px;
+    padding: 0 28px;
+    display: flex;
+    flex-direction: column;
+  }
+  #game-wrap { position:relative; width:100%; line-height:0; }
+  canvas { display:block; width:100%; height:auto; }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <div id="game-wrap">
+    <canvas id="c"></canvas>
+  </div>
+</div>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx    = canvas.getContext('2d');
+
+const CW = 800, CH = 240;
+canvas.width = CW; canvas.height = CH;
+
+const GROUND = CH - 50;
+const PXBASE = 96;
+const GRAV   = 0.90;
+const J1     = -15.5;
+const J2     = -10.0;
+
+// ── Stickman image: white figure, fully transparent background ──────────────
+const stickImg = new Image();
+stickImg.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5ZDbSAAACnElEQVR42u2d226EMAwFN1H+/5e3L0VCK7olwUns45nHqhXgiZ0r9PUCAAAAAAAAAAAAAAAAAAAAAHDD+xflZyyZ5V4GpBSpmFTyWDurESxOzZqlCE6MUj+MYDIYEAwIjjLAYh4MCPY+QlbLUgQjGlQXP2jBwRpeb9VphFC7mjSVQHxr2U+zIHL30NRb+NXvHj/bKXpVn19V5I4E7Pw3K/aB3ycYZA0KPGdlz6rV3XK/O1PlBlkrWvvnNSxKuJdpV1WTaxnY0evPkjvS4FrWrD2C9d+17mbzjHu26Cqaktye/nfkvj4D7lWqS8FWYmffYyml7B44hRpFPw3WX8EZHUEvm74sapRVUW7v361e8Fh5vZArOU8HPKNZH0Xq1j54V9ZajqwjiN0iOMJA6riW54bosg+OIteif/e0W9U8y90dqLuZ7PnoT1WTu3KOGuFcV/Em92nAZp17nrXbFLZE75CrMnd1LThqf6tKU8raTO/9LhUcJWszVomiJLfnXrLILqvlzgxstMUU14I9jpKV1pC3CfY6/VHcCbJg+kqWQiZE/nZWRa626CnrvTvEKh+7cSXYy0OvEi672XAVwCglOdNo20xw5P5W5fSGqeAjMBFKcs89yu2CKYxsZwkYeaMx3Tw4Mgpf4kGwOAhGMCCYaRCCAcFpKwSCIadghYWI2TRVqRBIMFIFBVtJzf7GhPRXV63lRjjo4DKDI32WiBKN2NyCOZwuLNhCLlIdCs682C8tmIwVFUzGigpGrKDgLFKjLpcWxNo8s8xKFmVYtEQjNiZlpljF94OjPe+UaRLZKioYsf6oFtL4b9qBBX+TjFj/1auOPgxibWcZ2/tghAqXaIjbyMlKo7JMhQMAAAAAAAAAAAAAAAAAAACAe/wApH7w0gNSqU4AAAAASUVORK5CYII=';
+
+// ── State ──────────────────────────────────────────────────────────────────
+let state     = 'idle';
+let score     = 0, hiScore = 0, dist = 0;
+let speed     = 5.5;
+let jumpCount = 0;
+let obstacles = [], particles = [];
+let obstTimer = 0, obstInterval = 80;
+let groundOff = 0;
+let airTilt   = 0;
+let legPhase  = 0;
+
+const player = { y: GROUND, vy: 0, onGround: true };
+
+// ── Metro M logo: white symbol on transparent background ───────────────────
+const metroImg = new Image();
+metroImg.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAABpUlEQVR42u2bMRLDIAwEDZP/f5k0KVIkHmwk7sC7bSYGryWECh0HAAAAAADAbMqMRVpr7e8GSimuz+6hKuX1/K56to3ACBEqOcsIvCrERZ6VwFWxEtgTWU7RZxmBZ4Lc5Nmm8C9RjvKsz8BvYa7yKCIBvJw35xx5FhFYPqj+TwpzBt5v+tWRZxeBV4S4yLNL4R4xTvI4A3cUeBZhbtFnG4G/RDnKs07hb2Gu8uw7EWdxFBEELpjCKzT3EXu+cnQQgaQwAhGIQECg7LKfcS1w7SAy9n45AnsWcLwvZn34Wym8msTMrLl9Bq4iMfvIqQ4vsPLaQwJ7v5xCYu+aowVvOAIdJc6SF5bCThJnygs9Ax0kzpYXXkSUEhXyUqqwQqJKXto1xrGVy9pTVW44IgrVvXlVf/XMSaUZ2VAdUidrUmmLWbmMtutxk0qRlVlZcaURGCHRTd70FB6R6ChPcgbekegq7zgmTazPKASqy7usCke+sLLzkQ/arN42yu+Bo5NKj7gHZohg0GZACIM2G8Gk0m4RyKBNksQVRh7saB8wAQAAAACwGW8fe/ioXNNfrAAAAABJRU5ErkJggg==';
+
+function drawMetroM(x, y, size) {
+  if (metroImg.complete && metroImg.naturalWidth) {
+    ctx.drawImage(metroImg, x, y, size, size);
+  }
+}
+
+// ── Draw: Obstacles ─────────────────────────────────────────────────────────
+// Only one obstacle type: M sign on a pole, varying height & size
+function drawObstacle(o) {
+  // Pole
+  ctx.fillStyle = '#1a1a1a';
+  ctx.fillRect(o.x + o.sw / 2 - 2, GROUND - o.h + o.sw, 4, o.h - o.sw);
+
+  // Metro M sign at top of pole
+  drawMetroM(o.x, GROUND - o.h, o.sw);
+}
+
+// ── Spawn ──────────────────────────────────────────────────────────────────
+function spawnObstacle() {
+  // Vary sign size and pole height
+  const sw = 34 + Math.random() * 20;          // sign width/height (square)
+  const poleH = 30 + Math.random() * 50;       // pole height below sign
+  const h = sw + poleH;                         // total obstacle height
+
+  obstacles.push({ x: CW + 20, sw, h });
+
+  // Occasional double — two signs close together
+  if (score > 300 && Math.random() > 0.65) {
+    const sw2 = 30 + Math.random() * 18;
+    const h2  = sw2 + 25 + Math.random() * 40;
+    obstacles.push({ x: CW + 20 + sw + 60 + Math.random() * 30, sw: sw2, h: h2 });
+  }
+}
+
+// ── Draw: Ground ────────────────────────────────────────────────────────────
+function drawGround() {
+  ctx.fillStyle = '#1c1c1c';
+  ctx.fillRect(0, GROUND, CW, 2);
+
+  ctx.fillStyle = '#111';
+  const dw = 10, dg = 16;
+  const off = groundOff % (dw + dg);
+  for (let x = -off; x < CW; x += dw + dg) {
+    ctx.fillRect(x, GROUND + 6, dw, 1);
+  }
+
+  ctx.fillStyle = '#0c0c0c';
+  ctx.fillRect(0, GROUND + 2, CW, CH - GROUND - 2);
+}
+
+// ── Draw: Stickman ──────────────────────────────────────────────────────────
+function drawStickman() {
+  if (!stickImg.complete || !stickImg.naturalWidth) return;
+
+  ctx.save();
+  ctx.translate(PXBASE, player.y);
+
+  if (state === 'dead') {
+    ctx.rotate(Math.PI * 0.46);
+    ctx.translate(12, -8);
+  } else if (!player.onGround) {
+    const tgt = player.vy < 0 ? -0.2 : 0.12;
+    airTilt  += (tgt - airTilt) * 0.14;
+    ctx.rotate(airTilt);
+  } else {
+    airTilt += (0 - airTilt) * 0.2;
+    ctx.rotate(airTilt);
+    ctx.translate(0, Math.sin(legPhase * 2) * 2);
+  }
+
+  const IW = 72, IH = 72;
+  ctx.drawImage(stickImg, -IW / 2, -IH, IW, IH);
+  ctx.restore();
+}
+
+// ── Draw: Score ──────────────────────────────────────────────────────────────
+function drawScore() {
+  ctx.textAlign = 'right';
+  ctx.font      = '700 13px "Helvetica Neue",Helvetica,Arial,sans-serif';
+  ctx.fillStyle = '#2a2a2a';
+  ctx.fillText('HI ' + String(hiScore).padStart(5, '0'), CW - 14, 22);
+  ctx.fillStyle = '#ffffff';
+  ctx.fillText(String(score).padStart(5, '0'), CW - 14, 40);
+  ctx.textAlign = 'left';
+}
+
+// ── Draw: Particles ──────────────────────────────────────────────────────────
+function addDust(x, y) {
+  for (let i = 0; i < 5; i++) {
+    particles.push({ x, y,
+      vx: (Math.random() - 0.5) * 3,
+      vy: -0.5 - Math.random() * 2,
+      life: 1, s: 1.5 + Math.random() * 1.5 });
+  }
+}
+
+function drawParticles() {
+  particles.forEach(p => {
+    ctx.globalAlpha = p.life * 0.35;
+    ctx.fillStyle = '#2e2e2e';
+    ctx.fillRect(p.x, p.y, p.s, p.s);
+  });
+  ctx.globalAlpha = 1;
+}
+
+// ── Draw: Overlay ─────────────────────────────────────────────────────────
+function drawOverlay() {
+  ctx.textAlign = 'center';
+  if (state === 'idle') {
+    ctx.fillStyle = '#1e1e1e';
+    ctx.font      = '400 11px "Helvetica Neue",Helvetica,Arial,sans-serif';
+    ctx.fillText('PRESS SPACE OR TAP TO START', CW / 2, GROUND / 2 + 6);
+  } else if (state === 'dead') {
+    ctx.fillStyle = '#fff';
+    ctx.font      = '700 17px "Helvetica Neue",Helvetica,Arial,sans-serif';
+    ctx.fillText('GAME  OVER', CW / 2, CH / 2 - 16);
+    // Retry icon
+    const bx = CW / 2 - 20, by = CH / 2 - 2;
+    ctx.strokeStyle = '#2e2e2e';
+    ctx.lineWidth   = 1.5;
+    ctx.beginPath();
+    ctx.roundRect(bx, by, 40, 34, 4);
+    ctx.stroke();
+    ctx.fillStyle = '#fff';
+    ctx.font      = '20px "Helvetica Neue",Helvetica,Arial,sans-serif';
+    ctx.fillText('↺', CW / 2, by + 25);
+  }
+  ctx.textAlign = 'left';
+}
+
+// ── Update ────────────────────────────────────────────────────────────────
+function update() {
+  if (state !== 'running') return;
+
+  dist++;
+  score        = Math.floor(dist / 6);
+  speed        = 5.5 + score * 0.009;
+  obstInterval = Math.max(44, 82 - score * 0.028);
+  groundOff   += speed;
+
+  player.vy += GRAV;
+  player.y  += player.vy;
+
+  if (player.y >= GROUND) {
+    if (!player.onGround && player.vy > 2) addDust(PXBASE, GROUND);
+    player.y = GROUND; player.vy = 0; player.onGround = true; jumpCount = 0;
+  } else {
+    player.onGround = false;
+  }
+
+  if (player.onGround) legPhase += 0.28;
+
+  obstTimer++;
+  if (obstTimer >= obstInterval) { spawnObstacle(); obstTimer = 0; }
+  obstacles.forEach(o => o.x -= speed);
+  obstacles = obstacles.filter(o => o.x > -100);
+
+  // Collision — tight box around stickman body
+  const pW = 22, pH = 56;
+  const pL = PXBASE - pW / 2 + 8;
+  const pT = player.y - pH;
+  for (const o of obstacles) {
+    if (pL + pW > o.x + 3 &&
+        pL      < o.x + o.sw - 3 &&
+        pT      < GROUND - 2 &&
+        pT + pH > GROUND - o.h + 4) {
+      die(); return;
+    }
+  }
+
+  particles.forEach(p => { p.x += p.vx; p.y += p.vy; p.vy += 0.12; p.life -= 0.06; });
+  particles = particles.filter(p => p.life > 0);
+}
+
+// ── Draw ──────────────────────────────────────────────────────────────────
+function draw() {
+  ctx.fillStyle = '#0a0a0a';
+  ctx.fillRect(0, 0, CW, CH);
+
+  drawScore();
+  drawGround();
+  obstacles.forEach(o => drawObstacle(o));
+  drawStickman();
+  drawParticles();
+  if (state !== 'running') drawOverlay();
+}
+
+// ── Control ───────────────────────────────────────────────────────────────
+function jump() {
+  if (state !== 'running') { startGame(); return; }
+  if (jumpCount < 2) {
+    player.vy = jumpCount === 0 ? J1 : J2;
+    jumpCount++; player.onGround = false;
+  }
+}
+
+function die() {
+  state = 'dead';
+  if (score > hiScore) hiScore = score;
+}
+
+function startGame() {
+  state = 'running';
+  score = 0; dist = 0; speed = 5.5;
+  obstacles = []; particles = [];
+  obstTimer = 0; jumpCount = 0;
+  player.y = GROUND; player.vy = 0; player.onGround = true;
+  legPhase = 0; airTilt = 0; groundOff = 0;
+}
+
+function loop() {
+  try { update(); draw(); } catch(e) { console.error(e); }
+  requestAnimationFrame(loop);
+}
+
+window.addEventListener('keydown', e => {
+  if (e.code === 'Space' || e.code === 'ArrowUp') { e.preventDefault(); jump(); }
+});
+canvas.addEventListener('click', jump);
+canvas.addEventListener('touchstart', e => { e.preventDefault(); jump(); }, { passive: false });
+
+loop();
+</script>
+</body>
+</html>
