@@ -411,16 +411,17 @@ function drawOverlay() {
     ctx.fillStyle = '#fff';
     ctx.font      = `700 ${MOB ? 34 : 18}px "Helvetica Neue",Helvetica,Arial,sans-serif`;
     ctx.fillText('GAME  OVER', CW / 2, CH / 2 - (MOB ? 28 : 16));
-    const bw = MOB ? 72 : 40, bh = MOB ? 54 : 34;
-    const bx = CW / 2 - bw / 2, by = CH / 2 - (MOB ? 4 : 2);
-    ctx.strokeStyle = '#2e2e2e';
-    ctx.lineWidth   = MOB ? 2.5 : 1.5;
-    ctx.beginPath();
-    ctx.roundRect(bx, by, bw, bh, 4);
-    ctx.stroke();
-    ctx.fillStyle = '#fff';
-    ctx.font      = `${MOB ? 40 : 22}px "Helvetica Neue",Helvetica,Arial,sans-serif`;
-    ctx.fillText('↺', CW / 2, by + (MOB ? 42 : 25));
+    const bw = MOB ? 160 : 124, bh = MOB ? 50 : 36;
+    const bx = CW / 2 - bw / 2, by = CH / 2 + (MOB ? 4 : 8);
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(bx, by, bw, bh);
+    ctx.fillStyle = '#000000';
+    ctx.font = `700 ${MOB ? 13 : 10}px "Helvetica Neue",Helvetica,Arial,sans-serif`;
+    ctx.letterSpacing = '0.14em';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('RETRY  →', CW / 2, by + bh / 2);
+    ctx.textBaseline = 'alphabetic';
+    ctx.letterSpacing = '0px';
   }
   ctx.textAlign = 'left';
 }
