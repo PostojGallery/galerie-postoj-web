@@ -405,9 +405,11 @@ function drawParticles() {
 function drawOverlay() {
   ctx.textAlign = 'center';
   if (state === 'idle') {
+    ctx.globalAlpha = 0.3 + 0.7 * Math.abs(Math.sin(Date.now() / 700));
     ctx.fillStyle = '#ffffff';
     ctx.font      = `500 ${MOB ? 22 : 12}px "Helvetica Neue",Helvetica,Arial,sans-serif`;
     ctx.fillText(MOB ? 'TAP TO START' : 'PRESS SPACE OR TAP TO START', CW / 2, GROUND / 2 + 6);
+    ctx.globalAlpha = 1;
   } else if (state === 'dead') {
     ctx.fillStyle = '#fff';
     ctx.font      = `700 ${MOB ? 34 : 18}px "Helvetica Neue",Helvetica,Arial,sans-serif`;
