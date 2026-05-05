@@ -323,6 +323,7 @@ let obstTimer = 0, obstInterval = 80;
 let groundOff = 0;
 let airTilt   = 0;
 let legPhase  = 0;
+let lastTime  = 0;
 
 const player = { y: GROUND, vy: 0, onGround: true };
 
@@ -426,25 +427,25 @@ function drawOverlay() {
   ctx.textAlign = 'left';
 }
 
-function update() {
+function update(dtf) {
   if (state !== 'running') return;
-  dist++;
+  dist        += dtf;
   score        = Math.floor(dist / 6);
   speed        = 5.5 + score * 0.009;
   obstInterval = Math.max(44, 82 - score * 0.028);
-  groundOff   += speed;
-  player.vy += GRAV;
-  player.y  += player.vy;
+  groundOff   += speed * dtf;
+  player.vy += GRAV * dtf;
+  player.y  += player.vy * dtf;
   if (player.y >= GROUND) {
     if (!player.onGround && player.vy > 2) addDust(PXBASE, GROUND);
     player.y = GROUND; player.vy = 0; player.onGround = true; jumpCount = 0;
   } else {
     player.onGround = false;
   }
-  if (player.onGround) legPhase += 0.28;
-  obstTimer++;
+  if (player.onGround) legPhase += 0.28 * dtf;
+  obstTimer += dtf;
   if (obstTimer >= obstInterval) { spawnObstacle(); obstTimer = 0; }
-  obstacles.forEach(o => o.x -= speed);
+  obstacles.forEach(o => o.x -= speed * dtf);
   obstacles = obstacles.filter(o => o.x > -100);
   const pW = 22, pH = 56;
   const pL = PXBASE - pW / 2 + 8;
@@ -457,7 +458,7 @@ function update() {
       die(); return;
     }
   }
-  particles.forEach(p => { p.x += p.vx; p.y += p.vy; p.vy += 0.12; p.life -= 0.06; });
+  particles.forEach(p => { p.x += p.vx * dtf; p.y += p.vy * dtf; p.vy += 0.12 * dtf; p.life -= 0.06 * dtf; });
   particles = particles.filter(p => p.life > 0);
 }
 
@@ -494,8 +495,11 @@ function startGame() {
   legPhase = 0; airTilt = 0; groundOff = 0;
 }
 
-function loop() {
-  try { update(); draw(); } catch(e) { console.error(e); }
+function loop(ts) {
+  const dt = lastTime ? Math.min(ts - lastTime, 50) : 16.667;
+  lastTime = ts;
+  const dtf = dt / 16.667;
+  try { update(dtf); draw(); } catch(e) { console.error(e); }
   requestAnimationFrame(loop);
 }
 
