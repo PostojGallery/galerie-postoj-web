@@ -281,9 +281,9 @@ function drawScore() {
   ctx.textAlign = 'right';
   ctx.font      = `700 ${sf}px "Helvetica Neue",Helvetica,Arial,sans-serif`;
   ctx.fillStyle = '#2a2a2a';
-  ctx.fillText('HI ' + String(hiScore).padStart(5, '0'), CW - 14, MOB ? 32 : 22);
+  ctx.fillText('HI ' + String(hiScore).padStart(5, '0'), CW - 14, MOB ? 20 : 22);
   ctx.fillStyle = '#ffffff';
-  ctx.fillText(String(score).padStart(5, '0'), CW - 14, MOB ? 62 : 40);
+  ctx.fillText(String(score).padStart(5, '0'), CW - 14, MOB ? 48 : 40);
   ctx.textAlign = 'left';
 }
 
