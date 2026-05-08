@@ -440,16 +440,11 @@ loop();
 .artists-sub{font-size:1.05rem;font-weight:300;color:rgba(255,255,255,0.45);margin-bottom:1.2rem;line-height:1.4;}
 .artists-body{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.4);margin-bottom:0;}
 .artists-top{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-bottom:2.5rem;}
-.aq-eyebrow{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:1.5rem;}
-.aq-slider{position:relative;min-height:300px;overflow:hidden;}
-.aq{position:absolute;top:0;left:0;width:100%;opacity:0;pointer-events:none;transition:opacity 0.5s;}
-.aq.active{opacity:1;pointer-events:auto;}
-.aq-quote{font-size:0.92rem;line-height:1.85;color:rgba(255,255,255,0.75);font-style:italic;margin-bottom:0.8rem;}
-.aq-author{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.28);}
-.aq-footer{margin-top:1.2rem;}
-.aq-dots{display:flex;gap:0.5rem;}
-.aqd{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);cursor:pointer;transition:background 0.2s;}
-.aqd.active{background:#fff;}
+.artists-oc{display:flex;align-items:center;gap:2rem;padding-top:0.5rem;}
+.artists-oc-stick{width:110px;height:auto;filter:invert(1);flex-shrink:0;align-self:flex-end;}
+.artists-oc-eyebrow{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:0.6rem;}
+.artists-oc-title{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;line-height:0.95;letter-spacing:-0.03em;color:#fff;margin-bottom:0.7rem;}
+.artists-oc-desc{font-size:0.9rem;line-height:1.7;color:rgba(255,255,255,0.4);}
 .artists-cards{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;}
 .artist-card{text-decoration:none;display:block;}
 .artist-card-img{aspect-ratio:3/4;overflow:hidden;margin-bottom:0.7rem;}
@@ -461,7 +456,6 @@ loop();
   .artists-section{padding:1.5rem 1.2rem 2.5rem;}
   .artists-top{grid-template-columns:1fr;gap:2.5rem;margin-bottom:2rem;}
   .artists-quotes-col{display:none;}
-  .aq-slider{min-height:380px;}
   .artists-cards{grid-template-columns:repeat(10,55vw);overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:0.6rem;padding-bottom:0.5rem;}
   .artists-cards::-webkit-scrollbar{display:none;}
   .artist-card{scroll-snap-align:start;}
@@ -477,34 +471,15 @@ loop();
       <a href="/en/artists" class="btn" style="margin-top:1.8rem;display:inline-block;">Meet the artists</a>
     </div>
     <div class="artists-quotes-col">
-      <div class="aq-eyebrow">What artists say</div>
-      <div class="aq-slider">
-        <div class="aq active">
-          <p class="aq-quote">"I usually love the locations of public exhibition spaces and their distinctive characters. There's something unconventional and interesting about them — and POSTOJ is no exception. Working with public galleries is a little different from working with a classic wall, especially when it operates as a display case. It's a bigger challenge to design an installation that actually works. But when art is shown in a public space where people pass through every day, it stays connected to them. It can make them pause for a moment, or offer them a new impression."</p>
-          <div class="aq-author">Adéla Valchařová</div>
-        </div>
-        <div class="aq">
-          <p class="aq-quote">"I love the idea that anyone, at any time, can come across my work. Completely by chance."</p>
-          <div class="aq-author">Anina Menger</div>
-        </div>
-        <div class="aq">
-          <p class="aq-quote">"I love making people happy through my work — whether they're adults or children. What I enjoy most are projects where the artwork involves some form of interaction from the viewer. So I was really delighted by how passers-by responded to the &#8216;Jak se máš?&#8217; exhibition at your gallery, and how well it all came together."</p>
-          <div class="aq-author">Patrik Antczak</div>
-        </div>
-        <div class="aq">
-          <p class="aq-quote">"It's fascinating to watch how exhibited works function within a space — how they fit in and how they interact with it. I think the concept works really well. Many people still don't visit galleries and aren't in direct contact with fine art. I don't think that's down to indifference or laziness — rather, they never had the right conditions or the chance to develop a relationship with art. I'm glad that Galerie POSTOJ has taken such an assertive approach to bringing contemporary art to a wider audience."</p>
-          <div class="aq-author">Lucie Pouchová</div>
-        </div>
-        <div class="aq">
-          <p class="aq-quote">"Above all, it's the contact with the audience — and there's certainly no shortage of that in a metro vestibule. At the same time, it's a space full of noise and movement, where you have to catch someone's eye at first glance — and that's the real challenge."</p>
-          <div class="aq-author">Jitka Petrášová</div>
-        </div>
-        <div class="aq">
-          <p class="aq-quote">"For me, the key thing about exhibiting in a public space like the metro is vulnerability. I experience it as a much more personal and open form of showing work than in a gallery."</p>
-          <div class="aq-author">Anna Banytiuk</div>
+      <div class="artists-oc">
+        <img class="artists-oc-stick" src="../images/pointing.webp" alt="">
+        <div>
+          <div class="artists-oc-eyebrow">Open Call</div>
+          <div class="artists-oc-title">Send us your work.</div>
+          <p class="artists-oc-desc">We're looking for what provokes. Not decoration.</p>
+          <a href="/en/open-call" class="btn" style="margin-top:1.5rem;display:inline-block;">I'm in</a>
         </div>
       </div>
-      <div class="aq-footer"><div class="aq-dots"><span class="aqd active"></span><span class="aqd"></span><span class="aqd"></span><span class="aqd"></span><span class="aqd"></span><span class="aqd"></span></div></div>
     </div>
   </div>
   <div class="artists-cards">
@@ -550,14 +525,6 @@ loop();
     </a>
   </div>
 </section>
-<script>
-(function(){
-  var aq=document.querySelectorAll('.aq'),aqd=document.querySelectorAll('.aqd'),c=0;
-  function go(n){aq[c].classList.remove('active');aqd[c].classList.remove('active');c=n%aq.length;aq[c].classList.add('active');aqd[c].classList.add('active');}
-  aqd.forEach(function(d,i){d.addEventListener('click',function(){go(i);});});
-  setInterval(function(){go(c+1);},5000);
-})();
-</script>
 <section id="opencall-strip">
   <div class="oc-grid">
     <div class="oc-stick-col"><img width="200" loading="lazy" class="oc-stick" src="../images/pointing.webp" alt=""></div>
