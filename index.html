@@ -187,9 +187,9 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 .artists-top{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-bottom:2.5rem;}
 .artists-oc{display:flex;align-items:center;gap:2rem;padding-top:0.5rem;}
 .artists-oc-stick{width:110px;height:auto;filter:invert(1);flex-shrink:0;align-self:flex-end;}
-.artists-oc-eyebrow{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:0.6rem;}
-.artists-oc-title{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;line-height:0.95;letter-spacing:-0.03em;color:#fff;margin-bottom:0.7rem;}
-.artists-oc-desc{font-size:0.9rem;line-height:1.7;color:rgba(255,255,255,0.4);}
+.artists-oc-title{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;line-height:0.95;letter-spacing:-0.03em;color:#fff;margin-bottom:0.8rem;}
+.artists-oc-link{font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s,border-color 0.2s;display:inline-block;}
+.artists-oc-link:hover{color:#fff;border-color:#fff;}
 .artists-cards{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;}
 .artist-card{text-decoration:none;display:block;}
 .artist-card-img{aspect-ratio:3/4;overflow:hidden;margin-bottom:0.7rem;}
@@ -219,10 +219,8 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
       <div class="artists-oc">
         <img class="artists-oc-stick" src="images/pointing.webp" alt="">
         <div>
-          <div class="artists-oc-eyebrow">Open Call</div>
           <div class="artists-oc-title">Pošli svoji práci.</div>
-          <p class="artists-oc-desc">Hledáme to, co provokuje. Ne dekoraci.</p>
-          <a href="/open-call" class="btn" style="margin-top:1.5rem;display:inline-block;">Jdu do toho</a>
+          <a href="/open-call" class="artists-oc-link">Open Call →</a>
         </div>
       </div>
     </div>
