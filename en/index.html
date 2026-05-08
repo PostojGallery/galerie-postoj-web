@@ -172,9 +172,9 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   </div>
 </section>
 <style>
-#game-wrap{position:relative;width:100%;line-height:0;background:#0a0a0a;}
+#game-wrap{position:relative;width:100%;line-height:0;background:#0a0a0a;padding-right:3rem;}
 #game-wrap canvas{display:block;width:100%;height:auto;}
-@media(max-width:768px){#game-wrap{margin-top:0.5rem;}}
+@media(max-width:768px){#game-wrap{margin-top:0.5rem;padding-right:1.2rem;}}
 </style>
 <div id="game-wrap"><canvas id="c"></canvas></div>
 <script>
@@ -431,6 +431,64 @@ canvas.addEventListener('mousemove', e => {
 canvas.addEventListener('mouseleave', () => { btnHover = false; });
 
 loop();
+})();
+</script>
+<style>
+.artists-section{padding:4rem 3rem 3rem;}
+.artists-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.artists-tag{font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:0.9rem;}
+.artists-heading{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:0.9;letter-spacing:-0.04em;color:#fff;margin-bottom:0.5rem;}
+.artists-sub{font-size:1.05rem;font-weight:300;color:rgba(255,255,255,0.45);margin-bottom:1.2rem;line-height:1.4;}
+.artists-body{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.4);margin-bottom:0;}
+.art-photo-slider{position:relative;width:100%;aspect-ratio:3/4;overflow:hidden;background:#111;}
+.art-photo{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 0.5s;}
+.art-photo.active{opacity:1;}
+.art-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+.art-meta-slider{position:relative;min-height:62px;margin-top:1rem;}
+.art-meta{position:absolute;top:0;left:0;opacity:0;transition:opacity 0.5s;pointer-events:none;width:100%;}
+.art-meta.active{opacity:1;position:relative;pointer-events:auto;}
+.art-name{font-size:clamp(1.4rem,2.5vw,2rem);font-weight:900;line-height:1;letter-spacing:-0.03em;color:#fff;}
+.art-exh{font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-top:0.45rem;}
+.art-dots{display:flex;gap:0.5rem;margin-top:1.1rem;}
+.artd{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);cursor:pointer;transition:background 0.2s;}
+.artd.active{background:#fff;}
+@media(max-width:768px){
+  .artists-section{padding:3rem 1.2rem 2.5rem;}
+  .artists-inner{grid-template-columns:1fr;gap:2.5rem;}
+  .artists-text-col{order:1;}
+  .artists-carousel-col{order:2;}
+}
+</style>
+<section class="artists-section rv">
+  <div class="artists-inner">
+    <div class="artists-text-col">
+      <div class="artists-tag">Our Artists</div>
+      <div class="artists-heading">We've Got Your Back</div>
+      <div class="artists-sub">Artists First.</div>
+      <p class="artists-body">We believe a gallery should serve its artists — not the other way around. Everyone who exhibits at POSTOJ receives full support from first contact to opening night. Art only matters when the person behind it is free to create.</p>
+      <a href="/en/artists" class="btn" style="margin-top:1.8rem;display:inline-block;">Meet the artists</a>
+    </div>
+    <div class="artists-carousel-col">
+      <div class="art-photo-slider">
+        <div class="art-photo active"><img loading="lazy" src="../images/martin-photo.webp" alt="Martin Jáchym"></div>
+        <div class="art-photo"><img loading="lazy" src="../images/anna-banytiuk.webp" alt="Anna Banytiuk"></div>
+        <div class="art-photo"><img loading="lazy" src="../images/patrik-antczak.webp" alt="Patrik Antczak"></div>
+      </div>
+      <div class="art-meta-slider">
+        <div class="art-meta active"><div class="art-name">Martin Jáchym</div><div class="art-exh">Break The Pattern, Go To Therapy — 2026</div></div>
+        <div class="art-meta"><div class="art-name">Anna Banytiuk</div><div class="art-exh">Cesty do Neznáma — 2025</div></div>
+        <div class="art-meta"><div class="art-name">Patrik Antczak</div><div class="art-exh">Jak se máš? — 2023</div></div>
+      </div>
+      <div class="art-dots"><span class="artd active"></span><span class="artd"></span><span class="artd"></span></div>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var artPhotos=document.querySelectorAll('.art-photo'),artMetas=document.querySelectorAll('.art-meta'),artDots=document.querySelectorAll('.artd'),artCur=0;
+  function artGoTo(n){artPhotos[artCur].classList.remove('active');artMetas[artCur].classList.remove('active');artDots[artCur].classList.remove('active');artCur=n%artPhotos.length;artPhotos[artCur].classList.add('active');artMetas[artCur].classList.add('active');artDots[artCur].classList.add('active');}
+  artDots.forEach(function(d,i){d.addEventListener('click',function(){artGoTo(i);});});
+  setInterval(function(){artGoTo(artCur+1);},4500);
 })();
 </script>
 <section id="opencall-strip">
