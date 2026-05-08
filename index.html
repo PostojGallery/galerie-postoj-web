@@ -292,6 +292,8 @@ ctx.scale(DPR, DPR);
 
 const GROUND = CH - 50;
 const PXBASE = 96;
+let canvasScale = canvas.getBoundingClientRect().width / CW || 1;
+window.addEventListener('resize', () => { canvasScale = canvas.getBoundingClientRect().width / CW || 1; });
 const GRAV   = 0.90;
 const J1     = -15.5;
 const J2     = -10.0;
@@ -414,12 +416,12 @@ function drawOverlay() {
     ctx.fillStyle = '#fff';
     ctx.font      = `700 ${MOB ? 34 : 18}px "Helvetica Neue",Helvetica,Arial,sans-serif`;
     ctx.fillText('GAME  OVER', CW / 2, CH / 2 - (MOB ? 28 : 16));
-    const bw = MOB ? 160 : 124, bh = MOB ? 50 : 36;
-    const bx = CW / 2 - bw / 2, by = CH / 2 + (MOB ? 4 : 8);
+    const bw = Math.round(144 / canvasScale), bh = Math.round(45 / canvasScale);
+    const bx = CW / 2 - bw / 2, by = CH / 2 + Math.round(6 / canvasScale);
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(bx, by, bw, bh);
     ctx.fillStyle = '#000000';
-    ctx.font = `700 ${MOB ? 13 : 10}px "Helvetica Neue",Helvetica,Arial,sans-serif`;
+    ctx.font = `700 ${Math.max(6, Math.round(11 / canvasScale))}px "Helvetica Neue",Helvetica,Arial,sans-serif`;
     ctx.letterSpacing = '0.14em';
     ctx.textBaseline = 'middle';
     ctx.fillText('RETRY  →', CW / 2, by + bh / 2);
