@@ -327,6 +327,8 @@ let groundOff = 0;
 let airTilt   = 0;
 let legPhase  = 0;
 let lastTime  = 0;
+let btnHover  = false;
+let btnBounds = null;
 
 const player = { y: GROUND, vy: 0, onGround: true };
 
@@ -419,13 +421,19 @@ function drawOverlay() {
     ctx.fillText('GAME  OVER', CW / 2, CH / 2 - (MOB ? 28 : 16));
     const bw = Math.round(144 / canvasScale), bh = Math.round(45 / canvasScale);
     const bx = CW / 2 - bw / 2, by = CH / 2 + Math.round(6 / canvasScale);
-    ctx.fillStyle = '#ffffff';
+    btnBounds = { x: bx, y: by, w: bw, h: bh };
+    ctx.fillStyle = btnHover ? '#0a0a0a' : '#ffffff';
     ctx.fillRect(bx, by, bw, bh);
-    ctx.fillStyle = '#000000';
+    if (btnHover) {
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = Math.max(1, Math.round(1 / canvasScale));
+      ctx.strokeRect(bx, by, bw, bh);
+    }
+    ctx.fillStyle = btnHover ? '#ffffff' : '#000000';
     ctx.font = `700 ${Math.max(6, Math.round(11 / canvasScale))}px "Helvetica Neue",Helvetica,Arial,sans-serif`;
     ctx.letterSpacing = '0.14em';
     ctx.textBaseline = 'middle';
-    ctx.fillText('RETRY  →', CW / 2, by + bh / 2);
+    ctx.fillText('RETRY', CW / 2, by + bh / 2);
     ctx.textBaseline = 'alphabetic';
     ctx.letterSpacing = '0px';
   }
@@ -498,6 +506,7 @@ function startGame() {
   obstTimer = 0; jumpCount = 0;
   player.y = GROUND; player.vy = 0; player.onGround = true;
   legPhase = 0; airTilt = 0; groundOff = 0;
+  btnHover = false; btnBounds = null;
 }
 
 function loop(ts) {
@@ -513,6 +522,15 @@ window.addEventListener('keydown', e => {
 });
 canvas.addEventListener('click', jump);
 canvas.addEventListener('touchstart', e => { e.preventDefault(); jump(); }, { passive: false });
+canvas.addEventListener('mousemove', e => {
+  if (state !== 'dead' || !btnBounds) { btnHover = false; return; }
+  const r = canvas.getBoundingClientRect();
+  const cx = (e.clientX - r.left) * (CW / r.width);
+  const cy = (e.clientY - r.top) * (CH / r.height);
+  btnHover = cx >= btnBounds.x && cx <= btnBounds.x + btnBounds.w &&
+             cy >= btnBounds.y && cy <= btnBounds.y + btnBounds.h;
+});
+canvas.addEventListener('mouseleave', () => { btnHover = false; });
 
 loop();
 })();
