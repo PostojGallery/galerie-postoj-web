@@ -452,11 +452,20 @@ loop();
 .art-dots{display:flex;gap:0.5rem;margin-top:1.1rem;}
 .artd{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);cursor:pointer;transition:background 0.2s;}
 .artd.active{background:#fff;}
+.artists-cards{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.07);}
+.artist-card{text-decoration:none;display:block;}
+.artist-card-img{aspect-ratio:3/4;overflow:hidden;margin-bottom:0.7rem;}
+.artist-card-img img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform 0.4s ease;}
+.artist-card:hover .artist-card-img img{transform:scale(1.05);}
+.artist-card-name{font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);}
 @media(max-width:768px){
   .artists-section{padding:3rem 1.2rem 2.5rem;}
   .artists-inner{grid-template-columns:1fr;gap:2.5rem;}
   .artists-text-col{order:1;}
   .artists-carousel-col{order:2;}
+  .artists-cards{grid-template-columns:repeat(5,55vw);overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:0.6rem;padding-bottom:0.5rem;}
+  .artists-cards::-webkit-scrollbar{display:none;}
+  .artist-card{scroll-snap-align:start;}
 }
 </style>
 <section class="artists-section rv">
@@ -480,6 +489,28 @@ loop();
       </div>
       <div class="art-dots"><span class="artd active"></span><span class="artd"></span><span class="artd"></span></div>
     </div>
+  </div>
+  <div class="artists-cards">
+    <a href="/en/artists#patrik-antczak" class="artist-card">
+      <div class="artist-card-img"><img loading="lazy" src="../images/patrik-antczak.webp" alt="Patrik Antczak"></div>
+      <div class="artist-card-name">Patrik Antczak</div>
+    </a>
+    <a href="/en/artists#anna-banytiuk" class="artist-card">
+      <div class="artist-card-img"><img loading="lazy" src="../images/anna-banytiuk.webp" alt="Anna Banytiuk"></div>
+      <div class="artist-card-name">Anna Banytiuk</div>
+    </a>
+    <a href="/en/artists#martin-jachym" class="artist-card">
+      <div class="artist-card-img"><img loading="lazy" src="../images/martin-photo.webp" alt="Martin Jáchym"></div>
+      <div class="artist-card-name">Martin Jáchym</div>
+    </a>
+    <a href="/en/artists#lucie-pouchova" class="artist-card">
+      <div class="artist-card-img"><img loading="lazy" src="../images/lucie-pouchova.webp" alt="Lucie Pouchová"></div>
+      <div class="artist-card-name">Lucie Pouchová</div>
+    </a>
+    <a href="/en/artists#jitka-petrasova" class="artist-card">
+      <div class="artist-card-img"><img loading="lazy" src="../images/jitka-petrasova.webp" alt="Jitka Petrášová"></div>
+      <div class="artist-card-name">Jitka Petrášová</div>
+    </a>
   </div>
 </section>
 <script>
