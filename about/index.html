@@ -326,6 +326,7 @@
 (function(){
   function fmt(n,s){return n>=1000?n.toLocaleString('cs-CZ')+(s||''):n+(s||'');}
   var counters=document.querySelectorAll('.stat-num[data-target]'),started=false;
+  counters.forEach(function(el){var t=parseInt(el.getAttribute('data-target')),s=el.getAttribute('data-suffix')||'';el.textContent=fmt(t,s);el.style.minWidth=el.offsetWidth+'px';el.textContent='0';});
   function run(){if(started)return;started=true;counters.forEach(function(el){var t=parseInt(el.getAttribute('data-target')),s=el.getAttribute('data-suffix')||'',st=null;function step(ts){if(!st)st=ts;var p=Math.min(1,(ts-st)/1800),e=1-Math.pow(1-p,3);el.textContent=fmt(Math.round(e*t),s);if(p<1)requestAnimationFrame(step);else el.textContent=fmt(t,s);}requestAnimationFrame(step);});}
   var obs2=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting)run();});},{threshold:0.3});
   counters.forEach(function(el){obs2.observe(el);});
