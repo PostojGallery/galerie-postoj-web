@@ -71,7 +71,13 @@
 #glb-count{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);font-family:inherit;}
 @media(max-width:768px){
   .exh-layout{grid-template-columns:1fr;margin-top:70px;}
-  .exh-sidebar{display:none;}
+  .exh-sidebar{position:sticky;top:60px;height:auto;flex-direction:row;overflow-x:auto;overflow-y:visible;border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);scrollbar-width:none;z-index:90;background:#0a0a0a;box-shadow:inset -60px 0 30px -10px #0a0a0a;}
+  .exh-sidebar::-webkit-scrollbar{display:none;}
+  .exh-sidebar-hero{display:none;}
+  .exh-index-row{flex-shrink:0;padding:0.9rem 1.2rem;white-space:nowrap;}
+  .exh-index-row.ei-active{background:rgba(255,255,255,0.06);}
+  .ei-title{font-size:0.9rem;}
+  .ei-year,.ei-artist{display:none;}
   .exh-content{padding-left:0;}
   .exh-current-section{padding:2rem 1.2rem 1.5rem;}
   .exh-cur-grid{grid-template-columns:1fr;gap:1.5rem;}
@@ -334,7 +340,24 @@
 <script>
 (function(){
   var rows=document.querySelectorAll('.exh-index-row[href^="#"]');
-  function setActive(id){rows.forEach(function(r){r.classList.toggle('ei-active',r.getAttribute('href')==='#'+id);});}
+  var sidebar=document.querySelector('.exh-sidebar');
+  var rafId=null,lastActiveId=null;
+  function scrollSidebarTo(target){
+    if(rafId)cancelAnimationFrame(rafId);
+    var start=sidebar.scrollLeft,diff=target-start,duration=20,startTime=null;
+    function step(ts){if(!startTime)startTime=ts;var p=Math.min((ts-startTime)/duration,1);sidebar.scrollLeft=start+diff*(1-Math.pow(1-p,3));if(p<1)rafId=requestAnimationFrame(step);}
+    rafId=requestAnimationFrame(step);
+  }
+  function setActive(id){
+    rows.forEach(function(r){
+      var active=r.getAttribute('href')==='#'+id;
+      r.classList.toggle('ei-active',active);
+      if(active&&sidebar&&window.innerWidth<=768){
+        var target=r.offsetLeft-(sidebar.offsetWidth/2)+(r.offsetWidth/2);
+        scrollSidebarTo(target);
+      }
+    });
+  }
   rows.forEach(function(row){
     row.addEventListener('click',function(e){
       e.preventDefault();var id=row.getAttribute('href').slice(1);
@@ -354,7 +377,7 @@
       } else {
         sections.forEach(function(s){if(s.getBoundingClientRect().top<=100)active=s.id;});
       }
-      if(active)setActive(active);
+      if(active&&active!==lastActiveId){lastActiveId=active;setActive(active);}
       scrollTicking=false;
     });
   },{passive:true});
