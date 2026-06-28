@@ -30,8 +30,8 @@
 .stats-grid{display:grid;grid-template-columns:repeat(5,1fr);}
 .stat-item{padding:1.5rem 2.5rem;border-right:1px solid rgba(255,255,255,0.05);display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;box-sizing:border-box;}
 .stat-item:last-child{border-right:none;}
-.stat-num{font-weight:900;line-height:1;letter-spacing:-0.04em;margin-bottom:0.5rem;font-size:5rem;white-space:nowrap;}
-.stat-label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.28);line-height:1.6;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;}
+.stat-num{font-weight:900;line-height:1;letter-spacing:-0.04em;margin-bottom:0.5rem;font-size:5rem;}
+.stat-label{font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.28);line-height:1.6;}
 .about-story{}
 .whw-row{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;}
 .whw-text-col{padding:1.2rem 2.5rem 2rem;}
@@ -41,7 +41,7 @@
 .whw-cta{display:inline-block;margin-top:1.5rem;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;cursor:none;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s,border-color 0.2s;}
 .whw-cta:hover{color:#fff;border-color:#fff;}
 .whw-testimonials{display:flex;align-items:center;justify-content:center;padding:2rem 3rem;}
-.ts-eyebrow{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:1.5rem;}
+.ts-eyebrow{font-size:0.65rem;letter-spacing:ev0.22em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:1.5rem;}
 .ts-slider{position:relative;min-height:140px;}
 .ts{position:absolute;top:0;left:0;width:100%;opacity:0;pointer-events:none;transition:opacity 0.5s;}
 .ts.active{opacity:1;pointer-events:auto;}
@@ -69,8 +69,8 @@
 .info-sub{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:#fff;margin-bottom:0.2rem;}
 .info-val{font-size:0.88rem;color:rgba(255,255,255,0.45);font-weight:400;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;margin-bottom:0.8rem;}
 .info-divider{display:none;}
-.info-map-link{font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;cursor:none;display:inline-block;margin-top:0.8rem;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s,border-color 0.2s;}
-.info-map-link:hover{color:#fff;border-color:#fff;}
+.info-map-link{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;cursor:none;display:inline-block;margin-top:0.8rem;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s;}
+.info-map-link:hover{color:#fff;}
 .info-val a{color:rgba(255,255,255,0.45)!important;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.12);padding-bottom:1px;transition:color 0.2s;}
 .info-val a:hover{color:#fff!important;}
 @media(max-width:768px){
@@ -83,8 +83,7 @@
 .hist-ph{aspect-ratio:3/4;background:rgba(255,255,255,0.03);border:1px dashed rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;}
 .hist-ph span{font-size:0.48rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.08);}
 .hist-real{overflow:hidden;aspect-ratio:3/4;cursor:none;}
-.hist-real img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;}
-.hist-real:hover img{transform:scale(1.05);}
+.hist-real img{width:100%;height:100%;object-fit:cover;}
 .hist-pos-right img{object-position:right center;}
 #aglb{position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:10000;display:none;cursor:none;}
 #aglb img{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);max-height:90vh;max-width:90vw;object-fit:contain;}
@@ -99,13 +98,13 @@
   .founder-right{padding-bottom:1rem;}
   .stats-grid{grid-template-columns:repeat(2,1fr);}
   .stat-num{font-size:clamp(2.8rem,13vw,4rem);white-space:nowrap;}
-  .stat-item{padding:1rem 1.2rem;border-right:none;border-bottom:1px solid rgba(255,255,255,0.05);justify-content:flex-start;}
-  .stat-label{font-size:11px;}
+  .stat-item{padding:1rem 1.2rem;border-right:none;border-bottom:1px solid rgba(255,255,255,0.05);}
+  .stat-label{font-size:0.5rem;white-space:nowrap;}
   .stat-item:nth-child(1){order:1;}
-  .stat-item:nth-child(2){order:2;}
-  .stat-item:nth-child(3){order:3;}
-  .stat-item:nth-child(4){order:4;}
-  .stat-item:nth-child(5){order:5;grid-column:1/-1;border-bottom:none;}
+  .stat-item:nth-child(2){order:3;}
+  .stat-item:nth-child(3){order:5;grid-column:1/-1;border-bottom:none;}
+  .stat-item:nth-child(4){order:2;}
+  .stat-item:nth-child(5){order:4;border-bottom:none;}
   .whw-row{grid-template-columns:1fr;}
   .whw-text-col{padding:1.5rem 1.2rem 1rem;}
   .whw-testimonials{padding:1rem 1.2rem 2rem;}
@@ -138,10 +137,10 @@
     <div class="rv founder-right" style="transition-delay:0.12s">
       <div>
         <div class="founder-eyebrow">A stance on art</div>
-        <blockquote class="founder-quote"><p>We believe art belongs to everyone.</p>
-        <p>That is why we built galerie POSTOJ in the metro. In the middle of the city. Not by accident. By choice. In a place where most people would not expect to find art.</p>
-        <p>For too long, exhibitions have taken place behind closed doors. In spaces where you hesitate before entering. Where you speak quietly. Where you sometimes wonder whether you belong there at all.</p>
-        <p>At galerie POSTOJ, we give space to the next generation of artists and to topics that resonate with the world around us. We stand behind our artists from their first exhibitions, because the beginning is often the most challenging stage. And that is when support matters most.</p></blockquote>
+        <blockquote class="founder-quote"><p>Art at galerie POSTOJ is here to provoke.</p>
+        <p>I believe art belongs to everyone — that's why we built galerie POSTOJ in the metro, in public space. In a place that used to be a currency exchange ripping off tourists.</p>
+        <p>Our exhibitions open up topics that resonate in contemporary society. We give space to young artists and art school students.</p>
+        <p>I'm convinced that Czech contemporary art has its place in the world. And I'll do everything I can to get it there as galerie POSTOJ.</p></blockquote>
         <img width="1397" height="690" class="founder-sig" src="../../images/signature.png" alt="">
         <div class="founder-email"><a href="mailto:filip.kolar@galeriepostoj.cz">filip.kolar@galeriepostoj.cz</a></div>
       </div>
@@ -152,7 +151,6 @@
           <div class="logo-item"><img width="355" height="111" src="../../images/logo-artmap-v2.png" alt="ArtMap"></div>
           <div class="logo-item" style="width:160px;padding:13px 14px;"><img width="1892" height="312" src="../../images/logo-ct-v2.png" alt="ČT" style="width:100%;height:auto;display:block;"></div>
           <div class="logo-item"><img width="2000" height="1447" src="../../images/logo-a2.png" alt="A2"></div>
-          <div class="logo-item"><img width="1998" height="460" src="../../images/logo-rozhlas.png" alt="Český rozhlas"></div>
         </div>
       </div>
     </div>
@@ -160,10 +158,10 @@
 </section>
 <section class="about-stats">
   <div class="stats-grid">
-    <div class="stat-item rv"><div class="stat-num" data-target="80000" data-suffix="+">0</div><div class="stat-label">People passing by daily</div></div>
-    <div class="stat-item rv"><div class="stat-num" data-target="1000" data-suffix="+">0</div><div class="stat-label">Visitors at openings</div></div>
-    <div class="stat-item rv"><div class="stat-num" data-target="11">0</div><div class="stat-label">Artists exhibited</div></div>
     <div class="stat-item rv"><div class="stat-num" data-target="8">0</div><div class="stat-label">Exhibitions since 2022</div></div>
+    <div class="stat-item rv"><div class="stat-num" data-target="11">0</div><div class="stat-label">Artists</div></div>
+    <div class="stat-item rv"><div class="stat-num" data-target="30000" data-suffix="+">0</div><div class="stat-label">People passing by daily</div></div>
+    <div class="stat-item rv"><div class="stat-num" data-target="1000" data-suffix="+">0</div><div class="stat-label">Visitors at openings</div></div>
     <div class="stat-item rv"><div class="stat-num">∞</div><div class="stat-label">Smiles and reactions</div></div>
   </div>
 </section>
@@ -207,7 +205,7 @@
     <div class="whw-text-col">
       <div class="whw-tag">How</div>
       <div class="whw-heading">A gallery in&nbsp;the metro.</div>
-      <p class="whw-text">Exhibitions take place in the vestibule of Náměstí Republiky metro station. Not exactly where you'd expect a gallery, right? There used to be a currency exchange here — offering sixteen crowns to the euro when the going rate was significantly higher. We couldn't let that stand. And so, in 2022, the story of galerie POSTOJ began.</p>
+      <p class="whw-text">In 2022 I was standing one evening in the metro at Náměstí Republiky, staring at an empty shop window. A former currency exchange that ripped off tourists. Dark, messy, nothing more. That evening I knew we'd turn that space into a gallery. For people, not elites.</p>
       <a href="/en/exhibitions" class="btn" style="margin-top:1.5rem;display:inline-block;">Explore exhibitions</a>
     </div>
     <div class="whw-map-col">
@@ -234,6 +232,10 @@
     </div>
     <div class="info-col">
       <div class="info-col-label">Contact</div>
+      <div class="info-row">
+        <div class="info-sub">Production</div>
+        <div class="info-val">Anna Gotvaldová<br><a href="mailto:anna.gotvaldova@galeriepostoj.cz" style="color:#fff;text-decoration:none;cursor:none;">anna.gotvaldova@galeriepostoj.cz</a></div>
+      </div>
       <div class="info-row">
         <div class="info-sub">Email</div>
         <div class="info-val"><a href="mailto:info@galeriepostoj.cz" style="color:#fff;text-decoration:none;cursor:none;">info@galeriepostoj.cz</a></div>
@@ -327,7 +329,6 @@
 (function(){
   function fmt(n,s){return n>=1000?n.toLocaleString('en-GB')+(s||''):n+(s||'');}
   var counters=document.querySelectorAll('.stat-num[data-target]'),started=false;
-  counters.forEach(function(el){var t=parseInt(el.getAttribute('data-target')),s=el.getAttribute('data-suffix')||'';el.textContent=fmt(t,s);el.style.minWidth=el.offsetWidth+'px';el.textContent='0';});
   function run(){if(started)return;started=true;counters.forEach(function(el){var t=parseInt(el.getAttribute('data-target')),s=el.getAttribute('data-suffix')||'',st=null;function step(ts){if(!st)st=ts;var p=Math.min(1,(ts-st)/1800),e=1-Math.pow(1-p,3);el.textContent=fmt(Math.round(e*t),s);if(p<1)requestAnimationFrame(step);else el.textContent=fmt(t,s);}requestAnimationFrame(step);});}
   var obs2=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting)run();});},{threshold:0.3});
   counters.forEach(function(el){obs2.observe(el);});
