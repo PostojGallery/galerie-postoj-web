@@ -491,7 +491,7 @@
       } else {
         sections.forEach(function(sec){if(sec.getBoundingClientRect().top<=100)active=sec.id;});
       }
-      if(active&&active!==lastActiveId){lastActiveId=active;setActive(active);}
+      if(active&&active!==lastActiveId){lastActiveId=active;setActive(active,true);}
       scrollTicking=false;
     });
   },{passive:true});
