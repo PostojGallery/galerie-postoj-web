@@ -71,6 +71,11 @@
 .lightbox-price{font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;}
 #lightbox-close{position:absolute;top:2rem;right:2rem;background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.6);font-family:inherit;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:none;transition:all 0.2s;}
 #lightbox-close:hover{border-color:#fff;color:#fff;}
+@media(min-width:769px){
+  .artists-layout{height:calc(100vh - 60px);overflow:hidden;align-items:stretch;}
+  .artists-content{height:100%;overflow-y:auto;}
+  .artists-sidebar{position:static;top:auto;height:100%;}
+}
 @media(max-width:768px){
   .exh-layout,.artists-layout{grid-template-columns:1fr;margin-top:70px;}
   .artists-sidebar{position:sticky;top:60px;height:auto;flex-direction:row;overflow-x:auto;overflow-y:visible;border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);scrollbar-width:none;z-index:90;background:#0a0a0a;box-shadow:inset -60px 0 30px -10px #0a0a0a;}
@@ -418,6 +423,7 @@
 (function(){
   var rows=document.querySelectorAll('.artist-index-row[href^="#"]');
   var sidebar=document.querySelector('.artists-sidebar');
+  var content=document.querySelector('.artists-content');
   var rafId=null,lastActiveId=null;
   function scrollSidebarTo(target){
     if(rafId)cancelAnimationFrame(rafId);
@@ -441,17 +447,26 @@
       var id=row.getAttribute('href').slice(1);
       var target=document.getElementById(id);if(!target)return;
       setActive(id);
-      window.scrollTo({top:target.getBoundingClientRect().top+window.scrollY-70,behavior:'smooth'});
+      if(window.innerWidth>768&&content){
+        content.scrollTo({top:content.scrollTop+target.getBoundingClientRect().top-content.getBoundingClientRect().top-10,behavior:'smooth'});
+      }else{
+        window.scrollTo({top:target.getBoundingClientRect().top+window.scrollY-70,behavior:'smooth'});
+      }
     });
   });
   var sections=document.querySelectorAll('.artist-section[id]');
   var scrollTicking=false;
-  window.addEventListener('scroll',function(){
+  var isDesktop=window.innerWidth>768;
+  var scrollEl=isDesktop&&content?content:window;
+  scrollEl.addEventListener('scroll',function(){
     if(scrollTicking)return;
     scrollTicking=true;
     requestAnimationFrame(function(){
       var active=null;
-      if(window.innerHeight+window.scrollY>=document.body.offsetHeight-50){
+      var atBottom=isDesktop&&content
+        ?(content.scrollHeight-content.scrollTop-content.clientHeight<50)
+        :(window.innerHeight+window.scrollY>=document.body.offsetHeight-50);
+      if(atBottom){
         active=sections[sections.length-1].id;
       } else {
         sections.forEach(function(sec){if(sec.getBoundingClientRect().top<=100)active=sec.id;});
