@@ -424,12 +424,18 @@
   var rows=document.querySelectorAll('.artist-index-row[href^="#"]');
   var sidebar=document.querySelector('.artists-sidebar');
   var content=document.querySelector('.artists-content');
-  var rafId=null,lastActiveId=null;
+  var rafId=null,rafIdV=null,lastActiveId=null;
   function scrollSidebarTo(target){
     if(rafId)cancelAnimationFrame(rafId);
     var start=sidebar.scrollLeft,diff=target-start,duration=20,startTime=null;
     function step(ts){if(!startTime)startTime=ts;var p=Math.min((ts-startTime)/duration,1);sidebar.scrollLeft=start+diff*(1-Math.pow(1-p,3));if(p<1)rafId=requestAnimationFrame(step);}
     rafId=requestAnimationFrame(step);
+  }
+  function scrollSidebarTopTo(target){
+    if(rafIdV)cancelAnimationFrame(rafIdV);
+    var start=sidebar.scrollTop,diff=target-start,duration=420,startTime=null;
+    function step(ts){if(!startTime)startTime=ts;var p=Math.min((ts-startTime)/duration,1);var e=1-Math.pow(1-p,4);sidebar.scrollTop=start+diff*e;if(p<1)rafIdV=requestAnimationFrame(step);}
+    rafIdV=requestAnimationFrame(step);
   }
   function setActive(id){
     rows.forEach(function(r){
@@ -441,8 +447,8 @@
           scrollSidebarTo(target);
         } else {
           var rowTop=r.offsetTop;
-          var targetScroll=rowTop-(sidebar.clientHeight/2)+(r.offsetHeight/2);
-          sidebar.scrollTo({top:Math.max(0,targetScroll),behavior:'smooth'});
+          var targetScroll=rowTop-(sidebar.clientHeight*0.38)+(r.offsetHeight/2);
+          scrollSidebarTopTo(Math.max(0,targetScroll));
         }
       }
     });
