@@ -70,6 +70,11 @@
 #glb-prev{left:1.5rem;}#glb-next{right:1.5rem;}
 #glb-close{position:absolute;top:1.5rem;right:2rem;background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);font-family:inherit;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:none;}
 #glb-count{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);font-family:inherit;}
+@media(min-width:769px){
+  .exh-layout{height:calc(100vh - 60px);overflow:hidden;align-items:stretch;}
+  .exh-content{height:100%;overflow-y:auto;}
+  .exh-sidebar{position:static;top:auto;height:100%;}
+}
 @media(max-width:768px){
   .exh-layout{grid-template-columns:1fr;margin-top:70px;}
   .exh-sidebar{position:sticky;top:60px;height:auto;flex-direction:row;overflow-x:auto;overflow-y:visible;border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);scrollbar-width:none;z-index:90;background:#0a0a0a;box-shadow:inset -60px 0 30px -10px #0a0a0a;}
@@ -361,20 +366,41 @@
 (function(){
   var rows=document.querySelectorAll('.exh-index-row[href^="#"]');
   var sidebar=document.querySelector('.exh-sidebar');
-  var rafId=null,lastActiveId=null;
+  var content=document.querySelector('.exh-content');
+  var rafId=null,rafIdV=null,lastActiveId=null;
   function scrollSidebarTo(target){
     if(rafId)cancelAnimationFrame(rafId);
     var start=sidebar.scrollLeft,diff=target-start,duration=20,startTime=null;
     function step(ts){if(!startTime)startTime=ts;var p=Math.min((ts-startTime)/duration,1);sidebar.scrollLeft=start+diff*(1-Math.pow(1-p,3));if(p<1)rafId=requestAnimationFrame(step);}
     rafId=requestAnimationFrame(step);
   }
-  function setActive(id){
+  function scrollSidebarTopTo(target){
+    if(rafIdV)cancelAnimationFrame(rafIdV);
+    var start=sidebar.scrollTop,diff=target-start;
+    if(Math.abs(diff)<40){sidebar.scrollTop=target;return;}
+    var duration=Math.min(560,Math.max(180,Math.abs(diff)*1.6)),startTime=null;
+    function step(ts){
+      if(!startTime)startTime=ts;
+      var p=Math.min((ts-startTime)/duration,1);
+      var e=1-Math.pow(1-p,3);
+      sidebar.scrollTop=start+diff*e;
+      if(p<1)rafIdV=requestAnimationFrame(step);
+    }
+    rafIdV=requestAnimationFrame(step);
+  }
+  function setActive(id,animate){
     rows.forEach(function(r){
       var active=r.getAttribute('href')==='#'+id;
       r.classList.toggle('ei-active',active);
-      if(active&&sidebar&&window.innerWidth<=768){
-        var target=r.offsetLeft-(sidebar.offsetWidth/2)+(r.offsetWidth/2);
-        scrollSidebarTo(target);
+      if(active&&sidebar){
+        if(window.innerWidth<=768){
+          var target=r.offsetLeft-(sidebar.offsetWidth/2)+(r.offsetWidth/2);
+          scrollSidebarTo(target);
+        } else if(animate){
+          var rowTop=r.offsetTop;
+          var targetScroll=rowTop-(sidebar.clientHeight*0.38)+(r.offsetHeight/2);
+          scrollSidebarTopTo(Math.max(0,targetScroll));
+        }
       }
     });
   }
@@ -382,17 +408,27 @@
     row.addEventListener('click',function(e){
       e.preventDefault();var id=row.getAttribute('href').slice(1);
       var t=document.getElementById(id);if(!t)return;
-      setActive(id);window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-70,behavior:'smooth'});
+      setActive(id,true);
+      if(window.innerWidth>768&&content){
+        content.scrollTo({top:content.scrollTop+t.getBoundingClientRect().top-content.getBoundingClientRect().top-10,behavior:'smooth'});
+      }else{
+        window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-70,behavior:'smooth'});
+      }
     });
   });
   var sections=document.querySelectorAll('[id^="exh-"]');
   var scrollTicking=false;
-  window.addEventListener('scroll',function(){
+  var isDesktop=window.innerWidth>768;
+  var scrollEl=isDesktop&&content?content:window;
+  scrollEl.addEventListener('scroll',function(){
     if(scrollTicking)return;
     scrollTicking=true;
     requestAnimationFrame(function(){
       var active=null;
-      if(window.innerHeight+window.scrollY>=document.body.offsetHeight-50){
+      var atBottom=isDesktop&&content
+        ?(content.scrollHeight-content.scrollTop-content.clientHeight<50)
+        :(window.innerHeight+window.scrollY>=document.body.offsetHeight-50);
+      if(atBottom){
         active=sections[sections.length-1].id;
       } else {
         sections.forEach(function(s){if(s.getBoundingClientRect().top<=100)active=s.id;});
