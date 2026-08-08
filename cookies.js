@@ -7,7 +7,7 @@
   /* ── strings ── */
   var STR={
     cs:{
-      barText:'30\u202f000 lidí denně projde okolo galerie POSTOJ. Online kustod Cookies nám pomáhá zjistit, kolik z nich dorazí i sem. A pokud se mu budeš chtít vyhnout, můžeš tak udělat kdykoliv v patičce webu. U nás v galerii neklademe žádné bariéry.',
+      barText:'80\u202f000 lidí denně projde okolo galerie POSTOJ. Online kustod Cookies nám pomáhá zjistit, kolik z nich dorazí i sem. A pokud se mu budeš chtít vyhnout, můžeš tak udělat kdykoliv v patičce webu. U nás v galerii neklademe žádné bariéry.',
       accept:'Povolit vše',reject:'Povolit nezbytné',settings:'Nastavení',
       modalTitle:'Nastavení cookies',
       modalDesc:'Spravujte své předvolby. Nezbytné cookies jsou nutné pro fungování webu a nelze je vypnout. Ostatní cookies aktivujete dobrovolně.',
@@ -17,7 +17,7 @@
       save:'Uložit nastavení'
     },
     en:{
-      barText:'30,000 people walk past galerie POSTOJ every day. Our online guard Cookies helps us find out how many of them make it here too. If you\u2019d rather skip it, you can do so at any time in the footer. At our gallery, we put up no barriers.',
+      barText:'80,000 people walk past galerie POSTOJ every day. Our online guard Cookies helps us find out how many of them make it here too. If you\u2019d rather skip it, you can do so at any time in the footer. At our gallery, we put up no barriers.',
       accept:'Accept all',reject:'Essential only',settings:'Cookie settings',
       modalTitle:'Cookie settings',
       modalDesc:'Manage your preferences. Essential cookies are required for the website to function and cannot be disabled. Other cookies are activated voluntarily.',
