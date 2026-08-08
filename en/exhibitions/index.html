@@ -433,7 +433,7 @@
       } else {
         sections.forEach(function(s){if(s.getBoundingClientRect().top<=100)active=s.id;});
       }
-      if(active&&active!==lastActiveId){lastActiveId=active;setActive(active);}
+      if(active&&active!==lastActiveId){lastActiveId=active;setActive(active,true);}
       scrollTicking=false;
     });
   },{passive:true});
