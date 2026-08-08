@@ -435,9 +435,17 @@
     rows.forEach(function(r){
       var active=r.getAttribute('href')==='#'+id;
       r.classList.toggle('ai-active',active);
-      if(active&&sidebar&&window.innerWidth<=768){
-        var target=r.offsetLeft-(sidebar.offsetWidth/2)+(r.offsetWidth/2);
-        scrollSidebarTo(target);
+      if(active&&sidebar){
+        if(window.innerWidth<=768){
+          var target=r.offsetLeft-(sidebar.offsetWidth/2)+(r.offsetWidth/2);
+          scrollSidebarTo(target);
+        } else {
+          var rowTop=r.offsetTop,rowBottom=rowTop+r.offsetHeight;
+          var visBottom=sidebar.scrollTop+sidebar.clientHeight;
+          if(rowBottom>visBottom-40||rowTop<sidebar.scrollTop){
+            sidebar.scrollTo({top:Math.max(0,rowTop-80),behavior:'smooth'});
+          }
+        }
       }
     });
   }
