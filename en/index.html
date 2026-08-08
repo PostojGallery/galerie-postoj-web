@@ -65,6 +65,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 .fs-caption span{display:block;font-size:0.52rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:400;margin-top:0.15rem;color:rgba(0,0,0,0.5);}
 .fs-content{padding:2.5rem 2rem 0 2rem;display:flex;flex-direction:column;justify-content:flex-start;align-self:stretch;}
 .fs-text{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.5);margin-bottom:1.4rem;font-style:italic;border-left:2px solid rgba(255,255,255,0.12);padding-left:1.5rem;}
+.fs-text-mob{display:none;}
 .fs-headline{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;line-height:0.92;letter-spacing:-0.03em;color:#fff;padding:0 3rem 1.5rem;}
 .fs-sig{height:50px;width:auto;filter:invert(1);opacity:0.6;align-self:flex-start;}
 .fs-desktop-cta{display:inline-block;margin-top:auto;align-self:flex-start;}
@@ -82,6 +83,8 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   .fs-headline{font-size:clamp(1.8rem,9vw,2.5rem);padding:0 1.2rem 1.2rem;}
   .fs-text-lead{display:none;}
   .fs-text{font-size:1rem;margin-bottom:1.2rem;}
+  .fs-text-desk{display:none;}
+  .fs-text-mob{display:inline;}
   .fs-sig{display:none;}
   .fs-desktop-cta{display:block;text-align:center;}
   .fs-mobile-cta{display:none;}
@@ -166,7 +169,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
       <div class="fs-caption">Filip Kolář<span>Founder.<br>Art enthusiast.</span></div>
     </div>
     <div class="fs-content rv">
-      <p class="fs-text"><span class="fs-text-lead">We believe art belongs to everyone.<br><br></span>That's why we built galerie POSTOJ in the Prague metro – in the space of a former currency exchange that used to rip off tourists. No closed gallery doors. No entry fee.</p>
+      <p class="fs-text"><span class="fs-text-lead">We believe art belongs to everyone.<br><br></span><span class="fs-text-desk">That's why we built galerie POSTOJ in the Prague metro – in the space of a former currency exchange that used to rip off tourists. No closed gallery doors. No entry fee.</span><span class="fs-text-mob">We built galerie POSTOJ in the Prague metro – in the space of a former currency exchange that used to rip off tourists. No closed gallery doors. No entry fee.</span></p>
       <img width="1397" height="690" class="fs-sig" src="../images/signature.png" alt="">
       <a href="/en/about" class="btn fs-desktop-cta">How it started</a>
     </div>
