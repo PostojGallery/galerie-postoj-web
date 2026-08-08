@@ -441,7 +441,8 @@
           scrollSidebarTo(target);
         } else {
           var rowTop=r.offsetTop;
-          sidebar.scrollTo({top:Math.max(0,rowTop-80),behavior:'smooth'});
+          var targetScroll=rowTop-(sidebar.clientHeight/2)+(r.offsetHeight/2);
+          sidebar.scrollTo({top:Math.max(0,targetScroll),behavior:'smooth'});
         }
       }
     });
