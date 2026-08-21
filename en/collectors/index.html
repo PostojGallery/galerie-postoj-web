@@ -300,6 +300,14 @@
     });
   });
 
+  // On mobile: move dropdowns to <body> to escape overflow-x:auto clipping on the filter bar
+  if(window.innerWidth<=768){
+    document.querySelectorAll('.filter-dropdown').forEach(function(dd){
+      document.body.appendChild(dd);
+      dd.addEventListener('click',function(e){e.stopPropagation();});
+    });
+  }
+
   document.addEventListener('click',closeAll);
 
   function applyFilters(){
