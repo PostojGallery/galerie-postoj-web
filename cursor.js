@@ -109,7 +109,7 @@ function _pjax(href,isPop){
       if(!isPop)history.pushState({},document.title,href);
       if(typeof gtag==='function')gtag('event','page_view',{page_path:location.pathname});
       var hashIdx=href.indexOf('#');
-      if(hashIdx!==-1){var target=document.getElementById(href.slice(hashIdx+1));if(target){target.scrollIntoView();}}else{window.scrollTo(0,0);}
+      if(hashIdx!==-1){var _ht=document.getElementById(href.slice(hashIdx+1));if(_ht){requestAnimationFrame(function(){if(window.innerWidth<=768){var _sb=document.querySelector('.artists-sidebar,.exh-sidebar');var _off=60+(_sb?_sb.offsetHeight:0);window.scrollTo(0,Math.max(0,_ht.getBoundingClientRect().top+window.scrollY-_off));}else{_ht.scrollIntoView();}});}}else{window.scrollTo(0,0);}
       // Restart pg fade-out animation
       if(ePg){ePg.style.animation='none';void ePg.offsetHeight;ePg.style.cssText='';}
       _pjaxBusy=false;

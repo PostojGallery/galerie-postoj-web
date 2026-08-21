@@ -524,19 +524,20 @@
   if(!hash)return;
   var target=document.querySelector('.artist-section'+hash);
   if(!target)return;
+  // Remove hash from URL so the browser's native hash scroll doesn't race with ours
+  try{history.replaceState(null,'',window.location.pathname+window.location.search);}catch(ex){}
   // Sync sidebar active state
   document.querySelectorAll('.artist-index-row').forEach(function(r){
     r.classList.toggle('ai-active',r.getAttribute('href')===hash);
   });
-  // On mobile: re-scroll after adjPad has added padding-top, overriding the native hash scroll
   if(window.innerWidth<=768){
     var sb=document.querySelector('.artists-sidebar');
     var row=document.querySelector('.artist-index-row[href="'+hash+'"]');
-    requestAnimationFrame(function(){requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
       if(sb&&row){sb.scrollLeft=row.offsetLeft-(sb.offsetWidth/2)+(row.offsetWidth/2);}
       var offset=60+(sb?sb.offsetHeight:0);
-      window.scrollTo({top:target.getBoundingClientRect().top+window.scrollY-offset,behavior:'instant'});
-    });});
+      window.scrollTo(0,Math.max(0,target.getBoundingClientRect().top+window.scrollY-offset));
+    });
   }
 })();
 </script>
