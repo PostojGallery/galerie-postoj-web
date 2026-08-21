@@ -28,8 +28,8 @@
 .filter-opt:hover{color:#fff;background:rgba(255,255,255,0.05);}
 .filter-opt::after{content:'';width:14px;height:14px;border:1px solid rgba(255,255,255,0.15);border-radius:2px;flex-shrink:0;transition:background 0.15s,border-color 0.15s;}
 .filter-opt.active{color:#fff;}
-.filter-opt.active::after{content:'✓';background:#fff;border-color:#fff;color:#000;font-size:0.6rem;display:flex;align-items:center;justify-content:center;font-weight:700;}
-.filter-count{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:#000;font-size:0.55rem;font-weight:700;border-radius:50%;width:16px;height:16px;margin-left:0.3rem;}
+.filter-opt.active::after{content:'✓';background:#fff;border-color:#fff;color:#000;font-size:0.75rem;line-height:14px;text-align:center;font-weight:400;}
+.filter-count{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:#000;font-size:0.55rem;font-weight:700;border-radius:50%;width:16px;height:16px;margin-left:0.3rem;line-height:1;flex-shrink:0;}
 .works-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:1.5rem 2.5rem 2.5rem;}
 .work-placeholder{aspect-ratio:4/3;border:1px dashed rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;}
 .work-placeholder-label{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.15);}
@@ -218,8 +218,9 @@
     var opts=getOpts(g);
     var sel=state[g];
     if(sel===null){
-      // all selected: check Vše + all individuals
-      opts.forEach(function(b){b.classList.add('active');});
+      // all mode: only Vše checked, individual boxes empty
+      opts.forEach(function(b){b.classList.remove('active');});
+      document.querySelector('.filter-opt[data-filter="'+g+'"][data-val="vse"]').classList.add('active');
     } else {
       opts.forEach(function(b){
         var v=b.getAttribute('data-val');
