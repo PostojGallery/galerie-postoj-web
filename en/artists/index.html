@@ -484,6 +484,9 @@
   var scrollTicking=false;
   var isDesktop=window.innerWidth>768;
   var scrollEl=isDesktop&&content?content:window;
+  // On mobile the sidebar sits below the nav (~44px extra), so sections scroll into
+  // view at ~104px from the viewport top. Use a threshold above that value.
+  var _th=isDesktop?100:115;
   scrollEl.addEventListener('scroll',function(){
     if(scrollTicking)return;
     scrollTicking=true;
@@ -495,7 +498,7 @@
       if(atBottom){
         active=sections[sections.length-1].id;
       } else {
-        sections.forEach(function(sec){if(sec.getBoundingClientRect().top<=100)active=sec.id;});
+        sections.forEach(function(sec){if(sec.getBoundingClientRect().top<=_th)active=sec.id;});
       }
       if(active&&active!==lastActiveId){lastActiveId=active;setActive(active,true);}
       scrollTicking=false;

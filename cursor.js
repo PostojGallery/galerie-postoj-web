@@ -62,6 +62,13 @@ window.addEventListener('popstate',function(){_pjax(location.pathname,true);});
 function _pjax(href,isPop){
   if(_pjaxBusy)return;
   _pjaxBusy=true;
+  // Release any body scroll lock (iOS freeze pattern used by lightbox/mobile menu)
+  // so the new page can scroll and window.scrollTo works correctly
+  if(document.body.style.position==='fixed'){
+    var _ft=parseInt(document.body.style.top||'0');
+    document.body.style.position='';document.body.style.top='';document.body.style.width='';
+    window.scrollTo(0,-_ft);
+  }
   var pg=document.getElementById('pg');
   if(pg)pg.style.cssText='position:fixed;inset:0;background:#0a0a0a;z-index:10000;opacity:1;animation:none;cursor:url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") 0 0,none;';
   fetch(href).then(function(r){if(!r.ok)throw 0;return r.text();}).then(function(html){
