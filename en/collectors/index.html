@@ -229,7 +229,7 @@
     if(badge)badge.remove();
     if(sel!==null&&sel.length>0){
       trigger.classList.add('has-active');
-      if(sel.length>1){var b=document.createElement('span');b.className='filter-count';b.textContent=sel.length;trigger.appendChild(b);}
+      if(sel.length>0){var b=document.createElement('span');b.className='filter-count';b.textContent=sel.length;trigger.appendChild(b);}
     } else {
       trigger.classList.remove('has-active');
     }
