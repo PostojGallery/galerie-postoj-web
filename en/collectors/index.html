@@ -209,7 +209,7 @@
 (function(){
   var groups=['umelci','technika','velikost'];
   var state={umelci:null,technika:null,velikost:null};
-  var explicitAll={umelci:false,technika:false,velikost:false};
+  var vseUnchecked={umelci:false,technika:false,velikost:false};
 
   function getOpts(g){return Array.from(document.querySelectorAll('.filter-opt[data-filter="'+g+'"]'));}
   function getNonVse(g){return getOpts(g).filter(function(b){return b.getAttribute('data-val')!=='vse';});}
@@ -217,17 +217,15 @@
   function renderGroup(g){
     var opts=getOpts(g);
     var sel=state[g];
+    opts.forEach(function(b){b.classList.remove('active');});
     if(sel===null){
-      if(explicitAll[g]){
-        opts.forEach(function(b){b.classList.add('active');});
-      } else {
-        opts.forEach(function(b){b.classList.remove('active');});
+      if(!vseUnchecked[g]){
         document.querySelector('.filter-opt[data-filter="'+g+'"][data-val="vse"]').classList.add('active');
       }
     } else {
-      opts.forEach(function(b){
-        var v=b.getAttribute('data-val');
-        b.classList.toggle('active',v!=='vse'&&sel.indexOf(v)>-1);
+      sel.forEach(function(v){
+        var b=document.querySelector('.filter-opt[data-filter="'+g+'"][data-val="'+v+'"]');
+        if(b)b.classList.add('active');
       });
     }
     var trigger=document.querySelector('.filter-trigger[data-group="'+g+'"]');
@@ -263,16 +261,16 @@
       var val=btn.getAttribute('data-val');
       if(val==='vse'){
         state[g]=null;
-        explicitAll[g]=!explicitAll[g];
+        vseUnchecked[g]=!vseUnchecked[g];
       } else {
-        explicitAll[g]=false;
+        vseUnchecked[g]=false;
         var cur=state[g];
         if(cur===null){
           state[g]=[val];
         } else {
           var idx=cur.indexOf(val);
           var next=idx>-1?cur.filter(function(v){return v!==val;}):cur.concat([val]);
-          if(next.length===0||next.length===getNonVse(g).length){state[g]=null;explicitAll[g]=next.length>0;}
+          if(next.length===0||next.length===getNonVse(g).length){state[g]=null;}
           else{state[g]=next;}
         }
       }
