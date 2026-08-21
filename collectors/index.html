@@ -290,6 +290,7 @@
         var cur=state[g];
         if(cur===null){
           state[g]=[val];
+          if(state[g].length===getNonVse(g).length){state[g]=null;}
         } else {
           var idx=cur.indexOf(val);
           var next=idx>-1?cur.filter(function(v){return v!==val;}):cur.concat([val]);
