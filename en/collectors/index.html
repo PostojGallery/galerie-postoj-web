@@ -229,7 +229,11 @@
     if(badge)badge.remove();
     if(sel!==null&&sel.length>0){
       trigger.classList.add('has-active');
-      if(sel.length>0){var b=document.createElement('span');b.className='filter-count';b.textContent=sel.length;trigger.appendChild(b);}
+      var b=document.createElement('span');b.className='filter-count';b.textContent=sel.length;trigger.appendChild(b);
+    } else if(sel===null&&!vseUnchecked[g]){
+      trigger.classList.add('has-active');
+      var total=getNonVse(g).length;
+      var b=document.createElement('span');b.className='filter-count';b.textContent=total;trigger.appendChild(b);
     } else {
       trigger.classList.remove('has-active');
     }
