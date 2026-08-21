@@ -28,7 +28,7 @@
 .filter-opt:hover{color:#fff;background:rgba(255,255,255,0.05);}
 .filter-opt::after{content:'';width:14px;height:14px;border:1px solid rgba(255,255,255,0.15);border-radius:2px;flex-shrink:0;transition:background 0.15s,border-color 0.15s;}
 .filter-opt.active{color:#fff;}
-.filter-opt.active::after{content:'✓';background:#fff;border-color:#fff;color:#000;font-size:0.75rem;line-height:14px;text-align:center;font-weight:400;}
+.filter-opt.active::after{content:'';background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8'%3E%3Cpolyline points='1,4 4,7 9,1' stroke='%23000' stroke-width='1.5' fill='none' stroke-linecap='square' stroke-linejoin='miter'/%3E%3C/svg%3E") center/9px no-repeat;border-color:#fff;}
 .filter-count{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:#000;font-size:0.55rem;font-weight:700;border-radius:50%;width:16px;height:16px;margin-left:0.3rem;line-height:1;flex-shrink:0;}
 .works-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:1.5rem 2.5rem 2.5rem;}
 .work-placeholder{aspect-ratio:4/3;border:1px dashed rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;}
@@ -208,8 +208,10 @@
 <script>
 (function(){
   var groups=['umelci','technika','velikost'];
-  // null = all selected; array = specific vals
+  // null = all; array = specific vals
   var state={umelci:null,technika:null,velikost:null};
+  // tracks whether user explicitly clicked Vše (shows all boxes checked)
+  var explicitAll={umelci:false,technika:false,velikost:false};
 
   function getOpts(g){return Array.from(document.querySelectorAll('.filter-opt[data-filter="'+g+'"]'));}
   function getNonVse(g){return getOpts(g).filter(function(b){return b.getAttribute('data-val')!=='vse';});}
@@ -218,16 +220,20 @@
     var opts=getOpts(g);
     var sel=state[g];
     if(sel===null){
-      // all mode: only Vše checked, individual boxes empty
-      opts.forEach(function(b){b.classList.remove('active');});
-      document.querySelector('.filter-opt[data-filter="'+g+'"][data-val="vse"]').classList.add('active');
+      if(explicitAll[g]){
+        // Vše explicitly clicked: check All + all individuals
+        opts.forEach(function(b){b.classList.add('active');});
+      } else {
+        // default load: only Vše checked
+        opts.forEach(function(b){b.classList.remove('active');});
+        document.querySelector('.filter-opt[data-filter="'+g+'"][data-val="vse"]').classList.add('active');
+      }
     } else {
       opts.forEach(function(b){
         var v=b.getAttribute('data-val');
         b.classList.toggle('active',v!=='vse'&&sel.indexOf(v)>-1);
       });
     }
-    // trigger badge
     var trigger=document.querySelector('.filter-trigger[data-group="'+g+'"]');
     var badge=trigger.querySelector('.filter-count');
     if(badge)badge.remove();
@@ -244,7 +250,6 @@
     document.querySelectorAll('.filter-dropdown').forEach(function(d){d.classList.remove('open');});
   }
 
-  // Dropdown open/close
   document.querySelectorAll('.filter-trigger').forEach(function(trigger){
     trigger.addEventListener('click',function(e){
       e.stopPropagation();
@@ -255,7 +260,6 @@
     });
   });
 
-  // Option clicks
   document.querySelectorAll('.filter-opt').forEach(function(btn){
     btn.addEventListener('click',function(e){
       e.stopPropagation();
@@ -263,16 +267,17 @@
       var val=btn.getAttribute('data-val');
       if(val==='vse'){
         state[g]=null;
+        explicitAll[g]=true;
       } else {
+        explicitAll[g]=false;
         var cur=state[g];
         if(cur===null){
-          // from "all" state: isolate this one
           state[g]=[val];
         } else {
           var idx=cur.indexOf(val);
           var next=idx>-1?cur.filter(function(v){return v!==val;}):cur.concat([val]);
-          // if nothing left or all chosen, reset to all
-          state[g]=next.length===0||next.length===getNonVse(g).length?null:next;
+          if(next.length===0||next.length===getNonVse(g).length){state[g]=null;explicitAll[g]=next.length>0;}
+          else{state[g]=next;}
         }
       }
       renderGroup(g);
