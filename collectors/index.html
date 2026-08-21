@@ -30,18 +30,25 @@
 .filter-opt.active{color:#fff;}
 .filter-opt.active::after{content:'✓';background:#fff;border-color:#fff;color:#000;font-size:0.6rem;display:flex;align-items:center;justify-content:center;font-weight:700;}
 .filter-count{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:#000;font-size:0.55rem;font-weight:700;border-radius:50%;width:16px;height:16px;margin-left:0.3rem;}
-.works-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
-.work-placeholder{aspect-ratio:3/4;border:1px dashed rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;}
+.works-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.work-placeholder{aspect-ratio:4/3;border:1px dashed rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;}
 .work-placeholder-label{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.15);}
 .work-card{cursor:none;position:relative;}
-.work-img{position:relative;overflow:hidden;aspect-ratio:3/4;}
+.work-img{position:relative;overflow:hidden;aspect-ratio:4/3;}
 .work-img .img-main,.work-img .img-install{width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;transition:opacity 0.4s;}
 .work-img .img-install{opacity:0;}
 .work-card:hover .img-main{opacity:0;}
 .work-card:hover .img-install{opacity:1;}
 .work-buy-label{position:absolute;bottom:0;left:0;right:0;background:#fff;color:#000;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.8rem 1rem;transform:translateY(100%);transition:transform 0.25s;}
 .work-card:hover .work-buy-label{transform:translateY(0);}
-.work-info{padding:1rem 1.5rem 1.5rem;}
+.work-info{padding:0.8rem 0 1rem;}
+.work-title{font-size:0.9rem;font-weight:700;margin-bottom:0.2rem;}
+.work-artist-name{font-size:0.7rem;color:rgba(255,255,255,0.35);margin-bottom:0.3rem;}
+.work-price{font-size:0.85rem;color:rgba(255,255,255,0.6);}
+.img-swap-btn{display:none;position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.55);backdrop-filter:blur(4px);color:rgba(255,255,255,0.85);border:1px solid rgba(255,255,255,0.2);font-family:inherit;font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.35rem 0.7rem;z-index:2;cursor:pointer;}
+.work-img.show-install .img-main{opacity:0;}
+.work-img.show-install .img-install{opacity:1;}
+.work-img.show-install .img-swap-btn{background:rgba(255,255,255,0.15);}
 .work-title{font-size:0.9rem;font-weight:700;margin-bottom:0.2rem;}
 .work-artist-name{font-size:0.7rem;color:rgba(255,255,255,0.35);margin-bottom:0.3rem;}
 .work-price{font-size:0.85rem;color:rgba(255,255,255,0.6);}
@@ -64,6 +71,7 @@
   .filters-bar::-webkit-scrollbar{display:none;}
   .filter-trigger{padding:0.9rem 1rem;font-size:0.65rem;}
   .works-grid{grid-template-columns:repeat(2,1fr);gap:8px;padding:1rem 1.2rem;}
+  .img-swap-btn{display:block;}
   #lightbox-inner{grid-template-columns:1fr;width:95vw;gap:1rem;}
   #lb-img{max-height:50vh;}
   .lightbox-info{padding:1rem 0;}
@@ -135,15 +143,15 @@
 </div>
 <div class="works-grid" style="padding:1.5rem 2.5rem 2.5rem;">
   <div class="work-card rv" data-umelec="martin-jachym" data-technika="malba" data-velikost="stredni" data-cena="10000-30000" data-price="12000" data-order="0" onclick="openLightbox({img:'images/painting1.webp',title:'Bez názvu I',artist:'Martin Jáchym',meta:'Olej na plátně<br>80 × 60 cm, 2025',price:'12 000 Kč'})">
-    <div class="work-img"><img loading="lazy" class="img-main" src="../images/painting1.webp" alt=""><img loading="lazy" class="img-install" src="../images/install4.jpg" alt=""><div class="work-buy-label">Detail & koupit</div></div>
+    <div class="work-img"><img loading="lazy" class="img-main" src="../images/painting1.webp" alt=""><img loading="lazy" class="img-install" src="../images/install4.jpg" alt=""><button class="img-swap-btn" onclick="event.stopPropagation();var wi=this.closest('.work-img');wi.classList.toggle('show-install');this.textContent=wi.classList.contains('show-install')?'Obraz ←':'V prostoru →'">V prostoru →</button><div class="work-buy-label">Detail & koupit</div></div>
     <div class="work-info"><div class="work-title">Bez názvu I</div><div class="work-artist-name">Martin Jáchym</div><div class="work-price">12 000 Kč</div></div>
   </div>
   <div class="work-card rv" data-umelec="martin-jachym" data-technika="malba" data-velikost="velke" data-cena="10000-30000" data-price="15000" data-order="1" onclick="openLightbox({img:'images/painting3.webp',title:'Bez názvu II',artist:'Martin Jáchym',meta:'Olej na plátně<br>100 × 80 cm, 2025',price:'15 000 Kč'})">
-    <div class="work-img"><img loading="lazy" class="img-main" src="../images/painting3.webp" alt=""><img loading="lazy" class="img-install" src="../images/install1.jpg" alt=""><div class="work-buy-label">Detail & koupit</div></div>
+    <div class="work-img"><img loading="lazy" class="img-main" src="../images/painting3.webp" alt=""><img loading="lazy" class="img-install" src="../images/install1.jpg" alt=""><button class="img-swap-btn" onclick="event.stopPropagation();var wi=this.closest('.work-img');wi.classList.toggle('show-install');this.textContent=wi.classList.contains('show-install')?'Obraz ←':'V prostoru →'">V prostoru →</button><div class="work-buy-label">Detail & koupit</div></div>
     <div class="work-info"><div class="work-title">Bez názvu II</div><div class="work-artist-name">Martin Jáchym</div><div class="work-price">15 000 Kč</div></div>
   </div>
   <div class="work-card rv" data-umelec="denis-bastuga" data-technika="malba" data-velikost="velke" data-cena="60000+" data-price="70000" data-order="2" onclick="openLightbox({img:'../images/artist/bastuga-denis/matylda-main.png',title:'Matylda',artist:'Denis Baštuga',meta:'Olej a akryl na plátně<br>140 × 180 cm, 2026',price:'70 000 Kč'})">
-    <div class="work-img"><img loading="lazy" class="img-main" src="../images/artist/bastuga-denis/matylda-main.png" alt="Matylda — Denis Baštuga"><img loading="lazy" class="img-install" src="../images/artist/bastuga-denis/matylda-install.png" alt="Matylda — instalace"><div class="work-buy-label">Detail & koupit</div></div>
+    <div class="work-img"><img loading="lazy" class="img-main" src="../images/artist/bastuga-denis/matylda-main.png" alt="Matylda — Denis Baštuga"><img loading="lazy" class="img-install" src="../images/artist/bastuga-denis/matylda-install.png" alt="Matylda — instalace"><button class="img-swap-btn" onclick="event.stopPropagation();var wi=this.closest('.work-img');wi.classList.toggle('show-install');this.textContent=wi.classList.contains('show-install')?'Obraz ←':'V prostoru →'">V prostoru →</button><div class="work-buy-label">Detail & koupit</div></div>
     <div class="work-info"><div class="work-title">Matylda</div><div class="work-artist-name">Denis Baštuga</div><div class="work-price">70 000 Kč</div></div>
   </div>
 </div>
