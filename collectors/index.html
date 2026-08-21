@@ -243,7 +243,10 @@
 
   function closeAll(){
     document.querySelectorAll('.filter-trigger').forEach(function(t){t.classList.remove('open');});
-    document.querySelectorAll('.filter-dropdown').forEach(function(d){d.classList.remove('open');});
+    document.querySelectorAll('.filter-dropdown').forEach(function(d){
+      d.classList.remove('open');
+      d.style.position='';d.style.top='';d.style.left='';d.style.right='';d.style.width='';
+    });
   }
 
   document.querySelectorAll('.filter-trigger').forEach(function(trigger){
@@ -252,7 +255,19 @@
       var g=trigger.getAttribute('data-group');
       var isOpen=trigger.classList.contains('open');
       closeAll();
-      if(!isOpen){trigger.classList.add('open');document.querySelector('.filter-dropdown[data-group="'+g+'"]').classList.add('open');}
+      if(!isOpen){
+        trigger.classList.add('open');
+        var dd=document.querySelector('.filter-dropdown[data-group="'+g+'"]');
+        dd.classList.add('open');
+        if(window.innerWidth<=768){
+          var barRect=document.querySelector('.filters-bar').getBoundingClientRect();
+          dd.style.position='fixed';
+          dd.style.top=barRect.bottom+'px';
+          dd.style.left='0';
+          dd.style.right='0';
+          dd.style.width='100%';
+        }
+      }
     });
   });
 
