@@ -298,7 +298,8 @@
     items.forEach(function(el){grid.appendChild(el);});
   }
 
-  groups.forEach(function(g){state[g]=null;renderGroup(g);});
+  // Init: no filters checked by default
+  groups.forEach(function(g){state[g]=null;vseUnchecked[g]=true;renderGroup(g);});
   applyFilters();
 })();
 </script>
