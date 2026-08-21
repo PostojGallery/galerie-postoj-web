@@ -258,8 +258,14 @@
       var g=btn.getAttribute('data-filter');
       var val=btn.getAttribute('data-val');
       if(val==='vse'){
-        state[g]=null;
-        vseUnchecked[g]=!vseUnchecked[g];
+        if(state[g]===null&&!vseUnchecked[g]){
+          // All currently selected → uncheck everything
+          vseUnchecked[g]=true;
+        } else {
+          // Nothing or partial → select all
+          state[g]=null;
+          vseUnchecked[g]=false;
+        }
       } else {
         vseUnchecked[g]=false;
         var cur=state[g];
