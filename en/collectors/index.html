@@ -216,6 +216,7 @@
     if(sel===null){
       if(!vseUnchecked[g]){
         document.querySelector('.filter-opt[data-filter="'+g+'"][data-val="vse"]').classList.add('active');
+        getNonVse(g).forEach(function(b){b.classList.add('active');});
       }
     } else {
       sel.forEach(function(v){
