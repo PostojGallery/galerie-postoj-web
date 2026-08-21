@@ -63,10 +63,7 @@
 .lightbox-meta{font-size:0.9rem;color:rgba(255,255,255,0.5);line-height:1.75;margin-bottom:1rem;}
 .lightbox-price{font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;}
 #lb-img-wrap{position:relative;cursor:none;touch-action:manipulation;}
-#lb-dots{display:none;justify-content:center;gap:7px;margin-top:0.7rem;}
-.lb-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.2);transition:background 0.2s;}
-.lb-dot.active{background:rgba(255,255,255,0.7);}
-#lightbox.has-multi #lb-dots{display:flex;}
+#lb-dots{display:none;}
 #lightbox-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.6);font-family:inherit;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:none;transition:all 0.2s;}
 #lightbox-close:hover{border-color:#fff;color:#fff;}
 .collectors-note{padding:2rem 2.5rem;font-size:0.8rem;color:rgba(255,255,255,0.25);border-top:1px solid rgba(255,255,255,0.06);line-height:1.7;}
@@ -84,7 +81,6 @@
   #lightbox-close{top:0.8rem;right:1rem;}
   #lb-img{max-height:45vh;}
   .lb-arrow{display:block;}
-  #lightbox.has-multi #lb-dots{display:flex;}
   .lightbox-info{padding:1rem 0;}
   .collectors-note{padding:1.5rem 1.2rem;}
 }
@@ -324,17 +320,9 @@
     document.getElementById('lb-mailto').href='mailto:info@galeriepostoj.cz?subject=Inquiry about painting: '+data.title;
     lb.classList.add('open');document.body.style.overflow='hidden';
   };
-  lbWrap.addEventListener('click',function(e){if(_imgs.length>1)setImg(_idx+1);});
-  var _tx=0;
-  lbWrap.addEventListener('touchstart',function(e){_tx=e.changedTouches[0].clientX;},{passive:true});
-  lbWrap.addEventListener('touchend',function(e){
-    var dx=e.changedTouches[0].clientX-_tx;
-    if(Math.abs(dx)>40&&_imgs.length>1){dx<0?setImg(_idx+1):setImg(_idx-1);}
-  },{passive:true});
   document.addEventListener('keydown',function(e){
     if(!lb.classList.contains('open'))return;
-    if(e.key==='ArrowRight'||e.key==='ArrowLeft')setImg(_idx+1);
-    else if(e.key==='Escape')cl();
+    if(e.key==='Escape')cl();
   });
   function cl(){lb.classList.remove('open');document.body.style.overflow='';}
   lc.addEventListener('click',cl);
