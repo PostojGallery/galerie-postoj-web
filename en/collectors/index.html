@@ -263,7 +263,7 @@
       var val=btn.getAttribute('data-val');
       if(val==='vse'){
         state[g]=null;
-        explicitAll[g]=true;
+        explicitAll[g]=!explicitAll[g];
       } else {
         explicitAll[g]=false;
         var cur=state[g];
