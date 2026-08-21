@@ -347,14 +347,21 @@
     document.getElementById('lb-meta').innerHTML=data.meta||'';
     document.getElementById('lb-price').textContent=data.price||'';
     document.getElementById('lb-mailto').href='mailto:info@galeriepostoj.cz?subject=Zajem o obraz: '+data.title;
-    lb.classList.add('open');document.body.style.overflow='hidden';
+    var _sy=window.scrollY;
+    document.body.style.position='fixed';document.body.style.top=-_sy+'px';document.body.style.width='100%';
+    lb.classList.add('open');lb._scrollY=_sy;
   };
   // Keyboard
   document.addEventListener('keydown',function(e){
     if(!lb.classList.contains('open'))return;
     if(e.key==='Escape')cl();
   });
-  function cl(){lb.classList.remove('open');document.body.style.overflow='';}
+  function cl(){
+    lb.classList.remove('open');
+    var sy=lb._scrollY||0;
+    document.body.style.position='';document.body.style.top='';document.body.style.width='';
+    window.scrollTo(0,sy);
+  }
   lc.addEventListener('click',cl);
   lb.addEventListener('click',function(e){if(e.target===lb)cl();});
 })();
