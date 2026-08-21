@@ -30,6 +30,7 @@
 .filter-opt.active{color:#fff;}
 .filter-opt.active::after{content:'';background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8'%3E%3Cpolyline points='1,4 4,7 9,1' stroke='%23000' stroke-width='1.5' fill='none' stroke-linecap='square' stroke-linejoin='miter'/%3E%3C/svg%3E") center/9px no-repeat;border-color:#fff;}
 .filter-count{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:#000;font-size:0.55rem;font-weight:700;border-radius:50%;width:16px;height:16px;margin-left:0.3rem;line-height:1;flex-shrink:0;}
+.filter-count:empty{visibility:hidden;}
 .works-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:1.5rem 2.5rem 2.5rem;}
 .work-placeholder{aspect-ratio:4/3;border:1px dashed rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;}
 .work-placeholder-label{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.15);}
@@ -96,21 +97,21 @@
 </div>
 <p class="collectors-intro rv" style="font-size:0.88rem;line-height:1.8;max-width:800px;">The artists we exhibit are at the beginning of their journey — and you are their first supporters, the ones who give them the motivation to pursue their dream. You become an inseparable part of their story. As galerie POSTOJ, we thank you from the bottom of our hearts.</p><div class="filters-bar">
   <div class="filter-group">
-    <button class="filter-trigger" data-group="umelci">Artists <span class="filter-arrow">▾</span></button>
+    <button class="filter-trigger" data-group="umelci">Artists <span class="filter-count"></span><span class="filter-arrow">▾</span></button>
     <div class="filter-dropdown" data-group="umelci">
       <button class="filter-opt" data-filter="umelci" data-val="vse">All</button>
       <button class="filter-opt" data-filter="umelci" data-val="denis-bastuga">Denis Baštuga</button>
     </div>
   </div>
   <div class="filter-group">
-    <button class="filter-trigger" data-group="technika">Medium <span class="filter-arrow">▾</span></button>
+    <button class="filter-trigger" data-group="technika">Medium <span class="filter-count"></span><span class="filter-arrow">▾</span></button>
     <div class="filter-dropdown" data-group="technika">
       <button class="filter-opt" data-filter="technika" data-val="vse">All</button>
       <button class="filter-opt" data-filter="technika" data-val="malba">Painting</button>
     </div>
   </div>
   <div class="filter-group">
-    <button class="filter-trigger" data-group="velikost">Size <span class="filter-arrow">▾</span></button>
+    <button class="filter-trigger" data-group="velikost">Size <span class="filter-count"></span><span class="filter-arrow">▾</span></button>
     <div class="filter-dropdown" data-group="velikost">
       <button class="filter-opt" data-filter="velikost" data-val="vse">All</button>
       <button class="filter-opt" data-filter="velikost" data-val="do-140">Up to 140 cm</button>
@@ -226,16 +227,15 @@
     }
     var trigger=document.querySelector('.filter-trigger[data-group="'+g+'"]');
     var badge=trigger.querySelector('.filter-count');
-    if(badge)badge.remove();
     if(sel!==null&&sel.length>0){
       trigger.classList.add('has-active');
-      var b=document.createElement('span');b.className='filter-count';b.textContent=sel.length;trigger.appendChild(b);
+      badge.textContent=sel.length;
     } else if(sel===null&&!vseUnchecked[g]){
       trigger.classList.add('has-active');
-      var total=getNonVse(g).length;
-      var b=document.createElement('span');b.className='filter-count';b.textContent=total;trigger.appendChild(b);
+      badge.textContent=getNonVse(g).length;
     } else {
       trigger.classList.remove('has-active');
+      badge.textContent='';
     }
   }
 
