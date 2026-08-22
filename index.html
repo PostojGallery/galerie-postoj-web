@@ -198,7 +198,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   document.addEventListener('mozfullscreenchange', onFsChange);
   document.addEventListener('MSFullscreenChange', onFsChange);
   var _exitingFs = false;
-  v.addEventListener('webkitendfullscreen', function(){ v.muted = true; _exitingFs = true; setTimeout(function(){ _exitingFs = false; }, 1000); });
+  v.addEventListener('webkitendfullscreen', function(){ v.muted = true; _exitingFs = true; v.play(); setTimeout(function(){ _exitingFs = false; }, 1000); });
   v.addEventListener('pause', function(){ if(_exitingFs){ _exitingFs = false; v.play(); } });
 })();
 </script>
