@@ -165,9 +165,27 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
       <img width="1397" height="690" class="fs-sig" src="images/signature.png" alt="">
       <a href="/about" class="btn fs-desktop-cta">Jak to začalo</a>
     </div>
-    <div class="fs-right-photo rv"><video src="images/c997f623-4625-49c3-af9b-bb6025155789.mp4" autoplay muted loop playsinline></video></div>
+    <div class="fs-right-photo rv"><video id="metro-video" src="images/c997f623-4625-49c3-af9b-bb6025155789.mp4" autoplay muted loop playsinline style="cursor:pointer;" title="Klikni pro celou obrazovku"></video></div>
   </div>
 </section>
+<script>
+(function(){
+  var v = document.getElementById('metro-video');
+  if(!v) return;
+  v.addEventListener('click', function(){
+    var req = v.requestFullscreen || v.webkitRequestFullscreen || v.mozRequestFullScreen || v.msRequestFullscreen;
+    if(req) req.call(v);
+  });
+  function onFsChange(){
+    var fsEl = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+    if(fsEl === v){ v.muted = false; } else { v.muted = true; }
+  }
+  document.addEventListener('fullscreenchange', onFsChange);
+  document.addEventListener('webkitfullscreenchange', onFsChange);
+  document.addEventListener('mozfullscreenchange', onFsChange);
+  document.addEventListener('MSFullscreenChange', onFsChange);
+})();
+</script>
 <style>
 #game-wrap{position:relative;width:100%;line-height:0;background:#0a0a0a;padding-right:3rem;}
 #game-wrap canvas{display:block;width:100%;height:auto;}
