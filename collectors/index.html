@@ -100,6 +100,7 @@
     <button class="filter-trigger" data-group="umelci">Umělci <span class="filter-count"></span><span class="filter-arrow">▾</span></button>
     <div class="filter-dropdown" data-group="umelci">
       <button class="filter-opt" data-filter="umelci" data-val="vse">Vše</button>
+      <button class="filter-opt" data-filter="umelci" data-val="anna-banytiuk">Anna Banytiuk</button>
       <button class="filter-opt" data-filter="umelci" data-val="denis-bastuga">Denis Baštuga</button>
     </div>
   </div>
@@ -121,7 +122,15 @@
   </div>
 </div>
 <div class="works-grid">
-<div class="work-card rv" data-umelec="denis-bastuga" data-technika="malba" data-velikost="do-180" data-cena="60000+" data-price="70000" data-order="2" onclick="openLightbox({img:'../images/artist/bastuga-denis/matylda-main.jpg',img2:'../images/artist/bastuga-denis/matylda-install.jpg',title:'Matylda',artist:'Denis Baštuga',meta:'Olej a akryl na plátně<br>140 × 180 cm, 2026',price:''})">
+<div class="work-card rv" data-umelec="anna-banytiuk" data-technika="malba" data-velikost="do-140" data-cena="" data-price="0" data-order="13" onclick="openLightbox({img:'../images/shop/anna-banytiuk/Untitled-2/b5d2a1f5daf3048d2185120bf658dd7391298d885bbe6764135b19882b674dbb.jpg',title:'Untitled',artist:'Anna Banytiuk',artistHref:'/artists#anna-banytiuk',meta:'Olej a pastel na plátně<br>80 × 55 cm, 2026',price:''})">
+    <div class="work-img"><img loading="lazy" class="img-main" src="../images/shop/anna-banytiuk/Untitled-2/b5d2a1f5daf3048d2185120bf658dd7391298d885bbe6764135b19882b674dbb.jpg" alt="Untitled — Anna Banytiuk"><div class="work-buy-label">Detail díla</div></div>
+    <div class="work-info"><div class="work-title">Untitled</div><div class="work-artist-name">Anna Banytiuk</div></div>
+  </div>
+  <div class="work-card rv" data-umelec="anna-banytiuk" data-technika="malba" data-velikost="do-140" data-cena="" data-price="0" data-order="14" onclick="openLightbox({img:'../images/shop/anna-banytiuk/Untitled-1/4407895fe70c1b190985574aab212132fbf4896c804b0f431751ed794dd6afe7.jpg',img2:'../images/shop/anna-banytiuk/Untitled-1/05c37c2c044fb0fae8689f84e0a2443e35a35507f87c8879636e4afb9e2ac324.jpg',title:'Untitled',artist:'Anna Banytiuk',artistHref:'/artists#anna-banytiuk',meta:'Olej, pastely na plátně<br>65 × 115 cm, 2024',price:''})">
+    <div class="work-img"><img loading="lazy" class="img-main" src="../images/shop/anna-banytiuk/Untitled-1/4407895fe70c1b190985574aab212132fbf4896c804b0f431751ed794dd6afe7.jpg" alt="Untitled — Anna Banytiuk"><img loading="lazy" class="img-install" src="../images/shop/anna-banytiuk/Untitled-1/05c37c2c044fb0fae8689f84e0a2443e35a35507f87c8879636e4afb9e2ac324.jpg" alt="Untitled — instalace"><button class="img-swap-btn" onclick="event.stopPropagation();var wi=this.closest('.work-img');wi.classList.toggle('show-install');this.textContent=wi.classList.contains('show-install')?'Obraz ←':'V prostoru →'">V prostoru →</button><div class="work-buy-label">Detail díla</div></div>
+    <div class="work-info"><div class="work-title">Untitled</div><div class="work-artist-name">Anna Banytiuk</div></div>
+  </div>
+  <div class="work-card rv" data-umelec="denis-bastuga" data-technika="malba" data-velikost="do-180" data-cena="60000+" data-price="70000" data-order="2" onclick="openLightbox({img:'../images/artist/bastuga-denis/matylda-main.jpg',img2:'../images/artist/bastuga-denis/matylda-install.jpg',title:'Matylda',artist:'Denis Baštuga',meta:'Olej a akryl na plátně<br>140 × 180 cm, 2026',price:''})">
     <div class="work-img"><img fetchpriority="high" class="img-main" src="../images/artist/bastuga-denis/matylda-main.jpg" alt="Matylda — Denis Baštuga"><img loading="lazy" class="img-install" src="../images/artist/bastuga-denis/matylda-install.jpg" alt="Matylda — instalace"><button class="img-swap-btn" onclick="event.stopPropagation();var wi=this.closest('.work-img');wi.classList.toggle('show-install');this.textContent=wi.classList.contains('show-install')?'Obraz ←':'V prostoru →'">V prostoru →</button><div class="work-buy-label">Detail díla</div></div>
     <div class="work-info"><div class="work-title">Matylda</div><div class="work-artist-name">Denis Baštuga</div></div>
   </div>
@@ -328,8 +337,16 @@
     items.forEach(function(el){grid.appendChild(el);});
   }
 
-  // Init: no filters checked by default
-  groups.forEach(function(g){state[g]=null;vseUnchecked[g]=true;renderGroup(g);});
+  // Init: apply URL params then render
+  var _pArtist=(new URLSearchParams(location.search)).get('artist');
+  groups.forEach(function(g){
+    state[g]=null;vseUnchecked[g]=true;
+    if(g==='umelci'&&_pArtist){
+      var _opts=getNonVse('umelci').map(function(b){return b.getAttribute('data-val');});
+      if(_opts.indexOf(_pArtist)!==-1){state['umelci']=[_pArtist];vseUnchecked['umelci']=false;}
+    }
+    renderGroup(g);
+  });
   applyFilters();
 })();
 </script>
@@ -352,7 +369,7 @@
     setImg(0);
     document.getElementById('lb-title').textContent=data.title;
     var artistEl=document.getElementById('lb-artist');
-    artistEl.innerHTML='<a href="/artists#denis-bastuga">'+data.artist+'</a>';
+    artistEl.innerHTML='<a href="'+(data.artistHref||'/artists#denis-bastuga')+'">'+data.artist+'</a>';
     document.getElementById('lb-meta').innerHTML=data.meta||'';
     document.getElementById('lb-price').textContent=data.price||'';
     document.getElementById('lb-mailto').href='mailto:info@galeriepostoj.cz?subject=Zajem o obraz: '+data.title;
