@@ -182,14 +182,15 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
     if(v.webkitEnterFullscreen){
       v.muted = false;
       v.webkitEnterFullscreen();
+      v.play();
     } else {
       var req = v.requestFullscreen || v.webkitRequestFullscreen || v.mozRequestFullScreen || v.msRequestFullscreen;
-      if(req) req.call(v);
+      if(req) req.call(v).then(function(){ v.muted = false; v.play(); }).catch(function(){});
     }
   });
   function onFsChange(){
     var fsEl = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
-    if(fsEl === v){ v.muted = false; } else { v.muted = true; }
+    if(fsEl === v){ v.muted = false; v.play(); } else { v.muted = true; }
   }
   document.addEventListener('fullscreenchange', onFsChange);
   document.addEventListener('webkitfullscreenchange', onFsChange);
