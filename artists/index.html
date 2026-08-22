@@ -519,7 +519,7 @@
     document.getElementById('lb-meta').innerHTML=data.meta||'';
     document.getElementById('lb-price').textContent=data.price;
     var _metaPlain=(data.meta||'').replace(/<br\s*\/?>/gi,'\n');
-    var _body='Pěkný den do galerie POSTOJ,\n\nmám zájem o následující dílo:\n\n'+data.title+'\n'+data.artist+'\n'+_metaPlain+'\n\nProsím o více informací o díle a jeho dostupnosti.\n\nDěkuji.\n\nS přátelským pozdravem,\n\n**[jméno a příjmení]**';
+    var _body='Pěkný den do galerie POSTOJ,\n\nmám zájem o následující dílo:\n\n'+data.title+'\n'+data.artist+'\n'+_metaPlain+'\n\nProsím o více informací o díle a jeho dostupnosti.\n\nDěkuji.\n\nS přátelským pozdravem,\n\n[JMÉNO A PŘÍJMENÍ]';
     document.getElementById('lb-mailto').href='mailto:info@galeriepostoj.cz?subject='+encodeURIComponent('Zájem o dílo: '+data.title)+'&body='+encodeURIComponent(_body);
     lb.classList.add('open');document.body.style.overflow='hidden';
   };
