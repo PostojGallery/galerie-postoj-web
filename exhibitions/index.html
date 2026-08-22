@@ -75,7 +75,10 @@
   .exh-content{height:100%;overflow-y:auto;}
   .exh-sidebar{position:static;top:auto;height:100%;}
 }
+.exh-ctas-below-grid{display:none;}
 @media(max-width:768px){
+  .exh-ctas-below-grid{display:block;}
+  .exh-ctas-in-text{display:none;}
   .exh-layout{display:block;margin-top:60px;}
   .exh-sidebar{position:fixed;top:60px;left:0;right:0;height:auto;flex-direction:row;overflow-x:auto;overflow-y:visible;border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);scrollbar-width:none;z-index:90;background:#0a0a0a;box-shadow:inset -60px 0 30px -10px #0a0a0a;}
   .exh-sidebar::-webkit-scrollbar{display:none;}
@@ -218,9 +221,10 @@
         <p>Díla se nesoustředí na samotný útěk, ale na obyčejné každodenní situace a osobní vzpomínky, které po opuštění Ukrajiny začala vnímat jinak. Výstava ukazuje, jak běžné okamžiky získávají nový význam, když se vše kolem změní – a jak se z osobní paměti skrze zkušenost nuceného odjezdu stává silné umělecké téma.</p>
         <p>Sláva Ukrajině!</p>
       </div>
-      <div class="exh-ctas" style="margin-top:1.5rem;"><a href="/collectors?artist=anna-banytiuk" class="btn">Díla k prodeji</a></div>
+      <div class="exh-ctas exh-ctas-in-text" style="margin-top:1.5rem;"><a href="/collectors?artist=anna-banytiuk" class="btn">Díla k prodeji</a></div>
     </div>
   </div>
+  <div class="exh-ctas exh-ctas-below-grid" style="margin-bottom:1.2rem;"><a href="/collectors?artist=anna-banytiuk" class="btn">Díla k prodeji</a></div>
   <div class="exh-photos-outer" style="margin-top:1.5rem;"><div class="exh-photos-scroll">
     <div class="exh-photo"><img loading="lazy" src="../images/exhibitions/cesty-do-neznama/foto1.webp" alt="Cesty do Neznáma 1"></div>
     <div class="exh-photo"><img loading="lazy" src="../images/exhibitions/cesty-do-neznama/foto2.webp" alt="Cesty do Neznáma 2"></div>
