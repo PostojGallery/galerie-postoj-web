@@ -326,15 +326,20 @@
 
   document.addEventListener('click',closeAll);
 
+  // 'do-180' means "up to 180 cm" so it includes do-140 cards too
+  var sizeIncludes={'do-140':['do-140'],'do-180':['do-140','do-180'],'nad-180':['nad-180']};
+  function expandVelikost(vals){if(!vals)return null;var exp={};vals.forEach(function(v){(sizeIncludes[v]||[v]).forEach(function(s){exp[s]=true;});});return Object.keys(exp);}
+
   function applyFilters(){
     var grid=document.querySelector('.works-grid');
     var items=Array.from(grid.children);
+    var _vels=expandVelikost(state.velikost);
     items.forEach(function(card){
       if(!card.classList.contains('work-card')){card.style.display='';return;}
       var show=true;
       if(state.umelci!==null&&state.umelci.indexOf(card.getAttribute('data-umelec'))===-1)show=false;
       if(state.technika!==null&&state.technika.indexOf(card.getAttribute('data-technika'))===-1)show=false;
-      if(state.velikost!==null&&state.velikost.indexOf(card.getAttribute('data-velikost'))===-1)show=false;
+      if(_vels!==null&&_vels.indexOf(card.getAttribute('data-velikost'))===-1)show=false;
       card.style.display=show?'':'none';
     });
     items.sort(function(a,b){return(+a.getAttribute('data-order')||0)-(+b.getAttribute('data-order')||0);});
@@ -344,14 +349,23 @@
   function dataAttr(g){return g==='umelci'?'umelec':g;}
   function updateAvailableOptions(){
     var cards=Array.from(document.querySelectorAll('.work-card'));
+    var _vels=expandVelikost(state.velikost);
     groups.forEach(function(g){
       getNonVse(g).forEach(function(btn){
         var val=btn.getAttribute('data-val');
         var has=cards.some(function(c){
-          if(c.getAttribute('data-'+dataAttr(g))!==val)return false;
-          for(var i=0;i<groups.length;i++){
-            var og=groups[i];if(og===g)continue;
-            if(state[og]!==null&&state[og].indexOf(c.getAttribute('data-'+dataAttr(og)))===-1)return false;
+          if(g==='velikost'){
+            var covered=sizeIncludes[val]||[val];
+            if(covered.indexOf(c.getAttribute('data-velikost'))===-1)return false;
+            if(state.umelci!==null&&state.umelci.indexOf(c.getAttribute('data-umelec'))===-1)return false;
+            if(state.technika!==null&&state.technika.indexOf(c.getAttribute('data-technika'))===-1)return false;
+          } else {
+            if(c.getAttribute('data-'+dataAttr(g))!==val)return false;
+            for(var i=0;i<groups.length;i++){
+              var og=groups[i];if(og===g)continue;
+              if(og==='velikost'){if(_vels!==null&&_vels.indexOf(c.getAttribute('data-velikost'))===-1)return false;}
+              else{if(state[og]!==null&&state[og].indexOf(c.getAttribute('data-'+dataAttr(og)))===-1)return false;}
+            }
           }
           return true;
         });
