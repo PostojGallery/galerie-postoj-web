@@ -421,8 +421,8 @@
     document.getElementById('lb-meta').innerHTML=data.meta||'';
     document.getElementById('lb-price').textContent=data.price||'';
     var _metaPlain=(data.meta||'').replace(/<br\s*\/?>/gi,'\n');
-    var _body='Pěkný den do galerie POSTOJ,\n\nmám zájem o následující dílo:\n\n'+data.title+'\n'+data.artist+'\n'+_metaPlain+'\n\nProsím o více informací o díle a jeho dostupnosti.\n\nDěkuji.\n\nS přátelským pozdravem,\n\n[jméno a příjmení]';
-    document.getElementById('lb-mailto').href='mailto:info@galeriepostoj.cz?subject=Z%C3%A1jem+o+d%C3%ADlo%3A+'+encodeURIComponent(data.title)+'&body='+encodeURIComponent(_body);
+    var _body='Pěkný den do galerie POSTOJ,\n\nmám zájem o následující dílo:\n\n'+data.title+'\n'+data.artist+'\n'+_metaPlain+'\n\nProsím o více informací o díle a jeho dostupnosti.\n\nDěkuji.\n\nS přátelským pozdravem,\n\n**[jméno a příjmení]**';
+    document.getElementById('lb-mailto').href='mailto:info@galeriepostoj.cz?subject='+encodeURIComponent('Zájem o dílo: '+data.title)+'&body='+encodeURIComponent(_body);
     var _sy=window.scrollY;
     document.body.style.position='fixed';document.body.style.top=-_sy+'px';document.body.style.width='100%';
     lb.classList.add('open');lb._scrollY=_sy;
