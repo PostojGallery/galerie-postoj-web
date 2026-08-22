@@ -304,10 +304,15 @@
         vseUnchecked[g]=false;
         var cur=state[g];
         if(cur===null){
-          // All selected → deselect just this one, keep the rest
-          var _all=getNonVse(g).map(function(b){return b.getAttribute('data-val');});
-          var _next=_all.filter(function(v){return v!==val;});
-          state[g]=_next.length>0?_next:null;
+          if(vseUnchecked[g]){
+            // Nothing selected → turn on just this one
+            state[g]=[val];
+          } else {
+            // All selected → deselect just this one, keep the rest
+            var _all=getNonVse(g).map(function(b){return b.getAttribute('data-val');});
+            var _next=_all.filter(function(v){return v!==val;});
+            state[g]=_next.length>0?_next:null;
+          }
         } else {
           var idx=cur.indexOf(val);
           var next=idx>-1?cur.filter(function(v){return v!==val;}):cur.concat([val]);
