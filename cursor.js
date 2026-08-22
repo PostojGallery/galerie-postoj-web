@@ -107,13 +107,14 @@ function _pjax(href,isPop){
       if(nCdot&&eCdot)nCdot.replaceWith(eCdot);else if(eCdot){var ap=document.getElementById('pg');document.body.insertBefore(eCdot,ap?ap.nextSibling:document.body.firstChild);}
       var nCw=document.getElementById('cw');
       if(nCw&&eCw)nCw.replaceWith(eCw);else if(eCw){var ac=document.getElementById('cdot');document.body.insertBefore(eCw,ac?ac.nextSibling:document.body.firstChild);}
+      // Update URL before executing scripts so location.search is correct
+      if(!isPop)history.pushState({},document.title,href);
       // Execute page-specific inline scripts
       nd.querySelectorAll('body script:not([src])').forEach(function(s){try{var n=document.createElement('script');n.textContent=s.textContent;document.body.appendChild(n);}catch(ex){}});
       // Re-init components
       _initBurger();
       _initRV();
       if(typeof window._postojSyncCookieLang==='function')window._postojSyncCookieLang();
-      if(!isPop)history.pushState({},document.title,href);
       if(typeof gtag==='function')gtag('event','page_view',{page_path:location.pathname});
       var hashIdx=href.indexOf('#');
       if(hashIdx!==-1){var _ht=document.getElementById(href.slice(hashIdx+1));if(_ht){requestAnimationFrame(function(){if(window.innerWidth<=768){var _sb=document.querySelector('.artists-sidebar,.exh-sidebar');var _off=60+(_sb?_sb.offsetHeight:0);window.scrollTo(0,Math.max(0,_ht.getBoundingClientRect().top+window.scrollY-_off));}else{_ht.scrollIntoView();}});}}else{window.scrollTo(0,0);}
