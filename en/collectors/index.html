@@ -302,8 +302,10 @@
         vseUnchecked[g]=false;
         var cur=state[g];
         if(cur===null){
-          state[g]=[val];
-          if(state[g].length===getNonVse(g).length){state[g]=null;}
+          // All selected → deselect just this one, keep the rest
+          var _all=getNonVse(g).map(function(b){return b.getAttribute('data-val');});
+          var _next=_all.filter(function(v){return v!==val;});
+          state[g]=_next.length>0?_next:null;
         } else {
           var idx=cur.indexOf(val);
           var next=idx>-1?cur.filter(function(v){return v!==val;}):cur.concat([val]);
@@ -328,7 +330,7 @@
 
   // 'do-180' means "up to 180 cm" so it includes do-140 cards too
   var sizeIncludes={'do-140':['do-140'],'do-180':['do-140','do-180'],'nad-180':['nad-180']};
-  function expandVelikost(vals){if(!vals)return null;var exp={};vals.forEach(function(v){(sizeIncludes[v]||[v]).forEach(function(s){exp[s]=true;});});return Object.keys(exp);}
+  function expandVelikost(vals){if(!vals)return null;if(vals.length===1){var exp={};(sizeIncludes[vals[0]]||[vals[0]]).forEach(function(s){exp[s]=true;});return Object.keys(exp);}return vals;}
 
   function applyFilters(){
     var grid=document.querySelector('.works-grid');
