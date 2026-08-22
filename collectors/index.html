@@ -301,10 +301,11 @@
           vseUnchecked[g]=false;
         }
       } else {
+        var _wasUnchecked=vseUnchecked[g];
         vseUnchecked[g]=false;
         var cur=state[g];
         if(cur===null){
-          if(vseUnchecked[g]){
+          if(_wasUnchecked){
             // Nothing selected → turn on just this one
             state[g]=[val];
           } else {
