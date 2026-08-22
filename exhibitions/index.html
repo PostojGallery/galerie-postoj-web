@@ -390,7 +390,7 @@
   var rows=document.querySelectorAll('.exh-index-row[href^="#"]');
   var sidebar=document.querySelector('.exh-sidebar');
   var content=document.querySelector('.exh-content');
-  var rafId=null,rafIdV=null,lastActiveId=null;
+  var rafId=null,rafIdV=null,lastActiveId=null,clickScrolling=false,clickScrollTimer=null;
   function scrollSidebarTo(target){
     if(rafId)cancelAnimationFrame(rafId);
     var start=sidebar.scrollLeft,diff=target-start,duration=20,startTime=null;
@@ -432,6 +432,9 @@
       e.preventDefault();var id=row.getAttribute('href').slice(1);
       var t=document.getElementById(id);if(!t)return;
       setActive(id,true);
+      clickScrolling=true;
+      if(clickScrollTimer)clearTimeout(clickScrollTimer);
+      clickScrollTimer=setTimeout(function(){clickScrolling=false;},700);
       if(window.innerWidth>768&&content){
         content.scrollTo({top:content.scrollTop+t.getBoundingClientRect().top-content.getBoundingClientRect().top-10,behavior:'smooth'});
       }else{
@@ -444,7 +447,7 @@
   var isDesktop=window.innerWidth>768;
   var scrollEl=isDesktop&&content?content:window;
   scrollEl.addEventListener('scroll',function(){
-    if(scrollTicking)return;
+    if(clickScrolling||scrollTicking)return;
     scrollTicking=true;
     requestAnimationFrame(function(){
       var active=null;
