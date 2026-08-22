@@ -518,7 +518,9 @@
     document.getElementById('lb-artist').textContent=data.artist;
     document.getElementById('lb-meta').innerHTML=data.meta||'';
     document.getElementById('lb-price').textContent=data.price;
-    document.getElementById('lb-mailto').href='mailto:info@galeriepostoj.cz?subject=Zajem o obraz: '+data.title;
+    var _metaPlain=(data.meta||'').replace(/<br\s*\/?>/gi,'\n');
+    var _body='Pěkný den do galerie POSTOJ,\n\nmám zájem o následující dílo:\n\n'+data.title+'\n'+data.artist+'\n'+_metaPlain+'\n\nProsím o více informací o díle a jeho dostupnosti.\n\nDěkuji.\n\nS přátelským pozdravem,\n\n[jméno a příjmení]';
+    document.getElementById('lb-mailto').href='mailto:info@galeriepostoj.cz?subject=Z%C3%A1jem+o+d%C3%ADlo%3A+'+encodeURIComponent(data.title)+'&body='+encodeURIComponent(_body);
     lb.classList.add('open');document.body.style.overflow='hidden';
   };
   function cl(){lb.classList.remove('open');document.body.style.overflow='';}

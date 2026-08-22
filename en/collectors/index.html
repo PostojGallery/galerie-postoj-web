@@ -418,7 +418,9 @@
     artistEl.innerHTML='<a href="'+(data.artistHref||'/en/artists#denis-bastuga')+'">'+data.artist+'</a>';
     document.getElementById('lb-meta').innerHTML=data.meta||'';
     document.getElementById('lb-price').textContent=data.price||'';
-    document.getElementById('lb-mailto').href='mailto:info@galeriepostoj.cz?subject=Inquiry about painting: '+data.title;
+    var _metaPlain=(data.meta||'').replace(/<br\s*\/?>/gi,'\n');
+    var _body='Good day to galerie POSTOJ,\n\nI am interested in the following artwork:\n\n'+data.title+'\n'+data.artist+'\n'+_metaPlain+'\n\nI would appreciate more information about the artwork and its availability.\n\nThank you.\n\nKind regards,\n\n[full name]';
+    document.getElementById('lb-mailto').href='mailto:info@galeriepostoj.cz?subject=Inquiry+about+artwork%3A+'+encodeURIComponent(data.title)+'&body='+encodeURIComponent(_body);
     var _sy=window.scrollY;
     document.body.style.position='fixed';document.body.style.top=-_sy+'px';document.body.style.width='100%';
     lb.classList.add('open');lb._scrollY=_sy;
