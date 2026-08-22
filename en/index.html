@@ -86,6 +86,8 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   .fs-right-photo{display:block;grid-column:1/-1;margin-top:1.2rem;}
   .fs-right-photo img,.fs-right-photo video{width:100%;height:auto;}
   .fs-right-photo a{pointer-events:none;}
+  .metro-video-overlay{display:none;}
+  .metro-video-wrap{width:100%;}
 }
 #opencall-strip{}
 .oc-grid{display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding-left:3rem;}
@@ -177,8 +179,13 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   var v = document.getElementById('metro-video');
   if(!v) return;
   v.addEventListener('click', function(){
-    var req = v.requestFullscreen || v.webkitRequestFullscreen || v.mozRequestFullScreen || v.msRequestFullscreen;
-    if(req) req.call(v);
+    if(v.webkitEnterFullscreen){
+      v.muted = false;
+      v.webkitEnterFullscreen();
+    } else {
+      var req = v.requestFullscreen || v.webkitRequestFullscreen || v.mozRequestFullScreen || v.msRequestFullscreen;
+      if(req) req.call(v);
+    }
   });
   function onFsChange(){
     var fsEl = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
@@ -188,6 +195,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   document.addEventListener('webkitfullscreenchange', onFsChange);
   document.addEventListener('mozfullscreenchange', onFsChange);
   document.addEventListener('MSFullscreenChange', onFsChange);
+  v.addEventListener('webkitendfullscreen', function(){ v.muted = true; });
 })();
 </script>
 <style>
