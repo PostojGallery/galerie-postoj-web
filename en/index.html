@@ -62,6 +62,11 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 .fs-mobile-cta{display:none;}
 .fs-right-photo{flex-shrink:0;align-self:start;overflow:hidden;cursor:none;}
 .fs-right-photo img,.fs-right-photo video{width:auto;height:302px;display:block;}
+.metro-video-wrap{position:relative;display:inline-block;line-height:0;}
+.metro-video-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.25s;}
+.metro-video-wrap:hover .metro-video-overlay{opacity:1;}
+.metro-video-overlay-icon{width:56px;height:56px;border:2px solid rgba(255,255,255,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);}
+.metro-video-overlay-icon svg{width:20px;height:20px;fill:#fff;margin-left:4px;}
 @media(max-width:768px){
   .founder-stmt{padding-top:3rem;}
   .fs-tag{padding:0 1.2rem;}
@@ -164,7 +169,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
       <img width="1397" height="690" class="fs-sig" src="../images/signature.png" alt="">
       <a href="/en/about" class="btn fs-desktop-cta">How it started</a>
     </div>
-    <div class="fs-right-photo rv"><video id="metro-video" src="../images/c997f623-4625-49c3-af9b-bb6025155789.mp4" autoplay muted loop playsinline style="cursor:pointer;" title="Click for fullscreen"></video></div>
+    <div class="fs-right-photo rv"><div class="metro-video-wrap"><video id="metro-video" src="../images/c997f623-4625-49c3-af9b-bb6025155789.mp4" autoplay muted loop playsinline></video><div class="metro-video-overlay"><div class="metro-video-overlay-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg></div></div></div>
   </div>
 </section>
 <script>
