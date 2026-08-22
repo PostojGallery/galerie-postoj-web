@@ -520,7 +520,9 @@
     document.getElementById('lb-artist').textContent=data.artist;
     document.getElementById('lb-meta').innerHTML=data.meta||'';
     document.getElementById('lb-price').textContent=data.price;
-    document.getElementById('lb-mailto').href='mailto:info@galeriepostoj.cz?subject=Interest in artwork: '+data.title;
+    var _metaPlain=(data.meta||'').replace(/<br\s*\/?>/gi,'\n');
+    var _body='Good day to galerie POSTOJ,\n\nI am interested in the following artwork:\n\n'+data.title+'\n'+data.artist+'\n'+_metaPlain+'\n\nI would appreciate more information about the artwork and its availability.\n\nThank you.\n\nKind regards,\n\n[full name]';
+    document.getElementById('lb-mailto').href='mailto:info@galeriepostoj.cz?subject=Inquiry+about+artwork%3A+'+encodeURIComponent(data.title)+'&body='+encodeURIComponent(_body);
     lb.classList.add('open');document.body.style.overflow='hidden';
   };
   function cl(){lb.classList.remove('open');document.body.style.overflow='';}
