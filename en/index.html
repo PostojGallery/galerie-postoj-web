@@ -602,11 +602,12 @@ loop();
   var wrap=document.getElementById('hero-poster-wrap');
   var link=document.getElementById('hero-poster-link');
   if(!wrap)return;
+  var isMob=window.matchMedia('(max-width:768px)').matches||('ontouchstart' in window);
   var ticking=false;
   window.addEventListener('scroll',function(){
     if(!ticking){
       requestAnimationFrame(function(){
-        wrap.style.transform='translate3d(0,-'+Math.round(window.scrollY*2.5)+'px,0)';
+        wrap.style.transform='translate3d(0,-'+Math.round(window.scrollY*(isMob?1.2:2.5))+'px,0)';
         ticking=false;
       });
       ticking=true;
