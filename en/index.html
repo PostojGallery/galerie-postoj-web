@@ -602,19 +602,16 @@ loop();
   var wrap=document.getElementById('hero-poster-wrap');
   var link=document.getElementById('hero-poster-link');
   if(!wrap)return;
-  var isMob=window.matchMedia('(max-width:768px)').matches||('ontouchstart' in window);
-  if(!isMob){
-    var ticking=false;
-    window.addEventListener('scroll',function(){
-      if(!ticking){
-        requestAnimationFrame(function(){
-          wrap.style.transform='translate3d(0,-'+Math.round(window.scrollY*2.5)+'px,0)';
-          ticking=false;
-        });
-        ticking=true;
-      }
-    },{passive:true});
-  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        wrap.style.transform='translate3d(0,-'+Math.round(window.scrollY*2.5)+'px,0)';
+        ticking=false;
+      });
+      ticking=true;
+    }
+  },{passive:true});
   link.addEventListener('mouseenter',function(){link.querySelector('img').style.transform='scale(1.05)';});
   link.addEventListener('mouseleave',function(){link.querySelector('img').style.transform='';});
 
