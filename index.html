@@ -28,7 +28,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 .current-exh-date{font-size:0.9rem;line-height:1.75;color:rgba(255,255,255,0.5);margin-bottom:1.8rem;}
 .current-exh-desc{font-size:0.9rem;line-height:1.75;color:rgba(255,255,255,0.5);max-width:380px;margin-bottom:2.5rem;}
 .current-exh-video{position:relative;background:transparent;display:flex;align-items:center;justify-content:center;cursor:none;}
-.current-exh>.photo-strip{grid-column:1/-1;margin-right:-3rem;}
+.current-exh>.photo-strip-outer{grid-column:1/-1;margin-right:-3rem;}
 .current-exh-video-icon{width:52px;height:52px;border:2px solid rgba(255,255,255,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;}
 .current-exh-video-icon svg{width:18px;height:18px;fill:rgba(255,255,255,0.4);margin-left:3px;}
 .current-exh-video-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);}
@@ -36,16 +36,6 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 .photo-strip-item{aspect-ratio:3/4;overflow:hidden;}
 .photo-strip-item img{width:100%;height:100%;object-fit:cover;filter:grayscale(10%);transition:filter 0.4s,transform 0.4s;}
 .photo-strip-item:hover img{filter:grayscale(0%);transform:scale(1.07);}
-#lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:20000;align-items:center;justify-content:center;}
-#lightbox.open{display:flex;}
-#lightbox-img{max-height:85vh;max-width:85vw;object-fit:contain;display:block;user-select:none;}
-#lightbox-close{position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:rgba(255,255,255,0.5);cursor:none;line-height:1;transition:color 0.2s;}
-#lightbox-close:hover{color:#fff;}
-#lightbox-prev,#lightbox-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:1.2rem;width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:none;transition:background 0.2s,border-color 0.2s;}
-#lightbox-prev:hover,#lightbox-next:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.5);}
-#lightbox-prev{left:2rem;}
-#lightbox-next{right:2rem;}
-#lightbox-counter{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-size:0.65rem;letter-spacing:0.2em;color:rgba(255,255,255,0.3);}
 .photo-strip-item{cursor:none;}
 .founder-stmt{padding-top:4rem;padding-bottom:0.9rem;}
 .fs-tag{font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.2);padding:0 3rem;margin-bottom:0.9rem;}
@@ -105,10 +95,11 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   .current-exh-info{padding:2rem 1.2rem;}
   .current-exh-desc{max-width:none;}
 
-  .current-exh>.photo-strip{grid-column:1/-1;margin-right:0;min-width:0;margin-bottom:2rem;}
-  .photo-strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;gap:4px;scrollbar-width:none;}
-  .photo-strip::-webkit-scrollbar{display:none;}
-  .photo-strip-item{flex:0 0 80%;scroll-snap-align:start;}
+  .current-exh>.photo-strip-outer{grid-column:1/-1;margin-right:0;margin-bottom:2rem;}
+  .photo-strip-outer .photo-strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;gap:4px;scrollbar-width:none;}
+  .photo-strip-outer .photo-strip::-webkit-scrollbar{display:none;}
+  .photo-strip-outer .photo-strip-item{flex:0 0 80%;scroll-snap-align:start;}
+  .photo-strip-outer .photo-strip-item:last-child{display:block;}
   .oc-grid{grid-template-columns:auto 1fr;}
   .oc-stick-col{display:flex;grid-row:1/3;padding:5mm 0.3rem;align-items:center;justify-content:center;align-self:stretch;}
   .oc-stick{width:100px;height:auto;}
@@ -153,12 +144,14 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
     <p class="current-exh-desc">Výstava je věnována kultu hada hospodáře — serpentes protectores, jedné z nejstarších evropských duchovních tradic, která pulzuje přímo pod našima nohama, pod Prahou.</p>
     <a href="/collectors?artist=denis-bastuga" class="btn">Díla k prodeji</a>
   </div>
-  <div class="photo-strip">
-    <div class="photo-strip-item"><img loading="lazy" src="images/bastuga-foto1.jpg" alt="Denis Baštuga — Pod Prahem"></div>
-    <div class="photo-strip-item"><img loading="lazy" src="images/bastuga-foto2.jpg" alt="Denis Baštuga — Pod Prahem" style="object-position:left"></div>
-    <div class="photo-strip-item"><img loading="lazy" src="images/bastuga-foto3.jpg" alt="Denis Baštuga — Pod Prahem" style="object-position:right"></div>
-    <div class="photo-strip-item"><img loading="lazy" src="images/bastuga-foto4.jpg" alt="Denis Baštuga — Pod Prahem"></div>
-    <div class="photo-strip-item"><img loading="lazy" src="images/bastuga-foto5.jpg" alt="Denis Baštuga — Pod Prahem"></div>
+  <div class="photo-strip-outer">
+    <div class="photo-strip">
+      <div class="photo-strip-item"><img loading="lazy" src="images/bastuga-foto1.jpg" alt="Denis Baštuga — Pod Prahem"></div>
+      <div class="photo-strip-item"><img loading="lazy" src="images/bastuga-foto2.jpg" alt="Denis Baštuga — Pod Prahem" style="object-position:left"></div>
+      <div class="photo-strip-item"><img loading="lazy" src="images/bastuga-foto3.jpg" alt="Denis Baštuga — Pod Prahem" style="object-position:right"></div>
+      <div class="photo-strip-item"><img loading="lazy" src="images/bastuga-foto4.jpg" alt="Denis Baštuga — Pod Prahem"></div>
+      <div class="photo-strip-item"><img loading="lazy" src="images/bastuga-foto5.jpg" alt="Denis Baštuga — Pod Prahem"></div>
+    </div>
   </div>
   <div class="current-exh-video rv">
     <img src="images/snake-bastuga.png" alt="Had hospodář — Pod Prahem" class="snake-anim" style="width:100%;height:auto;display:block;">
@@ -329,13 +322,6 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
     <a href="#" data-cookie-settings>Nastavení cookies</a>
   </div>
 </div></site-footer>
-<div id="lightbox">
-  <span id="lightbox-close">&#215;</span>
-  <button id="lightbox-prev">&#8592;</button>
-  <img id="lightbox-img" src="data:," alt="">
-  <button id="lightbox-next">&#8594;</button>
-  <div id="lightbox-counter"></div>
-</div>
 <script src="cursor.js"></script>
 <script src="cookies.js"></script>
 <script>
@@ -357,25 +343,6 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
       }
     },{passive:true});
   }
-  // lightbox
-  (function(){
-    var items=Array.from(document.querySelectorAll('.photo-strip-item img'));
-    var lb=document.getElementById('lightbox');
-    var lbImg=document.getElementById('lightbox-img');
-    var lbCounter=document.getElementById('lightbox-counter');
-    var lbPrev=document.getElementById('lightbox-prev');
-    var lbNext=document.getElementById('lightbox-next');
-    var cur=0;
-    function show(i){cur=i;lbImg.src=items[i].src;lbCounter.textContent=(i+1)+' / '+items.length;}
-    function open(i){show(i);lb.classList.add('open');document.body.style.overflow='hidden';}
-    function close(){lb.classList.remove('open');document.body.style.overflow='';lbPrev.style.display='';lbNext.style.display='';}
-    items.forEach(function(img,i){img.parentElement.addEventListener('click',function(){open(i);});});
-    document.getElementById('lightbox-prev').addEventListener('click',function(){show((cur-1+items.length)%items.length);});
-    document.getElementById('lightbox-next').addEventListener('click',function(){show((cur+1)%items.length);});
-    document.getElementById('lightbox-close').addEventListener('click',close);
-    lb.addEventListener('click',function(e){if(e.target===lb)close();});
-    document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='ArrowLeft')show((cur-1+items.length)%items.length);else if(e.key==='ArrowRight')show((cur+1)%items.length);else if(e.key==='Escape')close();});
-  })();
   // hover — scale up poster to hint it's clickable
   link.addEventListener('mouseenter',function(){link.querySelector('img').style.transform='scale(1.05)';});
   link.addEventListener('mouseleave',function(){link.querySelector('img').style.transform='';});
