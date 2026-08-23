@@ -353,7 +353,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   window.addEventListener('scroll',function(){
     if(!ticking){
       requestAnimationFrame(function(){
-        wrap.style.transform='translate3d(0,-'+Math.round(window.scrollY*(isMob?1.2:2.5))+'px,0)';
+        wrap.style.transform='translate3d(0,-'+Math.round(Math.max(0,window.scrollY)*(isMob?1.2:2.5))+'px,0)';
         ticking=false;
       });
       ticking=true;
