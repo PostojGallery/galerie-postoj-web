@@ -32,7 +32,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 .current-exh-video-icon{width:52px;height:52px;border:2px solid rgba(255,255,255,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;}
 .current-exh-video-icon svg{width:18px;height:18px;fill:rgba(255,255,255,0.4);margin-left:3px;}
 .current-exh-video-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);}
-.photo-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;touch-action:pan-x;}
+.photo-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;touch-action:pan-x pan-y;}
 .photo-strip-item{aspect-ratio:3/4;overflow:hidden;}
 .photo-strip-item img{width:100%;height:100%;object-fit:cover;filter:grayscale(10%);transition:filter 0.4s,transform 0.4s;}
 .photo-strip-item:hover img{filter:grayscale(0%);transform:scale(1.07);}
@@ -104,7 +104,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 
   .current-exh>.photo-strip-outer{grid-column:1;grid-row:2;margin-right:0;margin-bottom:2rem;}
   .current-exh-video{grid-column:1;grid-row:3;}
-  .photo-strip-outer .photo-strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x;gap:4px;scrollbar-width:none;}
+  .photo-strip-outer .photo-strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x pan-y;gap:4px;scrollbar-width:none;}
   .photo-strip-outer .photo-strip::-webkit-scrollbar{display:none;}
   .photo-strip-outer .photo-strip-item{flex:0 0 80%;scroll-snap-align:start;}
   .photo-strip-outer .photo-strip-item:last-child{display:block;}
@@ -235,7 +235,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   .artists-section{padding:1.5rem 1.2rem 1rem;}
   .artists-top{grid-template-columns:1fr;gap:2.5rem;margin-bottom:2rem;}
   .artists-quotes-col{display:none;}
-  .artists-cards{grid-template-columns:repeat(11,55vw);overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;touch-action:pan-x;scrollbar-width:none;gap:0.6rem;padding-bottom:0.5rem;}
+  .artists-cards{grid-template-columns:repeat(11,55vw);overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;scrollbar-width:none;gap:0.6rem;padding-bottom:0.5rem;}
   .artists-cards::-webkit-scrollbar{display:none;}
   .artist-card{scroll-snap-align:start;}
   .art-mob{display:block;}
