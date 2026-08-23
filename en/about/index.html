@@ -85,7 +85,7 @@
 .hist-real{overflow:hidden;aspect-ratio:3/4;cursor:none;}
 .hist-real img{width:100%;height:100%;object-fit:cover;}
 .hist-pos-right img{object-position:right center;}
-#aglb{position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:10000;display:none;cursor:none;}
+#aglb{position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:10000;display:none;cursor:none;touch-action:none;overflow:hidden;}
 #aglb img{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);max-height:90vh;max-width:90vw;object-fit:contain;}
 #aglb-prev,#aglb-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid rgba(255,255,255,0.3);color:#fff;font-size:1.2rem;width:44px;height:44px;cursor:none;display:flex;align-items:center;justify-content:center;}
 #aglb-prev{left:1.5rem;}#aglb-next{right:1.5rem;}
@@ -342,11 +342,13 @@
   prev.onclick=function(e){e.stopPropagation();cur=(cur-1+imgs.length)%imgs.length;show();};
   next.onclick=function(e){e.stopPropagation();cur=(cur+1)%imgs.length;show();};
   document.getElementById('aglb-close').onclick=function(e){e.stopPropagation();close();};
-  lb.onclick=function(e){if(e.target===lb)close();};
   document.addEventListener('keydown',function(e){if(lb.style.display!=='flex')return;if(e.key==='ArrowLeft'){cur=(cur-1+imgs.length)%imgs.length;show();}else if(e.key==='ArrowRight'){cur=(cur+1)%imgs.length;show();}else if(e.key==='Escape')close();});
   var txStart=0;
+  lb.addEventListener('wheel',function(e){e.preventDefault();},{passive:false});
   lb.addEventListener('touchstart',function(e){txStart=e.touches[0].clientX;},{passive:true});
   lb.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-txStart;if(Math.abs(dx)<40)return;if(dx<0){cur=(cur+1)%imgs.length;}else{cur=(cur-1+imgs.length)%imgs.length;}show();},{passive:true});
+  lb.onclick=function(e){if(e.target===lb||e.target===lbi){if(e.clientX<window.innerWidth/2){cur=(cur-1+imgs.length)%imgs.length;}else{cur=(cur+1)%imgs.length;}show();}};
+
   var photos=Array.from(document.querySelectorAll('.hist-real'));
   photos.forEach(function(p){p.onclick=function(){
     var strip=p.closest('.hist-strip');
