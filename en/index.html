@@ -98,10 +98,11 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 @media(max-width:768px){
   #hero-poster-link img{height:58vh;height:58svh;height:calc(var(--ivh,1vh)*58);}
   .current-exh{grid-template-columns:1fr;gap:0;padding-right:0;}
-  .current-exh-info{padding:2rem 1.2rem;}
+  .current-exh-info{padding:2rem 1.2rem;grid-column:1;grid-row:1;}
   .current-exh-desc{max-width:none;}
 
-  .current-exh>.photo-strip-outer{grid-column:1/-1;margin-right:0;margin-bottom:2rem;}
+  .current-exh>.photo-strip-outer{grid-column:1;grid-row:2;margin-right:0;margin-bottom:2rem;}
+  .current-exh-video{grid-column:1;grid-row:3;}
   .photo-strip-outer .photo-strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x;gap:4px;scrollbar-width:none;}
   .photo-strip-outer .photo-strip::-webkit-scrollbar{display:none;}
   .photo-strip-outer .photo-strip-item{flex:0 0 80%;scroll-snap-align:start;}
