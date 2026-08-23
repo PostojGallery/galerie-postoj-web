@@ -19,7 +19,7 @@
 #hero-poster-label{text-align:center;font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.35);padding-top:1.6rem;opacity:0;transform:scale(1);transition:opacity 0.4s,transform 0.4s ease;}
 #hero-poster-link:hover #hero-poster-label{opacity:1;transform:scale(1.05);}
 .current-exh{display:grid;grid-template-columns:1fr 1fr;align-items:center;background:#0a0a0a;gap:3rem;padding-right:3rem;}
-.current-exh-info{padding:4rem 2rem 4rem 3rem;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;}
+.current-exh-info{padding:4rem 2rem 4rem 3rem;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;grid-column:1;grid-row:1;}
 .current-exh-label{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:1.5rem;}
 .current-exh-artist{font-size:clamp(3rem,7vw,6.5rem);font-weight:900;line-height:0.88;letter-spacing:-0.04em;margin-bottom:1rem;}
 .current-exh-title{font-size:1.1rem;font-weight:300;color:rgba(255,255,255,0.9);margin-bottom:0.5rem;}
@@ -27,8 +27,8 @@ a.current-exh-title{text-decoration:none;border-bottom:1px solid rgba(255,255,25
 a.current-exh-title:hover{color:#fff;border-color:#fff;}
 .current-exh-date{font-size:0.9rem;line-height:1.75;color:rgba(255,255,255,0.5);margin-bottom:1.8rem;}
 .current-exh-desc{font-size:0.9rem;line-height:1.75;color:rgba(255,255,255,0.5);max-width:380px;margin-bottom:2.5rem;}
-.current-exh-video{position:relative;background:transparent;display:flex;align-items:center;justify-content:center;cursor:none;}
-.current-exh>.photo-strip-outer{grid-column:1/-1;margin-right:-3rem;}
+.current-exh-video{position:relative;background:transparent;display:flex;align-items:center;justify-content:center;cursor:none;grid-column:2;grid-row:1;}
+.current-exh>.photo-strip-outer{grid-column:1/-1;grid-row:2;margin-right:-3rem;}
 .current-exh-video-icon{width:52px;height:52px;border:2px solid rgba(255,255,255,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;}
 .current-exh-video-icon svg{width:18px;height:18px;fill:rgba(255,255,255,0.4);margin-left:3px;}
 .current-exh-video-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);}
