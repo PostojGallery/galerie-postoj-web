@@ -13,6 +13,7 @@
 #hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
 #hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.45);}
 #hero-bottom-fade{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to bottom,transparent,#0a0a0a);z-index:1;}
+#hero-top-fade{position:absolute;top:0;left:0;right:0;height:180px;background:linear-gradient(to top,transparent,rgba(0,0,0,0.7));z-index:1;}
 #hero-poster-wrap{position:relative;z-index:2;will-change:transform;}
 #hero-poster-link{display:block;cursor:none;position:relative;text-decoration:none;}
 #hero-poster-link img{height:58vh;height:58svh;width:auto;display:block;transition:transform 0.4s ease;background:#fff;}
@@ -134,6 +135,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 <section id="hero">
   <div id="hero-bg"><img src="images/hero-bg.jpg" alt="" fetchpriority="high"></div>
   <div id="hero-overlay"></div>
+  <div id="hero-top-fade"></div>
   <div id="hero-bottom-fade"></div>
   <div id="hero-poster-wrap">
     <a href="/exhibitions#exh-pod-prahem" id="hero-poster-link">
