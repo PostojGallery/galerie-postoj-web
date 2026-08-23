@@ -105,8 +105,8 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   .current-exh-info{padding:2rem 1.2rem;}
   .current-exh-desc{max-width:none;}
 
-  .current-exh>.photo-strip{grid-column:1/-1;margin-right:0;}
-  .photo-strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:4px;scrollbar-width:none;}
+  .current-exh>.photo-strip{grid-column:1/-1;margin-right:0;min-width:0;}
+  .photo-strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;gap:4px;scrollbar-width:none;}
   .photo-strip::-webkit-scrollbar{display:none;}
   .photo-strip-item{flex:0 0 80%;scroll-snap-align:start;}
   .oc-grid{grid-template-columns:auto 1fr;}
