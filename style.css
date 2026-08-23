@@ -37,7 +37,7 @@ site-footer{display:block;border-top:1px solid rgba(255,255,255,0.08);}
 @media(max-width:768px){
   #cdot,#cw{display:none;}
   *,html,body,a,button,input,textarea,select,label{cursor:auto!important;}
-  nav{height:60px;padding:0 1.2rem;background:rgba(10,10,10,0.98);flex-wrap:nowrap;}
+  nav{height:60px;padding:0 1.2rem;flex-wrap:nowrap;}
   .nav-burger{display:flex;}
   .nav-links{display:none;position:fixed;inset:0;background:#0a0a0a;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;z-index:1001;width:100%;}
   .nav-links.mob-open{display:flex;}
