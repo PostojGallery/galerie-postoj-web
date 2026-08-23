@@ -96,7 +96,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   .current-exh-desc{max-width:none;}
 
   .current-exh>.photo-strip-outer{grid-column:1/-1;margin-right:0;margin-bottom:2rem;}
-  .photo-strip-outer .photo-strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;gap:4px;scrollbar-width:none;}
+  .photo-strip-outer .photo-strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x;gap:4px;scrollbar-width:none;}
   .photo-strip-outer .photo-strip::-webkit-scrollbar{display:none;}
   .photo-strip-outer .photo-strip-item{flex:0 0 80%;scroll-snap-align:start;}
   .photo-strip-outer .photo-strip-item:last-child{display:block;}
@@ -227,7 +227,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   .artists-section{padding:1.5rem 1.2rem 1rem;}
   .artists-top{grid-template-columns:1fr;gap:2.5rem;margin-bottom:2rem;}
   .artists-quotes-col{display:none;}
-  .artists-cards{grid-template-columns:repeat(11,55vw);overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:0.6rem;padding-bottom:0.5rem;}
+  .artists-cards{grid-template-columns:repeat(11,55vw);overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;touch-action:pan-x;scrollbar-width:none;gap:0.6rem;padding-bottom:0.5rem;}
   .artists-cards::-webkit-scrollbar{display:none;}
   .artist-card{scroll-snap-align:start;}
   .art-mob{display:block;}
