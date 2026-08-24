@@ -185,19 +185,31 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 </section>
 <div id="home-vlb" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.94);z-index:20001;align-items:center;justify-content:center;">
   <button id="home-vlb-close" style="position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:rgba(255,255,255,0.5);cursor:none;line-height:1;background:none;border:none;font-family:inherit;">&#215;</button>
-  <video id="home-vlb-player" controls playsinline muted style="width:95vw;max-width:1400px;max-height:95vh;display:block;outline:none;">
-    <source src="../images/c997f623-4625-49c3-af9b-bb6025155789.mp4" type="video/mp4">
-  </video>
 </div>
 <script>
 (function(){
   var v = document.getElementById('metro-video');
+  var wrap = v && v.parentNode;
   var vlb = document.getElementById('home-vlb');
-  var player = document.getElementById('home-vlb-player');
   var closeBtn = document.getElementById('home-vlb-close');
   if(!v || !vlb) return;
-  function openVlb(){vlb.style.display='flex';document.body.style.overflow='hidden';player.currentTime=v.currentTime;player.play();}
-  function closeVlb(){vlb.style.display='none';document.body.style.overflow='';player.pause();player.currentTime=0;}
+  function openVlb(){
+    v.setAttribute('controls','');
+    v.removeAttribute('loop');
+    v.style.width='95vw';v.style.maxWidth='1400px';v.style.maxHeight='95vh';v.style.height='auto';
+    vlb.appendChild(v);
+    vlb.style.display='flex';
+    document.body.style.overflow='hidden';
+  }
+  function closeVlb(){
+    v.removeAttribute('controls');
+    v.setAttribute('loop','');
+    v.style.width='';v.style.maxWidth='';v.style.maxHeight='';v.style.height='';
+    wrap.insertBefore(v, wrap.firstChild);
+    vlb.style.display='none';
+    document.body.style.overflow='';
+    if(v.paused) v.play();
+  }
   v.addEventListener('click', openVlb);
   closeBtn.addEventListener('click', closeVlb);
   vlb.addEventListener('click', function(e){if(e.target===vlb)closeVlb();});
