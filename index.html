@@ -225,6 +225,8 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
     if(v.paused) v.play();
   }
   v.addEventListener('click', openVlb);
+  var vmob = document.querySelector('.fs-video-mobile video');
+  if(vmob) vmob.addEventListener('click', openVlb);
   closeBtn.addEventListener('click', closeVlb);
   vlb.addEventListener('click', function(e){if(e.target===vlb)closeVlb();});
   document.addEventListener('keydown', function(e){if(e.key==='Escape'&&vlb.style.display==='flex')closeVlb();});
