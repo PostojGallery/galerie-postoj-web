@@ -196,7 +196,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   var player = document.getElementById('home-vlb-player');
   var closeBtn = document.getElementById('home-vlb-close');
   if(!v || !vlb) return;
-  function openVlb(){vlb.style.display='flex';document.body.style.overflow='hidden';player.currentTime=0;player.play();}
+  function openVlb(){vlb.style.display='flex';document.body.style.overflow='hidden';player.currentTime=v.currentTime;player.play();}
   function closeVlb(){vlb.style.display='none';document.body.style.overflow='';player.pause();player.currentTime=0;}
   v.addEventListener('click', openVlb);
   closeBtn.addEventListener('click', closeVlb);
