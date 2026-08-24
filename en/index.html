@@ -61,6 +61,10 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 .fs-mobile-cta{display:none;}
 .fs-right-photo{flex-shrink:0;align-self:start;overflow:hidden;cursor:none;}
 .fs-right-photo img,.fs-right-photo video{width:auto;height:302px;display:block;}
+.fs-change-photo{width:auto;height:302px;display:block;object-fit:cover;}
+.fs-video-mobile{display:none;}
+#home-video-fw{width:100%;line-height:0;}
+#home-video-fw video{width:100%;height:auto;display:block;}
 .metro-video-wrap{position:relative;display:inline-block;line-height:0;}
 .metro-video-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.25s;pointer-events:none;}
 .metro-video-wrap:hover .metro-video-overlay{opacity:1;}
@@ -85,6 +89,9 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   .fs-right-photo{display:block;grid-column:1/-1;margin-top:1.2rem;}
   .fs-right-photo img,.fs-right-photo video{width:100%;height:auto;}
   .fs-right-photo a{pointer-events:none;}
+  .fs-change-photo{display:none;}
+  .fs-video-mobile{display:block;width:100%;}
+  #home-video-fw{display:none;}
   .metro-video-overlay{display:none;}
   .metro-video-wrap{width:100%;}
 }
@@ -180,9 +187,15 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
       <img width="1397" height="690" class="fs-sig" src="../images/signature.png" alt="">
       <a href="/en/about" class="btn fs-desktop-cta">How it started</a>
     </div>
-    <div class="fs-right-photo rv"><div class="metro-video-wrap"><video id="metro-video" src="../images/c997f623-4625-49c3-af9b-bb6025155789.mp4" autoplay muted loop playsinline></video><div class="metro-video-overlay"><div class="metro-video-overlay-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg></div></div></div>
+    <div class="fs-right-photo rv">
+      <img class="fs-change-photo" src="../images/metro-change.webp" alt="Former currency exchange space">
+      <div class="metro-video-wrap fs-video-mobile"><video src="../images/c997f623-4625-49c3-af9b-bb6025155789.mp4" autoplay muted loop playsinline></video></div>
+    </div>
   </div>
 </section>
+<div id="home-video-fw">
+  <video id="metro-video" src="../images/c997f623-4625-49c3-af9b-bb6025155789.mp4" autoplay muted loop playsinline></video>
+</div>
 <div id="home-vlb" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.94);z-index:20001;align-items:center;justify-content:center;">
   <button id="home-vlb-close" style="position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:rgba(255,255,255,0.5);cursor:none;line-height:1;background:none;border:none;font-family:inherit;">&#215;</button>
 </div>
