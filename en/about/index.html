@@ -37,7 +37,7 @@
 .whw-text-col{padding:1.2rem 2.5rem 2rem;}
 .whw-tag{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1.2rem;}
 .whw-heading{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;line-height:0.92;letter-spacing:-0.03em;margin-bottom:1.5rem;color:#fff;}
-.whw-text{font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.85;color:rgba(255,255,255,0.5);margin-bottom:0.8rem;}
+.whw-text{font-size:0.95rem;line-height:1.85;color:rgba(255,255,255,0.5);margin-bottom:0.8rem;}
 .whw-cta{display:inline-block;margin-top:1.5rem;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;cursor:none;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s,border-color 0.2s;}
 .whw-cta:hover{color:#fff;border-color:#fff;}
 .whw-testimonials{display:flex;align-items:flex-start;justify-content:center;padding:1.2rem 3rem 2rem;}
@@ -46,7 +46,7 @@
 .ts{position:absolute;top:0;left:0;width:100%;opacity:0;pointer-events:none;transition:opacity 0.5s;}
 .ts.active{opacity:1;pointer-events:auto;}
 .ts-stars{font-size:0.9rem;color:rgba(255,255,255,0.35);margin-bottom:0.6rem;}
-.ts-text{font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.7;color:rgba(255,255,255,0.8);font-weight:500;margin-bottom:0.4rem;}
+.ts-text{font-size:1rem;line-height:1.7;color:rgba(255,255,255,0.8);font-weight:500;margin-bottom:0.4rem;}
 .ts-author{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.28);}
 .ts-footer{margin-top:1.2rem;}
 .ts-dots{display:flex;gap:0.5rem;}
@@ -59,15 +59,15 @@
 .whw-oc-text-side{flex:1;}
 .whw-oc-heading{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1;letter-spacing:-0.04em;color:#fff;}
 .whw-map-col{overflow:hidden;display:flex;flex-direction:column;}
-.whw-map-col iframe{flex:1;min-height:280px;}
+.whw-map-col iframe{flex-shrink:0;}
 .info-bar{display:grid;grid-template-columns:repeat(4,1fr);background:#0a0a0a;}
 .info-col{padding:1.5rem 2rem;border-right:1px solid #1a1a1a;}
 .info-col:first-child{padding-left:2.5rem;}
 .info-col:last-child{border-right:none;}
 .info-col-label{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1rem;}
 .info-row{margin-bottom:0.8rem;}
-.info-sub{font-size:clamp(0.95rem,1.8vw,1.1rem);letter-spacing:0.1em;text-transform:uppercase;color:#fff;margin-bottom:0.2rem;}
-.info-val{font-size:clamp(0.95rem,1.8vw,1.1rem);color:rgba(255,255,255,0.45);font-weight:400;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;margin-bottom:0.8rem;}
+.info-sub{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:#fff;margin-bottom:0.2rem;}
+.info-val{font-size:0.88rem;color:rgba(255,255,255,0.45);font-weight:400;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;margin-bottom:0.8rem;}
 .info-divider{display:none;}
 .info-map-link{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;cursor:none;display:inline-block;margin-top:0.8rem;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s;}
 .info-map-link:hover{color:#fff;}
@@ -170,7 +170,7 @@
       <div class="whw-tag">Why</div>
       <div class="whw-heading">Art belongs to everyone.</div>
       <p class="whw-text">We believe contemporary art should be accessible to everyone — regardless of age, education or profession. Traditional galleries put up barriers. We break them down.</p>
-      <button id="about-video-btn" class="btn" style="margin-top:1.5rem;display:inline-block;cursor:none;">Video from the latest exhibition</button>
+      <button id="about-video-btn" class="btn" style="margin-top:1.5rem;display:inline-block;cursor:none;border:none;">Video from the latest exhibition</button>
     </div>
     <div class="whw-testimonials">
       <div style="display:flex;align-items:center;gap:2.5rem;width:100%;">
