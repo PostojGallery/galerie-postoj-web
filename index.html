@@ -656,7 +656,13 @@ window.addEventListener('keydown', e => {
   if (e.code === 'Space' || e.code === 'ArrowUp') { e.preventDefault(); jump(); }
 });
 canvas.addEventListener('click', jump);
-canvas.addEventListener('touchstart', e => { e.preventDefault(); jump(); }, { passive: false });
+let _touchStartY = 0, _touchStartX = 0;
+canvas.addEventListener('touchstart', e => { _touchStartX = e.touches[0].clientX; _touchStartY = e.touches[0].clientY; }, { passive: true });
+canvas.addEventListener('touchend', e => {
+  const dx = Math.abs(e.changedTouches[0].clientX - _touchStartX);
+  const dy = Math.abs(e.changedTouches[0].clientY - _touchStartY);
+  if (dx < 10 && dy < 10) jump();
+});
 canvas.addEventListener('mousemove', e => {
   if (state !== 'dead' || !btnBounds) { btnHover = false; return; }
   const r = canvas.getBoundingClientRect();
