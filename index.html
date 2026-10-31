@@ -124,7 +124,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   .fs-img-carousel::after{content:'';position:absolute;top:0;right:0;width:3.5rem;height:100%;background:linear-gradient(to right,transparent,rgba(10,10,10,0.8));pointer-events:none;z-index:1;}
   .fs-img-carousel .fic-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x pan-y;scrollbar-width:none;}
   .fs-img-carousel .fic-track::-webkit-scrollbar{display:none;}
-  .fs-img-carousel .fic-item{flex:0 0 85%;scroll-snap-align:start;aspect-ratio:4/3;overflow:hidden;}
+  .fs-img-carousel .fic-item{flex:0 0 85%;scroll-snap-align:start;aspect-ratio:4/3;overflow:hidden;cursor:pointer;}
   .fs-img-carousel .fic-item img{width:100%;height:100%;object-fit:cover;display:block;}
   .photo-strip-outer .photo-strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x pan-y;gap:4px;scrollbar-width:none;}
   .photo-strip-outer .photo-strip::-webkit-scrollbar{display:none;}
@@ -422,6 +422,14 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
     document.querySelectorAll('.photo-strip-item').forEach(function(t){
       t.onclick=function(){
         var items=Array.from(document.querySelectorAll('.photo-strip-item'));
+        imgs=items.map(function(x){return x.querySelector('img').src;});
+        cur=items.indexOf(t);
+        show();lb.style.display='flex';document.body.style.overflow='hidden';
+      };
+    });
+    document.querySelectorAll('.fic-item').forEach(function(t){
+      t.onclick=function(){
+        var items=Array.from(document.querySelectorAll('.fic-item'));
         imgs=items.map(function(x){return x.querySelector('img').src;});
         cur=items.indexOf(t);
         show();lb.style.display='flex';document.body.style.overflow='hidden';
