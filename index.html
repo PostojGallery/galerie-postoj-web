@@ -43,7 +43,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 .photo-strip-item.zoomed img{transform:scale(1.18);}
 .photo-strip-item.zoomed:hover img{filter:grayscale(0%);transform:scale(1.26);}
 .photo-strip-item{cursor:none;}
-.fs-vernisaz-mob{display:none;}
+.fs-img-carousel{display:none;}
 #glb{position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:10000;display:none;cursor:none;touch-action:none;overflow:hidden;}
 #glb img{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);max-height:90vh;max-width:90vw;object-fit:contain;}
 #glb-prev,#glb-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid rgba(255,255,255,0.3);color:#fff;font-size:1.2rem;width:44px;height:44px;cursor:none;display:flex;align-items:center;justify-content:center;}
@@ -119,8 +119,13 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   .current-exh-video{grid-column:1;grid-row:3;padding:0 1.2rem;}
   .current-exh-video .illu-img{width:100%!important;transform:none!important;}
   .current-exh-artist br{display:none;}
-  .fs-vernisaz-mob{display:block;width:100%;margin-top:1.5rem;}
-  .fs-vernisaz-mob img{width:100%;height:auto;display:block;}
+  .fs-change-photo{display:none;}
+  .fs-img-carousel{display:block;position:relative;margin-top:1rem;}
+  .fs-img-carousel::after{content:'';position:absolute;top:0;right:0;width:3.5rem;height:100%;background:linear-gradient(to right,transparent,rgba(10,10,10,0.8));pointer-events:none;z-index:1;}
+  .fs-img-carousel .fic-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x pan-y;scrollbar-width:none;}
+  .fs-img-carousel .fic-track::-webkit-scrollbar{display:none;}
+  .fs-img-carousel .fic-item{flex:0 0 85%;scroll-snap-align:start;aspect-ratio:4/3;overflow:hidden;}
+  .fs-img-carousel .fic-item img{width:100%;height:100%;object-fit:cover;display:block;}
   .photo-strip-outer .photo-strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x pan-y;gap:4px;scrollbar-width:none;}
   .photo-strip-outer .photo-strip::-webkit-scrollbar{display:none;}
   .photo-strip-outer .photo-strip-item{flex:0 0 80%;scroll-snap-align:start;}
@@ -198,8 +203,11 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
     <div class="fs-right-photo rv">
       <div class="metro-video-wrap fs-video-mobile"><video src="images/c997f623-4625-49c3-af9b-bb6025155789.mp4" autoplay muted loop playsinline></video></div>
       <img class="fs-change-photo" src="images/metro-change.webp" alt="Prostor bývalé směnárny">
-      <div class="fs-vernisaz-mob">
-        <img loading="lazy" src="images/vernisaz-mobile.webp" alt="galerie POSTOJ — vernisáž">
+      <div class="fs-img-carousel">
+        <div class="fic-track">
+          <div class="fic-item"><img loading="lazy" src="images/metro-change.webp" alt="Prostor bývalé směnárny"></div>
+          <div class="fic-item"><img loading="lazy" src="images/vernisaz-mobile.webp" alt="galerie POSTOJ — vernisáž"></div>
+        </div>
       </div>
     </div>
   </div>
