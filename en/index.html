@@ -116,8 +116,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 
   .current-exh>.photo-strip-outer{grid-column:1;grid-row:2;margin-right:0;margin-bottom:2rem;}
   .current-exh-video{grid-column:1;grid-row:3;}
-  .current-exh-video .illu-img{display:none!important;}
-  .current-exh-video .illu-mobile{display:block!important;}
+  .current-exh-video .illu-img{width:100%!important;transform:none!important;}
   .current-exh-artist br{display:none;}
   .photo-strip-outer .photo-strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x pan-y;gap:4px;scrollbar-width:none;}
   .photo-strip-outer .photo-strip::-webkit-scrollbar{display:none;}
@@ -177,7 +176,6 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   </div>
   <div class="current-exh-video rv">
     <img src="../images/illustration-postoj.png" alt="galerie POSTOJ — illustration" class="illu-img" style="width:130%;height:auto;display:block;transform:translateX(-12%);">
-    <img src="../images/vernisaz-mobile.jpg" alt="galerie POSTOJ — opening" class="illu-mobile" style="display:none;width:100%;height:100%;object-fit:cover;">
   </div>
 </section>
 <section class="founder-stmt">
@@ -605,6 +603,9 @@ loop();
     <div class="oc-action"><a href="/en/open-call" class="btn">I'm in</a></div>
   </div>
 </section>
+<div style="width:100%;margin-bottom:-4px;overflow:hidden;">
+  <img src="../images/vernisaz-mobile.jpg" alt="galerie POSTOJ — opening" style="width:100%;height:auto;display:block;object-fit:cover;">
+</div>
 <site-footer><div class="footer-inner">
   <span>galerie POSTOJ &copy; 2026</span>
   <div class="footer-links">
