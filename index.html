@@ -43,7 +43,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 .photo-strip-item.zoomed img{transform:scale(1.18);}
 .photo-strip-item.zoomed:hover img{filter:grayscale(0%);transform:scale(1.26);}
 .photo-strip-item{cursor:none;}
-.mob-img-carousel{display:none;}
+.photo-strip-item.mob-only{display:none;}
 #glb{position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:10000;display:none;cursor:none;touch-action:none;overflow:hidden;}
 #glb img{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);max-height:90vh;max-width:90vw;object-fit:contain;}
 #glb-prev,#glb-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid rgba(255,255,255,0.3);color:#fff;font-size:1.2rem;width:44px;height:44px;cursor:none;display:flex;align-items:center;justify-content:center;}
@@ -118,16 +118,12 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   .current-exh>.photo-strip-outer{grid-column:1;grid-row:2;margin-right:0;margin-bottom:2rem;}
   .current-exh-video{display:none;}
   .current-exh-artist br{display:none;}
-  .footer-photo-mob{display:none!important;}
-  .mob-img-carousel{display:block;grid-column:1;grid-row:3;overflow:hidden;}
-  .mob-img-carousel .mic-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x pan-y;scrollbar-width:none;}
-  .mob-img-carousel .mic-track::-webkit-scrollbar{display:none;}
-  .mob-img-carousel .mic-item{flex:0 0 100%;scroll-snap-align:start;aspect-ratio:4/3;overflow:hidden;}
-  .mob-img-carousel .mic-item img{width:100%;height:100%;object-fit:cover;display:block;}
+  .photo-strip-item.mob-only{display:block;}
+  .photo-strip-outer{position:relative;}
+  .photo-strip-outer::after{content:'';position:absolute;top:0;right:0;width:3rem;height:100%;background:linear-gradient(to right,transparent,rgba(10,10,10,0.7));pointer-events:none;z-index:1;}
   .photo-strip-outer .photo-strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x pan-y;gap:4px;scrollbar-width:none;}
   .photo-strip-outer .photo-strip::-webkit-scrollbar{display:none;}
   .photo-strip-outer .photo-strip-item{flex:0 0 80%;scroll-snap-align:start;}
-  .photo-strip-outer .photo-strip-item:last-child{display:block;}
   .oc-grid{grid-template-columns:auto 1fr;}
   .oc-stick-col{display:flex;grid-row:1/3;padding:5mm 0.3rem;align-items:center;justify-content:center;align-self:stretch;}
   .oc-stick{width:100px;height:auto;}
@@ -179,16 +175,11 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
       <div class="photo-strip-item zoomed"><img loading="lazy" src="images/divis-foto3.jpg" alt="Jan Diviš — EXIT WOUNDS" style="object-position:20% center;"></div>
       <div class="photo-strip-item"><img loading="lazy" src="images/divis-foto4.webp" alt="Jan Diviš — EXIT WOUNDS" style="object-position:center"></div>
       <div class="photo-strip-item zoomed"><img loading="lazy" src="images/divis-foto5.webp" alt="Jan Diviš — EXIT WOUNDS"></div>
+      <div class="photo-strip-item mob-only"><img loading="lazy" src="images/vernisaz-mobile.webp" alt="galerie POSTOJ — vernisáž" style="object-position:center top;"></div>
     </div>
   </div>
   <div class="current-exh-video rv">
     <img src="images/illustration-postoj.webp" alt="galerie POSTOJ — ilustrace" class="illu-img" style="width:130%;height:auto;display:block;transform:translateX(-12%);">
-  </div>
-  <div class="mob-img-carousel">
-    <div class="mic-track">
-      <div class="mic-item"><img loading="lazy" src="images/illustration-postoj.webp" alt="galerie POSTOJ — ilustrace" style="object-position:center;"></div>
-      <div class="mic-item"><img loading="lazy" src="images/vernisaz-mobile.webp" alt="galerie POSTOJ — vernisáž" style="object-position:center top;"></div>
-    </div>
   </div>
 </section>
 <section class="founder-stmt">
