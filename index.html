@@ -115,10 +115,14 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   .current-exh-desc{max-width:none;}
 
   .current-exh>.photo-strip-outer{grid-column:1;grid-row:2;margin-right:0;margin-bottom:2rem;}
-  .current-exh-video{grid-column:1;grid-row:3;}
-  .current-exh-video .illu-img{width:100%!important;transform:none!important;}
+  .current-exh-video{display:none;}
   .current-exh-artist br{display:none;}
-  .footer-photo-mob{display:block!important;}
+  .footer-photo-mob{display:none!important;}
+  .mob-img-carousel{display:block;grid-column:1;grid-row:3;overflow:hidden;}
+  .mob-img-carousel .mic-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x pan-y;scrollbar-width:none;}
+  .mob-img-carousel .mic-track::-webkit-scrollbar{display:none;}
+  .mob-img-carousel .mic-item{flex:0 0 100%;scroll-snap-align:start;aspect-ratio:4/3;overflow:hidden;}
+  .mob-img-carousel .mic-item img{width:100%;height:100%;object-fit:cover;display:block;}
   .photo-strip-outer .photo-strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x pan-y;gap:4px;scrollbar-width:none;}
   .photo-strip-outer .photo-strip::-webkit-scrollbar{display:none;}
   .photo-strip-outer .photo-strip-item{flex:0 0 80%;scroll-snap-align:start;}
@@ -178,6 +182,12 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   </div>
   <div class="current-exh-video rv">
     <img src="images/illustration-postoj.webp" alt="galerie POSTOJ — ilustrace" class="illu-img" style="width:130%;height:auto;display:block;transform:translateX(-12%);">
+  </div>
+  <div class="mob-img-carousel" style="display:none;">
+    <div class="mic-track">
+      <div class="mic-item"><img loading="lazy" src="images/illustration-postoj.webp" alt="galerie POSTOJ — ilustrace" style="object-position:center;"></div>
+      <div class="mic-item"><img loading="lazy" src="images/vernisaz-mobile.webp" alt="galerie POSTOJ — vernisáž" style="object-position:center top;"></div>
+    </div>
   </div>
 </section>
 <section class="founder-stmt">
@@ -331,9 +341,6 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
     </a>
   </div>
 </section>
-<div style="width:100%;padding:0 1.2rem;box-sizing:border-box;margin-bottom:-4px;display:none;" class="footer-photo-mob">
-  <img src="images/vernisaz-mobile.webp" alt="galerie POSTOJ — vernisáž" style="width:100%;height:auto;display:block;object-fit:cover;">
-</div>
 <style>.oc-mob-strip{display:none;}@media(max-width:768px){.oc-mob-strip{display:block;}}</style>
 <section class="oc-mob-strip">
   <div class="oc-grid">
