@@ -49,6 +49,7 @@ function _initRV(){
 }
 _initRV();
 var _pjaxBusy=false;
+if(!isMobile){
 document.addEventListener('click',function(e){
   if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
   var a=e.target.closest('a[href]');
@@ -59,6 +60,7 @@ document.addEventListener('click',function(e){
   _pjax(href,false);
 },false);
 window.addEventListener('popstate',function(){_pjax(location.pathname,true);});
+}
 function _pjax(href,isPop){
   if(_pjaxBusy)return;
   _pjaxBusy=true;
