@@ -25,7 +25,7 @@
     flex-direction: column;
   }
   #game-wrap { position:relative; width:100%; line-height:0; }
-  canvas { display:block; width:100%; height:auto; }
+  canvas { display:block; width:100%; height:auto; touch-action:none; }
 </style>
 </head>
 <body>
@@ -293,7 +293,7 @@ canvas.addEventListener('touchstart', e => { _touchStartX = e.touches[0].clientX
 canvas.addEventListener('touchend', e => {
   const dx = Math.abs(e.changedTouches[0].clientX - _touchStartX);
   const dy = Math.abs(e.changedTouches[0].clientY - _touchStartY);
-  if (dx < 10 && dy < 10) jump();
+  if (dx < 10 && dy < 10) { e.preventDefault(); jump(); }
 });
 
 loop();
