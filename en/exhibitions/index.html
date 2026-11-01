@@ -16,6 +16,8 @@
 .exh-sidebar-title{font-size:clamp(1.8rem,3.5vw,3.5rem);font-weight:900;line-height:1;letter-spacing:-0.04em;color:#fff;}
 .exh-index-row{display:flex;align-items:flex-start;gap:1rem;padding:0.9rem 2rem;text-decoration:none;cursor:none;color:inherit;transition:background 0.15s,padding-left 0.15s;}
 .exh-index-row:hover{background:rgba(255,255,255,0.03);padding-left:2.3rem;}
+.exh-index-row:hover .ei-title{color:#fff;}
+.exh-index-row:hover .ei-artist{color:#fff;}
 .exh-index-row.ei-active{background:rgba(255,255,255,0.05);padding-left:2.3rem;}
 .exh-index-row.ei-active .ei-title{color:#fff;}
 .ei-year{font-size:0.65rem;letter-spacing:0.1em;color:rgba(255,255,255,0.2);flex-shrink:0;padding-top:0.2rem;width:2.5rem;}
@@ -24,7 +26,7 @@
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.2;}}
 .ei-info{flex:1;min-width:0;}
 .ei-title{font-size:1rem;font-weight:700;color:rgba(255,255,255,0.5);transition:color 0.15s;line-height:1.2;margin-bottom:0.2rem;}
-.ei-artist{font-size:1rem;color:rgba(255,255,255,0.25);}
+.ei-artist{font-size:1rem;color:rgba(255,255,255,0.5);transition:color 0.15s;}
 .exh-content{min-width:0;padding-left:3rem;}
 .exh-current-section{padding:3rem 2.5rem 3rem 0;border-bottom:1px solid rgba(255,255,255,0.08);}
 .exh-cur-grid{display:grid;grid-template-columns:300px 1fr;gap:3rem;align-items:start;margin-bottom:2.5rem;}
