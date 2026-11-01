@@ -149,7 +149,7 @@
     <div class="work-img"><img loading="lazy" class="img-main" src="../images/shop/jan-divis/in-abundance.webp" alt="In Abundance — Jan Diviš"><div class="work-buy-label">Detail díla</div></div>
     <div class="work-info"><div class="work-title">In Abundance</div><div class="work-artist-name">Jan Diviš</div><div class="work-price">1 400 Kč</div></div>
   </div>
-  <div class="work-card rv" data-umelec="jan-divis" data-technika="grafika" data-velikost="do-140" data-cena="" data-price="1400" data-order="6" style="display:none" onclick="openLightbox({img:'../images/shop/jan-divis/who-is-to-kill.webp',title:'Who Is to Kill, Who Is to Die',artist:'Jan Diviš',artistHref:'/artists#jan-divis',meta:'Sítotisk, A2<br>Edice 30 ks<br>1 400 Kč',price:''})">
+  <div class="work-card rv" data-umelec="jan-divis" data-technika="grafika" data-velikost="do-140" data-cena="" data-price="1400" data-order="6" data-hidden="1" style="display:none" onclick="openLightbox({img:'../images/shop/jan-divis/who-is-to-kill.webp',title:'Who Is to Kill, Who Is to Die',artist:'Jan Diviš',artistHref:'/artists#jan-divis',meta:'Sítotisk, A2<br>Edice 30 ks<br>1 400 Kč',price:''})">
     <div class="work-img"><img loading="lazy" class="img-main" src="../images/shop/jan-divis/who-is-to-kill.webp" alt="Who Is to Kill, Who Is to Die — Jan Diviš"><div class="work-buy-label">Detail díla</div></div>
     <div class="work-info"><div class="work-title">Who Is to Kill, Who Is to Die</div><div class="work-artist-name">Jan Diviš</div><div class="work-price">1 400 Kč</div></div>
   </div>
@@ -387,7 +387,7 @@
       if(state.umelci!==null&&state.umelci.indexOf(card.getAttribute('data-umelec'))===-1)show=false;
       if(state.technika!==null&&state.technika.indexOf(card.getAttribute('data-technika'))===-1)show=false;
       if(_vels!==null&&_vels.indexOf(card.getAttribute('data-velikost'))===-1)show=false;
-      card.style.display=show?'':'none';
+      card.style.display=(show&&!card.getAttribute('data-hidden'))?'':'none';
     });
     items.sort(function(a,b){return(+a.getAttribute('data-order')||0)-(+b.getAttribute('data-order')||0);});
     items.forEach(function(el){grid.appendChild(el);});
