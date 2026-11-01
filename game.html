@@ -287,18 +287,7 @@ function loop() {
 window.addEventListener('keydown', e => {
   if (e.code === 'Space' || e.code === 'ArrowUp') { e.preventDefault(); jump(); }
 });
-let _suppressClick = false;
-canvas.addEventListener('click', () => {
-  if (_suppressClick) { _suppressClick = false; return; }
-  jump();
-});
-let _touchStartY = 0, _touchStartX = 0;
-canvas.addEventListener('touchstart', e => { _touchStartX = e.touches[0].clientX; _touchStartY = e.touches[0].clientY; }, { passive: true });
-canvas.addEventListener('touchend', e => {
-  const dx = Math.abs(e.changedTouches[0].clientX - _touchStartX);
-  const dy = Math.abs(e.changedTouches[0].clientY - _touchStartY);
-  if (dx < 10 && dy < 10) { _suppressClick = true; jump(); }
-});
+canvas.addEventListener('pointerdown', e => { e.preventDefault(); jump(); });
 
 loop();
 </script>
