@@ -652,7 +652,11 @@ function draw() {
 }
 
 function jump() {
-  if (state !== 'running') { startGame(); return; }
+  if (state !== 'running') {
+    const fromStartScreen = state === 'idle';
+    startGame();
+    if (!fromStartScreen) return; // Retry: restart only, no jump
+  }
   if (jumpCount < 2) {
     player.vy = jumpCount === 0 ? J1 : J2;
     jumpCount++; player.onGround = false;
@@ -711,7 +715,7 @@ canvas.addEventListener('touchend', e => {
   const t = e.changedTouches[0];
   if (Math.abs(t.clientX - _touchStartX) < 10 && Math.abs(t.clientY - _touchStartY) < 10) {
     e.preventDefault();
-    startGame();
+    jump(); // start screen: start + one jump, game over: restart only
   }
 }, { passive: false });
 canvas.addEventListener('mousemove', e => {
