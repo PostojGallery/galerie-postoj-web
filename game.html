@@ -6,6 +6,7 @@
 <title>GALERIE POSTOJ</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { touch-action: manipulation; }
   body {
     background: #0a0a0a;
     display: flex;
@@ -16,6 +17,7 @@
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     overflow: hidden;
     user-select: none;
+    -webkit-user-select: none;
   }
   #wrap {
     width: 100%;
@@ -25,7 +27,16 @@
     flex-direction: column;
   }
   #game-wrap { position:relative; width:100%; line-height:0; }
-  canvas { display:block; width:100%; height:auto; touch-action:none; -webkit-tap-highlight-color: transparent; }
+  canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    touch-action: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
 </style>
 </head>
 <body>
@@ -36,6 +47,8 @@
 </div>
 
 <script>
+const BUILD  = 'BUILD-01NOV-1430';
+
 const canvas = document.getElementById('c');
 const ctx    = canvas.getContext('2d');
 
@@ -53,6 +66,7 @@ const stickImg = new Image();
 stickImg.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5ZDbSAAACnElEQVR42u2d226EMAwFN1H+/5e3L0VCK7olwUns45nHqhXgiZ0r9PUCAAAAAAAAAAAAAAAAAAAAAHDD+xflZyyZ5V4GpBSpmFTyWDurESxOzZqlCE6MUj+MYDIYEAwIjjLAYh4MCPY+QlbLUgQjGlQXP2jBwRpeb9VphFC7mjSVQHxr2U+zIHL30NRb+NXvHj/bKXpVn19V5I4E7Pw3K/aB3ycYZA0KPGdlz6rV3XK/O1PlBlkrWvvnNSxKuJdpV1WTaxnY0evPkjvS4FrWrD2C9d+17mbzjHu26Cqaktye/nfkvj4D7lWqS8FWYmffYyml7B44hRpFPw3WX8EZHUEvm74sapRVUW7v361e8Fh5vZArOU8HPKNZH0Xq1j54V9ZajqwjiN0iOMJA6riW54bosg+OIteif/e0W9U8y90dqLuZ7PnoT1WTu3KOGuFcV/Em92nAZp17nrXbFLZE75CrMnd1LThqf6tKU8raTO/9LhUcJWszVomiJLfnXrLILqvlzgxstMUU14I9jpKV1pC3CfY6/VHcCbJg+kqWQiZE/nZWRa626CnrvTvEKh+7cSXYy0OvEi672XAVwCglOdNo20xw5P5W5fSGqeAjMBFKcs89yu2CKYxsZwkYeaMx3Tw4Mgpf4kGwOAhGMCCYaRCCAcFpKwSCIadghYWI2TRVqRBIMFIFBVtJzf7GhPRXV63lRjjo4DKDI32WiBKN2NyCOZwuLNhCLlIdCs682C8tmIwVFUzGigpGrKDgLFKjLpcWxNo8s8xKFmVYtEQjNiZlpljF94OjPe+UaRLZKioYsf6oFtL4b9qBBX+TjFj/1auOPgxibWcZ2/tghAqXaIjbyMlKo7JMhQMAAAAAAAAAAAAAAAAAAACAe/wApH7w0gNSqU4AAAAASUVORK5CYII=';
 
 // ── State ──────────────────────────────────────────────────────────────────
+let _startedAt = -1000;
 let state     = 'idle';
 let score     = 0, hiScore = 0, dist = 0;
 let speed     = 5.5;
@@ -201,6 +215,10 @@ function drawOverlay() {
     ctx.fillStyle = '#1e1e1e';
     ctx.font      = '400 11px "Helvetica Neue",Helvetica,Arial,sans-serif';
     ctx.fillText('PRESS SPACE OR TAP TO START', CW / 2, GROUND / 2 + 6);
+    // Build label on start screen
+    ctx.fillStyle = '#1a1a1a';
+    ctx.font      = '400 9px monospace';
+    ctx.fillText(BUILD, CW / 2, GROUND / 2 + 22);
   } else if (state === 'dead') {
     ctx.fillStyle = '#fff';
     ctx.font      = '700 17px "Helvetica Neue",Helvetica,Arial,sans-serif';
@@ -217,6 +235,17 @@ function drawOverlay() {
     ctx.fillText('↺', CW / 2, by + 25);
   }
   ctx.textAlign = 'left';
+}
+
+// ── Draw: Build label in corner during gameplay ───────────────────────────
+function drawBuildLabel() {
+  if (state !== 'running') return;
+  ctx.save();
+  ctx.textAlign = 'left';
+  ctx.font      = '400 8px monospace';
+  ctx.fillStyle = 'rgba(255,255,255,0.08)';
+  ctx.fillText(BUILD, 6, CH - 6);
+  ctx.restore();
 }
 
 // ── Update ────────────────────────────────────────────────────────────────
@@ -274,6 +303,7 @@ function draw() {
   drawStickman();
   drawParticles();
   if (state !== 'running') drawOverlay();
+  drawBuildLabel();
   drawDebug();
 }
 
@@ -292,6 +322,7 @@ function die() {
 }
 
 function startGame() {
+  _startedAt = performance.now();
   state = 'running';
   score = 0; dist = 0; speed = 5.5;
   obstacles = []; particles = [];
@@ -305,18 +336,36 @@ function loop() {
   requestAnimationFrame(loop);
 }
 
+// ── Input ──────────────────────────────────────────────────────────────────
+// Safety net: ignore jump input for 400ms right after start/restart.
+// This prevents the tap that starts the game from also triggering a jump
+// when the browser fires synthetic/delayed pointer events on iOS Safari.
+function handleInput() {
+  if (state === 'idle' || state === 'dead') {
+    startGame();
+    return;
+  }
+  // During gameplay: jump, but not in the 400ms window right after start
+  if (state === 'running' && performance.now() - _startedAt > 400) {
+    jump();
+  }
+}
+
+// Keyboard — registered once at load, never re-registered
 window.addEventListener('keydown', e => {
   if (e.code === 'Space' || e.code === 'ArrowUp') {
     e.preventDefault();
-    if (state === 'idle' || state === 'dead') { startGame(); return; }
-    jump();
+    handleInput();
   }
 });
 
+// Pointer (mouse + touch unified via Pointer Events API).
+// Registered ONCE here, never inside startGame/die/loop.
+// passive:false so we can call preventDefault() to suppress
+// the synthetic mousedown/click that iOS fires ~300ms after touch.
 canvas.addEventListener('pointerdown', e => {
   e.preventDefault();
-  if (state === 'idle' || state === 'dead') { startGame(); return; }
-  jump();
+  handleInput();
 }, { passive: false });
 
 loop();
