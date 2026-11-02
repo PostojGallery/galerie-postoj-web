@@ -2,7 +2,7 @@
 <html lang="cs">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>GALERIE POSTOJ</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -25,7 +25,7 @@
     flex-direction: column;
   }
   #game-wrap { position:relative; width:100%; line-height:0; }
-  canvas { display:block; width:100%; height:auto; touch-action:none; }
+  canvas { display:block; width:100%; height:auto; touch-action:none; -webkit-tap-highlight-color: transparent; }
 </style>
 </head>
 <body>
@@ -175,7 +175,7 @@ function drawParticles() {
 }
 
 // ── Debug overlay ─────────────────────────────────────────────────────────
-const DEBUG_INPUT = true;
+const DEBUG_INPUT = false;
 const _dbgLog = [];
 function _dbg(label) {
   _dbgLog.unshift({ label, state, t: performance.now() });
@@ -279,7 +279,7 @@ function draw() {
 
 // ── Control ───────────────────────────────────────────────────────────────
 function jump() {
-  if (state !== 'running') { startGame(); return; }
+  if (state !== 'running') return;
   if (jumpCount < 2) {
     player.vy = jumpCount === 0 ? J1 : J2;
     jumpCount++; player.onGround = false;
@@ -306,28 +306,17 @@ function loop() {
 }
 
 window.addEventListener('keydown', e => {
-  if (e.code === 'Space' || e.code === 'ArrowUp') { e.preventDefault(); jump(); }
-});
-// Track last touch timestamp so synthetic mouse pointerdown can be ignored
-let _lastTouchPD = -1000;
-canvas.addEventListener('pointerdown', e => {
-  e.preventDefault();
-  if (e.pointerType === 'touch') {
-    _lastTouchPD = e.timeStamp;
-    _dbg('pd:touch');
-    jump();
-  } else if (e.pointerType === 'mouse') {
-    // Suppress synthetic mouse events generated after a real touch
-    if (e.timeStamp - _lastTouchPD > 600) {
-      _dbg('pd:mouse');
-      jump();
-    } else {
-      _dbg('pd:mouse SUPPRESSED');
-    }
-  } else {
-    _dbg('pd:' + e.pointerType);
+  if (e.code === 'Space' || e.code === 'ArrowUp') {
+    e.preventDefault();
+    if (state === 'idle' || state === 'dead') { startGame(); return; }
     jump();
   }
+});
+
+canvas.addEventListener('pointerdown', e => {
+  e.preventDefault();
+  if (state === 'idle' || state === 'dead') { startGame(); return; }
+  jump();
 }, { passive: false });
 
 loop();
