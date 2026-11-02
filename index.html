@@ -491,6 +491,7 @@ let groundOff = 0;
 let airTilt   = 0;
 let legPhase  = 0;
 let lastTime  = 0;
+let smoothDt  = 16.667;
 let btnHover  = false;
 let btnBounds = null;
 
@@ -674,8 +675,12 @@ function startGame() {
 }
 
 function loop(ts) {
-  const dt = lastTime ? Math.min(ts - lastTime, 50) : 16.667;
+  const rawDt = lastTime ? Math.min(Math.max(ts - lastTime, 4), 50) : 16.667;
   lastTime = ts;
+  // Phones deliver frames unevenly for a moment when you touch the screen.
+  // Smoothing the frame time keeps the obstacles gliding evenly.
+  smoothDt += (rawDt - smoothDt) * 0.15;
+  const dt = smoothDt;
   const dtf = dt / 16.667;
   try { update(dtf); draw(); } catch(e) { console.error(e); }
   requestAnimationFrame(loop);
