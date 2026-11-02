@@ -253,7 +253,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 </script>
 <style>
 #game-wrap{position:relative;width:100%;line-height:0;background:#0a0a0a;padding-right:3rem;margin-top:2.5rem;}
-#game-wrap canvas{display:block;width:100%;height:auto;}
+#game-wrap canvas{display:block;width:100%;height:auto;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;}
 @media(max-width:768px){#game-wrap{margin-top:0.5rem;padding-right:1.2rem;}}
 </style>
 <div id="game-wrap"><canvas id="c"></canvas></div>
@@ -684,14 +684,31 @@ function loop(ts) {
 window.addEventListener('keydown', e => {
   if (e.code === 'Space' || e.code === 'ArrowUp') { e.preventDefault(); jump(); }
 });
-canvas.addEventListener('click', jump);
-let _touchStartY = 0, _touchStartX = 0;
-canvas.addEventListener('touchstart', e => { _touchStartX = e.touches[0].clientX; _touchStartY = e.touches[0].clientY; }, { passive: true });
-canvas.addEventListener('touchend', e => {
-  const dx = Math.abs(e.changedTouches[0].clientX - _touchStartX);
-  const dy = Math.abs(e.changedTouches[0].clientY - _touchStartY);
-  if (dx < 10 && dy < 10) jump();
+// Mouse (desktop). Phones ALSO fire a "click" after every tap - ignore those.
+let lastTouchTime = 0;
+canvas.addEventListener('click', () => {
+  if (Date.now() - lastTouchTime < 800) return;
+  jump();
 });
+
+// Touch (phone): running → jump instantly on touchstart.
+// Start / game-over screen → start only on a real tap (touchend, finger not moved).
+let _touchStartX = 0, _touchStartY = 0, _touchStartState = 'idle';
+canvas.addEventListener('touchstart', e => {
+  lastTouchTime = Date.now();
+  const t = e.changedTouches[0];
+  _touchStartX = t.clientX; _touchStartY = t.clientY; _touchStartState = state;
+  if (state === 'running') { e.preventDefault(); jump(); }
+}, { passive: false });
+canvas.addEventListener('touchend', e => {
+  lastTouchTime = Date.now();
+  if (_touchStartState === 'running' || state === 'running') return;
+  const t = e.changedTouches[0];
+  if (Math.abs(t.clientX - _touchStartX) < 10 && Math.abs(t.clientY - _touchStartY) < 10) {
+    e.preventDefault();
+    startGame();
+  }
+}, { passive: false });
 canvas.addEventListener('mousemove', e => {
   if (state !== 'dead' || !btnBounds) { btnHover = false; return; }
   const r = canvas.getBoundingClientRect();
