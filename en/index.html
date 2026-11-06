@@ -186,6 +186,129 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
     <img src="../images/exhibitions/exit/Postoj Merch ilu 02.webp" alt="galerie POSTOJ — illustration" class="illu-img" style="width:130%;height:auto;display:block;transform:translateX(-12%);">
   </div>
 </section>
+<style>
+.home-shop{padding:3rem 3rem 3.5rem;border-top:1px solid rgba(255,255,255,0.08);}
+.home-shop-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.5rem;}
+.home-shop-tag{font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.2);}
+.home-shop-link{font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s,border-color 0.2s;cursor:none;}
+.home-shop-link:hover{color:#fff;border-color:#fff;}
+.home-shop-track{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:0.5rem;margin-right:-3rem;padding-right:3rem;}
+.home-shop-track::-webkit-scrollbar{display:none;}
+.home-shop-card{flex:0 0 calc(25% - 0.75rem);min-width:180px;scroll-snap-align:start;cursor:none;}
+.home-shop-card-img{position:relative;overflow:hidden;aspect-ratio:3/4;}
+.home-shop-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease;}
+.home-shop-card:hover .home-shop-card-img img{transform:scale(1.06);}
+.home-shop-card-buy{position:absolute;bottom:-2px;left:0;right:0;background:#fff;color:#000;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.8rem 1rem;transform:translateY(100%);transition:transform 0.25s;pointer-events:none;}
+.home-shop-card:hover .home-shop-card-buy{transform:translateY(0);}
+.home-shop-card-info{padding:0.7rem 0 0;}
+.home-shop-card-title{font-size:0.9rem;font-weight:700;margin-bottom:0.15rem;}
+.home-shop-card-price{font-size:0.8rem;color:rgba(255,255,255,0.5);}
+#shop-lb{position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:10000;display:none;align-items:center;justify-content:center;cursor:none;}
+#shop-lb.open{display:flex;}
+#shop-lb-inner{display:grid;grid-template-columns:1fr 380px;max-width:1000px;width:90vw;gap:3rem;align-items:center;}
+#shop-lb-img{width:100%;max-height:80vh;object-fit:contain;display:block;}
+#shop-lb-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.6);font-family:inherit;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:none;transition:all 0.2s;}
+#shop-lb-close:hover{border-color:#fff;color:#fff;}
+.shop-lb-info{padding:2rem 0;}
+.shop-lb-artist{font-size:1rem;color:rgba(255,255,255,0.5);margin-bottom:0;}
+.shop-lb-artist a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:1px;transition:color 0.2s;cursor:none;}
+.shop-lb-artist a:hover{color:#fff;}
+.shop-lb-title{font-size:1.4rem;font-weight:900;letter-spacing:-0.02em;margin-bottom:0.3rem;}
+.shop-lb-meta{font-size:1rem;color:rgba(255,255,255,0.5);line-height:1.75;margin-bottom:1rem;}
+.shop-lb-price{font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;}
+@media(max-width:768px){
+  .home-shop{padding:2rem 1.2rem 2.5rem;}
+  .home-shop-track{margin-right:-1.2rem;padding-right:1.2rem;}
+  .home-shop-card{flex:0 0 72vw;}
+  .home-shop-card-buy{display:none;}
+  #shop-lb-inner{grid-template-columns:1fr;width:95vw;gap:1rem;}
+  #shop-lb{align-items:flex-start;overflow-y:auto;padding:4.5rem 0 2rem;}
+  #shop-lb-close{top:0.8rem;right:1rem;}
+  #shop-lb-img{max-height:45vh;}
+  .shop-lb-info{padding:1rem 0;}
+}
+</style>
+<section class="home-shop rv">
+  <div class="home-shop-header">
+    <div class="home-shop-tag">Available works</div>
+    <a href="/en/collectors?artist=jan-divis" class="home-shop-link">Full shop →</a>
+  </div>
+  <div class="home-shop-track">
+    <div class="home-shop-card" onclick="openLightbox({img:'../images/shop/jan-divis/sins.webp',title:'Sins, 2026',artist:'Jan Diviš',artistHref:'/en/artists#jan-divis',meta:'Risograph print, A3<br>Signed<br>CZK 850',price:'850 CZK',btnLabel:'Request illustration'})">
+      <div class="home-shop-card-img"><img loading="lazy" src="../images/shop/jan-divis/sins.webp" alt="Sins — Jan Diviš"><div class="home-shop-card-buy">View work</div></div>
+      <div class="home-shop-card-info"><div class="home-shop-card-title">Sins</div><div class="home-shop-card-price">850 CZK</div></div>
+    </div>
+    <div class="home-shop-card" onclick="openLightbox({img:'../images/shop/jan-divis/in-abundance.webp',title:'In Abundance, 2026',artist:'Jan Diviš',artistHref:'/en/artists#jan-divis',meta:'Screen print, A2<br>Signed<br>CZK 1,400',price:'1,400 CZK',btnLabel:'Request illustration'})">
+      <div class="home-shop-card-img"><img loading="lazy" src="../images/shop/jan-divis/in-abundance.webp" alt="In Abundance — Jan Diviš"><div class="home-shop-card-buy">View work</div></div>
+      <div class="home-shop-card-info"><div class="home-shop-card-title">In Abundance</div><div class="home-shop-card-price">1,400 CZK</div></div>
+    </div>
+    <div class="home-shop-card" onclick="openLightbox({img:'../images/shop/jan-divis/walk.webp',title:'Walk, 2026',artist:'Jan Diviš',artistHref:'/en/artists#jan-divis',meta:'Risograph print, A3<br>Signed<br>CZK 650',price:'650 CZK',btnLabel:'Request illustration'})">
+      <div class="home-shop-card-img"><img loading="lazy" src="../images/shop/jan-divis/walk.webp" alt="Walk — Jan Diviš"><div class="home-shop-card-buy">View work</div></div>
+      <div class="home-shop-card-info"><div class="home-shop-card-title">Walk</div><div class="home-shop-card-price">650 CZK</div></div>
+    </div>
+    <div class="home-shop-card" onclick="openLightbox({img:'../images/shop/jan-divis/exit-wounds.webp',title:'Exit Wounds, 2026',artist:'Jan Diviš',artistHref:'/en/artists#jan-divis',meta:'Risograph print, A3<br>Signed<br>CZK 650',price:'650 CZK',btnLabel:'Request illustration'})">
+      <div class="home-shop-card-img"><img loading="lazy" src="../images/shop/jan-divis/exit-wounds.webp" alt="Exit Wounds — Jan Diviš"><div class="home-shop-card-buy">View work</div></div>
+      <div class="home-shop-card-info"><div class="home-shop-card-title">Exit Wounds</div><div class="home-shop-card-price">650 CZK</div></div>
+    </div>
+    <div class="home-shop-card" onclick="openLightbox({img:'../images/shop/jan-divis/falling-apart.webp',title:'Falling Apart, 2022',artist:'Jan Diviš',artistHref:'/en/artists#jan-divis',meta:'Screen print, A3<br>Signed<br>CZK 1,000',price:'1,000 CZK',btnLabel:'Request illustration'})">
+      <div class="home-shop-card-img"><img loading="lazy" src="../images/shop/jan-divis/falling-apart.webp" alt="Falling Apart — Jan Diviš"><div class="home-shop-card-buy">View work</div></div>
+      <div class="home-shop-card-info"><div class="home-shop-card-title">Falling Apart</div><div class="home-shop-card-price">1,000 CZK</div></div>
+    </div>
+    <div class="home-shop-card" onclick="openLightbox({img:'../images/shop/jan-divis/who-is-to-kill.webp',title:'Who Is to Kill, Who Is to Die, 2026',artist:'Jan Diviš',artistHref:'/en/artists#jan-divis',meta:'Screen print, A2<br>Signed<br>CZK 1,400',price:'1,400 CZK',btnLabel:'Request illustration'})">
+      <div class="home-shop-card-img"><img loading="lazy" src="../images/shop/jan-divis/who-is-to-kill.webp" alt="Who Is to Kill, Who Is to Die — Jan Diviš"><div class="home-shop-card-buy">View work</div></div>
+      <div class="home-shop-card-info"><div class="home-shop-card-title">Who Is to Kill, Who Is to Die</div><div class="home-shop-card-price">1,400 CZK</div></div>
+    </div>
+    <div class="home-shop-card" onclick="openLightbox({img:'../images/shop/jan-divis/escalators.webp',title:'Escalators, 2026',artist:'Jan Diviš',artistHref:'/en/artists#jan-divis',meta:'Risograph print, A3<br>Limited edition of 40, signed and numbered<br>CZK 1,000',price:'1,000 CZK',btnLabel:'Request illustration'})">
+      <div class="home-shop-card-img"><img loading="lazy" src="../images/shop/jan-divis/escalators.webp" alt="Escalators — Jan Diviš"><div class="home-shop-card-buy">View work</div></div>
+      <div class="home-shop-card-info"><div class="home-shop-card-title">Escalators</div><div class="home-shop-card-price">1,000 CZK</div></div>
+    </div>
+  </div>
+</section>
+<div id="shop-lb">
+  <button id="shop-lb-close">Close ×</button>
+  <div id="shop-lb-inner">
+    <img id="shop-lb-img" src="" alt="">
+    <div class="shop-lb-info">
+      <div class="shop-lb-artist" id="shop-lb-artist"></div>
+      <div class="shop-lb-title" id="shop-lb-title"></div>
+      <div class="shop-lb-meta" id="shop-lb-meta"></div>
+      <div class="shop-lb-price" id="shop-lb-price"></div>
+      <a id="shop-lb-mailto" href="#" class="btn">Request work</a>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var lb=document.getElementById('shop-lb'),lc=document.getElementById('shop-lb-close');
+  var lbImg=document.getElementById('shop-lb-img');
+  if(!lb)return;
+  window.openLightbox=function(data){
+    lbImg.src=data.img;
+    document.getElementById('shop-lb-artist').innerHTML='<a href="'+(data.artistHref||'/en/artists')+'">'+data.artist+'</a>';
+    document.getElementById('shop-lb-title').textContent=data.title;
+    document.getElementById('shop-lb-meta').innerHTML=data.meta||'';
+    document.getElementById('shop-lb-price').textContent=data.price||'';
+    var mailto=document.getElementById('shop-lb-mailto');
+    mailto.textContent=data.btnLabel||'Request work';
+    var _metaPlain=(data.meta||'').replace(/<br\s*\/?>/gi,'\n');
+    var _body='Dear galerie POSTOJ,\n\nI am interested in the following work:\n\n'+data.title+'\n'+data.artist+'\n'+_metaPlain+'\n\nPlease let me know more about the work and its availability.\n\nThank you.\n\nKind regards,\n\n[NAME]';
+    mailto.href='mailto:info@galeriepostoj.cz?subject='+encodeURIComponent('Interest in: '+data.title)+'&body='+encodeURIComponent(_body);
+    var _sy=window.scrollY;
+    document.body.style.position='fixed';document.body.style.top=-_sy+'px';document.body.style.width='100%';
+    lb.classList.add('open');lb._scrollY=_sy;
+  };
+  function cl(){
+    var sy=lb._scrollY||0;
+    document.body.style.position='';document.body.style.top='';document.body.style.width='';
+    window.scrollTo(0,sy);
+    lb.classList.remove('open');
+    lbImg.src='';
+  }
+  lc.addEventListener('click',cl);
+  lb.addEventListener('click',function(e){if(e.target===lb)cl();});
+  document.addEventListener('keydown',function(e){if(lb.classList.contains('open')&&e.key==='Escape')cl();});
+})();
+</script>
 <section class="founder-stmt">
   <div class="fs-tag">A STANCE ON ART</div>
   <div class="fs-headline">Art lives underground.</div>
