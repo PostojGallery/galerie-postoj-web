@@ -7,6 +7,7 @@
 <link rel="icon" type="image/png" href="../images/favicon.png?v=7">
 <link rel="preload" as="image" href="../images/hero-bg.webp">
 <title>Art lives underground | galerie POSTOJ</title>
+<link rel="preload" as="image" href="../images/hero-bg.webp" fetchpriority="high">
 <link rel="stylesheet" href="../style.css">
 <style>
 #hero{position:relative;height:100vh;height:100svh;height:calc(var(--ivh,1vh)*100);overflow:hidden;display:flex;align-items:center;justify-content:center;}
@@ -330,23 +331,23 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
     </div>
     <div class="fs-content rv">
       <p class="fs-text"><span class="fs-text-lead">We believe art belongs to everyone.<br><br></span><span class="fs-text-desk">That's why we built galerie POSTOJ in the Prague metro – in the space of a former currency exchange that used to rip off tourists. No closed gallery doors. No entry fee.</span><span class="fs-text-mob">We built galerie POSTOJ in the Prague metro – in the space of a former currency exchange that used to rip off tourists. No closed gallery doors. No entry fee.</span></p>
-      <img width="1397" height="690" class="fs-sig" src="../images/signature.png" alt="">
+      <img width="1397" height="690" loading="lazy" class="fs-sig" src="../images/signature.png" alt="">
       <a href="/en/about" class="btn fs-desktop-cta">How it started</a>
     </div>
     <div class="fs-right-photo rv">
-      <img class="fs-change-photo" src="../images/metro-change.webp" alt="Former currency exchange space">
+      <img class="fs-change-photo" loading="lazy" src="../images/metro-change.webp" alt="Former currency exchange space">
       <div class="fs-img-carousel">
         <div class="fic-track">
           <div class="fic-item"><img loading="lazy" src="../images/vernisaz-mobile.webp" alt="galerie POSTOJ — opening"></div>
           <div class="fic-item"><img loading="lazy" src="../images/metro-change.webp" alt="Former currency exchange space" style="object-position:right center;"></div>
         </div>
       </div>
-      <div class="metro-video-wrap fs-video-mobile"><video src="../images/c997f623-4625-49c3-af9b-bb6025155789.mp4" autoplay muted loop playsinline></video></div>
+      <div class="metro-video-wrap fs-video-mobile"><video src="../images/c997f623-4625-49c3-af9b-bb6025155789.mp4" autoplay muted loop playsinline preload="none"></video></div>
     </div>
   </div>
 </section>
 <div id="home-video-fw">
-  <video id="metro-video" src="../images/c997f623-4625-49c3-af9b-bb6025155789.mp4" autoplay muted loop playsinline></video>
+  <video id="metro-video" src="../images/c997f623-4625-49c3-af9b-bb6025155789.mp4" autoplay muted loop playsinline preload="none"></video>
 </div>
 <div id="home-vlb" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.94);z-index:20001;align-items:center;justify-content:center;">
   <button id="home-vlb-close" style="position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:rgba(255,255,255,0.5);cursor:none;line-height:1;background:none;border:none;font-family:inherit;">&#215;</button>
