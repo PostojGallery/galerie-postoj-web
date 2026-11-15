@@ -679,9 +679,9 @@ loop();
   .artists-section{padding:1.5rem 1.2rem 1rem;}
   .artists-top{grid-template-columns:1fr;gap:2.5rem;margin-bottom:2rem;}
   .artists-quotes-col{display:none;}
-  .artists-cards{grid-template-columns:repeat(11,55vw);overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;scrollbar-width:none;gap:0.6rem;padding-bottom:0.5rem;}
+  .artists-cards{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;scrollbar-width:none;gap:0.6rem;padding-bottom:0.5rem;margin-right:-1.2rem;}
   .artists-cards::-webkit-scrollbar{display:none;}
-  .artist-card{scroll-snap-align:start;}
+  .artist-card{flex:0 0 72vw;scroll-snap-align:start;}
   .art-mob{display:block;}
 }
 </style>
