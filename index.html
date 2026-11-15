@@ -32,6 +32,7 @@ a.current-exh-title{text-decoration:none;border-bottom:1px solid rgba(255,255,25
 a.current-exh-title:hover{color:#fff;border-color:#fff;}
 .current-exh-date{font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.75;color:rgba(255,255,255,0.9);margin-bottom:1.8rem;}
 .current-exh-desc{font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.75;color:rgba(255,255,255,0.5);max-width:380px;margin-bottom:2.5rem;}
+.desc-mob{display:none;}
 .current-exh-video{position:relative;background:transparent;display:flex;align-items:center;justify-content:center;cursor:none;grid-column:2;grid-row:1;}
 .current-exh>.photo-strip-outer{grid-column:1/-1;grid-row:2;margin-right:-3rem;}
 .current-exh-video-icon{width:52px;height:52px;border:2px solid rgba(255,255,255,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;}
@@ -115,6 +116,8 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   .current-exh{grid-template-columns:1fr;gap:0;padding-right:0;}
   .current-exh-info{padding:2rem 1.2rem 0.75rem;grid-column:1;grid-row:1;}
   .current-exh-desc{max-width:none;}
+  .desc-desk{display:none;}
+  .desc-mob{display:inline;}
 
   .current-exh>.photo-strip-outer{grid-column:1;grid-row:2;margin-right:0;margin-bottom:2rem;}
   .current-exh-video{grid-column:1;grid-row:3;padding:0 1.2rem;}
@@ -172,7 +175,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
     <div class="current-exh-artist">Jan<br>Diviš</div>
     <a href="/exhibitions#exh-exit-wounds" class="current-exh-title">EXIT WOUNDS</a>
     <div class="current-exh-date" style="margin-bottom:0.75rem;">16. listopadu 2026, vernisáž 18:00</div>
-    <p class="current-exh-desc">Galerie POSTOJ představuje novou výstavu českého ilustrátora a grafika Jana Diviše, studenta Vysoké školy uměleckoprůmyslové v Praze (UMPRUM). Jeho tvorba propojuje detailní ilustrace, výrazné barvy a experimentální typografii.</p>
+    <p class="current-exh-desc"><span class="desc-desk">Galerie POSTOJ představuje novou výstavu českého ilustrátora a grafika Jana Diviše, studenta Vysoké školy uměleckoprůmyslové v Praze (UMPRUM). Jeho tvorba propojuje detailní ilustrace, výrazné barvy a experimentální typografii.</span><span class="desc-mob">Český ilustrátor a grafik, student UMPRUM. Detailní ilustrace, výrazné barvy a experimentální typografie.</span></p>
     <a href="/collectors?artist=jan-divis" class="btn exh-info-cta">Díla k prodeji</a>
   </div>
   <div class="current-exh-shop-outer">
