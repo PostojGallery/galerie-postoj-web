@@ -218,7 +218,15 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 #shop-lb{position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:10000;display:none;align-items:center;justify-content:center;cursor:none;}
 #shop-lb.open{display:flex;}
 #shop-lb-inner{display:grid;grid-template-columns:1fr 380px;max-width:1000px;width:90vw;gap:3rem;align-items:center;}
+#shop-lb-img-wrap{position:relative;}
 #shop-lb-img{width:100%;max-height:80vh;object-fit:contain;display:block;}
+#shop-lb-prev,#shop-lb-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.6);font-family:inherit;font-size:1rem;width:2.2rem;height:2.2rem;display:flex;align-items:center;justify-content:center;cursor:none;transition:all 0.2s;z-index:2;}
+#shop-lb-prev{left:0.4rem;}#shop-lb-next{right:0.4rem;}
+#shop-lb-prev:hover,#shop-lb-next:hover{border-color:#fff;color:#fff;}
+#shop-lb.single-img #shop-lb-prev,#shop-lb.single-img #shop-lb-next,#shop-lb.single-img #shop-lb-dots{display:none;}
+#shop-lb-dots{display:flex;justify-content:center;gap:0.4rem;margin-top:0.6rem;}
+.shop-lb-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.25);border:none;padding:0;cursor:none;transition:background 0.2s;}
+.shop-lb-dot.active{background:#fff;}
 #shop-lb-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.6);font-family:inherit;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:none;transition:all 0.2s;}
 #shop-lb-close:hover{border-color:#fff;color:#fff;}
 .shop-lb-info{padding:2rem 0;}
@@ -245,7 +253,12 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 <div id="shop-lb">
   <button id="shop-lb-close">Zavřít ×</button>
   <div id="shop-lb-inner">
-    <img id="shop-lb-img" src="" alt="">
+    <div id="shop-lb-img-wrap">
+      <button id="shop-lb-prev">&#8592;</button>
+      <img id="shop-lb-img" src="" alt="">
+      <button id="shop-lb-next">&#8594;</button>
+      <div id="shop-lb-dots"></div>
+    </div>
     <div class="shop-lb-info">
       <div class="shop-lb-artist" id="shop-lb-artist"></div>
       <div class="shop-lb-title" id="shop-lb-title"></div>
@@ -258,16 +271,29 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 <script>
 (function(){
   var _d=[
-    {img:'images/shop/jan-divis/t-shirts/Gallery/preview.webp',title:'Tričko Gallery, 2026',artist:'Jan Diviš',artistHref:'/collectors?artist=jan-divis',meta:'Sítotisk na 100% bavlně, 270 g/m²<br>Barva: tmavě šedá<br>1 300 Kč',price:'',btnLabel:'Poptat tričko'},
+    {imgs:['images/shop/jan-divis/t-shirts/Gallery/1.webp','images/shop/jan-divis/t-shirts/Gallery/2.webp','images/shop/jan-divis/t-shirts/Gallery/3.webp','images/shop/jan-divis/t-shirts/Gallery/4.webp','images/shop/jan-divis/t-shirts/Gallery/5.webp'],title:'Tričko Gallery, 2026',artist:'Jan Diviš',artistHref:'/collectors?artist=jan-divis',meta:'Sítotisk na 100% bavlně, 270 g/m²<br>Barva: tmavě šedá<br>1 300 Kč',price:'',btnLabel:'Poptat tričko'},
     {img:'images/shop/jan-divis/exit-wounds.webp',title:'Exit Wounds, 2026',artist:'Jan Diviš',artistHref:'/collectors?artist=jan-divis',meta:'RISO tisk, A3<br>Signováno<br>650 Kč',price:'650 Kč',btnLabel:'Poptat ilustraci'},
     {img:'images/shop/jan-divis/escalators.webp',title:'Escalators, 2026',artist:'Jan Diviš',artistHref:'/collectors?artist=jan-divis',meta:'RISO tisk, A3<br>Limitovaná edice 40 ks, signováno a číslováno<br>1 000 Kč',price:'1 000 Kč',btnLabel:'Poptat ilustraci'},
     {img:'images/shop/jan-divis/in-abundance.webp',title:'In Abundance, 2026',artist:'Jan Diviš',artistHref:'/collectors?artist=jan-divis',meta:'Sítotisk, A2<br>Signováno<br>1 400 Kč',price:'1 400 Kč',btnLabel:'Poptat ilustraci'}
   ];
   var lb=document.getElementById('shop-lb'),lc=document.getElementById('shop-lb-close');
   var lbImg=document.getElementById('shop-lb-img');
+  var lbDots=document.getElementById('shop-lb-dots');
+  var lbPrev=document.getElementById('shop-lb-prev'),lbNext=document.getElementById('shop-lb-next');
   if(!lb)return;
+  var _imgs=[],_ci=0;
+  function goTo(i){
+    _ci=i;
+    lbImg.src=_imgs[i];
+    lbDots.querySelectorAll('.shop-lb-dot').forEach(function(d,j){d.classList.toggle('active',j===i);});
+  }
   function openItem(data){
-    lbImg.src=data.img;
+    _imgs=data.imgs||[data.img];
+    var multi=_imgs.length>1;
+    lb.classList.toggle('single-img',!multi);
+    lbDots.innerHTML='';
+    if(multi){_imgs.forEach(function(_,i){var d=document.createElement('button');d.className='shop-lb-dot'+(i===0?' active':'');d.addEventListener('click',function(){goTo(i);});lbDots.appendChild(d);});}
+    goTo(0);
     document.getElementById('shop-lb-artist').innerHTML='<a href="'+(data.artistHref||'/artists')+'">'+data.artist+'</a>';
     document.getElementById('shop-lb-title').textContent=data.title;
     document.getElementById('shop-lb-meta').innerHTML=data.meta||'';
@@ -281,6 +307,11 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
     document.body.style.position='fixed';document.body.style.top=-_sy+'px';document.body.style.width='100%';
     lb.classList.add('open');lb._scrollY=_sy;
   }
+  lbPrev.addEventListener('click',function(){if(_imgs.length>1)goTo((_ci-1+_imgs.length)%_imgs.length);});
+  lbNext.addEventListener('click',function(){if(_imgs.length>1)goTo((_ci+1)%_imgs.length);});
+  var _tx=null;
+  document.getElementById('shop-lb-img-wrap').addEventListener('touchstart',function(e){_tx=e.touches[0].clientX;},{passive:true});
+  document.getElementById('shop-lb-img-wrap').addEventListener('touchend',function(e){if(_tx===null)return;var dx=e.changedTouches[0].clientX-_tx;if(Math.abs(dx)>40&&_imgs.length>1)goTo(dx<0?(_ci+1)%_imgs.length:(_ci-1+_imgs.length)%_imgs.length);_tx=null;});
   document.querySelectorAll('.home-shop-card[data-li]').forEach(function(card){
     card.addEventListener('click',function(){openItem(_d[+card.getAttribute('data-li')]);});
   });
@@ -293,7 +324,12 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   }
   lc.addEventListener('click',cl);
   lb.addEventListener('click',function(e){if(e.target===lb)cl();});
-  document.addEventListener('keydown',function(e){if(lb.classList.contains('open')&&e.key==='Escape')cl();});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')cl();
+    if(e.key==='ArrowLeft'&&_imgs.length>1)goTo((_ci-1+_imgs.length)%_imgs.length);
+    if(e.key==='ArrowRight'&&_imgs.length>1)goTo((_ci+1)%_imgs.length);
+  });
 })();
 </script>
 <section class="founder-stmt">
