@@ -12,7 +12,32 @@ img{display:block;}
 .exh-archive-poster{align-self:start;}
 .exh-cta-col{display:flex;flex-direction:column;align-items:flex-start;}
 .exh-cta-col .exh-ctas-in-text{margin-top:auto;padding-top:1.5rem;align-self:stretch;}
-@media(min-width:769px){.exh-cta-col .exh-more-btn{margin-bottom:0;}}
+/* New elements hidden on mobile */
+.exh-month-range{display:none;}
+.exh-about-btn{display:none;}
+/* Style B for archive text blocks */
+.exh-b{font-size:1.1rem;font-weight:400;line-height:1.5;letter-spacing:0;text-transform:none;color:rgba(255,255,255,0.6);}
+@media(min-width:769px){
+  /* Keep exh-cta-col more-btn rule */
+  .exh-cta-col .exh-more-btn{margin-bottom:0;}
+  /* Archive title – Style A */
+  .exh-archive-section .exh-archive-title{font-size:clamp(2.5rem,4.5vw,4.5rem);font-weight:900;letter-spacing:-0.04em;line-height:1.0;color:#fff;margin-bottom:0;}
+  /* Archive artist – Style B */
+  .exh-archive-section .exh-archive-artist{font-size:1.1rem;font-weight:400;line-height:1.5;letter-spacing:0;text-transform:none;color:rgba(255,255,255,0.6);margin-top:0.8rem;}
+  .exh-archive-section .exh-archive-artist a{font-size:1.1rem;font-weight:400;line-height:1.5;letter-spacing:0;color:rgba(255,255,255,0.6);}
+  /* Show new desktop elements */
+  .exh-month-range{display:block;}
+  .exh-about-btn{display:inline-block;background:none;border:none;padding:0;cursor:none;font-family:inherit;font-size:1.1rem;font-weight:400;line-height:1.5;letter-spacing:0;color:rgba(255,255,255,0.85);margin-top:0.9rem;transition:color 0.2s;}
+  .exh-about-btn:hover{color:#fff;}
+  /* Hide old elements on desktop */
+  .exh-archive-section .exh-archive-dates{display:none;}
+  .exh-archive-section .exh-more-btn{display:none;}
+  .exh-archive-section .exh-archive-excerpt{display:none;font-size:1.1rem;font-weight:400;line-height:1.5;letter-spacing:0;color:rgba(255,255,255,0.6);margin:0.9rem 0 0;}
+  .exh-archive-section .exh-full-text{font-size:1.1rem;font-weight:400;line-height:1.5;color:rgba(255,255,255,0.6);max-width:none;margin-top:0;}
+  /* Reveal on expand */
+  .exh-about-open .exh-archive-excerpt{display:block;}
+  .exh-about-open .exh-full-text{display:block;}
+}
 #cdot{position:fixed;width:5px;height:5px;background:#fff;border-radius:50%;pointer-events:none;z-index:50001;transform:translate(-50%,-50%);}
 #cw{position:fixed;pointer-events:none;z-index:50000;transform:translate(-50%,-90%);}
 #cw img{width:40px;display:block;filter:invert(1);}
