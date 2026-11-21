@@ -6,7 +6,7 @@
 <meta name="description" content="Current and archived exhibitions at galerie POSTOJ in the Prague metro — Náměstí Republiky. Contemporary art accessible every day, for everyone.">
 <link rel="icon" type="image/png" href="../../images/favicon.png?v=7">
 <title>Exhibitions that move society | galerie POSTOJ</title>
-<link rel="stylesheet" href="../../style.css?v=20261121b">
+<link rel="stylesheet" href="../../style.css?v=20261121c">
 <style>
 .exh-layout{display:grid;grid-template-columns:340px 1fr;align-items:start;margin-top:60px;}
 .exh-sidebar{position:sticky;top:60px;height:calc(100vh - 60px);border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;}
@@ -516,6 +516,78 @@
       scrollTicking=false;
     });
   },{passive:true});
+})();
+(function(){
+  var sidebar=document.querySelector('.exh-sidebar');
+  var content=document.querySelector('.exh-content');
+  if(!sidebar||!content)return;
+  var rows=Array.from(document.querySelectorAll('.exh-index-row[href^="#"]'));
+  if(!rows.length)return;
+  var groups=[];
+  rows.forEach(function(row){
+    var year=row.querySelector('.ei-num').textContent.trim();
+    var title=row.querySelector('.ei-title').textContent.trim();
+    var id=row.getAttribute('href').slice(1);
+    var last=groups[groups.length-1];
+    if(!last||last.year!==year){groups.push({year:year,items:[{id:id,title:title}]});}
+    else{last.items.push({id:id,title:title});}
+  });
+  var nav=document.createElement('nav');
+  nav.className='exh-year-nav';
+  groups.forEach(function(g){
+    var grp=document.createElement('div');
+    grp.className='yn-group';
+    grp.dataset.year=g.year;
+    var yl=document.createElement('div');
+    yl.className='yn-year';
+    yl.textContent=g.year;
+    grp.appendChild(yl);
+    var tl=document.createElement('div');
+    tl.className='yn-titles';
+    tl.setAttribute('aria-hidden','true');
+    g.items.forEach(function(item){
+      var ti=document.createElement('div');
+      ti.className='yn-title-item';
+      ti.dataset.id=item.id;
+      ti.textContent=item.title;
+      tl.appendChild(ti);
+    });
+    grp.appendChild(tl);
+    nav.appendChild(grp);
+  });
+  sidebar.appendChild(nav);
+  function scrollToSection(id){
+    var t=document.getElementById(id);
+    if(!t||window.innerWidth<=768)return;
+    content.scrollTo({top:content.scrollTop+t.getBoundingClientRect().top-content.getBoundingClientRect().top-10,behavior:'smooth'});
+  }
+  nav.addEventListener('click',function(e){
+    var ti=e.target.closest('.yn-title-item');
+    if(ti){scrollToSection(ti.dataset.id);return;}
+    var yl=e.target.closest('.yn-year');
+    if(yl){var first=yl.closest('.yn-group').querySelector('.yn-title-item');if(first)scrollToSection(first.dataset.id);}
+  });
+  function setActiveId(id){
+    var activeYear=null;
+    groups.forEach(function(g){g.items.forEach(function(item){if(item.id===id)activeYear=g.year;});});
+    nav.querySelectorAll('.yn-group').forEach(function(grp){grp.classList.toggle('active',grp.dataset.year===activeYear);});
+    nav.querySelectorAll('.yn-title-item').forEach(function(ti){ti.classList.toggle('active',ti.dataset.id===id);});
+  }
+  var rafPending=false;
+  content.addEventListener('scroll',function(){
+    if(rafPending)return;
+    rafPending=true;
+    requestAnimationFrame(function(){
+      if(window.innerWidth<=768){rafPending=false;return;}
+      var active=null,cr=content.getBoundingClientRect();
+      var atBottom=content.scrollHeight-content.scrollTop-content.clientHeight<50;
+      if(atBottom){var secs=document.querySelectorAll('[id^="exh-"]');active=secs[secs.length-1].id;}
+      else{document.querySelectorAll('[id^="exh-"]').forEach(function(s){if(s.getBoundingClientRect().top<=cr.top+10)active=s.id;});}
+      if(active)setActiveId(active);
+      rafPending=false;
+    });
+  },{passive:true});
+  if(window.innerWidth>768)setActiveId(rows[0].getAttribute('href').slice(1));
 })();
 document.querySelectorAll('.exh-about-btn').forEach(function(btn){
   btn.addEventListener('click',function(){

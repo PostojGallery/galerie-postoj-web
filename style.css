@@ -19,6 +19,8 @@ img{display:block;}
 .exh-cur-text-wrap{display:none;}
 /* Style B for archive text blocks */
 .exh-b{font-size:1.1rem;font-weight:400;line-height:1.5;letter-spacing:0;text-transform:none;color:rgba(255,255,255,0.6);}
+/* Year nav – hidden on mobile */
+.exh-year-nav{display:none;}
 @media(min-width:769px){
   /* Keep exh-cta-col more-btn rule */
   .exh-cta-col .exh-more-btn{margin-bottom:0;}
@@ -65,6 +67,21 @@ img{display:block;}
   .exh-cur-text-open .exh-cur-close-btn{display:inline;}
   .exh-cur-text-open .exh-cur-read-btn{display:none;}
 }
+@media(min-width:769px){
+  /* Years navigation sidebar */
+  .exh-layout{grid-template-columns:200px 1fr!important;}
+  .exh-index-row{display:none!important;}
+  .exh-sidebar-hero{display:none;}
+  .exh-year-nav{display:block;padding:3rem 0 0 2rem;}
+  .yn-group{margin-bottom:1.2rem;}
+  .yn-year{font-size:clamp(1.6rem,2.2vw,2rem);font-weight:900;letter-spacing:-0.03em;line-height:1;color:rgba(255,255,255,0.35);transition:color 0.2s;cursor:none;}
+  .yn-year:hover,.yn-group.active .yn-year{color:#fff;}
+  .yn-titles{max-height:0;overflow:hidden;transition:max-height 0.25s ease;}
+  .yn-group.active .yn-titles{max-height:600px;padding-top:0.6rem;}
+  .yn-title-item{font-size:0.9rem;font-weight:400;line-height:1.4;color:rgba(255,255,255,0.4);margin-bottom:0.5rem;cursor:none;transition:color 0.2s;}
+  .yn-title-item:hover,.yn-title-item.active{color:#fff;}
+}
+@media(prefers-reduced-motion:reduce){.yn-titles{transition:none;}}
 #cdot{position:fixed;width:5px;height:5px;background:#fff;border-radius:50%;pointer-events:none;z-index:50001;transform:translate(-50%,-50%);}
 #cw{position:fixed;pointer-events:none;z-index:50000;transform:translate(-50%,-90%);}
 #cw img{width:40px;display:block;filter:invert(1);}
