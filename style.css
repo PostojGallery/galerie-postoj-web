@@ -21,7 +21,9 @@ img{display:block;}
   /* Keep exh-cta-col more-btn rule */
   .exh-cta-col .exh-more-btn{margin-bottom:0;}
   /* Archive title – Style A */
-  .exh-archive-section .exh-archive-title{font-size:clamp(2.5rem,4.5vw,4.5rem);font-weight:900;letter-spacing:-0.04em;line-height:1.0;color:#fff;margin-bottom:0;}
+  .exh-archive-section .exh-archive-title{font-size:clamp(2.25rem,4vw,4.5rem);font-weight:900;letter-spacing:-0.04em;line-height:1.0;color:#fff;margin-bottom:0;}
+  .exh-no-cta-col{display:flex;flex-direction:column;align-items:flex-start;}
+  .exh-no-cta-col .exh-about-btn{margin-top:auto;}
   /* Archive artist – Style B */
   .exh-archive-section .exh-archive-artist{font-size:1.1rem;font-weight:400;line-height:1.5;letter-spacing:0;text-transform:none;color:rgba(255,255,255,0.6);margin-top:0.8rem;}
   .exh-archive-section .exh-archive-artist a{font-size:1.1rem;font-weight:400;line-height:1.5;letter-spacing:0;color:rgba(255,255,255,0.6);}
