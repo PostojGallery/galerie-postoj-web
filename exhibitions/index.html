@@ -6,7 +6,7 @@
 <meta name="description" content="Aktuální a archivní výstavy galerie POSTOJ v metru Praha – Náměstí Republiky. Současné umění dostupné každý den, pro každého.">
 <link rel="icon" type="image/png" href="../images/favicon.png?v=7">
 <title>Výstavy které hýbou společností | galerie POSTOJ</title>
-<link rel="stylesheet" href="../style.css?v=20261121">
+<link rel="stylesheet" href="../style.css?v=20261121b">
 <style>
 .exh-layout{display:grid;grid-template-columns:340px 1fr;align-items:start;margin-top:60px;}
 .exh-sidebar{position:sticky;top:60px;height:calc(100vh - 60px);border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;}
@@ -153,8 +153,6 @@
 </a>
   </aside>
   <div class="exh-content">
-    <!-- chapter bar (desktop only) -->
-    <div id="chap-bar" aria-hidden="true"><div id="chap-bar-inner"><div class="chap-slot chap-slot-a"><span class="chap-title"></span><span class="chap-artist"></span></div><div class="chap-slot chap-slot-b"><span class="chap-title"></span><span class="chap-artist"></span></div></div></div>
     <div class="exh-current-section" id="exh-exit-wounds">
       <div class="exh-cur-grid">
         <div class="exh-cur-poster rv"><img width="500" src="../images/poster-exit-wounds.webp" alt="EXIT WOUNDS — Jan Diviš"></div>
@@ -508,11 +506,10 @@
       if(atBottom){
         active=sections[sections.length-1].id;
       } else {
-        /* chapter bar: use title-bottom threshold so sidebar + bar stay in sync */
+        /* sticky title: highlight = last section whose block top is at or above content top + 10px */
+        var cr=isDesktop&&content?content.getBoundingClientRect():null;
         sections.forEach(function(s){
-          var te=isDesktop?s.querySelector('.exh-cur-title,.exh-archive-title'):null;
-          var v=te?te.getBoundingClientRect().bottom:s.getBoundingClientRect().top;
-          if(v<=(isDesktop?104:100))active=s.id;
+          if(s.getBoundingClientRect().top<=(isDesktop&&cr?cr.top+10:100))active=s.id;
         });
       }
       if(active&&active!==lastActiveId){lastActiveId=active;setActive(active,true);}
@@ -591,77 +588,6 @@ document.querySelectorAll('.exh-cur-close-btn').forEach(function(btn){
     wrap.querySelector('.exh-cur-read-btn').setAttribute('aria-expanded','false');
   });
 });
-/* ============================================================
-   chapter bar JS
-   ============================================================ */
-(function(){
-  if(window.innerWidth<769)return;
-  var bar=document.getElementById('chap-bar');
-  if(!bar)return;
-  var inner=document.getElementById('chap-bar-inner');
-  var slotA=bar.querySelector('.chap-slot-a');
-  var slotB=bar.querySelector('.chap-slot-b');
-  var cont=document.querySelector('.exh-content');
-  var BAR_H=44;
-  var reducedMotion=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var sections=Array.prototype.slice.call(
-    document.querySelectorAll('.exh-current-section,.exh-archive-section')
-  ).map(function(el){
-    var te=el.querySelector('.exh-cur-title,.exh-archive-title');
-    var ae=el.querySelector('.exh-cur-artist,.exh-archive-artist');
-    return{el:el,titleEl:te,title:te?te.textContent.trim():'',artist:ae?ae.textContent.trim():''};
-  });
-  if(!sections.length||!cont)return;
-  function setSlot(slot,idx){
-    var d=idx>=0&&idx<sections.length?sections[idx]:null;
-    slot.querySelector('.chap-title').textContent=d?d.title:'';
-    slot.querySelector('.chap-artist').textContent=d?d.artist:'';
-  }
-  var renderedActive=-2;
-  var rafPending=false;
-  function update(){
-    rafPending=false;
-    if(window.innerWidth<769){bar.style.opacity='0';return;}
-    var cr=cont.getBoundingClientRect();
-    var BAR_BOTTOM=cr.top+BAR_H;
-    /* active = last section whose title bottom is above the bar bottom */
-    var activeIdx=-1;
-    for(var i=0;i<sections.length;i++){
-      var te=sections[i].titleEl;
-      if(te&&te.getBoundingClientRect().bottom<=BAR_BOTTOM){activeIdx=i;}
-      else break;
-    }
-    if(activeIdx<0){bar.classList.remove('chap-visible');renderedActive=-1;return;}
-    bar.classList.add('chap-visible');
-    if(activeIdx!==renderedActive){
-      setSlot(slotA,activeIdx);
-      setSlot(slotB,activeIdx+1<sections.length?activeIdx+1:-1);
-      inner.style.transform='';
-      renderedActive=activeIdx;
-    }
-    /* push: driven by next section block entering bar zone */
-    if(!reducedMotion){
-      var ni=activeIdx+1;
-      if(ni<sections.length){
-        var nt=sections[ni].el.getBoundingClientRect().top-cr.top;
-        if(nt>0&&nt<BAR_H){
-          inner.style.transform='translateY('+(-((BAR_H-nt)/BAR_H)*BAR_H)+'px)';
-        }else{
-          inner.style.transform='';
-          /* if next section block has crossed bar top, slot B text should be fresh */
-          if(nt<=0)setSlot(slotB,ni+1<sections.length?ni+1:-1);
-        }
-      } else {
-        inner.style.transform='';
-      }
-    }
-  }
-  function onScroll(){if(!rafPending){rafPending=true;requestAnimationFrame(update);}}
-  cont.addEventListener('scroll',onScroll,{passive:true});
-  window.addEventListener('resize',update,{passive:true});
-  update();
-})();
-/* end chapter bar JS */
 </script>
 </body>
 </html>
