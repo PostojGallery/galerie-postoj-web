@@ -6,7 +6,7 @@
 <meta name="description" content="Current and archived exhibitions at galerie POSTOJ in the Prague metro — Náměstí Republiky. Contemporary art accessible every day, for everyone.">
 <link rel="icon" type="image/png" href="../../images/favicon.png?v=7">
 <title>Exhibitions that move society | galerie POSTOJ</title>
-<link rel="stylesheet" href="../../style.css?v=20261121c">
+<link rel="stylesheet" href="../../style.css?v=20261121d">
 <style>
 .exh-layout{display:grid;grid-template-columns:340px 1fr;align-items:start;margin-top:60px;}
 .exh-sidebar{position:sticky;top:60px;height:calc(100vh - 60px);border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;}
@@ -659,6 +659,28 @@ document.querySelectorAll('.exh-cur-close-btn').forEach(function(btn){
     wrap.querySelector('.exh-cur-read-btn').setAttribute('aria-expanded','false');
   });
 });
+(function(){
+  function applyPosterH(){
+    if(window.innerWidth<=768)return;
+    document.querySelectorAll('.exh-current-section,.exh-archive-section').forEach(function(s){
+      var photos=s.querySelector('.exh-photos-outer');
+      var grid=s.querySelector('.exh-cur-grid')||s.querySelector('.exh-archive-grid');
+      if(!grid||!photos)return;
+      var ss=window.getComputedStyle(s),gs=window.getComputedStyle(grid),ps=window.getComputedStyle(photos);
+      var ph=photos.offsetHeight+(parseFloat(ps.marginTop)||0);
+      var posterH=Math.min(720,Math.max(330,
+        window.innerHeight-60
+        -(parseFloat(ss.paddingTop)||0)
+        -(parseFloat(ss.paddingBottom)||0)
+        -(parseFloat(gs.marginBottom)||0)
+        -ph
+      ));
+      s.style.setProperty('--poster-h',posterH+'px');
+    });
+  }
+  requestAnimationFrame(applyPosterH);
+  window.addEventListener('resize',function(){requestAnimationFrame(applyPosterH);},{passive:true});
+})();
 </script>
 </body>
 </html>
