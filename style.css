@@ -19,8 +19,7 @@ img{display:block;}
 .exh-cur-text-wrap{display:none;}
 /* Style B for archive text blocks */
 .exh-b{font-size:1.1rem;font-weight:400;line-height:1.5;letter-spacing:0;text-transform:none;color:rgba(255,255,255,0.6);}
-/* Year nav – hidden on mobile */
-.exh-year-nav{display:none;}
+
 @media(min-width:769px){
   /* Keep exh-cta-col more-btn rule */
   .exh-cta-col .exh-more-btn{margin-bottom:0;}
@@ -44,8 +43,8 @@ img{display:block;}
   .exh-about-open .exh-archive-excerpt{display:block;}
   .exh-about-open .exh-full-text{display:block;}
   /* sticky titles */
-  .exh-current-section .exh-cur-title{position:sticky;top:0;background:#0a0a0a;padding-bottom:0.5rem;z-index:10;width:100%;}
-  .exh-archive-section .exh-archive-title{position:sticky;top:0;background:#0a0a0a;padding-bottom:0.5rem;z-index:10;width:100%;}
+  .exh-current-section .exh-cur-title{position:sticky;top:124px;background:#0a0a0a;padding-bottom:0.5rem;z-index:10;width:100%;}
+  .exh-archive-section .exh-archive-title{position:sticky;top:124px;background:#0a0a0a;padding-bottom:0.5rem;z-index:10;width:100%;}
   .exh-content{overflow-x:hidden;}
   /* Current exhibition block – EXIT WOUNDS */
   .exh-current-section .exh-cur-grid{align-items:stretch;}
@@ -67,25 +66,11 @@ img{display:block;}
   .exh-cur-text-open .exh-cur-close-btn{display:inline;}
   .exh-cur-text-open .exh-cur-read-btn{display:none;}
 }
-@media(min-width:769px){
-  /* Years navigation sidebar */
-  .exh-layout{grid-template-columns:200px 1fr!important;}
-  .exh-index-row{display:none!important;}
-  .exh-sidebar-hero{display:none;}
-  .exh-year-nav{display:block;padding:3rem 1.2rem 0 2.5rem;width:100%;box-sizing:border-box;position:sticky;top:0;}
-  .yn-group{margin-bottom:1.2rem;}
-  .yn-year{font-size:clamp(1.6rem,2.2vw,2rem);font-weight:900;letter-spacing:-0.03em;line-height:1;color:rgba(255,255,255,0.35);transition:color 0.2s;cursor:none;}
-  .yn-year:hover,.yn-group.active .yn-year{color:#fff;}
-  .yn-titles{max-height:0;overflow:hidden;transition:max-height 0.25s ease;visibility:hidden;}
-  .yn-group.active .yn-titles{max-height:600px;padding-top:0.6rem;visibility:visible;}
-  .yn-title-item{font-size:0.9rem;font-weight:400;line-height:1.4;color:rgba(255,255,255,0.4);margin-bottom:0.5rem;cursor:none;transition:color 0.2s;overflow-wrap:break-word;}
-  .yn-title-item:hover,.yn-title-item.active{color:#fff;}
-}
-@media(prefers-reduced-motion:reduce){.yn-titles{transition:none;}}
+
 @media(min-width:769px){
   /* ── Full-screen exhibition blocks ──────────────────────────────── */
   /* Each section fills the viewport height minus the fixed 60px nav  */
-  .exh-current-section,.exh-archive-section{min-height:calc(100vh - 60px);min-height:calc(100dvh - 60px);display:flex;flex-direction:column;}
+  .exh-current-section,.exh-archive-section{min-height:calc(100vh - 124px);min-height:calc(100dvh - 124px);display:flex;flex-direction:column;}
   /* Grid row grows to fill section; carousel is a flex item at bottom */
   .exh-cur-grid,.exh-archive-grid{flex:1 1 0;min-height:0;grid-template-columns:auto 1fr!important;}
   .exh-photos-outer{flex-shrink:0;}
@@ -140,4 +125,18 @@ site-footer{display:block;border-top:1px solid rgba(255,255,255,0.08);}
   .footer-links a{white-space:nowrap;}
   .footer-links:first-of-type{display:none;}
 }
-
+/* ── Year bar (exhibitions page, desktop only) ──────────────────── */
+.exh-ybar{display:none;}
+@media(min-width:769px){
+  .exh-ybar{display:flex;align-items:center;gap:2rem;position:sticky;top:60px;z-index:999;height:64px;margin-top:60px;padding:0 2.5rem;background:#0a0a0a;border-bottom:1px solid rgba(255,255,255,0.08);}
+  .exh-ybar-years{display:flex;gap:1.5rem;align-items:center;flex-shrink:0;}
+  .exh-ybar-yr{font-size:clamp(1.6rem,2.2vw,2rem);font-weight:900;letter-spacing:-0.03em;line-height:1;color:rgba(255,255,255,0.35);transition:color 0.2s;cursor:none;}
+  .exh-ybar-yr:hover,.exh-ybar-yr.active{color:#fff;}
+  .exh-ybar-titles{display:none;}
+}
+@media(min-width:1100px){
+  .exh-ybar-titles{display:flex;flex:1;flex-wrap:wrap;justify-content:flex-end;align-items:center;overflow:hidden;max-height:2.6em;}
+  .exh-ybar-ttl{font-size:0.9rem;font-weight:400;color:rgba(255,255,255,0.45);transition:color 0.2s;cursor:none;white-space:nowrap;}
+  .exh-ybar-ttl.active{color:#fff;}
+  .exh-ybar-sep{font-size:0.9rem;color:rgba(255,255,255,0.2);padding:0 0.4rem;white-space:nowrap;user-select:none;}
+}
