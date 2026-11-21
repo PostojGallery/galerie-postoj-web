@@ -48,7 +48,7 @@ img{display:block;}
   /* sticky titles */
   .exh-current-section .exh-cur-title{position:sticky;top:calc(var(--nav-h) + var(--ybar-h));background:#0a0a0a;padding-bottom:0.5rem;z-index:10;width:100%;}
   .exh-archive-section .exh-archive-title{position:sticky;top:calc(var(--nav-h) + var(--ybar-h));background:#0a0a0a;padding-bottom:0.5rem;z-index:10;width:100%;}
-  .exh-content{overflow-x:hidden;}
+  .exh-content{overflow:visible;}
   /* Current exhibition block – EXIT WOUNDS */
   .exh-current-section .exh-cur-grid{align-items:stretch;}
   .exh-cur-poster{align-self:start;}
