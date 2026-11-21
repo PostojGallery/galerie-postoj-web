@@ -6,7 +6,7 @@
 <meta name="description" content="Aktuální a archivní výstavy galerie POSTOJ v metru Praha – Náměstí Republiky. Současné umění dostupné každý den, pro každého.">
 <link rel="icon" type="image/png" href="../images/favicon.png?v=7">
 <title>Výstavy které hýbou společností | galerie POSTOJ</title>
-<link rel="stylesheet" href="../style.css?v=20261121k">
+<link rel="stylesheet" href="../style.css?v=20261121l">
 <style>
 .exh-layout{display:grid;grid-template-columns:340px 1fr;align-items:start;margin-top:60px;}
 .exh-sidebar{position:sticky;top:60px;height:calc(100vh - 60px);border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;}
@@ -74,13 +74,18 @@
 #glb-count{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);display:flex;gap:6px;justify-content:center;align-items:center;}
 .glb-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.25);}
 .glb-dot.active{background:#fff;}
+/* Outer sticky titles: hidden on mobile, shown on desktop */
+.exh-archive-section > .exh-archive-title{display:none;}
 @media(min-width:769px){
   .exh-layout{display:block;margin-top:0;height:auto;overflow:visible;}
   .exh-sidebar{display:none;}
-  .exh-content{height:auto;overflow-y:visible;padding-left:0;}
+  .exh-content{height:auto;overflow:visible;padding-left:0;}
   .exh-current-section{padding-left:2.5rem;}
   .exh-archive-section{padding-left:2.5rem;}
   .exh-current-section,.exh-archive-section{scroll-margin-top:calc(var(--nav-h,72px) + var(--ybar-h,64px));}
+  /* Show outer sticky titles, hide inner grid titles */
+  .exh-archive-section > .exh-archive-title{display:block;}
+  .exh-archive-section .exh-archive-grid .exh-archive-title{display:none;}
 }
 .exh-ctas-in-poster{display:none;}
 @media(max-width:768px){
@@ -157,9 +162,9 @@
   </aside>
   <div class="exh-content">
     <div class="exh-current-section" id="exh-exit-wounds">
+  <div class="ew-title">EXIT WOUNDS</div>
     <!-- Desktop EXIT WOUNDS layout -->
   <div class="ew-wrap">
-    <div class="ew-title">EXIT WOUNDS</div>
     <div class="ew-row">
       <div class="ew-poster rv">
         <img src="../images/poster-exit-wounds.webp" alt="EXIT WOUNDS — Jan Diviš">
@@ -196,6 +201,7 @@
       </div></div>
     </div>
     <div class="exh-archive-section" id="exh-pod-prahem">
+      <div class="exh-archive-title">Pod Prahem: Serpentes protectores</div>
       <div class="exh-archive-grid">
         <div>
           <div class="exh-archive-poster"><img loading="lazy" src="../images/poster-bastuga.webp" alt="Pod Prahem"></div>
@@ -223,6 +229,7 @@
     </div>
 
 <div class="exh-archive-section" id="exh-current">
+  <div class="exh-archive-title">Break The Pattern, Go To Therapy</div>
   <div class="exh-archive-grid">
     <div>
       <div class="exh-archive-poster"><img loading="lazy" src="../images/poster-martin.webp" alt="Break The Pattern, Go To Therapy"></div>
@@ -244,6 +251,7 @@
 </div>
 
 <div class="exh-archive-section" id="exh-podestal">
+  <div class="exh-archive-title">Odložte si u pásu 26163</div>
   <div class="exh-archive-grid">
     <div><div class="exh-archive-poster"><img loading="lazy" src="../images/poster-podestal.webp" alt="Odložte si u pásu 26163"></div></div>
     <div class="exh-no-cta-col">
@@ -268,6 +276,7 @@
   </div></div>
 </div>
 <div class="exh-archive-section" id="exh-banytiuk">
+  <div class="exh-archive-title">Cesty do Neznáma</div>
   <div class="exh-archive-grid">
     <div>
       <div class="exh-archive-poster"><img loading="lazy" src="../images/poster-banytiuk.webp" alt="Cesty do Neznáma"></div>
@@ -297,6 +306,7 @@
   </div></div>
 </div>
 <div class="exh-archive-section" id="exh-petrasova">
+  <div class="exh-archive-title">Už ani muk</div>
   <div class="exh-archive-grid">
     <div><div class="exh-archive-poster"><img loading="lazy" src="../images/poster-petrasova.webp" alt="Už ani muk"></div></div>
     <div class="exh-no-cta-col">
@@ -322,6 +332,7 @@
   </div></div>
 </div>
 <div class="exh-archive-section" id="exh-pouchova">
+  <div class="exh-archive-title">Něžný Murčik</div>
   <div class="exh-archive-grid">
     <div><div class="exh-archive-poster"><img loading="lazy" src="../images/poster-pouchova.webp" alt="Něžný Murčik"></div></div>
     <div class="exh-no-cta-col">
@@ -347,6 +358,7 @@
   </div></div>
 </div>
 <div class="exh-archive-section" id="exh-jaksemas">
+  <div class="exh-archive-title">Jak se máš?</div>
   <div class="exh-archive-grid">
     <div><div class="exh-archive-poster"><img loading="lazy" src="../images/poster-jaksemas.webp" alt="Jak se máš?"></div></div>
     <div class="exh-no-cta-col">
@@ -372,6 +384,7 @@
   </div></div>
 </div>
 <div class="exh-archive-section" id="exh-menger">
+  <div class="exh-archive-title">Střípky z Blízkého východu</div>
   <div class="exh-archive-grid">
     <div><div class="exh-archive-poster"><img loading="lazy" src="../images/poster-menger.webp" alt="Střípky z Blízkého východu"></div></div>
     <div class="exh-no-cta-col">
@@ -397,6 +410,7 @@
   </div></div>
 </div>
 <div class="exh-archive-section" id="exh-drevaky">
+  <div class="exh-archive-title">Dřeváky a Medový Klobouk</div>
   <div class="exh-archive-grid">
     <div><div class="exh-archive-poster"><img loading="lazy" src="../images/poster-drevaky.webp" alt="Dřeváky a Medový Klobouk"></div></div>
     <div class="exh-no-cta-col">
