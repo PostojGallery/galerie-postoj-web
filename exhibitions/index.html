@@ -6,7 +6,7 @@
 <meta name="description" content="Aktuální a archivní výstavy galerie POSTOJ v metru Praha – Náměstí Republiky. Současné umění dostupné každý den, pro každého.">
 <link rel="icon" type="image/png" href="../images/favicon.png?v=7">
 <title>Výstavy které hýbou společností | galerie POSTOJ</title>
-<link rel="stylesheet" href="../style.css?v=20261121j">
+<link rel="stylesheet" href="../style.css?v=20261121k">
 <style>
 .exh-layout{display:grid;grid-template-columns:340px 1fr;align-items:start;margin-top:60px;}
 .exh-sidebar{position:sticky;top:60px;height:calc(100vh - 60px);border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;}
@@ -80,7 +80,7 @@
   .exh-content{height:auto;overflow-y:visible;padding-left:0;}
   .exh-current-section{padding-left:2.5rem;}
   .exh-archive-section{padding-left:2.5rem;}
-  .exh-current-section,.exh-archive-section{scroll-margin-top:124px;}
+  .exh-current-section,.exh-archive-section{scroll-margin-top:calc(var(--nav-h,72px) + var(--ybar-h,64px));}
 }
 .exh-ctas-in-poster{display:none;}
 @media(max-width:768px){
@@ -523,8 +523,6 @@
   });
   var yearsEl=document.createElement('div');
   yearsEl.className='exh-ybar-years';
-  var titlesEl=document.createElement('div');
-  titlesEl.className='exh-ybar-titles';
   groups.forEach(function(g){
     var yr=document.createElement('div');
     yr.className='exh-ybar-yr';
@@ -533,36 +531,23 @@
     yearsEl.appendChild(yr);
   });
   bar.appendChild(yearsEl);
-  bar.appendChild(titlesEl);
-  var OFFSET=124;
+  var OFFSET=136;
   function scrollToId(id){
     var t=document.getElementById(id);if(!t)return;
     window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-OFFSET,behavior:'smooth'});
   }
   bar.addEventListener('click',function(e){
     if(window.innerWidth<=768)return;
-    var ttl=e.target.closest('.exh-ybar-ttl');
-    if(ttl){scrollToId(ttl.dataset.id);return;}
     var yr=e.target.closest('.exh-ybar-yr');
     if(yr){var g=groups.find(function(g){return g.year===yr.dataset.year;});if(g&&g.items.length)scrollToId(g.items[0].id);}
   });
-  var curId=null,curYear=null;
+  var curId=null;
   function setActive(id){
     if(id===curId)return;
     curId=id;
     var ay=null;
     groups.forEach(function(g){g.items.forEach(function(item){if(item.id===id)ay=g.year;});});
     yearsEl.querySelectorAll('.exh-ybar-yr').forEach(function(yr){yr.classList.toggle('active',yr.dataset.year===ay);});
-    if(ay!==curYear){
-      curYear=ay;
-      titlesEl.innerHTML='';
-      var grp=groups.find(function(g){return g.year===ay;});
-      if(grp){grp.items.forEach(function(item,i){
-        if(i>0){var sep=document.createElement('span');sep.className='exh-ybar-sep';sep.textContent='·';titlesEl.appendChild(sep);}
-        var ttl=document.createElement('div');ttl.className='exh-ybar-ttl';ttl.textContent=item.title;ttl.dataset.id=item.id;titlesEl.appendChild(ttl);
-      });}
-    }
-    titlesEl.querySelectorAll('.exh-ybar-ttl').forEach(function(ttl){ttl.classList.toggle('active',ttl.dataset.id===id);});
   }
   var sections=Array.from(document.querySelectorAll('[id^="exh-"]'));
   var rafPending=false;
@@ -672,7 +657,7 @@ document.querySelectorAll('.exh-cur-close-btn').forEach(function(btn){
       var ss=window.getComputedStyle(s),gs=window.getComputedStyle(grid),ps=window.getComputedStyle(photos);
       var ph=photos.offsetHeight+(parseFloat(ps.marginTop)||0);
       var posterH=Math.min(720,Math.max(330,
-        window.innerHeight-124
+        window.innerHeight-136
         -(parseFloat(ss.paddingTop)||0)
         -(parseFloat(ss.paddingBottom)||0)
         -(parseFloat(gs.marginBottom)||0)
