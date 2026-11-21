@@ -51,7 +51,9 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 #glb-prev,#glb-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid rgba(255,255,255,0.3);color:#fff;font-size:1.2rem;width:44px;height:44px;cursor:none;display:flex;align-items:center;justify-content:center;}
 #glb-prev{left:1.5rem;}#glb-next{right:1.5rem;}
 #glb-close{position:absolute;top:1.5rem;right:2rem;background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);font-family:inherit;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:none;}
-#glb-count{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);font-family:inherit;}
+#glb-count{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);display:flex;gap:6px;justify-content:center;align-items:center;}
+.glb-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.25);}
+.glb-dot.active{background:#fff;}
 .founder-stmt{padding-top:2rem;padding-bottom:0.9rem;}
 .fs-tag{font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.2);padding:0 3rem;margin-bottom:0.9rem;}
 .fs-grid{display:grid;grid-template-columns:auto 1fr auto;align-items:start;padding-left:3rem;padding-right:3rem;}
@@ -808,7 +810,7 @@ loop();
     var lb=document.getElementById('glb'),lbi=document.getElementById('glb-img'),lbc=document.getElementById('glb-count');
     var glbPrev=document.getElementById('glb-prev'),glbNext=document.getElementById('glb-next');
     var imgs=[],cur=0;
-    function show(){lbi.src=imgs[cur];lbc.textContent=(cur+1)+' / '+imgs.length;}
+    function show(){lbi.src=imgs[cur];if(lbc.children.length!==imgs.length){lbc.innerHTML='';imgs.forEach(function(){var d=document.createElement('span');d.className='glb-dot';lbc.appendChild(d);});}Array.from(lbc.children).forEach(function(d,i){d.classList.toggle('active',i===cur);});}
     function close(){lb.style.display='none';document.body.style.overflow='';}
     glbPrev.onclick=function(e){e.stopPropagation();cur=(cur-1+imgs.length)%imgs.length;show();};
     glbNext.onclick=function(e){e.stopPropagation();cur=(cur+1)%imgs.length;show();};
