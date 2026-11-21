@@ -6,7 +6,7 @@
 <meta name="description" content="Aktuální a archivní výstavy galerie POSTOJ v metru Praha – Náměstí Republiky. Současné umění dostupné každý den, pro každého.">
 <link rel="icon" type="image/png" href="../images/favicon.png?v=7">
 <title>Výstavy které hýbou společností | galerie POSTOJ</title>
-<link rel="stylesheet" href="../style.css?v=20261121m">
+<link rel="stylesheet" href="../style.css?v=20261121n">
 <style>
 .exh-layout{display:grid;grid-template-columns:340px 1fr;align-items:start;margin-top:60px;}
 .exh-sidebar{position:sticky;top:60px;height:calc(100vh - 60px);border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;}
@@ -86,6 +86,13 @@
   /* Show outer sticky titles, hide inner grid titles */
   .exh-archive-section > .exh-archive-title{display:block;}
   .exh-archive-section .exh-archive-grid .exh-archive-title{display:none;}
+  /* Pod Prahem: same EXIT WOUNDS layout */
+  #exh-pod-prahem{min-height:0!important;display:block!important;padding:3rem 2.5rem 5rem!important;}
+  #exh-pod-prahem > .exh-archive-title{display:none;}
+  #exh-pod-prahem .exh-archive-grid{display:none;}
+  #exh-pod-prahem .exh-photos-outer{flex-shrink:unset!important;margin-top:1.5rem;margin-left:-2.5rem;margin-right:-2.5rem;}
+  #exh-pod-prahem .exh-photos-scroll{display:flex!important;gap:0!important;overflow:visible;}
+  #exh-pod-prahem .exh-photos-scroll .exh-photo{flex:1;aspect-ratio:4/3;}
 }
 .exh-ctas-in-poster{display:none;}
 @media(max-width:768px){
@@ -202,6 +209,24 @@
     </div>
     <div class="exh-archive-section" id="exh-pod-prahem">
       <div class="exh-archive-title">Pod Prahem: Serpentes protectores</div>
+      <div class="ew-title">Pod Prahem:<br>Serpentes protectores</div>
+      <div class="ew-wrap">
+        <div class="ew-row">
+          <div class="ew-poster rv">
+            <img src="../images/poster-bastuga.webp" alt="Pod Prahem — Denis Baštuga">
+          </div>
+          <div class="ew-col rv" style="transition-delay:0.1s">
+            <div class="ew-key">Kult hada hospodáře – jedna z nejstarších evropských duchovních tradic, která pulzuje přímo pod našima nohama.</div>
+            <div class="ew-sig"><a href="/artists#denis-bastuga" class="ew-artist">Denis Baštuga</a>, 19.&#160;8. – 4.&#160;11.&#160;2026</div>
+            <div class="ew-expanded" id="pp-full">Kult nevznikl ze strachu, ale z hlubokého respektu — z tiché, odvěké dohody mezi člověkem a přírodou. Byl to posvátný pakt úcty k tvorovi, který nesl pomyslnou korunu ochránce rodinného krbu, strážce majetku a symbolu plodnosti. Minulé generace mu s úctou lily mléko pod práh, ctily jeho přítomnost pod pecí a hledaly lesklou svlečenou kůži v základech stájí. Had tam plnil jasnou roli: svým neúnavným lovem hlodavců chránil sýpky a sklizeň před zkázou. Bytost mýtická byla zároveň bytostí hluboce užitečnou. Výstava konfrontuje tradice s pop kulturou, zkoumá jejich vnímání, podprahovou náklonnost k rituálům, a ptá se, co se stane, když se posvátné promění ve vyprázdněné a spotřební. Dílo Denise Baštugy přenáší tento archetyp do současnosti. Zkoumá náš vztah k symbolům ochrany, domova a péče. Kde dnes had hospodář přebývá? Zůstal součástí našeho domova, nebo se stal jen vzpomínkou, objektem či zbožím?</div>
+            <div class="ew-actions">
+              <a href="/collectors?artist=denis-bastuga" class="ew-btn">Díla k prodeji →</a>
+              <button class="ew-read" aria-expanded="false" data-open="Číst dál →" data-close="Zavřít ↑">Číst dál →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Mobile layout -->
       <div class="exh-archive-grid">
         <div>
           <div class="exh-archive-poster"><img loading="lazy" src="../images/poster-bastuga.webp" alt="Pod Prahem"></div>

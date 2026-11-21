@@ -6,7 +6,7 @@
 <meta name="description" content="Current and archived exhibitions at galerie POSTOJ in the Prague metro — Náměstí Republiky. Contemporary art accessible every day, for everyone.">
 <link rel="icon" type="image/png" href="../../images/favicon.png?v=7">
 <title>Exhibitions that move society | galerie POSTOJ</title>
-<link rel="stylesheet" href="../../style.css?v=20261121m">
+<link rel="stylesheet" href="../../style.css?v=20261121n">
 <style>
 .exh-layout{display:grid;grid-template-columns:340px 1fr;align-items:start;margin-top:60px;}
 .exh-sidebar{position:sticky;top:60px;height:calc(100vh - 60px);border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;}
@@ -86,6 +86,13 @@
   /* Show outer sticky titles, hide inner grid titles */
   .exh-archive-section > .exh-archive-title{display:block;}
   .exh-archive-section .exh-archive-grid .exh-archive-title{display:none;}
+  /* Pod Prahem: same EXIT WOUNDS layout */
+  #exh-pod-prahem{min-height:0!important;display:block!important;padding:3rem 2.5rem 5rem!important;}
+  #exh-pod-prahem > .exh-archive-title{display:none;}
+  #exh-pod-prahem .exh-archive-grid{display:none;}
+  #exh-pod-prahem .exh-photos-outer{flex-shrink:unset!important;margin-top:1.5rem;margin-left:-2.5rem;margin-right:-2.5rem;}
+  #exh-pod-prahem .exh-photos-scroll{display:flex!important;gap:0!important;overflow:visible;}
+  #exh-pod-prahem .exh-photos-scroll .exh-photo{flex:1;aspect-ratio:4/3;}
 }
 .exh-ctas-in-poster{display:none;}
 @media(max-width:768px){
@@ -202,6 +209,24 @@
     </div>
     <div class="exh-archive-section" id="exh-pod-prahem">
       <div class="exh-archive-title">Pod Prahem: Serpentes protectores</div>
+      <div class="ew-title">Pod Prahem:<br>Serpentes protectores</div>
+      <div class="ew-wrap">
+        <div class="ew-row">
+          <div class="ew-poster rv">
+            <img src="../../images/poster-bastuga.webp" alt="Pod Prahem — Denis Baštuga">
+          </div>
+          <div class="ew-col rv" style="transition-delay:0.1s">
+            <div class="ew-key">The cult of the household snake – one of Europe's oldest spiritual traditions, pulsing beneath our feet.</div>
+            <div class="ew-sig"><a href="/en/artists#denis-bastuga" class="ew-artist">Denis Baštuga</a>, 19&#160;Aug – 4&#160;Nov&#160;2026</div>
+            <div class="ew-expanded" id="pp-full">The cult did not arise from fear, but from profound respect—from a silent, ancient covenant between humans and nature. It was a sacred pact of reverence toward the creature who bore an imaginary crown as protector of the family hearth, guardian of property, and symbol of fertility. Past generations would reverently pour milk beneath the doorstep for it, honored its presence beneath the stove, and sought its shimmering shed skin in the foundations of their barns. The snake fulfilled a clear role there: through its tireless hunting of rodents, it protected granaries and harvests from ruin. The mythical creature was at once profoundly practical. The exhibition confronts tradition with popular culture, examining their perception, the subliminal inclination toward rituals, and asks: what happens when the sacred becomes hollow and consumable? Denis Baštugy's work transports this archetype into the present. It examines our relationship to symbols of protection, home, and care. Where does the household snake dwell today? Has it remained part of our home, or has it become merely a memory, object, or commodity?</div>
+            <div class="ew-actions">
+              <a href="/en/collectors?artist=denis-bastuga" class="ew-btn">Works for sale →</a>
+              <button class="ew-read" aria-expanded="false" data-open="Read more →" data-close="Close ↑">Read more →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Mobile layout -->
       <div class="exh-archive-grid">
         <div>
           <div class="exh-archive-poster"><img loading="lazy" src="../../images/poster-bastuga.webp" alt="Pod Prahem"></div>
