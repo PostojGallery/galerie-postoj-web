@@ -12,7 +12,7 @@
 .exh-sidebar{position:sticky;top:60px;height:calc(100vh - 60px);border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;}
 .exh-sidebar::-webkit-scrollbar{display:none;}
 .exh-sidebar-hero{padding:2.5rem 2rem 3rem;}
-.exh-sidebar-label{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1rem;}
+.exh-sidebar-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1rem;}
 .exh-sidebar-title{font-size:clamp(2.5rem,5vw,5rem);font-weight:900;line-height:1;letter-spacing:-0.04em;color:#fff;}
 .exh-index-row{display:flex;align-items:flex-start;gap:1rem;padding:0.9rem 2rem;text-decoration:none;cursor:none;color:inherit;transition:background 0.15s,padding-left 0.15s;}
 .exh-index-row:hover{background:rgba(255,255,255,0.03);padding-left:2.3rem;}
@@ -20,8 +20,8 @@
 .exh-index-row:hover .ei-artist{color:#fff;}
 .exh-index-row.ei-active{background:rgba(255,255,255,0.05);padding-left:2.3rem;}
 .exh-index-row.ei-active .ei-title{color:#fff;}
-.ei-year{font-size:0.65rem;letter-spacing:0.1em;color:rgba(255,255,255,0.2);flex-shrink:0;padding-top:0.2rem;width:2.5rem;}
-.ei-num{display:none;font-size:0.6rem;letter-spacing:0.1em;color:rgba(255,255,255,0.2);flex-shrink:0;padding-top:0.2rem;width:1.5rem;}
+.ei-year{font-size:0.65rem;letter-spacing:0.14em;color:rgba(255,255,255,0.2);flex-shrink:0;padding-top:0.2rem;width:2.5rem;}
+.ei-num{display:none;font-size:0.65rem;letter-spacing:0.14em;color:rgba(255,255,255,0.2);flex-shrink:0;padding-top:0.2rem;width:1.5rem;}
 .ei-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#fff;animation:pulse 2s ease-in-out infinite;margin-right:0.4rem;vertical-align:middle;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.2;}}
 .ei-info{flex:1;min-width:0;}
@@ -31,14 +31,14 @@
 .exh-current-section{padding:3rem 2.5rem 3rem 0;border-bottom:1px solid rgba(255,255,255,0.08);}
 .exh-cur-grid{display:grid;grid-template-columns:300px 1fr;gap:3rem;align-items:start;margin-bottom:2.5rem;}
 .exh-cur-poster{}.exh-cur-poster img{width:100%;object-fit:contain;aspect-ratio:3/4;}
-.exh-live-tag{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:1.2rem;}
+.exh-live-tag{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:1.2rem;}
 .exh-live-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:#fff;animation:pulse 2s ease-in-out infinite;}
 .exh-cur-title{font-size:clamp(1.6rem,2.8vw,2.8rem);font-weight:900;line-height:0.92;letter-spacing:-0.03em;margin-bottom:0.7rem;}
-.exh-cur-artist{font-size:1.1rem;font-weight:300;color:rgba(255,255,255,0.5);text-decoration:underline;text-underline-offset:3px;cursor:none;transition:color 0.2s;}
+.exh-cur-artist{font-size:1.1rem;font-weight:400;color:rgba(255,255,255,0.7);text-decoration:underline;text-underline-offset:3px;cursor:none;transition:color 0.2s;}
 .exh-cur-artist:hover{color:#fff;}
 .exh-cur-dates{font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.75;color:rgba(255,255,255,0.9);margin:0.5rem 0 1.5rem;}
 .exh-cur-excerpt{font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.75;color:rgba(255,255,255,0.5);margin-bottom:0.8rem;}
-.exh-expand-btn{font-size:0.78rem;color:rgba(255,255,255,0.3);background:none;border:none;padding:0;cursor:none;font-family:inherit;margin-bottom:0.8rem;transition:color 0.2s;}
+.exh-expand-btn{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);background:none;border:none;padding:0;cursor:none;font-family:inherit;margin-bottom:0.8rem;transition:color 0.2s;}
 .exh-expand-btn:hover{color:#fff;}
 .exh-expand-text{display:none;font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.85;color:rgba(255,255,255,0.42);margin-bottom:1.5rem;}
 .exh-expand-text.open{display:block;}
@@ -53,14 +53,14 @@
 .exh-archive-poster img{width:100%;height:100%;object-fit:contain;filter:grayscale(20%);transition:filter 0.4s;}
 .exh-archive-section:hover .exh-archive-poster img{filter:grayscale(0%);}
 .exh-cur-poster{cursor:none;}
-.exh-archive-dates{font-size:0.65rem;letter-spacing:0.22em;line-height:1.75;color:rgba(255,255,255,0.3);margin-bottom:0.4rem;}
+.exh-archive-dates{font-size:0.65rem;letter-spacing:0.2em;line-height:1.75;color:rgba(255,255,255,0.3);margin-bottom:0.4rem;}
 .exh-archive-title{font-size:clamp(1.2rem,1.8vw,1.7rem);font-weight:900;letter-spacing:-0.02em;margin-bottom:0.3rem;line-height:1.1;color:#fff;}
-.exh-archive-artist{font-size:1.1rem;font-weight:300;color:rgba(255,255,255,0.5);}
-.exh-archive-artist a{font-size:1.1rem;font-weight:300;color:rgba(255,255,255,0.5);text-decoration:underline;text-underline-offset:3px;cursor:none;transition:color 0.2s;}
+.exh-archive-artist{font-size:1.1rem;font-weight:400;color:rgba(255,255,255,0.7);}
+.exh-archive-artist a{font-size:1.1rem;font-weight:400;color:rgba(255,255,255,0.7);text-decoration:underline;text-underline-offset:3px;cursor:none;transition:color 0.2s;}
 .exh-archive-artist a:hover{color:#fff;}
 .exh-archive-excerpt{font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.75;color:rgba(255,255,255,0.5);margin:0.8rem 0;}
 .exh-archive-ph{flex:0 0 100px;height:66px;background:rgba(255,255,255,0.03);border:1px dashed rgba(255,255,255,0.07);display:inline-block;}
-.exh-more-btn{font-size:0.78rem;color:rgba(255,255,255,0.3);background:none;border:none;padding:0;cursor:none;font-family:inherit;margin-bottom:2rem;transition:color 0.2s;}
+.exh-more-btn{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);background:none;border:none;padding:0;cursor:none;font-family:inherit;margin-bottom:2rem;transition:color 0.2s;}
 .exh-more-btn:hover{color:#fff;}
 .exh-full-text{display:none;font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.82;color:rgba(255,255,255,0.38);margin-top:0.8rem;max-width:500px;}
 .exh-full-text.open{display:block;}
@@ -82,7 +82,7 @@
 .exh-ctas-in-poster{display:none;}
 @media(max-width:768px){
   .exh-ctas-in-poster{display:block;margin-top:0.8rem;}
-  .exh-ctas-in-poster .btn{display:block;width:100%;text-align:center;padding:0.65rem 0.3rem;font-size:0.55rem;letter-spacing:0.12em;box-sizing:border-box;}
+  .exh-ctas-in-poster .btn{display:block;width:100%;text-align:center;padding:0.65rem 0.3rem;font-size:0.65rem;letter-spacing:0.14em;box-sizing:border-box;}
   .exh-ctas-in-text{display:none;}
   .exh-layout{display:block;margin-top:60px;}
   .exh-sidebar{position:fixed;top:60px;left:0;right:0;height:auto;flex-direction:row;overflow-x:auto;overflow-y:visible;border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);scrollbar-width:none;z-index:90;background:#0a0a0a;box-shadow:inset -60px 0 30px -10px #0a0a0a;}
@@ -90,7 +90,7 @@
   .exh-sidebar-hero{display:none;}
   .exh-index-row{flex-shrink:0;padding:0.9rem 1.2rem;white-space:nowrap;}
   .exh-index-row.ei-active{background:rgba(255,255,255,0.06);}
-  .ei-title{font-size:0.9rem;}
+  .ei-title{font-size:0.85rem;}
   .ei-year,.ei-artist{display:none;}
   .ei-num{display:inline-block;}
   .exh-content{padding-left:0;}

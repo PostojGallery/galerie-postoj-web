@@ -7,6 +7,7 @@ body{background:#0a0a0a;color:#fff;font-family:'Helvetica Neue',Helvetica,Arial,
 @keyframes pg-out{from{opacity:1}to{opacity:0;}}
 a{color:inherit;}
 input,textarea{user-select:text;-webkit-user-select:text;cursor:url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") 0 0,none!important;}
+button,input,textarea,select{font-family:inherit;}
 img{display:block;}
 #cdot{position:fixed;width:5px;height:5px;background:#fff;border-radius:50%;pointer-events:none;z-index:50001;transform:translate(-50%,-50%);}
 #cw{position:fixed;pointer-events:none;z-index:50000;transform:translate(-50%,-90%);}
@@ -17,7 +18,7 @@ nav{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:cen
 nav.scrolled{background:rgba(10,10,10,0.95);backdrop-filter:blur(8px);}
 .nav-logo{font-size:1rem;font-weight:700;letter-spacing:0.04em;text-decoration:none;color:#fff;cursor:none;}
 .nav-links{list-style:none;display:flex;gap:2.5rem;}
-.nav-links a{font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,0.5);transition:color 0.2s;cursor:none;}
+.nav-links a{font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,0.5);transition:color 0.2s;cursor:none;}
 .nav-links a:hover,.nav-links a.active{color:#fff;}
 .btn{display:inline-block;background:#fff;color:#000;font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.9rem 2rem;text-decoration:none;font-weight:700;font-family:inherit;cursor:none;transition:background 0.2s,color 0.2s;}
 .btn:hover{background:#0a0a0a;color:#fff;outline:1px solid #fff;}
@@ -26,12 +27,12 @@ nav.scrolled{background:rgba(10,10,10,0.95);backdrop-filter:blur(8px);}
 .rv{opacity:0;transform:translateY(24px);transition:opacity 0.7s,transform 0.7s;}
 .rv.in{opacity:1;transform:none;}
 site-footer{display:block;border-top:1px solid rgba(255,255,255,0.08);}
-.footer-inner{padding:1.8rem 2.5rem 1.2rem;display:flex;align-items:center;justify-content:space-between;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.25);}
+.footer-inner{padding:1.8rem 2.5rem 1.2rem;display:flex;align-items:center;justify-content:space-between;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.25);}
 .footer-links{display:flex;gap:2rem;}
 .footer-links a{color:rgba(255,255,255,0.25);text-decoration:none;cursor:none;transition:color 0.2s;}
 .footer-links a:hover{color:#fff;}
 .nav-burger{display:none;background:none;border:none;padding:0.4rem;flex-direction:column;gap:5px;z-index:1002;flex-shrink:0;}
-.nav-lang a{font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;cursor:none;transition:color 0.2s;border:1px solid rgba(255,255,255,0.2);padding:0.2rem 0.5rem;display:inline-flex;align-items:center;line-height:1;}
+.nav-lang a{font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;cursor:none;transition:color 0.2s;border:1px solid rgba(255,255,255,0.2);padding:0.2rem 0.5rem;display:inline-flex;align-items:center;line-height:1;}
 .nav-lang a:hover{color:#fff;border-color:rgba(255,255,255,0.5);}
 .nav-burger span{display:block;width:22px;height:1.5px;background:#fff;transition:transform 0.3s,opacity 0.3s;}
 @media(max-width:768px){
@@ -44,7 +45,7 @@ site-footer{display:block;border-top:1px solid rgba(255,255,255,0.08);}
   .nav-links li{flex-shrink:unset;}
   .nav-links a{font-size:1.4rem;font-weight:700;letter-spacing:0.04em;padding-right:0;color:rgba(255,255,255,0.55);}
   .nav-links a:hover,.nav-links a.active{color:#fff;}
-  .nav-lang a{font-size:0.7rem;font-weight:400;letter-spacing:0.16em;padding:0.3rem 0.6rem;line-height:1;display:inline-flex;align-items:center;}
+  .nav-lang a{font-size:0.7rem;font-weight:400;letter-spacing:0.14em;padding:0.3rem 0.6rem;line-height:1;display:inline-flex;align-items:center;}
   nav.mob-open .nav-burger span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
   nav.mob-open .nav-burger span:nth-child(2){opacity:0;}
   nav.mob-open .nav-burger span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
