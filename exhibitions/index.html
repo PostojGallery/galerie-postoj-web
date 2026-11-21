@@ -48,7 +48,7 @@
 .exh-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(10%);transition:transform 0.5s,filter 0.4s;transform:scale(var(--zoom,1));will-change:transform;}
 .exh-photo:hover img{transform:scale(calc(var(--zoom,1) * 1.04));filter:grayscale(0%);}
 .exh-archive-section{padding:2.5rem 2.5rem 2.5rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
-.exh-archive-grid{display:grid;grid-template-columns:220px 1fr;gap:2.5rem;align-items:start;}
+.exh-archive-grid{display:grid;grid-template-columns:220px 1fr;gap:2.5rem;align-items:stretch;}
 .exh-archive-poster{aspect-ratio:2/3;display:flex;align-items:flex-start;justify-content:center;cursor:none;}
 .exh-archive-poster img{width:100%;height:100%;object-fit:contain;filter:grayscale(20%);transition:filter 0.4s;}
 .exh-archive-section:hover .exh-archive-poster img{filter:grayscale(0%);}
@@ -244,7 +244,7 @@
       <div class="exh-archive-poster"><img loading="lazy" src="../images/poster-banytiuk.webp" alt="Cesty do Neznáma"></div>
       <div class="exh-ctas exh-ctas-in-poster"><a href="/collectors?artist=anna-banytiuk" class="btn">Díla k prodeji</a></div>
     </div>
-    <div style="display:flex;flex-direction:column;align-items:flex-start;min-height:330px;">
+    <div style="display:flex;flex-direction:column;align-items:flex-start;">
       <div class="exh-archive-dates">1. 8. – 24. 10. 2025</div>
       <div class="exh-archive-title">Cesty do Neznáma</div>
       <div class="exh-archive-artist"><a href="/artists#anna-banytiuk">Anna Banytiuk</a></div>
