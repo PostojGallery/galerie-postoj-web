@@ -15,6 +15,8 @@ img{display:block;}
 /* New elements hidden on mobile */
 .exh-month-range{display:none;}
 .exh-about-btn{display:none;}
+.exh-cur-info{display:none;}
+.exh-cur-text-wrap{display:none;}
 /* Style B for archive text blocks */
 .exh-b{font-size:1.1rem;font-weight:400;line-height:1.5;letter-spacing:0;text-transform:none;color:rgba(255,255,255,0.6);}
 @media(min-width:769px){
@@ -39,6 +41,24 @@ img{display:block;}
   /* Reveal on expand */
   .exh-about-open .exh-archive-excerpt{display:block;}
   .exh-about-open .exh-full-text{display:block;}
+  /* Current exhibition block – EXIT WOUNDS */
+  .exh-current-section .exh-cur-grid{align-items:stretch;}
+  .exh-cur-poster{align-self:start;}
+  .exh-cur-col{display:flex;flex-direction:column;align-items:flex-start;}
+  .exh-cur-col .exh-ctas{margin-top:auto;padding-top:1.5rem;align-self:stretch;}
+  .exh-current-section .exh-cur-title{font-size:clamp(2.25rem,4vw,4.5rem);font-weight:900;letter-spacing:-0.04em;line-height:1.0;color:#fff;margin-bottom:0;}
+  .exh-current-section .exh-cur-artist{font-size:1.1rem;font-weight:400;line-height:1.5;letter-spacing:0;color:rgba(255,255,255,0.6);text-decoration:none;margin-top:0.8rem;display:block;}
+  .exh-cur-info{display:block;font-size:1.1rem;font-weight:400;line-height:1.5;color:rgba(255,255,255,0.6);margin-top:0.9rem;}
+  .exh-current-section .exh-cur-dates{display:none;}
+  .exh-current-section .exh-cur-excerpt{display:none;}
+  .exh-cur-text-wrap{display:block;font-size:1.1rem;font-weight:400;line-height:1.5;color:rgba(255,255,255,0.6);margin-top:0.9rem;}
+  .exh-cur-read-btn,.exh-cur-close-btn{background:none;border:none;padding:0;cursor:none;font-family:inherit;font-size:1.1rem;font-weight:400;line-height:1.5;letter-spacing:0;color:rgba(255,255,255,0.85);transition:color 0.2s;}
+  .exh-cur-read-btn:hover,.exh-cur-close-btn:hover{color:#fff;}
+  .exh-cur-rest-text{display:none;}
+  .exh-cur-close-btn{display:none;}
+  .exh-cur-text-open .exh-cur-rest-text{display:inline;}
+  .exh-cur-text-open .exh-cur-close-btn{display:inline;}
+  .exh-cur-text-open .exh-cur-read-btn{display:none;}
 }
 #cdot{position:fixed;width:5px;height:5px;background:#fff;border-radius:50%;pointer-events:none;z-index:50001;transform:translate(-50%,-50%);}
 #cw{position:fixed;pointer-events:none;z-index:50000;transform:translate(-50%,-90%);}

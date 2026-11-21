@@ -156,12 +156,14 @@
     <div class="exh-current-section" id="exh-exit-wounds">
       <div class="exh-cur-grid">
         <div class="exh-cur-poster rv"><img width="500" src="../images/poster-exit-wounds.webp" alt="EXIT WOUNDS — Jan Diviš"></div>
-        <div class="rv" style="transition-delay:0.1s">
+        <div class="rv exh-cur-col" style="transition-delay:0.1s">
           <div class="exh-cur-title">EXIT WOUNDS</div>
           <a href="/artists#jan-divis" class="exh-cur-artist">Jan Diviš</a>
-          <div class="exh-cur-dates" style="margin-bottom:0.75rem;">16. listopadu 2026, vernisáž 18:00</div>
+          <div class="exh-cur-info">16. listopadu 2026 – [datum ukončení]<br>Vestibul metra Náměstí Republiky</div>
+          <div class="exh-cur-dates" style="margin-bottom:0.75rem;">16. listopadu 2026, vernišáž 18:00</div>
           <p class="exh-cur-excerpt">Výstava Exit Wounds vyzdvihuje volnou tvorbu Jana Diviše mimo jeho běžný grafický a komerční kontext. Tematicky se pohybuje v prostoru mezi rozklíčováním selhání a vůlí k proměně. Věnuje se okamžikům, kdy přestáváme přehlížet to, co je špatně, a nacházíme odvahu jednat navzdory vlastnímu pohodlí a jistotám. Zajímá ho osvobození jako proces opuštění, ztráty i znovunalezení. To, co nás ničí, nelze donekonečna uchovávat jen proto, že je nám známé, blízké nebo příjemné. Někdy musíme rozbít, obětovat a nechat shořet vše, co jsme považovali za pevné, abychom mohli začít znovu i kdyby s bolestí, sami v prázdnu tváří v tvář pravdě.</p>
-          <div class="exh-ctas"><a href="/collectors?artist=jan-divis" class="btn">Díla k prodeji</a></div>
+          <div class="exh-cur-text-wrap">Výstava Exit Wounds vyzdvihuje volnou tvorbu Jana Diviše mimo jeho běžný grafický a komerční kontext. Tematicky se pohybuje v prostoru mezi rozklíčováním selhání a vůlí k proměně.<button class="exh-cur-read-btn" aria-expanded="false"> Číst dál →</button><span class="exh-cur-rest-text"> Věnuje se okamžikům, kdy přestáváme přehlížet to, co je špatně, a nacházíme odvahu jednat navzdory vlastnímu pohodlí a jistotám. Zajímá ho osvobození jako proces opuštění, ztráty i znovunalezení. To, co nás ničí, nelze donekonečna uchovávat jen proto, že je nám známé, blízké nebo příjemné. Někdy musíme rozbít, obětovat a nechat shořet vše, co jsme považovali za pevné, abychom mohli začít znovu i kdyby s bolestí, sami v prázdnu tváří v tvář pravdě.</span><button class="exh-cur-close-btn" aria-expanded="true"> Zavřít ↑</button></div>
+          <div class="exh-ctas"><a href="/collectors?artist=jan-divis" class="btn">Díla k prodeji</a></div>
         </div>
       </div>
       <div class="exh-photos-outer"><div class="exh-photos-scroll">
@@ -568,6 +570,20 @@ document.querySelectorAll('.exh-expand-btn,.exh-more-btn').forEach(function(btn)
     };
   });
 })();
+// EXIT WOUNDS current exhibition – read more toggle
+document.querySelectorAll('.exh-cur-read-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    this.closest('.exh-cur-text-wrap').classList.add('exh-cur-text-open');
+    this.setAttribute('aria-expanded','true');
+  });
+});
+document.querySelectorAll('.exh-cur-close-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var wrap=this.closest('.exh-cur-text-wrap');
+    wrap.classList.remove('exh-cur-text-open');
+    wrap.querySelector('.exh-cur-read-btn').setAttribute('aria-expanded','false');
+  });
+});
 </script>
 </body>
 </html>
