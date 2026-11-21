@@ -6,7 +6,7 @@
 <meta name="description" content="Aktuální a archivní výstavy galerie POSTOJ v metru Praha – Náměstí Republiky. Současné umění dostupné každý den, pro každého.">
 <link rel="icon" type="image/png" href="../images/favicon.png?v=7">
 <title>Výstavy které hýbou společností | galerie POSTOJ</title>
-<link rel="stylesheet" href="../style.css?v=20261121q">
+<link rel="stylesheet" href="../style.css?v=20261121r">
 <style>
 .exh-layout{display:grid;grid-template-columns:340px 1fr;align-items:start;margin-top:60px;}
 .exh-sidebar{position:sticky;top:60px;height:calc(100vh - 60px);border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;}
@@ -87,13 +87,8 @@
   /* Show outer sticky titles, hide inner grid titles */
   .exh-sticky-wrap > .exh-archive-title{display:block;}
   .exh-archive-section .exh-archive-grid .exh-archive-title{display:none;}
-  /* Pod Prahem: same EXIT WOUNDS layout */
-  #exh-pod-prahem{min-height:0!important;display:block!important;padding:3rem 2.5rem 5rem!important;}
+  /* Pod Prahem: same EXIT WOUNDS layout (see .exh-ew-section in style.css) */
   #exh-pod-prahem > .exh-archive-title{display:none;}
-  #exh-pod-prahem .exh-archive-grid{display:none;}
-  #exh-pod-prahem .exh-photos-outer{flex-shrink:unset!important;margin-top:1.5rem;margin-left:-2.5rem;margin-right:-2.5rem;}
-  #exh-pod-prahem .exh-photos-scroll{display:flex!important;gap:0!important;overflow:visible;}
-  #exh-pod-prahem .exh-photos-scroll .exh-photo{flex:1;aspect-ratio:4/3;}
 }
 .exh-ctas-in-poster{display:none;}
 @media(max-width:768px){
@@ -210,7 +205,7 @@
         <div class="exh-photo"><img loading="lazy" src="../images/divis-foto5.webp" alt="Jan Diviš — EXIT WOUNDS" style="--zoom:1.08;object-position:center top;"></div>
       </div></div>
     </div>
-    <div class="exh-archive-section" id="exh-pod-prahem">
+    <div class="exh-archive-section exh-ew-section" id="exh-pod-prahem">
       <div class="exh-archive-title">Pod Prahem: Serpentes protectores</div>
       <div class="exh-sticky-wrap">
         <div class="ew-title">Pod Prahem<span class="ew-colon">:</span><br>Serpentes protectores</div>
@@ -258,9 +253,25 @@
       </div></div>
     </div>
 
-<div class="exh-archive-section" id="exh-current">
+<div class="exh-archive-section exh-ew-section" id="exh-current">
   <div class="exh-sticky-wrap">
-  <div class="exh-archive-title">Break The Pattern, Go To Therapy</div>
+  <div class="ew-title">Break The Pattern, Go To Therapy</div>
+  <div class="ew-wrap">
+    <div class="ew-row">
+      <div class="ew-poster rv">
+        <img loading="lazy" src="../images/poster-martin.webp" alt="Break The Pattern, Go To Therapy">
+      </div>
+      <div class="ew-col rv" style="transition-delay:0.1s">
+        <div class="ew-key">"Seš silnej/á! Buď silnej/á! Makej! Přidej! Nebul!" Fráze, které mnozí z nás slyšeli. Tlak na výkon a potlačení emocí.</div>
+        <div class="ew-sig"><a href="/artists#martin-jachym" class="ew-artist">Martin Jáchym</a>, 7.&#160;1. – 10.&#160;8.&#160;2026</div>
+        <div class="ew-expanded" id="bt-full"><p>Výstava otevírá téma psychického zdraví. V prostředí zahlceném informacemi a tlakem na úspěch může být těžké přiznat si únavu nebo bolest. Nejde o porovnávání bolestí. Jde o uvědomění, že mluvit o tom je v pořádku.</p></div>
+        <div class="ew-actions">
+          <a href="/collectors?artist=martin-jachym" class="ew-btn">Díla k prodeji →</a>
+          <button class="ew-read" aria-expanded="false" data-open="Číst dál →" data-close="Zavřít ↑">Číst dál →</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="exh-archive-grid">
     <div>
       <div class="exh-archive-poster"><img loading="lazy" src="../images/poster-martin.webp" alt="Break The Pattern, Go To Therapy"></div>
@@ -282,9 +293,24 @@
   <div class="exh-photos-outer" style="margin-top:1.5rem;"><div class="exh-photos-scroll"><div class="exh-photo"><img loading="lazy" src="../images/gallery1.webp" alt="Z instalace 1"></div><div class="exh-photo"><img loading="lazy" src="../images/gallery2.webp" alt="Z instalace 2"></div><div class="exh-photo"><img loading="lazy" src="../images/gallery3.webp" alt="Z instalace 3"></div><div class="exh-photo"><img loading="lazy" src="../images/gallery4.webp" alt="Z instalace 4"></div><div class="exh-photo"><img loading="lazy" src="../images/gallery5.webp" alt="Z instalace 5"></div></div></div>
 </div>
 
-<div class="exh-archive-section" id="exh-podestal">
+<div class="exh-archive-section exh-ew-section" id="exh-podestal">
   <div class="exh-sticky-wrap">
-  <div class="exh-archive-title">Odložte si u pásu 26163</div>
+  <div class="ew-title">Odložte si u pásu 26163</div>
+  <div class="ew-wrap">
+    <div class="ew-row">
+      <div class="ew-poster rv">
+        <img loading="lazy" src="../images/poster-podestal.webp" alt="Odložte si u pásu 26163">
+      </div>
+      <div class="ew-col rv" style="transition-delay:0.1s">
+        <div class="ew-key">Jsme všude a zároveň nikde – ale pořád čteme. Václav Podestát a Ondřej Syřiště ve své výstavě nahlíželi na všudypřítomný příliv vizuálního obsahu, který formoval současnou městskou krajinu i způsob, jakým ji vnímáme.</div>
+        <div class="ew-sig"><a href="/artists#ondrej-podestat" class="ew-artist">Václav Podestát</a> & <a href="/artists#ondrej-syriste" class="ew-artist">Ondřej Syřiště</a>, 5.&#160;11.&#160;2025 – 7.&#160;1.&#160;2026</div>
+        <div class="ew-expanded" id="op-full"><p>Instalace vytvořená přímo pro prostor bývalé směnárny ve vestibulu metra sledovala neustálý tok vjemů, které nás prostřednictvím nabízeného obsahu vzdalovaly od přímého prožívání veřejného prostoru. Autoři se zabývali procesy reklamního a informačního odkazování – světem, kde se s pozorností nakládalo jako se zbožím v rukou neodbytného podomního prodejce.</p></div>
+        <div class="ew-actions">
+          <button class="ew-read" aria-expanded="false" data-open="Číst dál →" data-close="Zavřít ↑">Číst dál →</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="exh-archive-grid">
     <div><div class="exh-archive-poster"><img loading="lazy" src="../images/poster-podestal.webp" alt="Odložte si u pásu 26163"></div></div>
     <div class="exh-no-cta-col">
@@ -309,9 +335,25 @@
     <div class="exh-photo"><img loading="lazy" src="../images/exhibitions/odlozte-si-u-pasu/foto5.webp" alt="Odložte si u pásu 26163 5"></div>
   </div></div>
 </div>
-<div class="exh-archive-section" id="exh-banytiuk">
+<div class="exh-archive-section exh-ew-section" id="exh-banytiuk">
   <div class="exh-sticky-wrap">
-  <div class="exh-archive-title">Cesty do Neznáma</div>
+  <div class="ew-title">Cesty do Neznáma</div>
+  <div class="ew-wrap">
+    <div class="ew-row">
+      <div class="ew-poster rv">
+        <img loading="lazy" src="../images/poster-banytiuk.webp" alt="Cesty do Neznáma">
+      </div>
+      <div class="ew-col rv" style="transition-delay:0.1s">
+        <div class="ew-key">Umělkyně Anna Banytiuk byla nucena opustit svůj rodný Charkov kvůli válce. Výstava Cesty do neznáma vznikla z potřeby zpracovat tuto zkušenost – odchod ze své země, opuštění domova a nejbližších.</div>
+        <div class="ew-sig"><a href="/artists#anna-banytiuk" class="ew-artist">Anna Banytiuk</a>, 1.&#160;8. – 24.&#160;10.&#160;2025</div>
+        <div class="ew-expanded" id="cdn-full"><p>Díla se nesoustředí na samotný útěk, ale na obyčejné každodenní situace a osobní vzpomínky, které po opuštění Ukrajiny začala vnímat jinak. Výstava ukazuje, jak běžné okamžiky získávají nový význam, když se vše kolem změní – a jak se z osobní paměti skrze zkušenost nuceného odjezdu stává silné umělecké téma.</p><p>Sláva Ukrajině!</p></div>
+        <div class="ew-actions">
+          <a href="/collectors?artist=anna-banytiuk" class="ew-btn">Díla k prodeji →</a>
+          <button class="ew-read" aria-expanded="false" data-open="Číst dál →" data-close="Zavřít ↑">Číst dál →</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="exh-archive-grid">
     <div>
       <div class="exh-archive-poster"><img loading="lazy" src="../images/poster-banytiuk.webp" alt="Cesty do Neznáma"></div>
@@ -341,9 +383,24 @@
     <div class="exh-photo"><img loading="lazy" src="../images/exhibitions/cesty-do-neznama/foto5.webp" alt="Cesty do Neznáma 5"></div>
   </div></div>
 </div>
-<div class="exh-archive-section" id="exh-petrasova">
+<div class="exh-archive-section exh-ew-section" id="exh-petrasova">
   <div class="exh-sticky-wrap">
-  <div class="exh-archive-title">Už ani muk</div>
+  <div class="ew-title">Už ani muk</div>
+  <div class="ew-wrap">
+    <div class="ew-row">
+      <div class="ew-poster rv">
+        <img loading="lazy" src="../images/poster-petrasova.webp" alt="Už ani muk">
+      </div>
+      <div class="ew-col rv" style="transition-delay:0.1s">
+        <div class="ew-key">Výstava Jitky Petrášové v Galerii Postoj, pod názvem: Už ani muk, představila dosud neprezentovanou sérii maleb akrylem na plátně, ale i experimentální práce na papíře.</div>
+        <div class="ew-sig"><a href="/artists#jitka-petrasova" class="ew-artist">Jitka Petrášová</a>, 11.&#160;3. – 30.&#160;6.&#160;2025</div>
+        <div class="ew-expanded" id="uam-full"><p>Tematicky byla výstava věnována portrétu, ať už realističtějšímu nebo stylizovanému. Lidská tvář je v metru všudypřítomná a autorku její pozorování nepochybně zajímá. Jak moc nám toho tvář prozradí o nás samých? Je to, co vidíme, pouze odrazem toho, co vidět chceme?</p><p>A chceme vůbec něco vidět, natož naslouchat? Výstava s názvem „Už ani muk" je možná jen odrazem současné rozdělené společnosti.</p></div>
+        <div class="ew-actions">
+          <button class="ew-read" aria-expanded="false" data-open="Číst dál →" data-close="Zavřít ↑">Číst dál →</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="exh-archive-grid">
     <div><div class="exh-archive-poster"><img loading="lazy" src="../images/poster-petrasova.webp" alt="Už ani muk"></div></div>
     <div class="exh-no-cta-col">
@@ -369,9 +426,24 @@
     <div class="exh-photo"><img loading="lazy" src="../images/exhibitions/uz-ani-muk/foto5.webp" alt="Už ani muk 5"></div>
   </div></div>
 </div>
-<div class="exh-archive-section" id="exh-pouchova">
+<div class="exh-archive-section exh-ew-section" id="exh-pouchova">
   <div class="exh-sticky-wrap">
-  <div class="exh-archive-title">Něžný Murčik</div>
+  <div class="ew-title">Něžný Murčik</div>
+  <div class="ew-wrap">
+    <div class="ew-row">
+      <div class="ew-poster rv">
+        <img loading="lazy" src="../images/poster-pouchova.webp" alt="Něžný Murčik">
+      </div>
+      <div class="ew-col rv" style="transition-delay:0.1s">
+        <div class="ew-key">Výstava Lucie Pouchové se dotkla jednoho z nejintimnějších lidských témat – pouta mezi člověkem a zvířetem a otázky samoty.</div>
+        <div class="ew-sig"><a href="/artists#lucie-pouchova" class="ew-artist">Lucie Pouchová</a>, 27.&#160;2. – 15.&#160;5.&#160;2024</div>
+        <div class="ew-expanded" id="nm-full"><p>Pouchová je nejen umělkyně, ale také sociální pracovnice. Právě zkušenosti z této práce ji přivedly k tématu domácích mazlíčků jako jediného plnohodnotného vztahu v životě některých lidí. Na plátnech se proto neobjevovala pouze zvířata, ale i jejich majitelé – postavy se zásadně zavřenýma očima, ponořené do svého vnitřního světa, což výstavě dodávalo osobní a intimní rozměr.</p><p>Vedle těchto portrétů se Pouchová věnovala také fenoménu stylingu zvířat – záměrnému zdůrazňování lidských rysů u psů a koček, díky kterému jejich majitelé pociťují k nim větší emocionální blízkost a snadněji se s nimi identifikují.</p></div>
+        <div class="ew-actions">
+          <button class="ew-read" aria-expanded="false" data-open="Číst dál →" data-close="Zavřít ↑">Číst dál →</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="exh-archive-grid">
     <div><div class="exh-archive-poster"><img loading="lazy" src="../images/poster-pouchova.webp" alt="Něžný Murčik"></div></div>
     <div class="exh-no-cta-col">
@@ -397,9 +469,24 @@
     <div class="exh-photo"><img loading="lazy" src="../images/exhibitions/nezny-murcik/foto5.webp" alt="Něžný Murčik 5"></div>
   </div></div>
 </div>
-<div class="exh-archive-section" id="exh-jaksemas">
+<div class="exh-archive-section exh-ew-section" id="exh-jaksemas">
   <div class="exh-sticky-wrap">
-  <div class="exh-archive-title">Jak se máš?</div>
+  <div class="ew-title">Jak se máš?</div>
+  <div class="ew-wrap">
+    <div class="ew-row">
+      <div class="ew-poster rv">
+        <img loading="lazy" src="../images/poster-jaksemas.webp" alt="Jak se máš?">
+      </div>
+      <div class="ew-col rv" style="transition-delay:0.1s">
+        <div class="ew-key">Výstava ilustrátora Patrika Antczaka proměnila vestibul metra na Náměstí Republiky v místo nečekaného setkání.</div>
+        <div class="ew-sig"><a href="/artists#patrik-antczak" class="ew-artist">Patrik Antczak</a> & Eva Antczak Hudzieczek, 21.&#160;9. – 21.&#160;11.&#160;2023</div>
+        <div class="ew-expanded" id="jsm-full"><p>Frázi, kterou běžně používáme jako konverzační výplň, uchopil zcela záměrně a s plnou vážností. Pro návštěvníky vytvořil unikátní škálu emotikonů, které jim pomáhaly vyjádřit, jak se v danou chvíli cítí. Každý mohl obdržet samolepku odpovídající emoci, která ho v daný moment nejvíce vystihovala. Výsledky této živé ankety byly následně představeny na vernisáži, kde se ukázalo, jak se cestující v daném prostoru a čase skutečně cítili.</p><p>Výstava byla součástí doprovodného programu desátého ročníku festivalu ilustrace LUSTR.</p></div>
+        <div class="ew-actions">
+          <button class="ew-read" aria-expanded="false" data-open="Číst dál →" data-close="Zavřít ↑">Číst dál →</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="exh-archive-grid">
     <div><div class="exh-archive-poster"><img loading="lazy" src="../images/poster-jaksemas.webp" alt="Jak se máš?"></div></div>
     <div class="exh-no-cta-col">
@@ -425,9 +512,24 @@
     <div class="exh-photo"><img loading="lazy" src="../images/jaksemas-5.webp" alt="Jak se máš? 5"></div>
   </div></div>
 </div>
-<div class="exh-archive-section" id="exh-menger">
+<div class="exh-archive-section exh-ew-section" id="exh-menger">
   <div class="exh-sticky-wrap">
-  <div class="exh-archive-title">Střípky z Blízkého východu</div>
+  <div class="ew-title">Střípky z Blízkého východu</div>
+  <div class="ew-wrap">
+    <div class="ew-row">
+      <div class="ew-poster rv">
+        <img loading="lazy" src="../images/poster-menger.webp" alt="Střípky z Blízkého východu">
+      </div>
+      <div class="ew-col rv" style="transition-delay:0.1s">
+        <div class="ew-key">Výstava Aniny Menger přinesla kus Blízkého východu přímo do Prahy. Díla vytvořená z kusů látek nalezených v ulicích Tel Avivu nebo kamínků z místní pláže.</div>
+        <div class="ew-sig"><a href="/artists#anina-menger" class="ew-artist">Anina Menger</a>, 1.&#160;6. – 30.&#160;7.&#160;2023</div>
+        <div class="ew-expanded" id="szb-full"><p>Tel Aviv Aninu fascinoval svými kontrasty – moderní město ze skla a betonu se tu prolínalo s křivolakými uličkami starobylého přístavu Jaffa. Různorodost místních lidí, náboženství i každodenního ruchu se odrážela v její tvorbě, která zahrnuje malbu, kresbu, litografii i šití.</p><p>V galerii POSTOJ byla k vidění velkoformátová plátna vznikající v létě 2024, šitý obraz muže v zahradě, sádrová závěsná plastika s atributy slunného Tel Avivu i zástupce série Prázdniny, které se nestaly z roku 2020. Obraz mešity Hassan Bek pak připomínal proměny městské krajiny, kde moderní zástavba postupně nahrazela původní muslimskou čtvrť.</p></div>
+        <div class="ew-actions">
+          <button class="ew-read" aria-expanded="false" data-open="Číst dál →" data-close="Zavřít ↑">Číst dál →</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="exh-archive-grid">
     <div><div class="exh-archive-poster"><img loading="lazy" src="../images/poster-menger.webp" alt="Střípky z Blízkého východu"></div></div>
     <div class="exh-no-cta-col">
@@ -453,9 +555,24 @@
     <div class="exh-photo"><img loading="lazy" src="../images/menger-5.webp" alt="Střípky z Blízkého východu 5"></div>
   </div></div>
 </div>
-<div class="exh-archive-section" id="exh-drevaky">
+<div class="exh-archive-section exh-ew-section" id="exh-drevaky">
   <div class="exh-sticky-wrap">
-  <div class="exh-archive-title">Dřeváky a Medový Klobouk</div>
+  <div class="ew-title">Dřeváky a Medový Klobouk</div>
+  <div class="ew-wrap">
+    <div class="ew-row">
+      <div class="ew-poster rv">
+        <img loading="lazy" src="../images/poster-drevaky.webp" alt="Dřeváky a Medový Klobouk">
+      </div>
+      <div class="ew-col rv" style="transition-delay:0.1s">
+        <div class="ew-key">Dřeváky a medový klobouk byl název výstavy spojující dvě autorky, Helenu Ticháčkovou a Adélu Valchařovou. Obě se ve svých pracech zabývaly putováním.</div>
+        <div class="ew-sig"><a href="/artists#adela-valcharova" class="ew-artist">Adéla Valchařová</a> & <a href="/artists#helena-tichackova" class="ew-artist">Helena Ticháčková</a>, 27.&#160;3. – 7.&#160;5.&#160;2023</div>
+        <div class="ew-expanded" id="dmk-full"><p>Jejich tvorba reflektovala zkušenost cesty jako něčeho, co člověka formuje, unavuje i inspiruje zároveň – procházením místy příjemnými i těmi strastiplnými, hledáním zázemí a střechy nad hlavou. Název výstavy byl připodobněním k cestě samotné, která je chůzí náročná a občas bolavá, ale myšlenkou zasněná a odhodlaná i přes všechna příkoří dojít k cíli. Dřeváky – těžké, pevně ukotvené k zemi. Medový klobouk – lehký, zasněný, mířící někam do oblak. Právě v tomto napětí mezi tíhou a touhou se celá výstava odehrávala.</p></div>
+        <div class="ew-actions">
+          <button class="ew-read" aria-expanded="false" data-open="Číst dál →" data-close="Zavřít ↑">Číst dál →</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="exh-archive-grid">
     <div><div class="exh-archive-poster"><img loading="lazy" src="../images/poster-drevaky.webp" alt="Dřeváky a Medový Klobouk"></div></div>
     <div class="exh-no-cta-col">
