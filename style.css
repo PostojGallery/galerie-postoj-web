@@ -9,6 +9,7 @@ a{color:inherit;}
 input,textarea{user-select:text;-webkit-user-select:text;cursor:url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") 0 0,none!important;}
 button,input,textarea,select{font-family:inherit;}
 img{display:block;}
+.exh-archive-poster{align-self:start;}
 #cdot{position:fixed;width:5px;height:5px;background:#fff;border-radius:50%;pointer-events:none;z-index:50001;transform:translate(-50%,-50%);}
 #cw{position:fixed;pointer-events:none;z-index:50000;transform:translate(-50%,-90%);}
 #cw img{width:40px;display:block;filter:invert(1);}
