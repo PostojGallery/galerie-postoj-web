@@ -6,7 +6,7 @@
 <meta name="description" content="Aktuální a archivní výstavy galerie POSTOJ v metru Praha – Náměstí Republiky. Současné umění dostupné každý den, pro každého.">
 <link rel="icon" type="image/png" href="../images/favicon.png?v=7">
 <title>Výstavy které hýbou společností | galerie POSTOJ</title>
-<link rel="stylesheet" href="../style.css?v=20261121g">
+<link rel="stylesheet" href="../style.css?v=20261121j">
 <style>
 .exh-layout{display:grid;grid-template-columns:340px 1fr;align-items:start;margin-top:60px;}
 .exh-sidebar{position:sticky;top:60px;height:calc(100vh - 60px);border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;}
@@ -157,7 +157,25 @@
   </aside>
   <div class="exh-content">
     <div class="exh-current-section" id="exh-exit-wounds">
-      <div class="exh-cur-grid">
+    <!-- Desktop EXIT WOUNDS layout -->
+  <div class="ew-wrap">
+    <div class="ew-title">EXIT WOUNDS</div>
+    <div class="ew-row">
+      <div class="ew-poster rv">
+        <img src="../images/poster-exit-wounds.webp" alt="EXIT WOUNDS — Jan Diviš">
+      </div>
+      <div class="ew-col rv" style="transition-delay:0.1s">
+        <div class="ew-key">Někdy musíme rozbít, obětovat a nechat shořet vše, co jsme považovali za pevné.</div>
+        <div class="ew-sig"><a href="/artists#jan-divis" class="ew-artist">Jan Diviš</a>, od 16.&#160;listopadu&#160;2026</div>
+        <div class="ew-expanded" id="ew-full">Výstava Exit Wounds vyzdvihuje volnou tvorbu Jana Diviše mimo jeho běžný grafický a komerční kontext. Tematicky se pohybuje v prostoru mezi rozklíčováním selhání a vůlí k proměně. Věnuje se okamžikům, kdy přestáváme přehlížet to, co je špatně, a nacházíme odvahu jednat navzdory vlastnímu pohodlí a jistotám. Zajímá ho osvobození jako proces opuštění, ztráty i znovunalezení. To, co nás ničí, nelze donekonečna uchovávat jen proto, že je nám známé, blízké nebo příjemné. Někdy musíme rozbít, obětovat a nechat shořet vše, co jsme považovali za pevné, abychom mohli začít znovu i kdyby s bolestí, sami v prázdnu tváří v tvář pravdě.</div>
+        <div class="ew-actions">
+          <a href="/collectors?artist=jan-divis" class="ew-btn">Díla k prodeji →</a>
+          <button class="ew-read" aria-expanded="false" data-open="Číst dál →" data-close="Zavřít ↑">Číst dál →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="exh-cur-grid">
         <div class="exh-cur-poster rv"><img width="500" src="../images/poster-exit-wounds.webp" alt="EXIT WOUNDS — Jan Diviš"></div>
         <div class="rv exh-cur-col" style="transition-delay:0.1s">
           <div class="exh-cur-title">EXIT WOUNDS</div>
@@ -579,6 +597,15 @@ document.querySelectorAll('.exh-expand-btn,.exh-more-btn').forEach(function(btn)
     btn.textContent=o?'Méně ↑':orig;
   });
 });
+document.querySelectorAll('.ew-read').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var expanded=this.getAttribute('aria-expanded')==='true';
+    var text=this.closest('.ew-col').querySelector('.ew-expanded');
+    if(!text)return;
+    if(expanded){text.classList.remove('open');this.setAttribute('aria-expanded','false');this.textContent=this.dataset.open;}
+    else{text.classList.add('open');this.setAttribute('aria-expanded','true');this.textContent=this.dataset.close;}
+  });
+});
 (function(){
   var lb=document.getElementById('glb'),lbi=document.getElementById('glb-img'),lbc=document.getElementById('glb-count');
   var glbPrev=document.getElementById('glb-prev'),glbNext=document.getElementById('glb-next');
@@ -605,7 +632,7 @@ document.querySelectorAll('.exh-expand-btn,.exh-more-btn').forEach(function(btn)
     };
   });
   // poster click — if section has a photo strip, include all photos with arrows; otherwise single image, no arrows
-  document.querySelectorAll('.exh-archive-poster, .exh-cur-poster').forEach(function(p){
+  document.querySelectorAll('.exh-archive-poster, .exh-cur-poster, .ew-poster').forEach(function(p){
     p.onclick=function(){
       var img=p.querySelector('img');if(!img)return;
       var section=p.closest('.exh-archive-section,.exh-current-section');
