@@ -6,7 +6,7 @@
 <meta name="description" content="Umělci galerie POSTOJ – malíři, ilustrátoři a výtvarníci vystavující v pražském metru. Poznejte jejich příběhy a tvorbu.">
 <link rel="icon" type="image/png" href="../images/favicon.png?v=7">
 <title>Umělci na prvním místě | galerie POSTOJ</title>
-<link rel="stylesheet" href="../style.css?v=20261122f">
+<link rel="stylesheet" href="../style.css?v=20261122g">
 <style>
 .artists-layout{display:grid;grid-template-columns:340px 1fr;align-items:start;margin-top:60px;}
 .artists-sidebar{position:sticky;top:60px;height:calc(100vh - 60px);border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;}
@@ -728,6 +728,12 @@
   var currentOpen=null;
   var scrollActiveId=items.length?items[0].getAttribute('data-ai'):null;
   var hoverOverride=false;
+  var scrollSuppressed=false;
+
+  function suppressScroll(){scrollSuppressed=true;}
+  ['wheel','touchstart','keydown'].forEach(function(ev){
+    window.addEventListener(ev,function(){scrollSuppressed=false;},{passive:true,capture:true});
+  });
 
   function activatePreview(id){
     items.forEach(function(i){i.classList.toggle('ai-name-active',i.getAttribute('data-ai')===id);});
@@ -743,13 +749,21 @@
   }
 
   window.addEventListener('scroll',function(){
+    if(scrollSuppressed)return;
     hoverOverride=false;
     activateByScroll();
     if(!currentOpen)activatePreview(scrollActiveId);
   },{passive:true});
 
   function openBlock(id,doScroll){
-    if(currentOpen&&currentOpen!==id)closeBlock(currentOpen,false);
+    if(currentOpen&&currentOpen!==id){
+      var pi=document.querySelector('.ai-name-item[data-ai="'+currentOpen+'"]');
+      var pb=document.querySelector('.ai-block[data-ai="'+currentOpen+'"]');
+      if(pi){pi.classList.remove('ai-name-open','ai-name-active');}
+      if(pb){pb.classList.remove('ai-block-open');}
+      desktop.classList.remove('ai-has-open');
+      currentOpen=null;
+    }
     var item=document.querySelector('.ai-name-item[data-ai="'+id+'"]');
     var block=document.querySelector('.ai-block[data-ai="'+id+'"]');
     if(!item||!block)return;
@@ -758,6 +772,8 @@
     block.classList.add('ai-block-open');
     desktop.classList.add('ai-has-open');
     currentOpen=id;
+    scrollActiveId=id;
+    suppressScroll();
     try{history.replaceState(null,'',"#"+id);}catch(e){}
     if(doScroll){
       requestAnimationFrame(function(){
@@ -768,21 +784,31 @@
     }
   }
 
-  function closeBlock(id,restorePreview){
+  function closeBlock(id){
     var item=document.querySelector('.ai-name-item[data-ai="'+id+'"]');
     var block=document.querySelector('.ai-block[data-ai="'+id+'"]');
-    if(item){item.classList.remove('ai-name-open','ai-name-active');}
+    if(!item)return;
+    // Record name position before any DOM changes
+    var nameScreenTop=item.getBoundingClientRect().top;
+    var nameDocTop=0;var el=item;while(el){nameDocTop+=el.offsetTop;el=el.offsetParent;}
+    // Collapse block
+    item.classList.remove('ai-name-open');
     if(block){block.classList.remove('ai-block-open');}
     desktop.classList.remove('ai-has-open');
     currentOpen=null;
     try{history.replaceState(null,'',window.location.pathname);}catch(e){}
-    if(restorePreview!==false&&scrollActiveId){activatePreview(scrollActiveId);}
+    // Keep the closed artist active; show their preview
+    scrollActiveId=id;
+    activatePreview(id);
+    // Compensate scroll so name stays at exact same viewport position
+    suppressScroll();
+    window.scrollTo(0,Math.max(0,nameDocTop-nameScreenTop));
   }
 
   items.forEach(function(item){
     item.addEventListener('click',function(){
       var id=item.getAttribute('data-ai');
-      if(currentOpen===id){closeBlock(id,true);}else{openBlock(id,false);}
+      if(currentOpen===id){closeBlock(id);}else{openBlock(id,false);}
     });
     item.addEventListener('mouseenter',function(){
       if(!currentOpen){hoverOverride=true;activatePreview(item.getAttribute('data-ai'));}
