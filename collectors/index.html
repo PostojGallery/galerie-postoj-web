@@ -6,7 +6,7 @@
 <meta name="description" content="Originální umělecká díla z výstav galerie POSTOJ. Podpořte mladé české umělce a staňte se součástí příběhu současného umění.">
 <link rel="icon" type="image/png" href="../images/favicon.png?v=7">
 <title>Příběh pokračuje s vámi | galerie POSTOJ</title>
-<link rel="stylesheet" href="../style.css?v=20261122p">
+<link rel="stylesheet" href="../style.css?v=20261122q">
 <style>
 .collectors-hero{margin-top:60px;padding:2rem 2.5rem 1.5rem;}
 .collectors-hero-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1rem;}
@@ -127,6 +127,12 @@
   .work-card:hover .work-title{text-decoration:underline;text-underline-offset:0.15em;}
   .work-reserved-badge{display:none;}
   .work-price-sold{display:block;}
+  .lightbox-artist{font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,0.6);line-height:1.75;margin-bottom:0.5rem;}
+  .lightbox-artist a{text-decoration:none;color:inherit;border-bottom:none;}
+  .lightbox-title{font-size:clamp(2rem,4vw,3.5rem);font-weight:900;letter-spacing:-0.04em;line-height:1;margin-bottom:0.5rem;}
+  .lb-year{color:rgba(255,255,255,0.45);font-weight:400;}
+  .lightbox-meta{font-size:1.1rem;color:rgba(255,255,255,0.6);line-height:1.75;margin-bottom:1rem;}
+  .lightbox-price{font-size:1.4rem;font-weight:700;color:#fff;}
 }
 </style>
 </head>
@@ -512,7 +518,7 @@
     lbDotsWrap.innerHTML='';
     _imgs.forEach(function(){var d=document.createElement('span');d.className='lb-dot';lbDotsWrap.appendChild(d);});
     setImg(0);
-    document.getElementById('lb-title').textContent=data.title;
+    (function(){var t=data.title,m=t.match(/^(.*?)(,\s*\d{4})$/),el=document.getElementById('lb-title');if(m){el.innerHTML=m[1]+'<span class="lb-year">'+m[2]+'</span>';}else{el.textContent=t;}})();
     var artistEl=document.getElementById('lb-artist');
     artistEl.innerHTML='<a href="'+(data.artistHref||'/collectors?artist=denis-bastuga')+'">'+data.artist+'</a>';
     document.getElementById('lb-meta').innerHTML=data.meta||'';
