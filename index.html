@@ -720,8 +720,9 @@ function drawOverlay() {
   if (state === 'idle') {
     const _lt = Date.now() % 900; ctx.globalAlpha = (_lt < 80 || (_lt > 140 && _lt < 200)) ? 1 : 0.15;
     ctx.fillStyle = '#ffffff';
-    ctx.font      = `500 ${MOB ? 22 : 12}px "Helvetica Neue",Helvetica,Arial,sans-serif`;
-    ctx.fillText(MOB ? 'TAP TO START' : 'PRESS SPACE OR TAP TO START', CW / 2, GROUND / 2 + 6);
+    const _sfs = MOB ? Math.round(1.2 * 16 / canvasScale) : Math.round(window.innerWidth * 0.018 / canvasScale);
+    ctx.font      = `400 ${_sfs}px "Helvetica Neue",Helvetica,Arial,sans-serif`;
+    ctx.fillText(MOB ? 'Klepni a hraj' : 'Stiskni mezerník nebo klepni a hraj', CW / 2, GROUND / 2 + 6);
     ctx.globalAlpha = 1;
   } else if (state === 'dead') {
     // Dark veil behind GAME OVER so it's readable over any obstacle graphic
