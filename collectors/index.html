@@ -6,15 +6,14 @@
 <meta name="description" content="Originální umělecká díla z výstav galerie POSTOJ. Podpořte mladé české umělce a staňte se součástí příběhu současného umění.">
 <link rel="icon" type="image/png" href="../images/favicon.png?v=7">
 <title>Příběh pokračuje s vámi | galerie POSTOJ</title>
-<link rel="stylesheet" href="../style.css?v=20261122f">
+<link rel="stylesheet" href="../style.css?v=20261122h">
 <style>
 .collectors-hero{margin-top:60px;padding:2rem 2.5rem 1.5rem;}
 .collectors-hero-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1rem;}
 .collectors-hero-title{font-size:clamp(2.5rem,6vw,5rem);font-weight:900;line-height:1;letter-spacing:-0.04em;}
 .mobile-br{display:none;}
-.collectors-intro{padding:0 2.5rem 1rem;font-size:0.95rem;color:rgba(255,255,255,0.4);max-width:600px;line-height:1.8;}
+.collectors-intro-wrap{display:none;}
 .collectors-sig{padding:0 2.5rem 1.5rem;display:block;height:44px;width:auto;filter:invert(1);opacity:0.5;}
-.collectors-intro a{color:rgba(255,255,255,0.6);border-bottom:1px solid rgba(255,255,255,0.2);text-decoration:none;}
 .filters-bar{position:sticky;top:60px;z-index:100;background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:stretch;}
 .filter-group{position:relative;border-right:1px solid rgba(255,255,255,0.08);}
 .filter-group:last-child{border-right:none;}
@@ -107,8 +106,14 @@
   .collectors-note{padding:1.5rem 1.2rem;}
 }
 @media(min-width:769px){
-  .filters-bar{border-top:none;border-bottom:none;}
+  .collectors-intro-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:1rem 2.5rem 2.5rem;}
+  .collectors-key-sentence{grid-column:1/4;font-size:clamp(2rem,3.4vw,3.4rem);font-weight:400;line-height:1.08;letter-spacing:-0.025em;color:#fff;}
+  .filters-bar{border-top:none;border-bottom:none;padding:0 2.5rem;gap:2rem;}
   .filter-group{border-right:none;}
+  .filter-trigger{font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:700;letter-spacing:0;text-transform:none;color:rgba(255,255,255,0.4);padding:1rem 0;}
+  .filter-trigger:hover,.filter-trigger.open{color:#fff;background:none;}
+  .filter-trigger.has-active{color:#fff;}
+  .filter-arrow{font-size:0.7em;opacity:1;}
   .collectors-note{border-top:none;}
 }
 </style>
@@ -120,9 +125,9 @@
 <div class="collectors-hero rv">
 <div class="collectors-hero-title">Příběh pokračuje<br class="mobile-br"> s vámi</div>
 </div>
-<p class="collectors-intro rv" style="font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.8;max-width:800px;">Umělci, které v galerii POSTOJ představujeme, jsou na začátku své umělecké cesty. Zakoupením jejich díla nejen podpoříte jejich tvorbu, ale stanete se i součástí jejich příběhu. Pomáháte jim růst, tvořit a jít si za svým snem. Za vaši podporu vám z celého srdce děkujeme.</p><div class="filters-bar">
+<div class="collectors-intro-wrap"><div class="collectors-key-sentence rv">Koupí díla podpoříte umělce na začátku jejich cesty – a stanete se součástí jejich příběhu.</div></div><div class="filters-bar">
   <div class="filter-group">
-    <button class="filter-trigger" data-group="umelci">Umělci <span class="filter-count"></span><span class="filter-arrow">▾</span></button>
+    <button class="filter-trigger" data-group="umelci">Umělci <span class="filter-count"></span><span class="filter-arrow">↓</span></button>
     <div class="filter-dropdown" data-group="umelci">
       <button class="filter-opt" data-filter="umelci" data-val="vse">Vše</button>
       <button class="filter-opt" data-filter="umelci" data-val="anna-banytiuk">Anna Banytiuk</button>
@@ -132,7 +137,7 @@
     </div>
   </div>
   <div class="filter-group">
-    <button class="filter-trigger" data-group="technika">Technika <span class="filter-count"></span><span class="filter-arrow">▾</span></button>
+    <button class="filter-trigger" data-group="technika">Technika <span class="filter-count"></span><span class="filter-arrow">↓</span></button>
     <div class="filter-dropdown" data-group="technika">
       <button class="filter-opt" data-filter="technika" data-val="vse">Vše</button>
       <button class="filter-opt" data-filter="technika" data-val="grafika">Grafika</button>
@@ -141,7 +146,7 @@
     </div>
   </div>
   <div class="filter-group">
-    <button class="filter-trigger" data-group="velikost">Velikost <span class="filter-count"></span><span class="filter-arrow">▾</span></button>
+    <button class="filter-trigger" data-group="velikost">Velikost <span class="filter-count"></span><span class="filter-arrow">↓</span></button>
     <div class="filter-dropdown" data-group="velikost">
       <button class="filter-opt" data-filter="velikost" data-val="vse">Vše</button>
       <button class="filter-opt" data-filter="velikost" data-val="do-140">Do 140 cm</button>
