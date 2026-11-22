@@ -6,7 +6,7 @@
 <meta name="description" content="Original artworks from galerie POSTOJ exhibitions. Support young Czech artists and become part of the story of contemporary art.">
 <link rel="icon" type="image/png" href="../../images/favicon.png?v=7">
 <title>Become part of the story | galerie POSTOJ</title>
-<link rel="stylesheet" href="../../style.css?v=20261121w">
+<link rel="stylesheet" href="../../style.css?v=20261122b">
 <style>
 .collectors-hero{margin-top:60px;padding:2rem 2.5rem 1.5rem;}
 .collectors-hero-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1rem;}
@@ -65,12 +65,30 @@
 .lightbox-price{font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;}
 #lb-img-wrap{position:relative;cursor:none;touch-action:manipulation;}
 #lb-dots{display:none;}
+#lightbox.has-multi #lb-dots{display:flex;gap:6px;justify-content:center;margin-top:0.6rem;}
+.lb-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.25);transition:background 0.2s;display:inline-block;}
+.lb-dot.active{background:#fff;}
+.lb-sizes{display:none;flex-direction:column;gap:0.5rem;margin-bottom:1.5rem;}
+.lb-sizes.visible{display:flex;}
+.lb-sizes-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.1rem;}
+.lb-sizes-btns{display:flex;gap:0.4rem;flex-wrap:wrap;}
+.lb-size-btn{font-family:inherit;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.45rem 0.85rem;border:1px solid rgba(255,255,255,0.12);background:none;color:rgba(255,255,255,0.18);cursor:none;}
+.lb-size-btn.sz-available{color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.4);}
+.lb-size-btn.sz-available.sz-selected{background:#fff;color:#000;border-color:#fff;}
+.lb-size-btn.sz-unavailable{pointer-events:none;}
+.lb-nav-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.5);font-size:1.1rem;line-height:1;padding:0.55rem 0.7rem;transition:all 0.2s;z-index:3;display:none;cursor:none;}
+.lb-nav-arrow:hover{color:#fff;border-color:#fff;}
+#lb-prev{left:0;}
+#lb-next{right:0;}
+#lightbox.has-multi .lb-nav-arrow{display:block;}
+#lightbox.lb-scrollable{overflow-y:auto;-webkit-overflow-scrolling:touch;}
 #lightbox-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.6);font-family:inherit;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:none;transition:all 0.2s;}
 #lightbox-close:hover{border-color:#fff;color:#fff;}
 .collectors-note{padding:2rem 2.5rem;font-size:0.8rem;color:rgba(255,255,255,0.25);border-top:1px solid rgba(255,255,255,0.06);line-height:1.7;}
 .filter-opt.filter-opt-unavailable{opacity:0.2;pointer-events:none;}
 .work-reserved-badge{position:absolute;top:10px;left:10px;background:rgba(0,0,0,0.72);backdrop-filter:blur(4px);color:rgba(255,255,255,0.85);border:1px solid rgba(255,255,255,0.25);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.35rem 0.75rem;z-index:3;pointer-events:none;}
 @media(max-width:768px){
+  .lb-nav-arrow{display:none!important;}
   .work-buy-label{display:none;}
   .collectors-hero{margin-top:70px;padding:1rem 1.2rem 0.8rem;}
   .collectors-intro{padding:0 1.2rem 1rem;max-width:none;}
@@ -118,6 +136,7 @@
       <button class="filter-opt" data-filter="technika" data-val="vse">All</button>
       <button class="filter-opt" data-filter="technika" data-val="grafika">Print</button>
       <button class="filter-opt" data-filter="technika" data-val="malba">Painting</button>
+      <button class="filter-opt" data-filter="technika" data-val="tricko">T-shirt</button>
     </div>
   </div>
   <div class="filter-group">
@@ -223,18 +242,29 @@
     <div class="work-img"><img loading="lazy" class="img-main" src="../../images/shop/martin-jachym/Untitled%203/image.png" alt="Untitled — Martin Jáchym"><div class="work-reserved-badge">Sold</div><div class="work-buy-label">View work</div></div>
     <div class="work-info"><div class="work-title">Untitled</div><div class="work-artist-name">Martin Jáchym</div></div>
   </div>
+  <div class="work-card rv" data-umelec="jan-divis" data-technika="tricko" data-velikost="tricko" data-cena="" data-price="1300" data-order="7.1" onclick="openLightbox({imgs:['../../images/shop/jan-divis/t-shirts/Escalators/1.webp','../../images/shop/jan-divis/t-shirts/Escalators/2.webp','../../images/shop/jan-divis/t-shirts/Escalators/3.webp','../../images/shop/jan-divis/t-shirts/Escalators/4.webp'],title:'T-shirt Escalators, 2026',artist:'Jan Diviš',artistHref:'/en/collectors?artist=jan-divis',meta:'Screen print on 100% cotton, 270 g/m²<br>Colour: dark grey<br>CZK 1,300',price:'',btnLabel:'Enquire about t-shirt',sizes:[{label:'XS',available:false},{label:'S',available:true},{label:'M',available:true},{label:'L',available:false},{label:'XL',available:false}]})">
+    <div class="work-img"><img loading="lazy" class="img-main" src="../../images/shop/jan-divis/t-shirts/Escalators/preview.webp" alt="T-shirt Escalators — Jan Diviš"><div class="work-buy-label">View work</div></div>
+    <div class="work-info"><div class="work-title">T-shirt Escalators</div><div class="work-artist-name">Jan Diviš</div><div class="work-price">1 300 Kč</div></div>
+  </div>
+  <div class="work-card rv" data-umelec="jan-divis" data-technika="tricko" data-velikost="tricko" data-cena="" data-price="1300" data-order="7.2" onclick="openLightbox({imgs:['../../images/shop/jan-divis/t-shirts/Gallery/1.webp','../../images/shop/jan-divis/t-shirts/Gallery/2.webp','../../images/shop/jan-divis/t-shirts/Gallery/3.webp','../../images/shop/jan-divis/t-shirts/Gallery/4.webp','../../images/shop/jan-divis/t-shirts/Gallery/5.webp'],title:'T-shirt Gallery, 2026',artist:'Jan Diviš',artistHref:'/en/collectors?artist=jan-divis',meta:'Screen print on 100% cotton, 270 g/m²<br>Colour: dark grey<br>CZK 1,300',price:'',btnLabel:'Enquire about t-shirt',sizes:[{label:'XS',available:false},{label:'S',available:true},{label:'M',available:false},{label:'L',available:false},{label:'XL',available:false}]})">
+    <div class="work-img"><img loading="lazy" class="img-main" src="../../images/shop/jan-divis/t-shirts/Gallery/preview.webp" alt="T-shirt Gallery — Jan Diviš"><div class="work-buy-label">View work</div></div>
+    <div class="work-info"><div class="work-title">T-shirt Gallery</div><div class="work-artist-name">Jan Diviš</div><div class="work-price">1 300 Kč</div></div>
+  </div>
 </div>
 <div id="lightbox">
   <button id="lightbox-close">Close ×</button>
   <div id="lightbox-inner">
     <div id="lb-img-wrap">
+      <button id="lb-prev" class="lb-nav-arrow">&#8249;</button>
       <img id="lb-img" src="" alt="">
-      <div id="lb-dots"><span class="lb-dot"></span><span class="lb-dot"></span></div>
+      <button id="lb-next" class="lb-nav-arrow">&#8250;</button>
+      <div id="lb-dots"></div>
     </div>
     <div class="lightbox-info">
       <div class="lightbox-artist" id="lb-artist"></div>
       <div class="lightbox-title" id="lb-title"></div>
       <div class="lightbox-meta" id="lb-meta"></div>
+      <div class="lb-sizes" id="lb-sizes"></div>
       <div class="lightbox-price" id="lb-price"></div>
       <a id="lb-mailto" href="#" class="btn">Request painting</a>
     </div>
@@ -384,7 +414,7 @@
       var show=true;
       if(state.umelci!==null&&state.umelci.indexOf(card.getAttribute('data-umelec'))===-1)show=false;
       if(state.technika!==null&&state.technika.indexOf(card.getAttribute('data-technika'))===-1)show=false;
-      if(_vels!==null&&_vels.indexOf(card.getAttribute('data-velikost'))===-1)show=false;
+      if(_vels!==null&&card.getAttribute('data-technika')!=='tricko'&&_vels.indexOf(card.getAttribute('data-velikost'))===-1)show=false;
       card.style.display=(show&&!card.getAttribute('data-hidden'))?'':'none';
     });
     items.sort(function(a,b){return(+a.getAttribute('data-order')||0)-(+b.getAttribute('data-order')||0);});
@@ -437,18 +467,30 @@
 (function(){
   var lb=document.getElementById('lightbox'),lc=document.getElementById('lightbox-close');
   var lbImg=document.getElementById('lb-img'),lbWrap=document.getElementById('lb-img-wrap');
-  var lbDots=document.querySelectorAll('.lb-dot');
+  var lbDotsWrap=document.getElementById('lb-dots');
+  var lbSizes=document.getElementById('lb-sizes');
+  var lbPrev=document.getElementById('lb-prev'),lbNext=document.getElementById('lb-next');
   if(!lb)return;
-  var _imgs=[],_idx=0;
+  var _imgs=[],_idx=0,_data={};
   function setImg(idx){
     _idx=(idx+_imgs.length)%_imgs.length;
     lbImg.src=_imgs[_idx];
-    lbDots.forEach(function(d,i){d.classList.toggle('active',i===_idx);});
+    lbDotsWrap.querySelectorAll('.lb-dot').forEach(function(d,i){d.classList.toggle('active',i===_idx);});
+  }
+  function buildMailto(){
+    var _metaPlain=(_data.meta||'').replace(/<br\s*\/?>\s*/gi,'\n');
+    var _sizeInfo='';
+    if(lbSizes&&lbSizes.classList.contains('visible')){var sel=lbSizes.querySelector('.sz-selected');if(sel)_sizeInfo='\nSize: '+sel.textContent;}
+    var _body='Dear galerie POSTOJ team,\n\nI am interested in the following artwork:\n\n'+_data.title+'\n'+_data.artist+_sizeInfo+'\n'+_metaPlain+'\n\nI would appreciate more information about the artwork and its availability.\n\nThank you.\n\nKind regards,\n\n[FULL NAME]';
+    document.getElementById('lb-mailto').href='mailto:info@galeriepostoj.cz?subject='+encodeURIComponent('Inquiry about artwork: '+_data.title)+'&body='+encodeURIComponent(_body);
   }
   window.openLightbox=function(data){
-    _imgs=[data.img];
-    if(data.img2)_imgs.push(data.img2);
+    _data=data;
+    _imgs=data.imgs&&data.imgs.length?data.imgs:[data.img];
+    if(!data.imgs&&data.img2)_imgs.push(data.img2);
     lb.classList.toggle('has-multi',_imgs.length>1);
+    lbDotsWrap.innerHTML='';
+    _imgs.forEach(function(){var d=document.createElement('span');d.className='lb-dot';lbDotsWrap.appendChild(d);});
     setImg(0);
     document.getElementById('lb-title').textContent=data.title;
     var artistEl=document.getElementById('lb-artist');
@@ -457,16 +499,40 @@
     document.getElementById('lb-price').textContent=data.price||'';
     document.getElementById('lb-mailto').style.display=data.price?'none':'';
     document.getElementById('lb-mailto').textContent=data.btnLabel||'Request painting';
-    var _metaPlain=(data.meta||'').replace(/<br\s*\/?>/gi,'\n');
-    var _body='Dear galerie POSTOJ team,\n\nI am interested in the following artwork:\n\n'+data.title+'\n'+data.artist+'\n'+_metaPlain+'\n\nI would appreciate more information about the artwork and its availability.\n\nThank you.\n\nKind regards,\n\n[FULL NAME]';
-    document.getElementById('lb-mailto').href='mailto:info@galeriepostoj.cz?subject='+encodeURIComponent('Inquiry about artwork: '+data.title)+'&body='+encodeURIComponent(_body);
+    if(lbSizes){
+      if(data.sizes&&data.sizes.length){
+        lbSizes.innerHTML='<div class="lb-sizes-label">Size</div><div class="lb-sizes-btns"></div>';
+        var btnsWrap=lbSizes.querySelector('.lb-sizes-btns');
+        var firstAvail=true;
+        data.sizes.forEach(function(sz){
+          var btn=document.createElement('button');
+          btn.className='lb-size-btn '+(sz.available?'sz-available':'sz-unavailable');
+          btn.textContent=sz.label;
+          if(sz.available&&firstAvail){btn.classList.add('sz-selected');firstAvail=false;}
+          if(sz.available){btn.addEventListener('click',function(){btnsWrap.querySelectorAll('.lb-size-btn.sz-available').forEach(function(b){b.classList.remove('sz-selected');});btn.classList.add('sz-selected');buildMailto();});}
+          btnsWrap.appendChild(btn);
+        });
+        lbSizes.classList.add('visible');
+      } else {
+        lbSizes.innerHTML='';lbSizes.classList.remove('visible');
+      }
+    }
+    buildMailto();
     var _sy=window.scrollY;
     document.body.style.position='fixed';document.body.style.top=-_sy+'px';document.body.style.width='100%';
     lb.classList.add('open');lb._scrollY=_sy;
+    lb.classList.toggle('lb-scrollable',!!(data.sizes&&data.sizes.length));
   };
+  if(lbPrev)lbPrev.addEventListener('click',function(){setImg(_idx-1);});
+  if(lbNext)lbNext.addEventListener('click',function(){setImg(_idx+1);});
+  var _tx=null;
+  lbWrap.addEventListener('touchstart',function(e){_tx=e.touches[0].clientX;},{passive:true});
+  lbWrap.addEventListener('touchend',function(e){if(_tx===null)return;var dx=e.changedTouches[0].clientX-_tx;if(Math.abs(dx)>40)setImg(dx<0?_idx+1:_idx-1);_tx=null;});
   document.addEventListener('keydown',function(e){
     if(!lb.classList.contains('open'))return;
     if(e.key==='Escape')cl();
+    if(e.key==='ArrowLeft')setImg(_idx-1);
+    if(e.key==='ArrowRight')setImg(_idx+1);
   });
   function cl(){
     lb.classList.remove('open');
