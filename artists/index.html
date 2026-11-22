@@ -6,7 +6,7 @@
 <meta name="description" content="Umělci galerie POSTOJ – malíři, ilustrátoři a výtvarníci vystavující v pražském metru. Poznejte jejich příběhy a tvorbu.">
 <link rel="icon" type="image/png" href="../images/favicon.png?v=7">
 <title>Umělci na prvním místě | galerie POSTOJ</title>
-<link rel="stylesheet" href="../style.css?v=20261121y">
+<link rel="stylesheet" href="../style.css?v=20261121z">
 <style>
 .exh-layout,.artists-layout{display:grid;grid-template-columns:340px 1fr;align-items:start;margin-top:60px;}
 .artists-sidebar,.exh-sidebar{position:sticky;top:60px;height:calc(100vh - 60px);border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;}
@@ -77,7 +77,7 @@
   .ai-index-desktop{display:grid;grid-template-columns:2fr 1fr;gap:5rem;padding:var(--nav-h,72px) 2.5rem 6rem;align-items:start;}
   .ai-index-desktop.ai-has-open{grid-template-columns:1fr;}
   .ai-index-desktop.ai-has-open .ai-preview-col{display:none;}
-  .ai-names-col{padding-top:2.5rem;}
+  .ai-names-col{padding-top:2.5rem;padding-bottom:50vh;}
   .ai-name-item{font-size:clamp(3rem,6vw,6rem);font-weight:700;letter-spacing:-0.045em;line-height:0.86;color:#555;cursor:none;transition:color 0.15s;display:block;padding-bottom:0.1em;}
   .ai-name-item:hover,.ai-name-item.ai-name-active{color:#fff;}
   .ai-name-item.ai-name-open{position:sticky;top:var(--nav-h,72px);background:#0a0a0a;z-index:10;padding:0.1em 0.2em 0.22em 0;margin-bottom:-0.12em;width:fit-content;}
@@ -758,14 +758,39 @@
   if(window.innerWidth<=768)return;
   var desktop=document.querySelector('.ai-index-desktop');
   var items=document.querySelectorAll('.ai-name-item');
-  var blocks=document.querySelectorAll('.ai-block');
   var panels=document.querySelectorAll('.ai-preview-panel');
   var currentOpen=null;
   var firstId=items.length?items[0].getAttribute('data-ai'):null;
+  var scrollActiveId=firstId;
+  var hoverOverride=false;
+
   function activatePreview(id){
     items.forEach(function(i){i.classList.toggle('ai-name-active',i.getAttribute('data-ai')===id);});
     panels.forEach(function(p){p.classList.toggle('ai-preview-active',p.getAttribute('data-ai')===id);});
   }
+
+  // IntersectionObserver: fires when a name crosses the viewport centre
+  if('IntersectionObserver' in window){
+    var observer=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          var id=entry.target.getAttribute('data-ai');
+          scrollActiveId=id;
+          if(!currentOpen&&!hoverOverride){activatePreview(id);}
+        }
+      });
+    },{rootMargin:'-49% 0px -49% 0px',threshold:0});
+    items.forEach(function(item){observer.observe(item);});
+  }
+
+  // First scroll after hover hands control back to scroll-driven active
+  window.addEventListener('scroll',function(){
+    if(hoverOverride){
+      hoverOverride=false;
+      if(!currentOpen&&scrollActiveId)activatePreview(scrollActiveId);
+    }
+  },{passive:true});
+
   function openBlock(id,doScroll){
     if(currentOpen&&currentOpen!==id)closeBlock(currentOpen,false);
     var item=document.querySelector('.ai-name-item[data-ai="'+id+'"]');
@@ -785,6 +810,7 @@
       });
     }
   }
+
   function closeBlock(id,restorePreview){
     var item=document.querySelector('.ai-name-item[data-ai="'+id+'"]');
     var block=document.querySelector('.ai-block[data-ai="'+id+'"]');
@@ -793,17 +819,19 @@
     desktop.classList.remove('ai-has-open');
     currentOpen=null;
     try{history.replaceState(null,'',window.location.pathname);}catch(e){}
-    if(restorePreview!==false&&firstId){activatePreview(firstId);}
+    if(restorePreview!==false&&scrollActiveId){activatePreview(scrollActiveId);}
   }
+
   items.forEach(function(item){
     item.addEventListener('click',function(){
       var id=item.getAttribute('data-ai');
       if(currentOpen===id){closeBlock(id,true);}else{openBlock(id,false);}
     });
     item.addEventListener('mouseenter',function(){
-      if(!currentOpen)activatePreview(item.getAttribute('data-ai'));
+      if(!currentOpen){hoverOverride=true;activatePreview(item.getAttribute('data-ai'));}
     });
   });
+
   var initHash=window.location.hash.slice(1);
   if(initHash&&document.querySelector('.ai-name-item[data-ai="'+initHash+'"]')){
     openBlock(initHash,true);
