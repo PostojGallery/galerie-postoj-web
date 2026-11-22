@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" href="images/favicon.png?v=7">
 <title>Umění v metru | galerie POSTOJ</title>
 <link rel="preload" as="image" href="images/hero-bg.webp" fetchpriority="high">
-<link rel="stylesheet" href="style.css?v=20261122i">
+<link rel="stylesheet" href="style.css?v=20261122j">
 <style>
 #hero{position:relative;height:100vh;height:100svh;height:calc(var(--ivh,1vh)*100);overflow:hidden;display:flex;align-items:center;justify-content:center;}
 #hero-bg{position:absolute;inset:0;}
@@ -149,6 +149,22 @@
 .snake-anim{animation:snakeFlicker 1.2s step-end infinite;transform:scale(0.97);transform-origin:center;}
 @media(min-width:769px){
   .snake-anim{transform:scale(1.3);transform-origin:center;}
+  /* Founder section typography */
+  .fs-text{font-size:clamp(1.2rem,1.8vw,1.75rem);line-height:1.3;color:rgba(255,255,255,0.6);font-style:normal;border-left:none;padding-left:0;margin-bottom:0;}
+  .fs-text-lead{font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:700;color:#fff;line-height:1.3;font-style:normal;}
+  .fs-sig{margin-left:0;}
+  .fs-desktop-cta{background:#fff;color:#000;font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:700;line-height:1.3;padding:0.4em 0.8em;text-decoration:none;letter-spacing:0;text-transform:none;cursor:none;transition:background 0.2s,color 0.2s;margin-top:1.5rem;align-self:flex-start;display:inline-block;}
+  .fs-desktop-cta:hover{background:#0a0a0a;color:#fff;outline:1px solid #fff;}
+  /* Founder photo full-height */
+  .fs-photo-col{align-self:stretch;position:relative;}
+  .fs-photo-col a{display:block;flex:1;min-height:0;position:relative;}
+  .fs-photo-col a::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0);transition:background 0.25s;pointer-events:none;}
+  .fs-photo-col:hover a::after{background:rgba(0,0,0,0.35);}
+  .fs-photo-col img{width:100%;height:100%;aspect-ratio:unset;object-fit:cover;object-position:center top;}
+  /* Caption as hover overlay */
+  .fs-caption{position:absolute;bottom:0;left:0;right:0;padding:0.9rem;background:none;color:#fff;font-size:1rem;font-weight:700;opacity:0;transition:opacity 0.25s;pointer-events:none;}
+  .fs-photo-col:hover .fs-caption{opacity:1;}
+  .fs-caption span{display:block;color:rgba(255,255,255,0.8);font-weight:400;font-size:0.85rem;letter-spacing:0;text-transform:none;margin-top:0.1rem;}
 }
 </style>
 </head>
@@ -174,8 +190,8 @@
   <div class="current-exh-info rv">
     <a href="/exhibitions#exh-exit-wounds" class="current-exh-artist">EXIT WOUNDS</a>
     <a href="/artists#jan-divis" class="current-exh-title">Jan Diviš</a>
-    <div class="current-exh-date" style="margin-bottom:0.75rem;">16. listopadu 2026, vernišáž 18:00</div>
-    <p class="current-exh-desc"><span class="desc-desk">Galerie POSTOJ představuje novou výstavu českého ilustrátora a grafika Jana Diviše, studenta Vysoké školy uměleckoprmyslové v Praze (UMPRUM). Jeho tvorba propojuje detailní ilustrace, výrazné barvy a experimentální typografii.</span><span class="desc-mob">Český ilustrátor a grafik, student UMPRUM. Detailní ilustrace, výrazné barvy a experimentální typografie.</span></p>
+    <div class="current-exh-date" style="margin-bottom:0.75rem;">16. listopadu 2026, vernisaž 18:00</div>
+    <p class="current-exh-desc"><span class="desc-desk">Galerie POSTOJ představuje novou výstavu českého ilustrátora a grafika Jana Diviše, studenta Vysoké školy uměleckoprůmyslové v Praze (UMPRUM). Jeho tvorba propojuje detailní ilustrace, výrazné barvy a experimentální typografii.</span><span class="desc-mob">Český ilustrátor a grafik, student UMPRUM. Detailní ilustrace, výrazné barvy a experimentální typografie.</span></p>
     <a href="/collectors?artist=jan-divis" class="btn exh-info-cta">Díla k prodeji →</a>
   </div>
   <div class="current-exh-shop-outer">
@@ -321,9 +337,9 @@
       <div class="fs-caption">Filip Kolář<span>Zakladatel.<br>Nadšenec do umění.</span></div>
     </div>
     <div class="fs-content rv">
-      <p class="fs-text"><span class="fs-text-lead">Věříme, že umění patří všem.<br><br></span><span class="fs-text-desk">Proto jsme galerii POSTOJ postavili v pražském metru, na Náměstí Republiky – v prostoru bývalé směnárny, která dříve okrádala turisty. Žádné zavřené galerijní dveře. Žádný vstup.</span><span class="fs-text-mob">Galerii POSTOJ jsme postavili v pražském metru, na Náměstí Republiky – v prostoru bývalé směnárny, která dříve okrádala turisty. Žádné zavřené galerijní dveře. Žádný vstup.</span></p>
+      <p class="fs-text"><span class="fs-text-lead">Věříme, že umění patří všem.<br><br></span><span class="fs-text-desk">Proto jsme galerii POSTOJ postavili v pražském metru, na Náměstí Republiky – v prostoru bývalé směnárny, která dříve okrádala turisty. Žádné zavřené galerijní dveře. Žádné vstupné.</span><span class="fs-text-mob">Galerii POSTOJ jsme postavili v pražském metru, na Náměstí Republiky – v prostoru bývalé směnárny, která dříve okrádala turisty. Žádné zavřené galerijní dveře. Žádné vstupné.</span></p>
       <img width="1397" height="690" loading="lazy" class="fs-sig" src="images/signature.png" alt="">
-      <a href="/about" class="btn fs-desktop-cta">Jak to začalo</a>
+      <a href="/about" class="btn fs-desktop-cta">Jak to začalo →</a>
     </div>
     <div class="fs-right-photo rv">
       <img class="fs-change-photo" loading="lazy" src="images/metro-change.webp" alt="Prostor bývalé směnárny">
