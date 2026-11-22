@@ -6,7 +6,7 @@
 <meta name="description" content="Originální umělecká díla z výstav galerie POSTOJ. Podpořte mladé české umělce a staňte se součástí příběhu současného umění.">
 <link rel="icon" type="image/png" href="../images/favicon.png?v=7">
 <title>Příběh pokračuje s vámi | galerie POSTOJ</title>
-<link rel="stylesheet" href="../style.css?v=20261122j">
+<link rel="stylesheet" href="../style.css?v=20261122k">
 <style>
 .collectors-hero{margin-top:60px;padding:2rem 2.5rem 1.5rem;}
 .collectors-hero-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1rem;}
@@ -70,6 +70,7 @@
 .collectors-note{padding:2rem 2.5rem;font-size:0.8rem;color:rgba(255,255,255,0.25);border-top:1px solid rgba(255,255,255,0.06);line-height:1.7;}
 .filter-opt.filter-opt-unavailable{opacity:0.2;pointer-events:none;}
 .work-reserved-badge{position:absolute;top:10px;left:10px;background:rgba(0,0,0,0.72);backdrop-filter:blur(4px);color:rgba(255,255,255,0.85);border:1px solid rgba(255,255,255,0.25);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.35rem 0.75rem;z-index:3;pointer-events:none;}
+.work-price-sold{display:none;}
 .lb-sizes{display:none;flex-direction:column;gap:0.5rem;margin-bottom:1.5rem;}
 .lb-sizes.visible{display:flex;}
 .lb-sizes-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.1rem;}
@@ -123,6 +124,9 @@
   .work-artist-name,.work-price{font-weight:400;}
   .work-buy-label{display:none;}
   .work-card:hover .work-title{text-decoration:underline;text-underline-offset:0.15em;}
+  .work-reserved-badge{display:none;}
+  .work-price-sold{display:block;}
+  .sold-dot{color:#d8322b;font-size:0.65em;vertical-align:middle;line-height:1;}
 }
 </style>
 </head>
@@ -202,7 +206,7 @@
   </div>
   <div class="work-card rv" data-umelec="denis-bastuga" data-technika="malba" data-velikost="do-180" data-cena="60000+" data-price="70000" data-order="7.5" onclick="openLightbox({img:'../images/artist/bastuga-denis/matylda-main.webp',img2:'../images/artist/bastuga-denis/matylda-install.webp',title:'Matylda, 2026',artist:'Denis Baštuga',meta:'Olej a akryl na plátně<br>140 × 180 cm',price:'Prodáno'})">
     <div class="work-img"><img fetchpriority="high" class="img-main" src="../images/artist/bastuga-denis/matylda-main.webp" alt="Matylda — Denis Baštuga"><img loading="lazy" class="img-install" src="../images/artist/bastuga-denis/matylda-install.webp" alt="Matylda — instalace"><button class="img-swap-btn" onclick="event.stopPropagation();var wi=this.closest('.work-img');wi.classList.toggle('show-install');this.textContent=wi.classList.contains('show-install')?'Obraz ←':'V prostoru →'">V prostoru →</button><div class="work-reserved-badge">Prodáno</div><div class="work-buy-label">Detail díla</div></div>
-    <div class="work-info"><div class="work-title">Matylda</div><div class="work-artist-name">Denis Baštuga</div></div>
+    <div class="work-info"><div class="work-title">Matylda</div><div class="work-artist-name">Denis Baštuga</div><div class="work-price work-price-sold"><span class="sold-dot">●</span> Prodáno</div></div>
   </div>
   <div class="work-card rv" data-umelec="denis-bastuga" data-technika="malba" data-velikost="nad-180" data-cena="60000+" data-price="0" data-order="8" onclick="openLightbox({img:'../images/artist/bastuga-denis/almost.webp',img2:'../images/artist/bastuga-denis/almost-install.webp',title:'Almost, 2025',artist:'Denis Baštuga',meta:'Olej a akryl na plátně<br>220 × 180 cm',price:''})">
     <div class="work-img"><img loading="lazy" class="img-main" src="../images/artist/bastuga-denis/almost.webp" alt="Almost — Denis Baštuga"><img loading="lazy" class="img-install" src="../images/artist/bastuga-denis/almost-install.webp" alt="Almost — instalace"><div class="work-buy-label">Detail díla</div></div>
@@ -254,7 +258,7 @@
   </div>
   <div class="work-card rv" data-umelec="martin-jachym" data-technika="malba" data-velikost="do-140" data-cena="" data-price="0" data-order="21" onclick="openLightbox({img:'../images/shop/martin-jachym/Untitled%203/image.webp',title:'Untitled, 2025',artist:'Martin Jáchym',artistHref:'/collectors?artist=martin-jachym',meta:'Olej na plátně<br>140 × 120 cm',price:'Prodáno'})">
     <div class="work-img"><img loading="lazy" class="img-main" src="../images/shop/martin-jachym/Untitled%203/image.webp" alt="Untitled — Martin Jáchym"><div class="work-reserved-badge">Prodáno</div><div class="work-buy-label">Detail díla</div></div>
-    <div class="work-info"><div class="work-title">Untitled</div><div class="work-artist-name">Martin Jáchym</div></div>
+    <div class="work-info"><div class="work-title">Untitled</div><div class="work-artist-name">Martin Jáchym</div><div class="work-price work-price-sold"><span class="sold-dot">●</span> Prodáno</div></div>
   </div>
   <div class="work-card rv" data-umelec="jan-divis" data-technika="tricko" data-velikost="tricko" data-cena="" data-price="1300" data-order="7.1" onclick="openLightbox({imgs:['../images/shop/jan-divis/t-shirts/Escalators/1.webp','../images/shop/jan-divis/t-shirts/Escalators/2.webp','../images/shop/jan-divis/t-shirts/Escalators/3.webp','../images/shop/jan-divis/t-shirts/Escalators/4.webp'],title:'Tričko Escalators, 2026',artist:'Jan Diviš',artistHref:'/collectors?artist=jan-divis',meta:'Sítotisk na 100% bavlně, 270 g/m²<br>Barva: tmavě šedá<br>1 300 Kč',price:'',btnLabel:'Poptat tričko',sizes:[{label:'XS',available:false},{label:'S',available:true},{label:'M',available:true},{label:'L',available:false},{label:'XL',available:false}]})">
     <div class="work-img"><img loading="lazy" class="img-main" src="../images/shop/jan-divis/t-shirts/Escalators/preview.webp" alt="Escalators Tričko — Jan Diviš"><div class="work-buy-label">Detail díla</div></div>
