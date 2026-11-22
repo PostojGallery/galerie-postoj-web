@@ -117,6 +117,11 @@ site-footer{display:block;border-top:1px solid rgba(255,255,255,0.08);}
   .nav-links a:hover,.nav-links a.active{color:#fff;}
   .nav-lang a{font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:700;line-height:inherit;letter-spacing:0;text-transform:none;color:rgba(255,255,255,0.4);border:none;padding:0;}
   .nav-lang a:hover{color:#fff;border-color:transparent;}
+  /* Footer – desktop */
+  .footer-inner{justify-content:flex-start;font-size:inherit;letter-spacing:0;text-transform:none;color:#fff;}
+  .footer-links{gap:1.5em;}
+  .footer-links a{color:#fff;font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:400;letter-spacing:0;text-transform:none;}
+  .footer-links a:hover{text-decoration:underline;text-underline-offset:0.15em;color:#fff;}
 }
 @media(max-width:768px){
   #cdot,#cw{display:none;}
@@ -133,9 +138,8 @@ site-footer{display:block;border-top:1px solid rgba(255,255,255,0.08);}
   body > nav.mob-open .nav-burger span:nth-child(2){opacity:0;}
   body > nav.mob-open .nav-burger span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
   .footer-inner{flex-direction:column;align-items:flex-start;gap:1rem;padding:1.5rem 1.2rem;font-size:0.8rem;}
-  .footer-links{gap:1.2rem;flex-wrap:nowrap;}
+  .footer-links{gap:1.2rem;flex-wrap:wrap;}
   .footer-links a{white-space:nowrap;}
-  .footer-links:first-of-type{display:none;}
 }
 /* ── EXIT WOUNDS test redesign – desktop only ───────────────────── */
 /* Hide desktop elements on mobile */
