@@ -6,11 +6,11 @@
 <meta name="description" content="Artists of galerie POSTOJ — painters, illustrators and visual artists exhibiting in the Prague metro. Discover their stories and work.">
 <link rel="icon" type="image/png" href="../../images/favicon.png?v=7">
 <title>Artists first | galerie POSTOJ</title>
-<link rel="stylesheet" href="../../style.css?v=20261121z">
+<link rel="stylesheet" href="../../style.css?v=20261121aa">
 <style>
-.exh-layout,.artists-layout{display:grid;grid-template-columns:340px 1fr;align-items:start;margin-top:60px;}
-.artists-sidebar,.exh-sidebar{position:sticky;top:60px;height:calc(100vh - 60px);border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;}
-.artists-sidebar::-webkit-scrollbar,.exh-sidebar::-webkit-scrollbar{display:none;}
+.artists-layout{display:grid;grid-template-columns:340px 1fr;align-items:start;margin-top:60px;}
+.artists-sidebar{position:sticky;top:60px;height:calc(100vh - 60px);border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;}
+.artists-sidebar::-webkit-scrollbar{display:none;}
 .sidebar-hero{padding:2.5rem 2rem 3rem;}
 .sidebar-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1rem;}
 .sidebar-title{font-size:clamp(1.8rem,3.5vw,3.5rem);font-weight:900;line-height:1;letter-spacing:-0.04em;color:#fff;}
@@ -18,7 +18,6 @@
 .artist-index-row:hover{background:rgba(255,255,255,0.03);padding-left:2.3rem;}
 .artist-index-row.ai-active{background:rgba(255,255,255,0.05);padding-left:2.3rem;}
 .artist-index-row.ai-active .ai-name{color:#fff;}
-.artist-index-placeholder{display:flex;align-items:flex-start;gap:1rem;padding:1rem 2rem;opacity:0.25;}
 .ai-num{font-size:0.65rem;letter-spacing:0.14em;color:rgba(255,255,255,0.2);flex-shrink:0;padding-top:0.2rem;width:1.5rem;}
 .ai-info{flex:1;min-width:0;}
 .ai-name{font-size:1.1rem;font-weight:900;color:rgba(255,255,255,0.5);letter-spacing:-0.01em;}
@@ -31,7 +30,6 @@
 .artist-photo-wrap img{width:100%;display:block;object-fit:cover;aspect-ratio:3/4;}
 .artist-photo-caption{background:#fff;color:#000;padding:0.8rem 1rem;font-size:0.8rem;font-weight:700;}
 .artist-photo-caption span{display:block;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:400;margin-top:0.15rem;color:rgba(0,0,0,0.5);}
-.artist-tag{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1rem;}
 .artist-name{font-size:clamp(2.5rem,5vw,5rem);font-weight:900;line-height:0.9;letter-spacing:-0.04em;margin-bottom:1.5rem;}
 .artist-bio{font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.85;color:rgba(255,255,255,0.5);margin-bottom:2rem;}
 .artist-exh-preview-link{text-decoration:none;cursor:none;display:block;margin-bottom:1.5rem;color:inherit;}
@@ -41,25 +39,6 @@
 .artist-exh-name{font-size:1rem;font-weight:700;margin-bottom:0.3rem;}
 .artist-exh-date{font-size:0.7rem;color:rgba(255,255,255,0.35);letter-spacing:0.14em;text-transform:uppercase;}
 .artist-ctas{display:flex;gap:1rem;flex-wrap:wrap;}
-.artist-works-section{margin-top:0;padding-top:0;}
-.artist-works-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;}
-.artist-works-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);}
-.works-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
-.work-card{cursor:none;position:relative;}
-.work-img{position:relative;overflow:hidden;aspect-ratio:3/4;}
-.work-img .img-main,.work-img .img-install{width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;transition:opacity 0.4s;}
-.work-img .img-install{opacity:0;}
-.work-card:hover .img-main{opacity:0;}
-.work-card:hover .img-install{opacity:1;}
-.work-buy-label{position:absolute;bottom:0;left:0;right:0;background:#fff;color:#000;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.8rem 1rem;transform:translateY(100%);transition:transform 0.25s;}
-.work-card:hover .work-buy-label{transform:translateY(0);}
-.work-info{padding:0.8rem 0 1rem;}
-.work-title{font-size:0.85rem;font-weight:700;margin-bottom:0.2rem;}
-.work-artist-name{font-size:0.7rem;color:rgba(255,255,255,0.35);margin-bottom:0.3rem;}
-.work-price{font-size:0.85rem;color:rgba(255,255,255,0.6);}
-.works-more-cta{margin-top:2rem;}
-.works-more-cta a{font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;cursor:none;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s,border-color 0.2s;}
-.works-more-cta a:hover{color:#fff;border-color:#fff;}
 #lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:10000;display:none;align-items:center;justify-content:center;cursor:none;}
 #lightbox.open{display:flex;}
 #lightbox-inner{display:grid;grid-template-columns:1fr 380px;max-width:1000px;width:90vw;gap:3rem;align-items:center;}
@@ -102,7 +81,7 @@
   .ai-preview-works:hover{opacity:0.7;}
 }
 @media(max-width:768px){
-  .exh-layout,.artists-layout{display:block;margin-top:60px;}
+  .artists-layout{display:block;margin-top:60px;}
   .artists-sidebar{position:fixed;top:60px;left:0;right:0;height:auto;flex-direction:row;overflow-x:auto;overflow-y:visible;border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);scrollbar-width:none;z-index:90;background:#0a0a0a;box-shadow:inset -60px 0 30px -10px #0a0a0a;}
   .artists-sidebar::-webkit-scrollbar{display:none;}
   .sidebar-hero{display:none;}
@@ -115,7 +94,6 @@
   .artist-profile-grid{grid-template-columns:1fr;gap:1.5rem;}
   .artist-photo-wrap img{aspect-ratio:3/4;}
   .artist-photo-caption{display:none;}
-  .works-grid{grid-template-columns:repeat(2,1fr);}
   #lightbox-inner{grid-template-columns:1fr;width:95vw;gap:1rem;}
   #lb-img{max-height:50vh;}
   .lightbox-info{padding:1rem 0;}
