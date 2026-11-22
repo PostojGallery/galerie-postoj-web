@@ -88,8 +88,8 @@ img{display:block;}
 #cw img{width:40px;display:block;filter:invert(1);}
 .cursor-on-light #cdot{background:#000;}
 .cursor-on-light #cw img{filter:none;}
-body > nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;z-index:1000;transition:background 0.3s;}
-body > nav.scrolled{background:rgba(10,10,10,0.95);backdrop-filter:blur(8px);}
+body > nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;z-index:1000;background:#0a0a0a;}
+body > nav.scrolled{background:#0a0a0a;}
 .nav-logo{font-size:1rem;font-weight:700;letter-spacing:0.04em;text-decoration:none;color:#fff;cursor:none;}
 .nav-links{list-style:none;display:flex;gap:2.5rem;}
 .nav-links a{font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,0.5);transition:color 0.2s;cursor:none;}
