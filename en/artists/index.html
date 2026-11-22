@@ -6,7 +6,7 @@
 <meta name="description" content="Artists of galerie POSTOJ — painters, illustrators and visual artists exhibiting in the Prague metro. Discover their stories and work.">
 <link rel="icon" type="image/png" href="../../images/favicon.png?v=7">
 <title>Artists first | galerie POSTOJ</title>
-<link rel="stylesheet" href="../../style.css?v=20261121aa">
+<link rel="stylesheet" href="../../style.css?v=20261122d">
 <style>
 .artists-layout{display:grid;grid-template-columns:340px 1fr;align-items:start;margin-top:60px;}
 .artists-sidebar{position:sticky;top:60px;height:calc(100vh - 60px);border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;}
@@ -56,13 +56,13 @@
   .ai-index-desktop{display:grid;grid-template-columns:2fr 1fr;gap:5rem;padding:var(--nav-h,72px) 2.5rem 6rem;align-items:start;}
   .ai-index-desktop.ai-has-open{grid-template-columns:1fr;}
   .ai-index-desktop.ai-has-open .ai-preview-col{display:none;}
-  .ai-names-col{padding-top:2.5rem;padding-bottom:50vh;}
+  .ai-names-col{padding-top:2.5rem;padding-bottom:2.5rem;}
   .ai-name-item{font-size:clamp(3rem,6vw,6rem);font-weight:700;letter-spacing:-0.045em;line-height:0.86;color:#555;cursor:none;transition:color 0.15s;display:block;padding-bottom:0.1em;}
   .ai-name-item:hover,.ai-name-item.ai-name-active{color:#fff;}
   .ai-name-item.ai-name-open{position:sticky;top:var(--nav-h,72px);background:#0a0a0a;z-index:10;padding:0.1em 0.2em 0.22em 0;margin-bottom:-0.12em;width:fit-content;}
   .ai-block{display:none;}
   .ai-block.ai-block-open{display:grid;grid-template-columns:repeat(4,1fr);column-gap:3rem;align-items:start;padding:2rem 0 4rem;}
-  .ai-block-portrait img{width:100%;height:auto;display:block;}
+  .ai-block-portrait img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;}
   .ai-block-text{grid-column:2/4;font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:400;line-height:1.3;color:#fff;}
   .ai-block-bio{margin-bottom:1.2em;}
   .ai-block-exh{margin-bottom:0.8em;}
@@ -73,7 +73,7 @@
   .ai-preview-col{position:sticky;top:var(--nav-h,72px);padding-top:2.5rem;}
   .ai-preview-panel{display:none;}
   .ai-preview-panel.ai-preview-active{display:block;}
-  .ai-preview-img{width:100%;height:auto;display:block;}
+  .ai-preview-img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;}
   .ai-preview-meta{margin-top:1.2rem;font-size:clamp(1.2rem,1.8vw,1.75rem);color:#fff;line-height:1.5;}
   .ai-preview-exh-link{color:#fff;text-decoration:underline;text-underline-offset:0.15em;cursor:none;transition:opacity 0.2s;}
   .ai-preview-exh-link:hover{opacity:0.7;}
@@ -233,51 +233,39 @@
   <div class="ai-preview-col">
     <div class="ai-preview-panel ai-preview-active" data-ai="patrik-antczak">
       <img class="ai-preview-img" src="../../images/patrik-antczak.webp" alt="Patrik Antczak">
-      <div class="ai-preview-meta"><a href="/en/exhibitions#exh-jaksemas" class="ai-preview-exh-link">Jak se máš?</a>, 2023</div>
     </div>
     <div class="ai-preview-panel" data-ai="anna-banytiuk">
       <img class="ai-preview-img" src="../../images/anna-banytiuk.webp" alt="Anna Banytiuk" loading="lazy">
-      <div class="ai-preview-meta"><a href="/en/exhibitions#exh-banytiuk" class="ai-preview-exh-link">Cesty do Neznáma</a>, 2025<a href="/en/collectors?artist=anna-banytiuk" class="ai-preview-works">Works for sale →</a></div>
     </div>
     <div class="ai-preview-panel" data-ai="denis-bastuga">
       <img class="ai-preview-img" src="../../images/denis-bastuga.webp" alt="Denis Baštuga" loading="lazy">
-      <div class="ai-preview-meta"><a href="/en/exhibitions#exh-pod-prahem" class="ai-preview-exh-link">Pod Prahem</a>, 2026<a href="/en/collectors?artist=denis-bastuga" class="ai-preview-works">Works for sale →</a></div>
     </div>
     <div class="ai-preview-panel" data-ai="jan-divis">
       <img class="ai-preview-img" src="../../images/jan-divis.webp" alt="Jan Diviš" loading="lazy">
-      <div class="ai-preview-meta"><a href="/en/exhibitions#exh-exit-wounds" class="ai-preview-exh-link">EXIT WOUNDS</a>, 2026<a href="/en/collectors?artist=jan-divis" class="ai-preview-works">Works for sale →</a></div>
     </div>
     <div class="ai-preview-panel" data-ai="martin-jachym">
       <img class="ai-preview-img" src="../../images/martin-photo.webp" alt="Martin Jáchym" loading="lazy">
-      <div class="ai-preview-meta"><a href="/en/exhibitions#exh-current" class="ai-preview-exh-link">Break The Pattern, Go To Therapy</a>, 2026<a href="/en/collectors?artist=martin-jachym" class="ai-preview-works">Works for sale →</a></div>
     </div>
     <div class="ai-preview-panel" data-ai="anina-menger">
       <img class="ai-preview-img" src="../../images/anina-menger.webp" alt="Anina Menger" loading="lazy">
-      <div class="ai-preview-meta"><a href="/en/exhibitions#exh-menger" class="ai-preview-exh-link">Střípky z Blízkého východu</a>, 2023</div>
     </div>
     <div class="ai-preview-panel" data-ai="jitka-petrasova">
       <img class="ai-preview-img" src="../../images/jitka-petrasova.webp" alt="Jitka Petrášová" loading="lazy">
-      <div class="ai-preview-meta"><a href="/en/exhibitions#exh-petrasova" class="ai-preview-exh-link">Už ani muk</a>, 2025</div>
     </div>
     <div class="ai-preview-panel" data-ai="ondrej-podestat">
       <img class="ai-preview-img" src="../../images/vaclav-podestat.webp" alt="Václav Podestát" loading="lazy">
-      <div class="ai-preview-meta"><a href="/en/exhibitions#exh-podestal" class="ai-preview-exh-link">Odložte si u pásu 26163</a>, 2025</div>
     </div>
     <div class="ai-preview-panel" data-ai="lucie-pouchova">
       <img class="ai-preview-img" src="../../images/lucie-pouchova.webp" alt="Lucie Pouchová" loading="lazy">
-      <div class="ai-preview-meta"><a href="/en/exhibitions#exh-pouchova" class="ai-preview-exh-link">Něžný Murčik</a>, 2024</div>
     </div>
     <div class="ai-preview-panel" data-ai="ondrej-syriste">
       <img class="ai-preview-img" src="../../images/ondrej-syriste.webp" alt="Ondřej Syřiště" loading="lazy">
-      <div class="ai-preview-meta"><a href="/en/exhibitions#exh-podestal" class="ai-preview-exh-link">Odložte si u pásu 26163</a>, 2025</div>
     </div>
     <div class="ai-preview-panel" data-ai="helena-tichackova">
       <img class="ai-preview-img" src="../../images/helena-tichackova.webp" alt="Helena Ticháčková" loading="lazy">
-      <div class="ai-preview-meta"><a href="/en/exhibitions#exh-drevaky" class="ai-preview-exh-link">Dřeváky a Medový Klobouk</a>, 2023</div>
     </div>
     <div class="ai-preview-panel" data-ai="adela-valcharova">
       <img class="ai-preview-img" src="../../images/adela-valcharova.webp" alt="Adéla Valchařová" loading="lazy">
-      <div class="ai-preview-meta"><a href="/en/exhibitions#exh-drevaky" class="ai-preview-exh-link">Dřeváky a Medový Klobouk</a>, 2023</div>
     </div>
   </div>
 </div>
@@ -740,8 +728,7 @@
   var items=document.querySelectorAll('.ai-name-item');
   var panels=document.querySelectorAll('.ai-preview-panel');
   var currentOpen=null;
-  var firstId=items.length?items[0].getAttribute('data-ai'):null;
-  var scrollActiveId=firstId;
+  var scrollActiveId=items.length?items[0].getAttribute('data-ai'):null;
   var hoverOverride=false;
 
   function activatePreview(id){
@@ -749,26 +736,18 @@
     panels.forEach(function(p){p.classList.toggle('ai-preview-active',p.getAttribute('data-ai')===id);});
   }
 
-  // IntersectionObserver: fires when a name crosses the viewport centre
-  if('IntersectionObserver' in window){
-    var observer=new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          var id=entry.target.getAttribute('data-ai');
-          scrollActiveId=id;
-          if(!currentOpen&&!hoverOverride){activatePreview(id);}
-        }
-      });
-    },{rootMargin:'-49% 0px -49% 0px',threshold:0});
-    items.forEach(function(item){observer.observe(item);});
+  function activateByScroll(){
+    var scrollTop=window.scrollY;
+    var maxScroll=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
+    var prog=Math.max(0,Math.min(1,scrollTop/maxScroll));
+    var idx=Math.round(prog*(items.length-1));
+    scrollActiveId=items[idx].getAttribute('data-ai');
   }
 
-  // First scroll after hover hands control back to scroll-driven active
   window.addEventListener('scroll',function(){
-    if(hoverOverride){
-      hoverOverride=false;
-      if(!currentOpen&&scrollActiveId)activatePreview(scrollActiveId);
-    }
+    hoverOverride=false;
+    activateByScroll();
+    if(!currentOpen)activatePreview(scrollActiveId);
   },{passive:true});
 
   function openBlock(id,doScroll){
@@ -781,7 +760,7 @@
     block.classList.add('ai-block-open');
     desktop.classList.add('ai-has-open');
     currentOpen=id;
-    try{history.replaceState(null,'','#'+id);}catch(e){}
+    try{history.replaceState(null,'',"#"+id);}catch(e){}
     if(doScroll){
       requestAnimationFrame(function(){
         var navH=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'))||72;
@@ -815,8 +794,9 @@
   var initHash=window.location.hash.slice(1);
   if(initHash&&document.querySelector('.ai-name-item[data-ai="'+initHash+'"]')){
     openBlock(initHash,true);
-  } else if(firstId){
-    activatePreview(firstId);
+  } else {
+    activateByScroll();
+    activatePreview(scrollActiveId);
   }
 })();
 </script>
