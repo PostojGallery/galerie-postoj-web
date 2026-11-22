@@ -6,7 +6,7 @@
 <meta name="description" content="Original artworks from galerie POSTOJ exhibitions. Support young Czech artists and become part of the story of contemporary art.">
 <link rel="icon" type="image/png" href="../../images/favicon.png?v=7">
 <title>Become part of the story | galerie POSTOJ</title>
-<link rel="stylesheet" href="../../style.css?v=20261122h">
+<link rel="stylesheet" href="../../style.css?v=20261122i">
 <style>
 .collectors-hero{margin-top:60px;padding:2rem 2.5rem 1.5rem;}
 .collectors-hero-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1rem;}
@@ -114,6 +114,14 @@
   .filter-trigger.has-active{color:#fff;}
   .filter-arrow{font-size:0.7em;opacity:1;}
   .collectors-note{border-top:none;}
+  .work-img{background:#161616;}
+  .img-main{object-fit:contain;}
+  .work-card[data-technika="tricko"] .img-main{object-fit:cover;}
+  .work-title,.work-artist-name,.work-price{font-size:clamp(0.9rem,1.35vw,1.3125rem);color:#fff;line-height:1.25;margin-bottom:0;}
+  .work-title{font-weight:700;}
+  .work-artist-name,.work-price{font-weight:400;}
+  .work-buy-label{display:none;}
+  .work-card:hover .work-title{text-decoration:underline;text-underline-offset:0.15em;}
 }
 </style>
 </head>
