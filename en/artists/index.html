@@ -6,7 +6,7 @@
 <meta name="description" content="Artists of galerie POSTOJ — painters, illustrators and visual artists exhibiting in the Prague metro. Discover their stories and work.">
 <link rel="icon" type="image/png" href="../../images/favicon.png?v=7">
 <title>Artists first | galerie POSTOJ</title>
-<link rel="stylesheet" href="../../style.css?v=20261122d">
+<link rel="stylesheet" href="../../style.css?v=20261122e">
 <style>
 .artists-layout{display:grid;grid-template-columns:340px 1fr;align-items:start;margin-top:60px;}
 .artists-sidebar{position:sticky;top:60px;height:calc(100vh - 60px);border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;}
@@ -58,7 +58,7 @@
   .ai-index-desktop.ai-has-open .ai-preview-col{display:none;}
   .ai-names-col{padding-top:2.5rem;padding-bottom:2.5rem;}
   .ai-name-item{font-size:clamp(3rem,6vw,6rem);font-weight:700;letter-spacing:-0.045em;line-height:0.86;color:#555;cursor:none;transition:color 0.15s;display:block;padding-bottom:0.1em;}
-  .ai-name-item:hover,.ai-name-item.ai-name-active{color:#fff;}
+  .ai-name-item.ai-name-active{color:#fff;}
   .ai-name-item.ai-name-open{position:sticky;top:var(--nav-h,72px);background:#0a0a0a;z-index:10;padding:0.1em 0.2em 0.22em 0;margin-bottom:-0.12em;width:fit-content;}
   .ai-block{display:none;}
   .ai-block.ai-block-open{display:grid;grid-template-columns:repeat(4,1fr);column-gap:3rem;align-items:start;padding:2rem 0 4rem;}
@@ -70,7 +70,7 @@
   .ai-block-exh-link:hover{opacity:0.7;}
   .ai-block-works{display:block;margin-top:0.6em;font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:700;color:#fff;text-decoration:none;cursor:none;transition:opacity 0.2s;}
   .ai-block-works:hover{opacity:0.7;}
-  .ai-preview-col{position:sticky;top:var(--nav-h,72px);padding-top:2.5rem;}
+  .ai-preview-col{position:sticky;top:var(--nav-h,72px);padding-top:calc(2.5rem + 0.085 * clamp(3rem,6vw,6rem));}
   .ai-preview-panel{display:none;}
   .ai-preview-panel.ai-preview-active{display:block;}
   .ai-preview-img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;}
