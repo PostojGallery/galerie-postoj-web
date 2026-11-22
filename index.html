@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" href="images/favicon.png?v=7">
 <title>Umění v metru | galerie POSTOJ</title>
 <link rel="preload" as="image" href="images/hero-bg.webp" fetchpriority="high">
-<link rel="stylesheet" href="style.css?v=20261122j">
+<link rel="stylesheet" href="style.css?v=20261122k">
 <style>
 #hero{position:relative;height:100vh;height:100svh;height:calc(var(--ivh,1vh)*100);overflow:hidden;display:flex;align-items:center;justify-content:center;}
 #hero-bg{position:absolute;inset:0;}
@@ -65,7 +65,7 @@
 .fs-content{padding:0.3rem 2rem 0 2rem;display:flex;flex-direction:column;justify-content:flex-start;align-self:stretch;}
 .fs-text{font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.85;color:rgba(255,255,255,0.5);margin-bottom:0.7rem;font-style:italic;border-left:2px solid rgba(255,255,255,0.12);padding-left:1.5rem;}
 .fs-text-mob{display:none;}
-.fs-headline{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;line-height:0.92;letter-spacing:-0.03em;color:#fff;padding:0 3rem 1.5rem;}
+.fs-headline{padding:0 3rem;}
 .fs-sig{height:50px;width:auto;filter:invert(1);opacity:0.6;align-self:flex-start;margin-left:calc(1.5rem + 2px);}
 .fs-desktop-cta{display:inline-block;margin-top:auto;align-self:flex-start;}
 .fs-mobile-cta{display:none;}
@@ -88,7 +88,7 @@
   .fs-grid{align-items:stretch;}
   .fs-photo-col img{flex:1;aspect-ratio:unset;min-height:0;}
   .fs-content{padding:0 0 0 1rem;justify-content:space-between;}
-  .fs-headline{font-size:clamp(1.8rem,9vw,2.5rem);padding:0 1.2rem 1.2rem;}
+  .fs-headline{padding:0 1.2rem;}
   .fs-text-lead{display:none;}
   .fs-text{font-size:1rem;margin-bottom:1.2rem;}
   .fs-text-desk{display:none;}
@@ -110,7 +110,7 @@
 .oc-stick{width:130px;height:auto;filter:invert(1);}
 .oc-main{padding:2.5rem 3rem 2.5rem 1rem;}
 .oc-eyebrow{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:0.6rem;}
-.oc-title{font-size:clamp(1.5rem,3vw,2.5rem);font-weight:900;line-height:0.95;letter-spacing:-0.03em;margin-bottom:0.8rem;}
+.oc-title{}
 .oc-desc{font-size:1rem;line-height:1.7;color:rgba(255,255,255,0.4);max-width:400px;}
 .oc-action{padding:2.5rem 3rem;}
 @media(max-width:768px){
@@ -152,7 +152,7 @@
   /* Founder section typography */
   .fs-text{font-size:clamp(1.2rem,1.8vw,1.75rem);line-height:1.3;color:rgba(255,255,255,0.6);font-style:normal;border-left:none;padding-left:0;margin-bottom:0;}
   .fs-text-lead{font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:700;color:#fff;line-height:1.3;font-style:normal;}
-  .fs-sig{margin-left:0;}
+  .fs-sig{margin-left:0;margin-top:1.5rem;}
   .fs-desktop-cta{background:#fff;color:#000;font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:700;line-height:1.3;padding:0.4em 0.8em;text-decoration:none;letter-spacing:0;text-transform:none;cursor:none;transition:background 0.2s,color 0.2s;margin-top:1.5rem;align-self:flex-start;display:inline-block;}
   .fs-desktop-cta:hover{background:#0a0a0a;color:#fff;outline:1px solid #fff;}
   /* Founder photo full-height */
@@ -330,7 +330,7 @@
 })();
 </script>
 <section class="founder-stmt">
-  <div class="fs-headline">Umění v metru.</div>
+  <div class="fs-headline page-section-h">Umění v metru.</div>
   <div class="fs-grid">
     <div class="fs-photo-col rv">
       <a href="/about" style="display:block;flex:1;min-height:0;"><img loading="lazy" src="images/about-us/filip-kolar.webp" alt="Filip Kolář" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"></a>
@@ -401,7 +401,7 @@
 <style>
 .artists-section{padding:2rem 3rem 3rem;}
 .artists-tag{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:0.9rem;}
-.artists-heading{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:0.9;letter-spacing:-0.04em;color:#fff;margin-bottom:1.5rem;}
+.artists-heading{}
 .artists-body{font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.85;color:rgba(255,255,255,0.4);margin-bottom:0;}
 .artists-top{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-bottom:2.5rem;}
 .artists-quotes-col{padding-left:2rem;}
@@ -428,7 +428,7 @@
 <section class="artists-section rv">
   <div class="artists-top">
     <div class="artists-text-col">
-      <div class="artists-heading">Umělci na prvním místě.</div>
+      <div class="artists-heading page-section-h">Umělci na prvním místě.</div>
       <p class="artists-body">Galerie POSTOJ stojí na lidech, kteří ji tvoří. Na jejich práci, odvaze, nedokonalosti i rozhodnutích. U nás táhneme totiž všichni za jeden provaz. Věříme v upřímnost, otevřenost a férovost. Každý umělec má prostor pro vlastní koncept. Protože výstavu netvoří samy galerie. Výstavu tvoří umělci. A my jsme tu pro to, abychom je maximálně podpořili.</p>
       <a href="/artists" class="btn" style="margin-top:1.8rem;display:inline-block;">Poznej umělce</a>
     </div>
@@ -494,7 +494,7 @@
     <div class="oc-stick-col"><img width="200" loading="lazy" class="oc-stick" src="images/pointing.webp" alt=""></div>
     <div class="oc-main">
       <div class="oc-eyebrow">Open Call</div>
-      <div class="oc-title">Pošli svoji práci.</div>
+      <div class="oc-title page-section-h">Pošli svoji práci.</div>
       <p class="oc-desc">Hledáme to, co provokuje. Ne dekoraci.</p>
     </div>
     <div class="oc-action"><a href="/open-call" class="btn">Jdu do toho</a></div>
