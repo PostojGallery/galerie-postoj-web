@@ -6,7 +6,7 @@
 <meta name="description" content="Artists of galerie POSTOJ — painters, illustrators and visual artists exhibiting in the Prague metro. Discover their stories and work.">
 <link rel="icon" type="image/png" href="../../images/favicon.png?v=7">
 <title>Artists first | galerie POSTOJ</title>
-<link rel="stylesheet" href="../../style.css?v=20261121x">
+<link rel="stylesheet" href="../../style.css?v=20261121y">
 <style>
 .exh-layout,.artists-layout{display:grid;grid-template-columns:340px 1fr;align-items:start;margin-top:60px;}
 .artists-sidebar,.exh-sidebar{position:sticky;top:60px;height:calc(100vh - 60px);border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;}
@@ -75,9 +75,22 @@
 @media(min-width:769px){
   .artists-layout{display:none!important;}
   .ai-index-desktop{display:grid;grid-template-columns:2fr 1fr;gap:5rem;padding:var(--nav-h,72px) 2.5rem 6rem;align-items:start;}
+  .ai-index-desktop.ai-has-open{grid-template-columns:1fr;}
+  .ai-index-desktop.ai-has-open .ai-preview-col{display:none;}
   .ai-names-col{padding-top:2.5rem;}
   .ai-name-item{font-size:clamp(3rem,6vw,6rem);font-weight:700;letter-spacing:-0.045em;line-height:0.86;color:#555;cursor:none;transition:color 0.15s;display:block;padding-bottom:0.1em;}
   .ai-name-item:hover,.ai-name-item.ai-name-active{color:#fff;}
+  .ai-name-item.ai-name-open{position:sticky;top:var(--nav-h,72px);background:#0a0a0a;z-index:10;padding:0.1em 0.2em 0.22em 0;margin-bottom:-0.12em;width:fit-content;}
+  .ai-block{display:none;}
+  .ai-block.ai-block-open{display:grid;grid-template-columns:repeat(4,1fr);column-gap:3rem;align-items:start;padding:2rem 0 4rem;}
+  .ai-block-portrait img{width:100%;height:auto;display:block;}
+  .ai-block-text{grid-column:2/4;font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:400;line-height:1.3;color:#fff;}
+  .ai-block-bio{margin-bottom:1.2em;}
+  .ai-block-exh{margin-bottom:0.8em;}
+  .ai-block-exh-link{color:#fff;text-decoration:underline;text-underline-offset:0.15em;cursor:none;transition:opacity 0.2s;}
+  .ai-block-exh-link:hover{opacity:0.7;}
+  .ai-block-works{display:block;margin-top:0.6em;font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:700;color:#fff;text-decoration:none;cursor:none;transition:opacity 0.2s;}
+  .ai-block-works:hover{opacity:0.7;}
   .ai-preview-col{position:sticky;top:var(--nav-h,72px);padding-top:2.5rem;}
   .ai-preview-panel{display:none;}
   .ai-preview-panel.ai-preview-active{display:block;}
@@ -114,18 +127,130 @@
 <nav><a href="/en" class="nav-logo">galerie POSTOJ</a><button class="nav-burger" id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button><ul class="nav-links"><li><a href="/en/artists" class=active>Artists</a></li><li><a href="/en/exhibitions">Exhibitions</a></li><li><a href="/en/collectors">Shop</a></li><li><a href="/en/about">About</a></li><li class="nav-lang"><a href="/artists">CZ</a></li></ul></nav>
 <div class="ai-index-desktop">
   <div class="ai-names-col">
-    <div class="ai-name-item ai-name-active" data-ai="patrik-antczak">Patrik Antczak</div>
-    <div class="ai-name-item" data-ai="anna-banytiuk">Anna Banytiuk</div>
-    <div class="ai-name-item" data-ai="denis-bastuga">Denis Baštuga</div>
-    <div class="ai-name-item" data-ai="jan-divis">Jan Diviš</div>
-    <div class="ai-name-item" data-ai="martin-jachym">Martin Jáchym</div>
-    <div class="ai-name-item" data-ai="anina-menger">Anina Menger</div>
-    <div class="ai-name-item" data-ai="jitka-petrasova">Jitka Petrášová</div>
-    <div class="ai-name-item" data-ai="ondrej-podestat">Václav Podestát</div>
-    <div class="ai-name-item" data-ai="lucie-pouchova">Lucie Pouchová</div>
-    <div class="ai-name-item" data-ai="ondrej-syriste">Ondřej Syřiště</div>
-    <div class="ai-name-item" data-ai="helena-tichackova">Helena Ticháčková</div>
-    <div class="ai-name-item" data-ai="adela-valcharova">Adéla Valchařová</div>
+    <div class="ai-artist-row">
+      <div class="ai-name-item ai-name-active" data-ai="patrik-antczak">Patrik Antczak</div>
+      <div class="ai-block" data-ai="patrik-antczak">
+        <div class="ai-block-portrait"><img src="../../images/patrik-antczak.webp" alt="Patrik Antczak"></div>
+        <div class="ai-block-text">
+          <p class="ai-block-bio">Patrik Antczak is a Czech illustrator and graphic designer. He studied at art schools in the Czech Republic and completed an internship in Warsaw under Polish artist Zygmunt Januszewski. His work is characterised by playfulness, bold colour, and an ability to capture atmosphere and emotion — often combining pencil drawing with digital painting. The books he has illustrated have won numerous awards, including the prestigious Golden Ribbon.</p>
+          <div class="ai-block-exh"><a href="/en/exhibitions#exh-jaksemas" class="ai-block-exh-link">Jak se máš?</a>, 21. 9. – 21. 11. 2023</div>
+        </div>
+      </div>
+    </div>
+    <div class="ai-artist-row">
+      <div class="ai-name-item" data-ai="anna-banytiuk">Anna Banytiuk</div>
+      <div class="ai-block" data-ai="anna-banytiuk">
+        <div class="ai-block-portrait"><img src="../../images/anna-banytiuk.webp" alt="Anna Banytiuk"></div>
+        <div class="ai-block-text">
+          <p class="ai-block-bio">Anna Banytiuk creates figurative paintings full of emotion and quiet tension. In her series Journeys into the Unknown she explores themes of identity, movement, and the search for a place in the world.</p>
+          <div class="ai-block-exh"><a href="/en/exhibitions#exh-banytiuk" class="ai-block-exh-link">Cesty do Neznáma</a>, 1. 8. – 24. 10. 2025</div>
+          <a href="/en/collectors?artist=anna-banytiuk" class="ai-block-works">Works for sale →</a>
+        </div>
+      </div>
+    </div>
+    <div class="ai-artist-row">
+      <div class="ai-name-item" data-ai="denis-bastuga">Denis Baštuga</div>
+      <div class="ai-block" data-ai="denis-bastuga">
+        <div class="ai-block-portrait"><img src="../../images/denis-bastuga.webp" alt="Denis Baštuga"></div>
+        <div class="ai-block-text">
+          <p class="ai-block-bio">Denis Baštuga (*1994) is a graduate of Painting Studio 2 at Prague's Academy of Fine Arts (AVU). His work reflects the unique experience of living on a farm, where he dedicates himself to rational husbandry and the breeding of traditional livestock breeds. His work is characterized by expressive layering of nature motifs and abstract structures in pastel tones and comic book-inflected aesthetic. It addresses the themes of farm life, the connection between humans and nature, and the interconnectedness of their cycles.</p>
+          <div class="ai-block-exh"><a href="/en/exhibitions#exh-pod-prahem" class="ai-block-exh-link">Pod Prahem — Serpentes protectores</a>, 19&nbsp;Aug – 4&nbsp;Nov&nbsp;2026</div>
+          <a href="/en/collectors?artist=denis-bastuga" class="ai-block-works">Works for sale →</a>
+        </div>
+      </div>
+    </div>
+    <div class="ai-artist-row">
+      <div class="ai-name-item" data-ai="jan-divis">Jan Diviš</div>
+      <div class="ai-block" data-ai="jan-divis">
+        <div class="ai-block-portrait"><img src="../../images/jan-divis.jpg" alt="Jan Diviš"></div>
+        <div class="ai-block-text">
+          <p class="ai-block-bio">Jan Diviš is a Czech graphic designer, illustrator and student at the Academy of Arts, Architecture and Design in Prague (UMPRUM). His work combines intricate illustrations, bold colours and experimental typography. He draws inspiration from underground culture, music, comics and contemporary graphic design. Through elaborate compositions and imaginative characters, he creates a distinctive visual world that exists at the intersection of illustration, graphic design and visual storytelling.</p>
+          <div class="ai-block-exh"><a href="/en/exhibitions#exh-exit-wounds" class="ai-block-exh-link">EXIT WOUNDS</a>, 16 November 2026, opening 18:00</div>
+          <a href="/en/collectors?artist=jan-divis" class="ai-block-works">Works for sale →</a>
+        </div>
+      </div>
+    </div>
+    <div class="ai-artist-row">
+      <div class="ai-name-item" data-ai="martin-jachym">Martin Jáchym</div>
+      <div class="ai-block" data-ai="martin-jachym">
+        <div class="ai-block-portrait"><img src="../../images/martin-photo.jpg" alt="Martin Jáchym"></div>
+        <div class="ai-block-text">
+          <p class="ai-block-bio">Martin Jáchym is a young Czech artist whose work opens up themes of mental health, social patterns, and emotion. His installation at galerie POSTOJ was created as a response to the pressures of modern society, where admitting weakness or asking for help can be difficult.</p>
+          <div class="ai-block-exh"><a href="/en/exhibitions#exh-current" class="ai-block-exh-link">Break The Pattern, Go To Therapy</a>, 7. 1. – 10. 8. 2026</div>
+          <a href="/en/collectors?artist=martin-jachym" class="ai-block-works">Works for sale →</a>
+        </div>
+      </div>
+    </div>
+    <div class="ai-artist-row">
+      <div class="ai-name-item" data-ai="anina-menger">Anina Menger</div>
+      <div class="ai-block" data-ai="anina-menger">
+        <div class="ai-block-portrait"><img src="../../images/anina-menger.webp" alt="Anina Menger"></div>
+        <div class="ai-block-text">
+          <p class="ai-block-bio">Anina Menger kept returning to Israel after her internship there. In 2022 she settled in the desert metropolis of Tel Aviv, where she now works at the local Czech Centre. Her paintings are often inspired by her surroundings, and she absorbs the vibrant atmosphere of the city during her daily commute — most often by bike.</p>
+          <div class="ai-block-exh"><a href="/en/exhibitions#exh-menger" class="ai-block-exh-link">Střípky z Blízkého východu</a>, 1. 6. – 30. 7. 2023</div>
+        </div>
+      </div>
+    </div>
+    <div class="ai-artist-row">
+      <div class="ai-name-item" data-ai="jitka-petrasova">Jitka Petrášová</div>
+      <div class="ai-block" data-ai="jitka-petrasova">
+        <div class="ai-block-portrait"><img src="../../images/jitka-petrasova.webp" alt="Jitka Petrášová"></div>
+        <div class="ai-block-text">
+          <p class="ai-block-bio">Jitka Petrášová graduated from the Department of Art Education at the University of South Bohemia in České Budějovice, and also from the Academy of Fine Arts in Prague — Studio of Painting 1 (2019–2022) and Painting 4 (2023–2025). Painter, illustrator, graphic artist, and fashion designer; owner of a small (currently dormant) hand-made fashion label Odsvetlusky and the miniature book publisher Knižnice Kodiak.</p>
+          <div class="ai-block-exh"><a href="/en/exhibitions#exh-petrasova" class="ai-block-exh-link">Už ani muk</a>, 11. 3. – 30. 6. 2025</div>
+        </div>
+      </div>
+    </div>
+    <div class="ai-artist-row">
+      <div class="ai-name-item" data-ai="ondrej-podestat">Václav Podestát</div>
+      <div class="ai-block" data-ai="ondrej-podestat">
+        <div class="ai-block-portrait"><img src="../../images/vaclav-podestat.webp" alt="Václav Podestát"></div>
+        <div class="ai-block-text">
+          <p class="ai-block-bio">Václav Podestát graduated from the Studio of Creation in Public Space at the Faculty of Art and Architecture at the Technical University of Liberec, under Richard Loskot and Jaroslav Prokeš. His practice has long focused on the relationship between people and public space, examining how visual and informational environments shape our everyday experience of the city.</p>
+          <div class="ai-block-exh"><a href="/en/exhibitions#exh-podestal" class="ai-block-exh-link">Odložte si u pásu 26163</a>, 5&nbsp;Nov&nbsp;2025 – 7&nbsp;Jan&nbsp;2026</div>
+        </div>
+      </div>
+    </div>
+    <div class="ai-artist-row">
+      <div class="ai-name-item" data-ai="lucie-pouchova">Lucie Pouchová</div>
+      <div class="ai-block" data-ai="lucie-pouchova">
+        <div class="ai-block-portrait"><img src="../../images/lucie-pouchova.webp" alt="Lucie Pouchová"></div>
+        <div class="ai-block-text">
+          <p class="ai-block-bio">Lucie Pouchová is a painter who weaves together the intimate worlds of people and animals. She studies painting at the Academy of Fine Arts in Prague; her background also spans social pedagogy and social work, where she earned a master's degree at Charles University and continues to support lonely people through the Salvation Army. This experience strongly shapes her artistic approach — her paintings explore themes of relationships, communication, and the search for closeness. Animals here often serve as mediators of emotion and understanding.</p>
+          <div class="ai-block-exh"><a href="/en/exhibitions#exh-pouchova" class="ai-block-exh-link">Něžný Murčik</a>, 27. 2. – 15. 5. 2024</div>
+        </div>
+      </div>
+    </div>
+    <div class="ai-artist-row">
+      <div class="ai-name-item" data-ai="ondrej-syriste">Ondřej Syřiště</div>
+      <div class="ai-block" data-ai="ondrej-syriste">
+        <div class="ai-block-portrait"><img src="../../images/ondrej-syriste.webp" alt="Ondřej Syřiště"></div>
+        <div class="ai-block-text">
+          <p class="ai-block-bio">Ondřej Syřiště is a student at the Studio of Spatial Creation at the Faculty of Fine Arts at Brno University of Technology, under Jiří Příhoda and Pavel Korbička. His work sits at the intersection of installation and conceptual art, examining the mechanisms through which contemporary visual culture and the media landscape act upon us.</p>
+          <div class="ai-block-exh"><a href="/en/exhibitions#exh-podestal" class="ai-block-exh-link">Odložte si u pásu 26163</a>, 5&nbsp;Nov&nbsp;2025 – 7&nbsp;Jan&nbsp;2026</div>
+        </div>
+      </div>
+    </div>
+    <div class="ai-artist-row">
+      <div class="ai-name-item" data-ai="helena-tichackova">Helena Ticháčková</div>
+      <div class="ai-block" data-ai="helena-tichackova">
+        <div class="ai-block-portrait"><img src="../../images/helena-tichackova.webp" alt="Helena Ticháčková"></div>
+        <div class="ai-block-text">
+          <p class="ai-block-bio">Helena Ticháčková studied at the School of Arts and Crafts in Jihlava-Heleníne — majoring in Painting and Illustration. She is now part of the Painting 1 studio at the Faculty of Fine Arts in Brno, under Vasil Artamonov and Marie Štindlová.</p>
+          <div class="ai-block-exh"><a href="/en/exhibitions#exh-drevaky" class="ai-block-exh-link">Dřeváky a Medový Klobouk</a>, 27. 3. – 7. 5. 2023</div>
+        </div>
+      </div>
+    </div>
+    <div class="ai-artist-row">
+      <div class="ai-name-item" data-ai="adela-valcharova">Adéla Valchařová</div>
+      <div class="ai-block" data-ai="adela-valcharova">
+        <div class="ai-block-portrait"><img src="../../images/adela-valcharova.webp" alt="Adéla Valchařová"></div>
+        <div class="ai-block-text">
+          <p class="ai-block-bio">Adéla Valchařová studied at the Secondary School of Art in Ostrava, majoring in Painting. She is currently a student at the Faculty of Fine Arts in Brno under Vasil Artamonov and Marie Štindlová in the Painting 1 studio. In spring 2022 she completed an internship in Cluj, Romania. In her past and current work she draws on fantastical scenes from memories that gradually fade and reshape into a new reality.</p>
+          <div class="ai-block-exh"><a href="/en/exhibitions#exh-drevaky" class="ai-block-exh-link">Dřeváky a Medový Klobouk</a>, 27. 3. – 7. 5. 2023</div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="ai-preview-col">
     <div class="ai-preview-panel ai-preview-active" data-ai="patrik-antczak">
@@ -610,6 +735,7 @@
   document.addEventListener('keydown',function(e){if(e.key==='Escape')cl();});
 })();
 (function(){
+  if(window.innerWidth>768)return;
   var hash=window.location.hash;
   if(!hash)return;
   var target=document.querySelector('.artist-section'+hash);
@@ -632,15 +758,60 @@
 })();
 (function(){
   if(window.innerWidth<=768)return;
+  var desktop=document.querySelector('.ai-index-desktop');
   var items=document.querySelectorAll('.ai-name-item');
+  var blocks=document.querySelectorAll('.ai-block');
   var panels=document.querySelectorAll('.ai-preview-panel');
-  function activate(id){
+  var currentOpen=null;
+  var firstId=items.length?items[0].getAttribute('data-ai'):null;
+  function activatePreview(id){
     items.forEach(function(i){i.classList.toggle('ai-name-active',i.getAttribute('data-ai')===id);});
     panels.forEach(function(p){p.classList.toggle('ai-preview-active',p.getAttribute('data-ai')===id);});
   }
+  function openBlock(id,doScroll){
+    if(currentOpen&&currentOpen!==id)closeBlock(currentOpen,false);
+    var item=document.querySelector('.ai-name-item[data-ai="'+id+'"]');
+    var block=document.querySelector('.ai-block[data-ai="'+id+'"]');
+    if(!item||!block)return;
+    items.forEach(function(i){i.classList.remove('ai-name-active');});
+    item.classList.add('ai-name-active','ai-name-open');
+    block.classList.add('ai-block-open');
+    desktop.classList.add('ai-has-open');
+    currentOpen=id;
+    try{history.replaceState(null,'','#'+id);}catch(e){}
+    if(doScroll){
+      requestAnimationFrame(function(){
+        var navH=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'))||72;
+        var top=item.getBoundingClientRect().top+window.scrollY-navH-8;
+        window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
+      });
+    }
+  }
+  function closeBlock(id,restorePreview){
+    var item=document.querySelector('.ai-name-item[data-ai="'+id+'"]');
+    var block=document.querySelector('.ai-block[data-ai="'+id+'"]');
+    if(item){item.classList.remove('ai-name-open','ai-name-active');}
+    if(block){block.classList.remove('ai-block-open');}
+    desktop.classList.remove('ai-has-open');
+    currentOpen=null;
+    try{history.replaceState(null,'',window.location.pathname);}catch(e){}
+    if(restorePreview!==false&&firstId){activatePreview(firstId);}
+  }
   items.forEach(function(item){
-    item.addEventListener('mouseenter',function(){activate(item.getAttribute('data-ai'));});
+    item.addEventListener('click',function(){
+      var id=item.getAttribute('data-ai');
+      if(currentOpen===id){closeBlock(id,true);}else{openBlock(id,false);}
+    });
+    item.addEventListener('mouseenter',function(){
+      if(!currentOpen)activatePreview(item.getAttribute('data-ai'));
+    });
   });
+  var initHash=window.location.hash.slice(1);
+  if(initHash&&document.querySelector('.ai-name-item[data-ai="'+initHash+'"]')){
+    openBlock(initHash,true);
+  } else if(firstId){
+    activatePreview(firstId);
+  }
 })();
 </script>
 </body>
