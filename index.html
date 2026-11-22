@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" href="images/favicon.png?v=7">
 <title>Umění v metru | galerie POSTOJ</title>
 <link rel="preload" as="image" href="images/hero-bg.webp" fetchpriority="high">
-<link rel="stylesheet" href="style.css?v=20261122g">
+<link rel="stylesheet" href="style.css?v=20261122h">
 <style>
 #hero{position:relative;height:100vh;height:100svh;height:calc(var(--ivh,1vh)*100);overflow:hidden;display:flex;align-items:center;justify-content:center;}
 #hero-bg{position:absolute;inset:0;}
@@ -26,12 +26,13 @@
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.2;}}
 .current-exh-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:1.5rem;display:inline-flex;align-items:center;gap:0.5rem;}
 .current-exh-label::before{content:'';width:6px;height:6px;border-radius:50%;background:#fff;animation:pulse 2s ease-in-out infinite;flex-shrink:0;}
-.current-exh-artist{font-size:clamp(3rem,7vw,6.5rem);font-weight:900;line-height:0.88;letter-spacing:-0.04em;margin-bottom:1rem;}
-.current-exh-title{font-size:1.1rem;font-weight:300;color:rgba(255,255,255,0.5);margin-bottom:0.5rem;}
-a.current-exh-title{text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:1px;transition:color 0.2s,border-color 0.2s;cursor:none;}
-a.current-exh-title:hover{color:#fff;border-color:#fff;}
-.current-exh-date{font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.75;color:rgba(255,255,255,0.9);margin-bottom:1.8rem;}
-.current-exh-desc{font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.75;color:rgba(255,255,255,0.5);max-width:380px;margin-bottom:2.5rem;}
+.current-exh-artist{font-size:clamp(3rem,7vw,6.5rem);font-weight:900;line-height:0.88;letter-spacing:-0.04em;margin-bottom:0.75rem;display:block;text-decoration:none;color:#fff;cursor:none;}
+.current-exh-title{font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:400;color:#fff;text-decoration:underline;text-underline-offset:3px;margin-bottom:0.75rem;display:block;cursor:none;transition:color 0.2s;}
+.current-exh-title:hover{color:rgba(255,255,255,0.6);}
+.current-exh-date{font-size:clamp(1.2rem,1.8vw,1.75rem);line-height:1.3;color:rgba(255,255,255,0.6);margin-bottom:1.5rem;}
+.current-exh-desc{font-size:1.1rem;line-height:1.5;color:rgba(255,255,255,0.6);max-width:380px;margin-bottom:2rem;}
+.exh-info-cta{font-size:clamp(1.2rem,1.8vw,1.75rem)!important;font-weight:700!important;line-height:1.3!important;padding:0.4em 0.8em!important;letter-spacing:0!important;text-transform:none!important;}
+.exh-info-cta:hover{background:#0a0a0a!important;color:#fff!important;outline:1px solid #fff;}
 .desc-mob{display:none;}
 .current-exh-video{position:relative;background:transparent;display:flex;align-items:center;justify-content:center;cursor:none;grid-column:2;grid-row:1;}
 .current-exh>.photo-strip-outer{grid-column:1/-1;grid-row:2;margin-right:-3rem;}
@@ -171,11 +172,11 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 </section>
 <section class="current-exh">
   <div class="current-exh-info rv">
-    <div class="current-exh-artist">Jan<br>Diviš</div>
-    <a href="/exhibitions#exh-exit-wounds" class="current-exh-title">EXIT WOUNDS</a>
-    <div class="current-exh-date" style="margin-bottom:0.75rem;">16. listopadu 2026, vernisáž 18:00</div>
-    <p class="current-exh-desc"><span class="desc-desk">Galerie POSTOJ představuje novou výstavu českého ilustrátora a grafika Jana Diviše, studenta Vysoké školy uměleckoprůmyslové v Praze (UMPRUM). Jeho tvorba propojuje detailní ilustrace, výrazné barvy a experimentální typografii.</span><span class="desc-mob">Český ilustrátor a grafik, student UMPRUM. Detailní ilustrace, výrazné barvy a experimentální typografie.</span></p>
-    <a href="/collectors?artist=jan-divis" class="btn exh-info-cta">Printy k prodeji</a>
+    <a href="/exhibitions#exh-exit-wounds" class="current-exh-artist">EXIT WOUNDS</a>
+    <a href="/artists#jan-divis" class="current-exh-title">Jan Diviš</a>
+    <div class="current-exh-date" style="margin-bottom:0.75rem;">16. listopadu 2026, vernišáž 18:00</div>
+    <p class="current-exh-desc"><span class="desc-desk">Galerie POSTOJ představuje novou výstavu českého ilustrátora a grafika Jana Diviše, studenta Vysoké školy uměleckoprmyslové v Praze (UMPRUM). Jeho tvorba propojuje detailní ilustrace, výrazné barvy a experimentální typografii.</span><span class="desc-mob">Český ilustrátor a grafik, student UMPRUM. Detailní ilustrace, výrazné barvy a experimentální typografie.</span></p>
+    <a href="/collectors?artist=jan-divis" class="btn exh-info-cta">Díla k prodeji →</a>
   </div>
   <div class="current-exh-shop-outer">
     <div class="home-shop-track">
