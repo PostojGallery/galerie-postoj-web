@@ -6,7 +6,7 @@
 <meta name="description" content="Originální umělecká díla z výstav galerie POSTOJ. Podpořte mladé české umělce a staňte se součástí příběhu současného umění.">
 <link rel="icon" type="image/png" href="../images/favicon.png?v=7">
 <title>Příběh pokračuje s vámi | galerie POSTOJ</title>
-<link rel="stylesheet" href="../style.css?v=20261122t">
+<link rel="stylesheet" href="../style.css?v=20261122u">
 <style>
 .collectors-hero{margin-top:60px;padding:2rem 2.5rem 1.5rem;}
 .collectors-hero-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1rem;}
@@ -132,9 +132,15 @@
   .lightbox-artist a:hover{color:rgba(255,255,255,0.6);}
   .lightbox-title{font-size:clamp(2.25rem,3vw,3rem);font-weight:700;letter-spacing:-0.045em;line-height:1;margin-bottom:1rem;text-transform:none;}
   .lb-year{color:rgba(255,255,255,0.45);font-weight:400;}
-  .lightbox-meta{font-size:clamp(1.2rem,1.8vw,1.75rem);line-height:1.3;color:rgba(255,255,255,0.6);margin-bottom:1rem;}
-  .lightbox-price{font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:700;color:#fff;margin-bottom:1.5rem;}
-  #lb-mailto{background:#fff;color:#000;font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:700;line-height:1.3;padding:0.4em 0.8em;text-decoration:none;letter-spacing:0;text-transform:none;font-family:inherit;}
+  .lightbox-meta{font-size:clamp(1.2rem,1.8vw,1.75rem);line-height:1.3;color:rgba(255,255,255,0.6);margin-bottom:0;}
+  .lightbox-price{font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:700;color:#fff;margin-top:0.8rem;margin-bottom:0;}
+  .lb-sizes{margin-top:0;margin-bottom:0;}
+  .lb-sizes-label{font-size:clamp(1.2rem,1.8vw,1.75rem);text-transform:none;letter-spacing:0;color:rgba(255,255,255,0.6);margin-top:1.5rem;margin-bottom:0;}
+  .lb-sizes-btns{gap:0.5rem;margin-top:0.6rem;}
+  .lb-size-btn{min-height:48px;min-width:56px;font-size:1rem;font-weight:700;border:1px solid rgba(255,255,255,0.3);color:#fff;text-transform:none;letter-spacing:0;padding:0 0.5rem;}
+  .lb-size-btn.sz-available.sz-selected{background:#fff;color:#000;border-color:#fff;}
+  .lb-size-btn.sz-available:hover{border-color:#fff;}
+  #lb-mailto{background:#fff;color:#000;font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:700;line-height:1.3;padding:0.4em 0.8em;text-decoration:none;letter-spacing:0;text-transform:none;font-family:inherit;margin-top:1.5rem;display:inline-block;}
   #lb-mailto::after{content:' →';}
   #lb-mailto:hover{background:#0a0a0a;color:#fff;outline:1px solid #fff;}
 }
@@ -270,11 +276,11 @@
     <div class="work-img"><img loading="lazy" class="img-main" src="../images/shop/martin-jachym/Untitled%203/image.webp" alt="Untitled — Martin Jáchym"><div class="work-reserved-badge">Prodáno</div><div class="work-buy-label">Detail díla</div></div>
     <div class="work-info"><div class="work-title">Untitled</div><div class="work-artist-name">Martin Jáchym</div><div class="work-price work-price-sold">Prodáno</div></div>
   </div>
-  <div class="work-card rv" data-umelec="jan-divis" data-technika="tricko" data-velikost="tricko" data-cena="" data-price="1300" data-order="7.1" onclick="openLightbox({imgs:['../images/shop/jan-divis/t-shirts/Escalators/1.webp','../images/shop/jan-divis/t-shirts/Escalators/2.webp','../images/shop/jan-divis/t-shirts/Escalators/3.webp','../images/shop/jan-divis/t-shirts/Escalators/4.webp'],title:'Tričko Escalators, 2026',artist:'Jan Diviš',artistHref:'/collectors?artist=jan-divis',meta:'Sítotisk na 100% bavlně, 270 g/m²<br>Barva: tmavě šedá<br>1 300 Kč',price:'',btnLabel:'Poptat tričko',sizes:[{label:'XS',available:false},{label:'S',available:true},{label:'M',available:true},{label:'L',available:false},{label:'XL',available:false}]})">
+  <div class="work-card rv" data-umelec="jan-divis" data-technika="tricko" data-velikost="tricko" data-cena="" data-price="1300" data-order="7.1" onclick="openLightbox({imgs:['../images/shop/jan-divis/t-shirts/Escalators/1.webp','../images/shop/jan-divis/t-shirts/Escalators/2.webp','../images/shop/jan-divis/t-shirts/Escalators/3.webp','../images/shop/jan-divis/t-shirts/Escalators/4.webp'],title:'Tričko Escalators, 2026',artist:'Jan Diviš',artistHref:'/collectors?artist=jan-divis',meta:'Sítotisk na 100% bavlně, 270 g/m²<br>Barva: tmavě šedá<br>1 300 Kč',price:'',btnLabel:'Poptat tričko',sizes:[{label:'XS',available:false},{label:'S',available:true},{label:'M',available:true},{label:'L',available:false},{label:'XL',available:false}]})">
     <div class="work-img"><img loading="lazy" class="img-main" src="../images/shop/jan-divis/t-shirts/Escalators/preview.webp" alt="Escalators Tričko — Jan Diviš"><div class="work-buy-label">Detail díla</div></div>
     <div class="work-info"><div class="work-title">Tričko Escalators</div><div class="work-artist-name">Jan Diviš</div><div class="work-price">1 300 Kč</div></div>
   </div>
-  <div class="work-card rv" data-umelec="jan-divis" data-technika="tricko" data-velikost="tricko" data-cena="" data-price="1300" data-order="7.2" onclick="openLightbox({imgs:['../images/shop/jan-divis/t-shirts/Gallery/1.webp','../images/shop/jan-divis/t-shirts/Gallery/2.webp','../images/shop/jan-divis/t-shirts/Gallery/3.webp','../images/shop/jan-divis/t-shirts/Gallery/4.webp','../images/shop/jan-divis/t-shirts/Gallery/5.webp'],title:'Tričko Gallery, 2026',artist:'Jan Diviš',artistHref:'/collectors?artist=jan-divis',meta:'Sítotisk na 100% bavlně, 270 g/m²<br>Barva: tmavě šedá<br>1 300 Kč',price:'',btnLabel:'Poptat tričko',sizes:[{label:'XS',available:false},{label:'S',available:true},{label:'M',available:false},{label:'L',available:false},{label:'XL',available:false}]})">
+  <div class="work-card rv" data-umelec="jan-divis" data-technika="tricko" data-velikost="tricko" data-cena="" data-price="1300" data-order="7.2" onclick="openLightbox({imgs:['../images/shop/jan-divis/t-shirts/Gallery/1.webp','../images/shop/jan-divis/t-shirts/Gallery/2.webp','../images/shop/jan-divis/t-shirts/Gallery/3.webp','../images/shop/jan-divis/t-shirts/Gallery/4.webp','../images/shop/jan-divis/t-shirts/Gallery/5.webp'],title:'Tričko Gallery, 2026',artist:'Jan Diviš',artistHref:'/collectors?artist=jan-divis',meta:'Sítotisk na 100% bavlně, 270 g/m²<br>Barva: tmavě šedá<br>1 300 Kč',price:'',btnLabel:'Poptat tričko',sizes:[{label:'XS',available:false},{label:'S',available:true},{label:'M',available:false},{label:'L',available:false},{label:'XL',available:false}]})">
     <div class="work-img"><img loading="lazy" class="img-main" src="../images/shop/jan-divis/t-shirts/Gallery/preview.webp" alt="Gallery Tričko — Jan Diviš"><div class="work-buy-label">Detail díla</div></div>
     <div class="work-info"><div class="work-title">Tričko Gallery</div><div class="work-artist-name">Jan Diviš</div><div class="work-price">1 300 Kč</div></div>
   </div>
@@ -292,8 +298,8 @@
       <div class="lightbox-artist" id="lb-artist"></div>
       <div class="lightbox-title" id="lb-title"></div>
       <div class="lightbox-meta" id="lb-meta"></div>
-      <div class="lb-sizes" id="lb-sizes"></div>
       <div class="lightbox-price" id="lb-price"></div>
+      <div class="lb-sizes" id="lb-sizes"></div>
       <a id="lb-mailto" href="#" class="btn">Poptat dílo</a>
     </div>
   </div>
