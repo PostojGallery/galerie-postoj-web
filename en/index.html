@@ -448,6 +448,8 @@ let groundOff = 0;
 let airTilt   = 0;
 let legPhase  = 0;
 let lastTime  = 0;
+let smoothDt  = 16.667;
+let rafId     = 0;
 let btnHover  = false;
 let btnBounds = null;
 
@@ -538,6 +540,8 @@ function drawOverlay() {
     ctx.fillText(MOB ? 'TAP TO START' : 'PRESS SPACE OR TAP TO START', CW / 2, GROUND / 2 + 6);
     ctx.globalAlpha = 1;
   } else if (state === 'dead') {
+    ctx.fillStyle = '#0a0a0a';
+    ctx.fillRect(0, 0, CW, CH);
     ctx.fillStyle = '#fff';
     const _gofs = MOB ? Math.round(34 / canvasScale) : Math.min(Math.max(Math.round(window.innerWidth * 0.03 / canvasScale), Math.round(36 / canvasScale)), Math.round(48 / canvasScale));
     ctx.font = `700 ${_gofs}px "Helvetica Neue",Helvetica,Arial,sans-serif`;
@@ -634,14 +638,16 @@ function startGame() {
   player.y = GROUND; player.vy = 0; player.onGround = true;
   legPhase = 0; airTilt = 0; groundOff = 0;
   btnHover = false; btnBounds = null;
+  lastTime = 0; smoothDt = 16.667;
 }
 
 function loop(ts) {
-  const dt = lastTime ? Math.min(ts - lastTime, 50) : 16.667;
+  const rawDt = lastTime ? Math.min(Math.max(ts - lastTime, 4), 50) : 16.667;
   lastTime = ts;
-  const dtf = dt / 16.667;
+  smoothDt += (rawDt - smoothDt) * 0.15;
+  const dtf = smoothDt / 16.667;
   try { update(dtf); draw(); } catch(e) { console.error(e); }
-  requestAnimationFrame(loop);
+  rafId = requestAnimationFrame(loop);
 }
 
 window.addEventListener('keydown', e => {
@@ -665,7 +671,16 @@ canvas.addEventListener('mousemove', e => {
 });
 canvas.addEventListener('mouseleave', () => { btnHover = false; });
 
-loop();
+rafId = requestAnimationFrame(loop);
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) { cancelAnimationFrame(rafId); rafId = 0; lastTime = 0; smoothDt = 16.667; }
+  else if (!rafId) { rafId = requestAnimationFrame(loop); }
+});
+new IntersectionObserver(entries => {
+  if (!entries[0].isIntersecting) { cancelAnimationFrame(rafId); rafId = 0; lastTime = 0; smoothDt = 16.667; }
+  else if (!rafId) { rafId = requestAnimationFrame(loop); }
+}, { threshold: 0.01 }).observe(canvas);
 })();
 </script>
 <style>
