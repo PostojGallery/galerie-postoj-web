@@ -585,7 +585,7 @@ const ctx    = canvas.getContext('2d');
 const MOB = window.innerWidth < 600;
 const CW = MOB ? 480 : 800;
 const CH = MOB ? 300 : 320;
-const DPR = 2;
+const DPR = Math.min(window.devicePixelRatio || 1, 2);
 canvas.width = CW * DPR; canvas.height = CH * DPR;
 ctx.scale(DPR, DPR);
 
@@ -625,7 +625,6 @@ let groundOff = 0;
 let airTilt   = 0;
 let legPhase  = 0;
 let lastTime  = 0;
-let smoothDt  = 16.667;
 let rafId     = 0;
 let btnHover  = false;
 let btnBounds = null;
@@ -826,13 +825,9 @@ function startGame() {
 }
 
 function loop(ts) {
-  const rawDt = lastTime ? Math.min(Math.max(ts - lastTime, 4), 50) : 16.667;
+  const rawDt = lastTime ? ts - lastTime : 16.667;
   lastTime = ts;
-  // Phones deliver frames unevenly for a moment when you touch the screen.
-  // Smoothing the frame time keeps the obstacles gliding evenly.
-  smoothDt += (rawDt - smoothDt) * 0.15;
-  const dt = smoothDt;
-  const dtf = dt / 16.667;
+  const dtf = Math.min(rawDt, 33.333) / 16.667;
   try { update(dtf); draw(); } catch(e) { console.error(e); }
   rafId = requestAnimationFrame(loop);
 }
@@ -865,11 +860,11 @@ window.addEventListener('keydown', e => {
 rafId = requestAnimationFrame(loop);
 
 document.addEventListener('visibilitychange', () => {
-  if (document.hidden) { cancelAnimationFrame(rafId); rafId = 0; lastTime = 0; smoothDt = 16.667; }
+  if (document.hidden) { cancelAnimationFrame(rafId); rafId = 0; lastTime = 0; }
   else if (!rafId) { rafId = requestAnimationFrame(loop); }
 });
 new IntersectionObserver(entries => {
-  if (!entries[0].isIntersecting) { cancelAnimationFrame(rafId); rafId = 0; lastTime = 0; smoothDt = 16.667; }
+  if (!entries[0].isIntersecting) { cancelAnimationFrame(rafId); rafId = 0; lastTime = 0; }
   else if (!rafId) { rafId = requestAnimationFrame(loop); }
 }, { threshold: 0.01 }).observe(canvas);
 })();
