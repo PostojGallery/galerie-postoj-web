@@ -6,7 +6,7 @@
 <meta name="description" content="Current and archived exhibitions at galerie POSTOJ in the Prague metro — Náměstí Republiky. Contemporary art accessible every day, for everyone.">
 <link rel="icon" type="image/png" href="../../images/favicon.png?v=7">
 <title>Exhibitions that move society | galerie POSTOJ</title>
-<link rel="stylesheet" href="../../style.css?v=20261123a">
+<link rel="stylesheet" href="../../style.css?v=20261123b">
 <style>
 .exh-layout{display:grid;grid-template-columns:340px 1fr;align-items:start;margin-top:60px;}
 .exh-sidebar{position:sticky;top:60px;height:calc(100vh - 60px);border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;}
@@ -695,8 +695,9 @@
       clickScrolling=true;
       if(clickScrollTimer)clearTimeout(clickScrollTimer);
       clickScrollTimer=setTimeout(function(){clickScrolling=false;},700);
-      var offset=window.innerWidth>768?124:70;
-      window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-offset,behavior:'smooth'});
+      var title=window.innerWidth>768?(t.querySelector('.ew-title')||t):t;
+      var offset=window.innerWidth>768?160:70;
+      window.scrollTo({top:title.getBoundingClientRect().top+window.scrollY-offset,behavior:'smooth'});
     });
   });
   if(window.innerWidth<=768){
@@ -741,10 +742,11 @@
     yearsEl.appendChild(yr);
   });
   bar.appendChild(yearsEl);
-  var OFFSET=136;
+  var OFFSET=160;
   function scrollToId(id){
     var t=document.getElementById(id);if(!t)return;
-    window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-OFFSET,behavior:'smooth'});
+    var title=t.querySelector('.ew-title')||t;
+    window.scrollTo({top:title.getBoundingClientRect().top+window.scrollY-OFFSET,behavior:'smooth'});
   }
   bar.addEventListener('click',function(e){
     if(window.innerWidth<=768)return;
@@ -885,8 +887,9 @@ document.querySelectorAll('.exh-cur-close-btn').forEach(function(btn){
     var id=hash.slice(1);
     var t=document.getElementById(id);
     if(!t)return;
-    var offset=window.innerWidth>768?136:70;
-    window.scrollTo(0,t.getBoundingClientRect().top+window.scrollY-offset);
+    var title=window.innerWidth>768?(t.querySelector('.ew-title')||t):t;
+    var offset=window.innerWidth>768?160:70;
+    window.scrollTo(0,title.getBoundingClientRect().top+window.scrollY-offset);
     window.dispatchEvent(new Event('scroll'));
   }
   jumpToHash();
