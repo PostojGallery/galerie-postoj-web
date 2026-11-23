@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><style>*{cursor:url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") 0 0,none!important}</style><script>document.documentElement.style.setProperty("cursor","none","important");</script>
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="galerie POSTOJ was born in the Prague metro to bring art to ordinary people. We believe art belongs to everyone, not just elites.">
@@ -19,7 +19,7 @@
 .founder-quote{font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.8;color:rgba(255,255,255,0.75);margin-bottom:1.5rem;padding-left:1.5rem;border-left:2px solid rgba(255,255,255,0.12);font-style:italic;}
 .founder-quote p{margin-bottom:1rem;}.founder-quote p:last-child{margin-bottom:0;}
 .founder-sig{height:50px;width:auto;filter:invert(1);opacity:0.6;margin-bottom:1.2rem;}
-.founder-email a{color:rgba(255,255,255,0.4);text-decoration:none;cursor:none;font-size:0.85rem;border-bottom:1px solid rgba(255,255,255,0.15);transition:color 0.2s;}
+.founder-email a{color:rgba(255,255,255,0.4);text-decoration:none;cursor:pointer;font-size:0.85rem;border-bottom:1px solid rgba(255,255,255,0.15);transition:color 0.2s;}
 .founder-email a:hover{color:#fff;}
 .founder-logos{margin-top:auto;padding-top:1.5rem;}
 .founder-logos-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1.2rem;}
@@ -38,7 +38,7 @@
 .whw-tag{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1.2rem;}
 .whw-heading{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;line-height:0.92;letter-spacing:-0.03em;margin-bottom:1.5rem;color:#fff;}
 .whw-text{font-size:0.95rem;line-height:1.85;color:rgba(255,255,255,0.5);margin-bottom:0.8rem;}
-.whw-cta{display:inline-block;margin-top:1.5rem;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;cursor:none;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s,border-color 0.2s;}
+.whw-cta{display:inline-block;margin-top:1.5rem;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s,border-color 0.2s;}
 .whw-cta:hover{color:#fff;border-color:#fff;}
 .whw-testimonials{display:flex;align-items:flex-start;justify-content:center;padding:1.2rem 3rem 2rem;}
 .ts-eyebrow{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:1.5rem;}
@@ -50,7 +50,7 @@
 .ts-author{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.28);}
 .ts-footer{margin-top:1.2rem;}
 .ts-dots{display:flex;gap:0.5rem;}
-.tsd{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);cursor:none;transition:background 0.2s;}
+.tsd{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);cursor:pointer;transition:background 0.2s;}
 .tsd.active{background:#fff;}
 .whw-oc-col{display:flex;align-items:center;justify-content:center;background:#0a0a0a;}
 .whw-oc{padding:3rem;display:flex;align-items:center;height:100%;}
@@ -69,7 +69,7 @@
 .info-sub{font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:#fff;margin-bottom:0.2rem;}
 .info-val{font-size:0.85rem;color:rgba(255,255,255,0.45);font-weight:400;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;margin-bottom:0.8rem;}
 .info-divider{display:none;}
-.info-map-link{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;cursor:none;display:inline-block;margin-top:0.8rem;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s;}
+.info-map-link{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;cursor:pointer;display:inline-block;margin-top:0.8rem;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s;}
 .info-map-link:hover{color:#fff;}
 .info-val a{color:rgba(255,255,255,0.45)!important;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.12);padding-bottom:1px;transition:color 0.2s;}
 .info-val a:hover{color:#fff!important;}
@@ -82,15 +82,15 @@
 .hist-strip{display:grid;grid-template-columns:repeat(9,1fr);gap:2px;margin-bottom:2rem;}
 .hist-ph{aspect-ratio:3/4;background:rgba(255,255,255,0.03);border:1px dashed rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;}
 .hist-ph span{font-size:0.48rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.08);}
-.hist-real{overflow:hidden;aspect-ratio:3/4;cursor:none;}
+.hist-real{overflow:hidden;aspect-ratio:3/4;cursor:pointer;}
 .hist-real img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;}
 .hist-real:hover img{transform:scale(1.05);}@media(hover:none){.hist-real:hover img{transform:none;}}
 .hist-pos-right img{object-position:right center;}
-#aglb{position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:10000;display:none;cursor:none;}
+#aglb{position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:10000;display:none;}
 #aglb img{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);max-height:90vh;max-width:90vw;object-fit:contain;}
-#aglb-prev,#aglb-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid rgba(255,255,255,0.3);color:#fff;font-size:1.2rem;width:44px;height:44px;cursor:none;display:flex;align-items:center;justify-content:center;}
+#aglb-prev,#aglb-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid rgba(255,255,255,0.3);color:#fff;font-size:1.2rem;width:44px;height:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
 #aglb-prev{left:1.5rem;}#aglb-next{right:1.5rem;}
-#aglb-close{position:absolute;top:1.5rem;right:2rem;background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);font-family:inherit;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:none;}
+#aglb-close{position:absolute;top:1.5rem;right:2rem;background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);font-family:inherit;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:pointer;}
 #aglb-count{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);display:flex;gap:6px;justify-content:center;align-items:center;}
 .aglb-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.25);}
 .aglb-dot.active{background:#fff;}
@@ -175,7 +175,7 @@
     <div class="whw-text-col">
       <div class="whw-heading">Art belongs to everyone.</div>
       <p class="whw-text">We believe contemporary art should be accessible to everyone — regardless of age, education or profession. Traditional galleries put up barriers. We break them down.</p>
-      <button id="about-video-btn" class="btn" style="margin-top:1.5rem;display:inline-block;cursor:none;border:none;">Video from the latest exhibition</button>
+      <button id="about-video-btn" class="btn" style="margin-top:1.5rem;display:inline-block;cursor:pointer;border:none;">Video from the latest exhibition</button>
     </div>
     <div class="whw-testimonials">
       <div style="display:flex;align-items:center;gap:2.5rem;width:100%;">
@@ -236,22 +236,22 @@
       <div class="info-col-label">Contact</div>
       <div class="info-row">
         <div class="info-sub">Production</div>
-        <div class="info-val">Anna Gotvaldová<br><a href="mailto:anna.gotvaldova@galeriepostoj.cz" style="color:#fff;text-decoration:none;cursor:none;">anna.gotvaldova@galeriepostoj.cz</a></div>
+        <div class="info-val">Anna Gotvaldová<br><a href="mailto:anna.gotvaldova@galeriepostoj.cz" style="color:#fff;text-decoration:none;cursor:pointer;">anna.gotvaldova@galeriepostoj.cz</a></div>
       </div>
       <div class="info-row">
         <div class="info-sub">Email</div>
-        <div class="info-val"><a href="mailto:info@galeriepostoj.cz" style="color:#fff;text-decoration:none;cursor:none;">info@galeriepostoj.cz</a></div>
+        <div class="info-val"><a href="mailto:info@galeriepostoj.cz" style="color:#fff;text-decoration:none;cursor:pointer;">info@galeriepostoj.cz</a></div>
       </div>
     </div>
     <div class="info-col">
       <div class="info-col-label">Follow us</div>
       <div class="info-row">
         <div class="info-sub">Instagram</div>
-        <div class="info-val"><a href="https://www.instagram.com/galeriepostoj/" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;cursor:none;">@galeriepostoj</a></div>
+        <div class="info-val"><a href="https://www.instagram.com/galeriepostoj/" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;cursor:pointer;">@galeriepostoj</a></div>
       </div>
       <div class="info-row">
         <div class="info-sub">Facebook</div>
-        <div class="info-val"><a href="https://www.facebook.com/galeriepostoj/" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;cursor:none;">galerie POSTOJ</a></div>
+        <div class="info-val"><a href="https://www.facebook.com/galeriepostoj/" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;cursor:pointer;">galerie POSTOJ</a></div>
       </div>
     </div>
   </div>
@@ -288,7 +288,7 @@
   </div>
 </section>
 <div id="about-vlb" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.94);z-index:20001;align-items:center;justify-content:center;">
-  <button id="about-vlb-close" style="position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:rgba(255,255,255,0.5);cursor:none;line-height:1;background:none;border:none;font-family:inherit;">&#215;</button>
+  <button id="about-vlb-close" style="position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:rgba(255,255,255,0.5);cursor:pointer;line-height:1;background:none;border:none;font-family:inherit;">&#215;</button>
   <video id="about-vlb-player" controls playsinline muted style="width:95vw;max-width:1400px;max-height:95vh;display:block;outline:none;">
     <source src="../../images/c997f623-4625-49c3-af9b-bb6025155789.mp4" type="video/mp4">
   </video>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="cs">
-<head><style>*{cursor:url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") 0 0,none!important}</style><script>document.documentElement.style.setProperty("cursor","none","important");</script>
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Originální umělecká díla z výstav galerie POSTOJ. Podpořte mladé české umělce a staňte se součástí příběhu současného umění.">
@@ -17,14 +17,14 @@
 .filters-bar{position:sticky;top:60px;z-index:100;background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:stretch;}
 .filter-group{position:relative;border-right:1px solid rgba(255,255,255,0.08);}
 .filter-group:last-child{border-right:none;}
-.filter-trigger{display:flex;align-items:center;gap:0.6rem;padding:0.9rem 1.5rem;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45);background:none;border:none;font-family:inherit;cursor:none;transition:color 0.15s,background 0.15s;white-space:nowrap;}
+.filter-trigger{display:flex;align-items:center;gap:0.6rem;padding:0.9rem 1.5rem;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45);background:none;border:none;font-family:inherit;cursor:pointer;transition:color 0.15s,background 0.15s;white-space:nowrap;}
 .filter-trigger:hover,.filter-trigger.open{color:#fff;background:rgba(255,255,255,0.04);}
 .filter-trigger.has-active{color:#fff;}
 .filter-arrow{font-size:0.65rem;opacity:0.4;transition:transform 0.2s;}
 .filter-trigger.open .filter-arrow{transform:rotate(180deg);}
 .filter-dropdown{display:none;position:absolute;top:100%;left:0;min-width:200px;background:#111;border:1px solid rgba(255,255,255,0.1);border-top:none;z-index:200;}
 .filter-dropdown.open{display:block;}
-.filter-opt{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;width:100%;text-align:left;padding:0.8rem 1.5rem;font-size:0.8rem;color:rgba(255,255,255,0.45);background:none;border:none;font-family:inherit;cursor:none;transition:color 0.15s,background 0.15s;white-space:nowrap;box-sizing:border-box;}
+.filter-opt{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;width:100%;text-align:left;padding:0.8rem 1.5rem;font-size:0.8rem;color:rgba(255,255,255,0.45);background:none;border:none;font-family:inherit;cursor:pointer;transition:color 0.15s,background 0.15s;white-space:nowrap;box-sizing:border-box;}
 .filter-opt:hover{color:#fff;background:rgba(255,255,255,0.05);}
 .filter-opt::after{content:'';width:14px;height:14px;border:1px solid rgba(255,255,255,0.15);border-radius:2px;flex-shrink:0;transition:background 0.15s,border-color 0.15s;}
 .filter-opt.active{color:#fff;}

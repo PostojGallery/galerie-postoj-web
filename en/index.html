@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><style>*{cursor:url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") 0 0,none!important}</style><script>document.documentElement.style.setProperty("cursor","none","important");</script>
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="galerie POSTOJ – contemporary art for everyone in the Prague metro at Náměstí Republiky. Exhibitions by young Czech artists. Free entry.">
@@ -17,7 +17,7 @@
 #hero-top-fade{position:absolute;top:0;left:0;right:0;height:180px;background:linear-gradient(to top,transparent,rgba(0,0,0,0.7));z-index:1;}
 @media(max-width:768px){#hero-top-fade{display:none;}}
 #hero-poster-wrap{position:relative;z-index:2;will-change:transform;}
-#hero-poster-link{display:block;cursor:none;position:relative;text-decoration:none;}
+#hero-poster-link{display:block;cursor:pointer;position:relative;text-decoration:none;}
 #hero-poster-link img{height:58vh;height:58svh;width:auto;display:block;transition:transform 0.4s ease;background:#fff;}
 #hero-poster-label{text-align:center;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);padding-top:1.6rem;opacity:0;transform:scale(1);transition:opacity 0.4s,transform 0.4s ease;}
 #hero-poster-link:hover #hero-poster-label{opacity:1;transform:scale(1.05);}
@@ -28,12 +28,12 @@
 .current-exh-label::before{content:'';width:6px;height:6px;border-radius:50%;background:#fff;animation:pulse 2s ease-in-out infinite;flex-shrink:0;}
 .current-exh-artist{font-size:clamp(3rem,7vw,6.5rem);font-weight:900;line-height:0.88;letter-spacing:-0.04em;margin-bottom:1rem;}
 .current-exh-title{font-size:1.1rem;font-weight:300;color:rgba(255,255,255,0.5);margin-bottom:0.5rem;}
-a.current-exh-title{text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:1px;transition:color 0.2s,border-color 0.2s;cursor:none;}
+a.current-exh-title{text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:1px;transition:color 0.2s,border-color 0.2s;cursor:pointer;}
 a.current-exh-title:hover{color:#fff;border-color:#fff;}
 .current-exh-date{font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.75;color:rgba(255,255,255,0.9);margin-bottom:1.8rem;}
 .current-exh-desc{font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.75;color:rgba(255,255,255,0.5);max-width:380px;margin-bottom:2.5rem;}
 .desc-mob{display:none;}
-.current-exh-video{position:relative;background:transparent;display:flex;align-items:center;justify-content:center;cursor:none;grid-column:2;grid-row:1;}
+.current-exh-video{position:relative;background:transparent;display:flex;align-items:center;justify-content:center;grid-column:2;grid-row:1;}
 .current-exh>.photo-strip-outer{grid-column:1/-1;grid-row:2;margin-right:-3rem;}
 .current-exh-video-icon{width:52px;height:52px;border:2px solid rgba(255,255,255,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;}
 .current-exh-video-icon svg{width:18px;height:18px;fill:rgba(255,255,255,0.4);margin-left:3px;}
@@ -44,13 +44,13 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 .photo-strip-item:hover img{filter:grayscale(0%);transform:scale(1.07);}
 .photo-strip-item.zoomed img{transform:scale(1.18);}
 .photo-strip-item.zoomed:hover img{filter:grayscale(0%);transform:scale(1.26);}
-.photo-strip-item{cursor:none;}
+.photo-strip-item{cursor:pointer;}
 .fs-img-carousel{display:none;}
-#glb{position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:10000;display:none;cursor:none;touch-action:none;overflow:hidden;}
+#glb{position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:10000;display:none;touch-action:none;overflow:hidden;}
 #glb img{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);max-height:90vh;max-width:90vw;object-fit:contain;}
-#glb-prev,#glb-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid rgba(255,255,255,0.3);color:#fff;font-size:1.2rem;width:44px;height:44px;cursor:none;display:flex;align-items:center;justify-content:center;}
+#glb-prev,#glb-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid rgba(255,255,255,0.3);color:#fff;font-size:1.2rem;width:44px;height:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
 #glb-prev{left:1.5rem;}#glb-next{right:1.5rem;}
-#glb-close{position:absolute;top:1.5rem;right:2rem;background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);font-family:inherit;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:none;}
+#glb-close{position:absolute;top:1.5rem;right:2rem;background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);font-family:inherit;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:pointer;}
 #glb-count{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);display:flex;gap:6px;justify-content:center;align-items:center;}
 .glb-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.25);}
 .glb-dot.active{background:#fff;}
@@ -68,7 +68,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 .fs-sig{height:50px;width:auto;filter:invert(1);opacity:0.6;align-self:flex-start;margin-left:calc(1.5rem + 2px);}
 .fs-desktop-cta{display:inline-block;margin-top:auto;align-self:flex-start;}
 .fs-mobile-cta{display:none;}
-.fs-right-photo{flex-shrink:0;align-self:start;overflow:hidden;cursor:none;}
+.fs-right-photo{flex-shrink:0;align-self:start;overflow:hidden;}
 .fs-right-photo img,.fs-right-photo video{width:auto;height:302px;display:block;}
 .fs-change-photo{width:auto;height:302px;display:block;object-fit:cover;}
 .fs-right-photo .fs-video-mobile{display:none;}
@@ -216,7 +216,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 <style>
 .current-exh>.current-exh-shop-outer{grid-column:1/-1;grid-row:2;margin-right:-3rem;}
 .home-shop-track{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:1.5rem 2.5rem 2.5rem;}
-.home-shop-card{cursor:none;position:relative;}
+.home-shop-card{cursor:pointer;position:relative;}
 .home-shop-card-img{position:relative;overflow:hidden;aspect-ratio:4/3;}
 .home-shop-card-img img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;transition:transform 0.4s ease;}
 .home-shop-card:hover .home-shop-card-img img{transform:scale(1.06);}
@@ -227,15 +227,15 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 .home-shop-card-artist{font-size:1rem;color:rgba(255,255,255,0.35);margin-bottom:0.3rem;}
 .home-shop-card-price{font-size:0.85rem;color:rgba(255,255,255,0.6);}
 .exh-shop-mob-cta{display:none;}
-#shop-lb{position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:10000;display:none;align-items:center;justify-content:center;cursor:none;}
+#shop-lb{position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:10000;display:none;align-items:center;justify-content:center;}
 #shop-lb.open{display:flex;}
 #shop-lb-inner{display:grid;grid-template-columns:1fr 380px;max-width:1000px;width:90vw;gap:3rem;align-items:center;}
 #shop-lb-img{width:100%;max-height:80vh;object-fit:contain;display:block;}
-#shop-lb-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.6);font-family:inherit;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:none;transition:all 0.2s;}
+#shop-lb-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.6);font-family:inherit;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:pointer;transition:all 0.2s;}
 #shop-lb-close:hover{border-color:#fff;color:#fff;}
 .shop-lb-info{padding:2rem 0;}
 .shop-lb-artist{font-size:1rem;color:rgba(255,255,255,0.5);margin-bottom:0;}
-.shop-lb-artist a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:1px;transition:color 0.2s;cursor:none;}
+.shop-lb-artist a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:1px;transition:color 0.2s;cursor:pointer;}
 .shop-lb-artist a:hover{color:#fff;}
 .shop-lb-title{font-size:1.4rem;font-weight:900;letter-spacing:-0.02em;margin-bottom:0.3rem;}
 .shop-lb-meta{font-size:1rem;color:rgba(255,255,255,0.5);line-height:1.75;margin-bottom:1rem;}
@@ -355,7 +355,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
   <video id="metro-video" src="../images/c997f623-4625-49c3-af9b-bb6025155789.mp4" autoplay muted loop playsinline preload="none"></video>
 </div>
 <div id="home-vlb" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.94);z-index:20001;align-items:center;justify-content:center;">
-  <button id="home-vlb-close" style="position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:rgba(255,255,255,0.5);cursor:none;line-height:1;background:none;border:none;font-family:inherit;">&#215;</button>
+  <button id="home-vlb-close" style="position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:rgba(255,255,255,0.5);cursor:pointer;line-height:1;background:none;border:none;font-family:inherit;">&#215;</button>
 </div>
 <script>
 (function(){
