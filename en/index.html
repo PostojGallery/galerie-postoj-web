@@ -8,7 +8,7 @@
 <link rel="preload" as="image" href="../images/hero-bg.webp">
 <title>Art lives underground | galerie POSTOJ</title>
 <link rel="preload" as="image" href="../images/hero-bg.webp" fetchpriority="high">
-<link rel="stylesheet" href="../style.css?v=20261122f">
+<link rel="stylesheet" href="../style.css?v=20261123a">
 <style>
 #hero{position:relative;height:100vh;height:100svh;height:calc(var(--ivh,1vh)*100);overflow:hidden;display:flex;align-items:center;justify-content:center;}
 #hero-bg{position:absolute;inset:0;background:#0a0a0a url('../images/hero-bg.webp') center/cover no-repeat;}
@@ -26,12 +26,13 @@
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.2;}}
 .current-exh-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:1.5rem;display:inline-flex;align-items:center;gap:0.5rem;}
 .current-exh-label::before{content:'';width:6px;height:6px;border-radius:50%;background:#fff;animation:pulse 2s ease-in-out infinite;flex-shrink:0;}
-.current-exh-artist{font-size:clamp(3rem,7vw,6.5rem);font-weight:900;line-height:0.88;letter-spacing:-0.04em;margin-bottom:1rem;}
-.current-exh-title{font-size:1.1rem;font-weight:300;color:rgba(255,255,255,0.5);margin-bottom:0.5rem;}
-a.current-exh-title{text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:1px;transition:color 0.2s,border-color 0.2s;cursor:pointer;}
-a.current-exh-title:hover{color:#fff;border-color:#fff;}
-.current-exh-date{font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.75;color:rgba(255,255,255,0.9);margin-bottom:1.8rem;}
-.current-exh-desc{font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.75;color:rgba(255,255,255,0.5);max-width:380px;margin-bottom:2.5rem;}
+.current-exh-artist{font-size:clamp(3rem,6vw,6rem);font-weight:700;line-height:0.9;letter-spacing:-0.045em;margin-bottom:0.75rem;display:block;text-decoration:none;color:#fff;cursor:pointer;}
+.current-exh-title{font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:400;color:#fff;text-decoration:underline;text-underline-offset:3px;margin-bottom:0.75rem;display:block;cursor:pointer;transition:color 0.2s;}
+.current-exh-title:hover{color:rgba(255,255,255,0.6);}
+.current-exh-date{font-size:clamp(1.2rem,1.8vw,1.75rem);line-height:1.3;color:rgba(255,255,255,0.6);margin-bottom:1.5rem;}
+.current-exh-desc{font-size:1.1rem;line-height:1.5;color:rgba(255,255,255,0.6);max-width:380px;margin-bottom:2rem;}
+.exh-info-cta{font-size:clamp(1.2rem,1.8vw,1.75rem)!important;font-weight:700!important;line-height:1.3!important;padding:0.4em 0.8em!important;letter-spacing:0!important;text-transform:none!important;}
+.exh-info-cta:hover{background:#0a0a0a!important;color:#fff!important;outline:1px solid #fff;}
 .desc-mob{display:none;}
 .current-exh-video{position:relative;background:transparent;display:flex;align-items:center;justify-content:center;grid-column:2;grid-row:1;}
 .current-exh>.photo-strip-outer{grid-column:1/-1;grid-row:2;margin-right:-3rem;}
@@ -64,7 +65,7 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 .fs-content{padding:0.3rem 2rem 0 2rem;display:flex;flex-direction:column;justify-content:flex-start;align-self:stretch;}
 .fs-text{font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.85;color:rgba(255,255,255,0.5);margin-bottom:0.7rem;font-style:italic;border-left:2px solid rgba(255,255,255,0.12);padding-left:1.5rem;}
 .fs-text-mob{display:none;}
-.fs-headline{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;line-height:0.92;letter-spacing:-0.03em;color:#fff;padding:0 3rem 1.5rem;}
+.fs-headline{padding:0 3rem;}
 .fs-sig{height:50px;width:auto;filter:invert(1);opacity:0.6;align-self:flex-start;margin-left:calc(1.5rem + 2px);}
 .fs-desktop-cta{display:inline-block;margin-top:auto;align-self:flex-start;}
 .fs-mobile-cta{display:none;}
@@ -148,6 +149,30 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 .snake-anim{animation:snakeFlicker 1.2s step-end infinite;transform:scale(0.97);transform-origin:center;}
 @media(min-width:769px){
   .snake-anim{transform:scale(1.3);transform-origin:center;}
+  /* Founder section typography */
+  .fs-text,.fs-caption,.fs-caption span,.artists-body,.current-exh-desc{font-size:clamp(1.2rem,1.8vw,1.75rem);line-height:1.3;color:#fff;font-style:normal;border-left:none;padding-left:0;margin-bottom:0;}
+  /* Current exhibition info */
+  .current-exh-date{color:#fff;margin-bottom:1rem;}
+  .current-exh-desc{color:#fff;margin-bottom:2rem;}
+  .fs-text-lead{font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:400;color:#fff;line-height:1.3;font-style:normal;}
+  .fs-sig{margin-left:0;margin-top:1.5rem;}
+  .fs-desktop-cta{background:#fff;color:#000;font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:700;line-height:1.3;padding:0.4em 0.8em;text-decoration:none;letter-spacing:0;text-transform:none;cursor:pointer;transition:background 0.2s,color 0.2s;margin-top:1.5rem;align-self:flex-start;display:inline-block;}
+  .fs-desktop-cta:hover{background:#0a0a0a;color:#fff;outline:1px solid #fff;}
+  /* Founder photo full-height */
+  .fs-photo-col{align-self:stretch;position:relative;}
+  .fs-photo-col a{display:block;flex:1;min-height:0;position:relative;}
+  .fs-photo-col a::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0);transition:background 0.25s;pointer-events:none;}
+  .fs-photo-col:hover a::after{background:rgba(0,0,0,0.35);}
+  .fs-photo-col img{width:100%;height:100%;aspect-ratio:unset;object-fit:cover;object-position:center top;}
+  /* Caption as hover overlay */
+  .fs-caption{position:absolute;bottom:0;left:0;right:0;padding:1.2rem;background:none;color:#fff;font-weight:700;opacity:0;transition:opacity 0.25s;pointer-events:none;}
+  .fs-photo-col:hover .fs-caption{opacity:1;}
+  .fs-caption span{display:block;color:#fff;font-weight:400;letter-spacing:0;text-transform:none;margin-top:0.1rem;}
+  /* Artists section */
+  .artists-body{font-weight:400;}
+  .artists-oc-link{font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:700;color:#fff;background:none;border:none;border-bottom:none;text-decoration:none;letter-spacing:0;text-transform:none;cursor:pointer;padding:0;font-family:inherit;display:inline-block;transition:opacity 0.2s;}
+  .artists-oc-link:hover{opacity:0.7;color:#fff;border-color:transparent;}
+  .artists-quotes-col{position:sticky;top:calc(var(--nav-h,72px) + 2rem);}
 }
 </style>
 </head>
@@ -170,41 +195,29 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 </section>
 <section class="current-exh">
   <div class="current-exh-info rv">
-    <div class="current-exh-artist">Jan<br>Diviš</div>
-    <a href="/en/exhibitions#exh-exit-wounds" class="current-exh-title">EXIT WOUNDS</a>
-    <div class="current-exh-date" style="margin-bottom:0;">16 November 2026, opening 18:00</div>
-    <p class="current-exh-desc"><span class="desc-desk">Galerie POSTOJ presents a new exhibition by Czech illustrator and graphic designer Jan Diviš, a student at the Academy of Arts, Architecture and Design in Prague (UMPRUM). His work combines intricate illustrations, bold colors, and experimental typography.</span><span class="desc-mob">Czech illustrator and graphic designer, UMPRUM student. Intricate illustrations, bold colors and experimental typography.</span></p>
-    <a href="/en/collectors?artist=jan-divis" class="btn exh-info-cta">Prints for sale</a>
+    <a href="/en/exhibitions#exh-exit-wounds" class="current-exh-artist">EXIT<br>WOUNDS</a>
+    <a href="/en/artists#jan-divis" class="current-exh-title">Jan Diviš</a>
+    <div class="current-exh-date">16 November 2026, opening at 6 pm</div>
+    <p class="current-exh-desc"><span class="desc-desk">Illustrator Jan Diviš's personal work about the courage to leave behind what destroys us – even when it feels familiar and close.</span><span class="desc-mob">Czech illustrator and graphic designer, UMPRUM student. Intricate illustrations, bold colors and experimental typography.</span></p>
+    <a href="/en/collectors?artist=jan-divis" class="btn exh-info-cta">Works for sale →</a>
   </div>
   <div class="current-exh-shop-outer">
     <div class="home-shop-track">
-      <div class="home-shop-card" data-li="0">
-        <div class="home-shop-card-img"><img loading="lazy" src="../images/shop/jan-divis/sins.webp" alt="Sins — Jan Diviš"><div class="home-shop-card-buy">View work</div></div>
-        <div class="home-shop-card-info"><div class="home-shop-card-title">Sins</div><div class="home-shop-card-artist">Jan Diviš</div><div class="home-shop-card-price">850 CZK</div></div>
+      <div class="work-card" data-technika="tricko" onclick="openLightbox({imgs:['../images/shop/jan-divis/t-shirts/Gallery/1.webp','../images/shop/jan-divis/t-shirts/Gallery/2.webp','../images/shop/jan-divis/t-shirts/Gallery/3.webp','../images/shop/jan-divis/t-shirts/Gallery/4.webp','../images/shop/jan-divis/t-shirts/Gallery/5.webp'],title:'Gallery T-Shirt, 2026',artist:'Jan Diviš',artistHref:'/en/collectors?artist=jan-divis',meta:'Screen print on 100% cotton, 270 g/m²<br>Colour: dark grey<br>CZK 1,300',price:'',btnLabel:'Request T-Shirt',sizes:[{label:'XS',available:false},{label:'S',available:true},{label:'M',available:false},{label:'L',available:false},{label:'XL',available:false}]})">
+        <div class="work-img"><img loading="lazy" class="img-main" src="../images/shop/jan-divis/t-shirts/Gallery/preview.webp" alt="Gallery T-Shirt — Jan Diviš"><div class="work-buy-label">View work</div></div>
+        <div class="work-info"><div class="work-title">Gallery T-Shirt</div><div class="work-artist-name">Jan Diviš</div><div class="work-price">CZK 1,300</div></div>
       </div>
-      <div class="home-shop-card" data-li="1">
-        <div class="home-shop-card-img"><img loading="lazy" src="../images/shop/jan-divis/in-abundance.webp" alt="In Abundance — Jan Diviš"><div class="home-shop-card-buy">View work</div></div>
-        <div class="home-shop-card-info"><div class="home-shop-card-title">In Abundance</div><div class="home-shop-card-artist">Jan Diviš</div><div class="home-shop-card-price">1,400 CZK</div></div>
+      <div class="work-card" onclick="openLightbox({img:'../images/shop/jan-divis/escalators.webp',title:'Escalators, 2026',artist:'Jan Diviš',artistHref:'/en/collectors?artist=jan-divis',meta:'Risograph print, A3<br>Limited edition of 42, signed and numbered<br>CZK 1,000',price:'',btnLabel:'Request print'})">
+        <div class="work-img"><img loading="lazy" class="img-main" src="../images/shop/jan-divis/escalators.webp" alt="Escalators — Jan Diviš"><div class="work-buy-label">View work</div></div>
+        <div class="work-info"><div class="work-title">Escalators</div><div class="work-artist-name">Jan Diviš</div><div class="work-price">CZK 1,000</div></div>
       </div>
-      <div class="home-shop-card" data-li="2">
-        <div class="home-shop-card-img"><img loading="lazy" src="../images/shop/jan-divis/walk.webp" alt="Walk — Jan Diviš"><div class="home-shop-card-buy">View work</div></div>
-        <div class="home-shop-card-info"><div class="home-shop-card-title">Walk</div><div class="home-shop-card-artist">Jan Diviš</div><div class="home-shop-card-price">650 CZK</div></div>
+      <div class="work-card" onclick="openLightbox({img:'../images/shop/jan-divis/exit-wounds.webp',title:'Exit Wounds, 2026',artist:'Jan Diviš',artistHref:'/en/collectors?artist=jan-divis',meta:'Risograph print, A3<br>Signed<br>CZK 650',price:'',btnLabel:'Request print'})">
+        <div class="work-img"><img loading="lazy" class="img-main" src="../images/shop/jan-divis/exit-wounds.webp" alt="Exit Wounds — Jan Diviš"><div class="work-buy-label">View work</div></div>
+        <div class="work-info"><div class="work-title">Exit Wounds</div><div class="work-artist-name">Jan Diviš</div><div class="work-price">CZK 650</div></div>
       </div>
-      <div class="home-shop-card" data-li="3">
-        <div class="home-shop-card-img"><img loading="lazy" src="../images/shop/jan-divis/exit-wounds.webp" alt="Exit Wounds — Jan Diviš"><div class="home-shop-card-buy">View work</div></div>
-        <div class="home-shop-card-info"><div class="home-shop-card-title">Exit Wounds</div><div class="home-shop-card-artist">Jan Diviš</div><div class="home-shop-card-price">650 CZK</div></div>
-      </div>
-      <div class="home-shop-card" data-li="4">
-        <div class="home-shop-card-img"><img loading="lazy" src="../images/shop/jan-divis/falling-apart.webp" alt="Falling Apart — Jan Diviš"><div class="home-shop-card-buy">View work</div></div>
-        <div class="home-shop-card-info"><div class="home-shop-card-title">Falling Apart</div><div class="home-shop-card-artist">Jan Diviš</div><div class="home-shop-card-price">1,000 CZK</div></div>
-      </div>
-      <div class="home-shop-card" data-li="5">
-        <div class="home-shop-card-img"><img loading="lazy" src="../images/shop/jan-divis/who-is-to-kill.webp" alt="Who Is to Kill, Who Is to Die — Jan Diviš"><div class="home-shop-card-buy">View work</div></div>
-        <div class="home-shop-card-info"><div class="home-shop-card-title">Who Is to Kill, Who Is to Die</div><div class="home-shop-card-artist">Jan Diviš</div><div class="home-shop-card-price">1,400 CZK</div></div>
-      </div>
-      <div class="home-shop-card" data-li="6">
-        <div class="home-shop-card-img"><img loading="lazy" src="../images/shop/jan-divis/escalators.webp" alt="Escalators — Jan Diviš"><div class="home-shop-card-buy">View work</div></div>
-        <div class="home-shop-card-info"><div class="home-shop-card-title">Escalators</div><div class="home-shop-card-artist">Jan Diviš</div><div class="home-shop-card-price">1,000 CZK</div></div>
+      <div class="work-card" onclick="openLightbox({img:'../images/shop/jan-divis/in-abundance.webp',title:'In Abundance, 2026',artist:'Jan Diviš',artistHref:'/en/collectors?artist=jan-divis',meta:'Screen print, A2<br>Signed<br>CZK 1,400',price:'',btnLabel:'Request print'})">
+        <div class="work-img"><img loading="lazy" class="img-main" src="../images/shop/jan-divis/in-abundance.webp" alt="In Abundance — Jan Diviš"><div class="work-buy-label">View work</div></div>
+        <div class="work-info"><div class="work-title">In Abundance</div><div class="work-artist-name">Jan Diviš</div><div class="work-price">CZK 1,400</div></div>
       </div>
     </div>
     <a href="/en/collectors?artist=jan-divis" class="btn exh-shop-mob-cta">ALL PRINTS</a>
@@ -216,128 +229,125 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 <style>
 .current-exh>.current-exh-shop-outer{grid-column:1/-1;grid-row:2;margin-right:-3rem;}
 .home-shop-track{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:1.5rem 2.5rem 2.5rem;}
-.home-shop-card{cursor:pointer;position:relative;}
-.home-shop-card-img{position:relative;overflow:hidden;aspect-ratio:4/3;}
-.home-shop-card-img img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;transition:transform 0.4s ease;}
-.home-shop-card:hover .home-shop-card-img img{transform:scale(1.06);}
-.home-shop-card-buy{position:absolute;bottom:-2px;left:0;right:0;background:#fff;color:#000;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.8rem 1rem;transform:translateY(100%);transition:transform 0.25s;}
-.home-shop-card:hover .home-shop-card-buy{transform:translateY(0);}
-.home-shop-card-info{padding:0.8rem 0 1rem;}
-.home-shop-card-title{font-size:1rem;font-weight:700;margin-bottom:0.2rem;}
-.home-shop-card-artist{font-size:1rem;color:rgba(255,255,255,0.35);margin-bottom:0.3rem;}
-.home-shop-card-price{font-size:0.85rem;color:rgba(255,255,255,0.6);}
 .exh-shop-mob-cta{display:none;}
-#shop-lb{position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:10000;display:none;align-items:center;justify-content:center;}
-#shop-lb.open{display:flex;}
-#shop-lb-inner{display:grid;grid-template-columns:1fr 380px;max-width:1000px;width:90vw;gap:3rem;align-items:center;}
-#shop-lb-img{width:100%;max-height:80vh;object-fit:contain;display:block;}
-#shop-lb-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.6);font-family:inherit;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:pointer;transition:all 0.2s;}
-#shop-lb-close:hover{border-color:#fff;color:#fff;}
-.shop-lb-info{padding:2rem 0;}
-.shop-lb-artist{font-size:1rem;color:rgba(255,255,255,0.5);margin-bottom:0;}
-.shop-lb-artist a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:1px;transition:color 0.2s;cursor:pointer;}
-.shop-lb-artist a:hover{color:#fff;}
-.shop-lb-title{font-size:1.4rem;font-weight:900;letter-spacing:-0.02em;margin-bottom:0.3rem;}
-.shop-lb-meta{font-size:1rem;color:rgba(255,255,255,0.5);line-height:1.75;margin-bottom:1rem;}
-.shop-lb-price{font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;}
-@media(min-width:769px){
-  .home-shop-track .home-shop-card:nth-child(1){order:3;}
-  .home-shop-track .home-shop-card:nth-child(2){order:4;}
-  .home-shop-track .home-shop-card:nth-child(3){order:1;}
-  .home-shop-track .home-shop-card:nth-child(4){display:none;}
-  .home-shop-track .home-shop-card:nth-child(5){display:none;}
-  .home-shop-track .home-shop-card:nth-child(6){display:none;}
-  .home-shop-track .home-shop-card:nth-child(7){order:2;}
-}
 @media(max-width:768px){
   .current-exh>.current-exh-shop-outer{grid-column:1;grid-row:2;margin-bottom:2rem;margin-right:0;}
   .home-shop-track{grid-template-columns:repeat(2,1fr);gap:6px;padding:0.8rem 1.2rem;}
-  .home-shop-card-buy{display:none;}
-  .home-shop-card-info{padding:0.5rem 0.3rem 0.8rem;}
-  .home-shop-track .home-shop-card:nth-child(1){order:3;}
-  .home-shop-track .home-shop-card:nth-child(2){order:2;}
-  .home-shop-track .home-shop-card:nth-child(3){order:1;}
-  .home-shop-track .home-shop-card:nth-child(4){order:6;}
-  .home-shop-track .home-shop-card:nth-child(5){order:5;}
-  .home-shop-track .home-shop-card:nth-child(6){display:none;}
-  .home-shop-track .home-shop-card:nth-child(7){order:4;}
   .exh-info-cta{display:none;}
   .exh-shop-mob-cta{display:block;width:fit-content;margin:0.5rem auto 1.5rem;}
-  #shop-lb-inner{grid-template-columns:1fr;width:95vw;gap:1rem;}
-  #shop-lb{align-items:flex-start;overflow-y:auto;padding:4.5rem 0 2rem;}
-  #shop-lb-close{top:0.8rem;right:1rem;}
-  #shop-lb-img{max-height:45vh;}
-  .shop-lb-info{padding:1rem 0;}
 }
 </style>
-<div id="shop-lb">
-  <button id="shop-lb-close">Close ×</button>
-  <div id="shop-lb-inner">
-    <img id="shop-lb-img" src="" alt="">
-    <div class="shop-lb-info">
-      <div class="shop-lb-artist" id="shop-lb-artist"></div>
-      <div class="shop-lb-title" id="shop-lb-title"></div>
-      <div class="shop-lb-meta" id="shop-lb-meta"></div>
-      <div class="shop-lb-price" id="shop-lb-price"></div>
-      <a id="shop-lb-mailto" href="#" class="btn">Request work</a>
+<div id="lightbox">
+  <button id="lightbox-close">Close ×</button>
+  <div id="lightbox-inner">
+    <div id="lb-img-wrap">
+      <button id="lb-prev" class="lb-nav-arrow">&#8249;</button>
+      <img id="lb-img" src="" alt="">
+      <button id="lb-next" class="lb-nav-arrow">&#8250;</button>
+      <div id="lb-dots"></div>
+    </div>
+    <div class="lightbox-info">
+      <div class="lightbox-artist" id="lb-artist"></div>
+      <div class="lightbox-title" id="lb-title"></div>
+      <div class="lightbox-meta" id="lb-meta"></div>
+      <div class="lightbox-price" id="lb-price"></div>
+      <div class="lb-sizes" id="lb-sizes"></div>
+      <a id="lb-mailto" href="#" class="btn">Request work</a>
     </div>
   </div>
 </div>
 <script>
 (function(){
-  var _d=[
-    {img:'../images/shop/jan-divis/sins.webp',title:'Sins, 2026',artist:'Jan Diviš',artistHref:'/en/artists#jan-divis',meta:'Risograph print, A3<br>Signed<br>CZK 850',price:'850 CZK',btnLabel:'Request illustration'},
-    {img:'../images/shop/jan-divis/in-abundance.webp',title:'In Abundance, 2026',artist:'Jan Diviš',artistHref:'/en/artists#jan-divis',meta:'Screen print, A2<br>Signed<br>CZK 1,400',price:'1,400 CZK',btnLabel:'Request illustration'},
-    {img:'../images/shop/jan-divis/walk.webp',title:'Walk, 2026',artist:'Jan Diviš',artistHref:'/en/artists#jan-divis',meta:'Risograph print, A3<br>Signed<br>CZK 650',price:'650 CZK',btnLabel:'Request illustration'},
-    {img:'../images/shop/jan-divis/exit-wounds.webp',title:'Exit Wounds, 2026',artist:'Jan Diviš',artistHref:'/en/artists#jan-divis',meta:'Risograph print, A3<br>Signed<br>CZK 650',price:'650 CZK',btnLabel:'Request illustration'},
-    {img:'../images/shop/jan-divis/falling-apart.webp',title:'Falling Apart, 2022',artist:'Jan Diviš',artistHref:'/en/artists#jan-divis',meta:'Screen print, A3<br>Signed<br>CZK 1,000',price:'1,000 CZK',btnLabel:'Request illustration'},
-    {img:'../images/shop/jan-divis/who-is-to-kill.webp',title:'Who Is to Kill, Who Is to Die, 2026',artist:'Jan Diviš',artistHref:'/en/artists#jan-divis',meta:'Screen print, A2<br>Signed<br>CZK 1,400',price:'1,400 CZK',btnLabel:'Request illustration'},
-    {img:'../images/shop/jan-divis/escalators.webp',title:'Escalators, 2026',artist:'Jan Diviš',artistHref:'/en/artists#jan-divis',meta:'Risograph print, A3<br>Limited edition of 40, signed and numbered<br>CZK 1,000',price:'1,000 CZK',btnLabel:'Request illustration'}
-  ];
-  var lb=document.getElementById('shop-lb'),lc=document.getElementById('shop-lb-close');
-  var lbImg=document.getElementById('shop-lb-img');
+  var lb=document.getElementById('lightbox'),lc=document.getElementById('lightbox-close');
+  var lbImg=document.getElementById('lb-img'),lbWrap=document.getElementById('lb-img-wrap');
+  var lbDotsWrap=document.getElementById('lb-dots');
+  var lbSizes=document.getElementById('lb-sizes');
+  var lbPrev=document.getElementById('lb-prev'),lbNext=document.getElementById('lb-next');
   if(!lb)return;
-  function openItem(data){
-    lbImg.src=data.img;
-    document.getElementById('shop-lb-artist').innerHTML='<a href="'+(data.artistHref||'/en/artists')+'">'+data.artist+'</a>';
-    document.getElementById('shop-lb-title').textContent=data.title;
-    document.getElementById('shop-lb-meta').innerHTML=data.meta||'';
-    document.getElementById('shop-lb-price').textContent=data.price||'';
-    var mailto=document.getElementById('shop-lb-mailto');
-    mailto.textContent=data.btnLabel||'Request work';
-    var _metaPlain=(data.meta||'').replace(/<br\s*\/?>/gi,'\n');
-    var _body='Dear galerie POSTOJ,\n\nI am interested in the following work:\n\n'+data.title+'\n'+data.artist+'\n'+_metaPlain+'\n\nPlease let me know more about the work and its availability.\n\nThank you.\n\nKind regards,\n\n[NAME]';
-    mailto.href='mailto:info@galeriepostoj.cz?subject='+encodeURIComponent('Interest in: '+data.title)+'&body='+encodeURIComponent(_body);
+  var _imgs=[],_idx=0,_data={};
+  function setImg(idx){
+    _idx=(idx+_imgs.length)%_imgs.length;
+    lbImg.src=_imgs[_idx];
+    lbDotsWrap.querySelectorAll('.lb-dot').forEach(function(d,i){d.classList.toggle('active',i===_idx);});
+  }
+  function buildMailto(){
+    var _metaPlain=(_data.meta||'').replace(/<br\s*\/?>\s*/gi,'\n');
+    var _sizeInfo='';
+    if(lbSizes&&lbSizes.classList.contains('visible')){var sel=lbSizes.querySelector('.sz-selected');if(sel)_sizeInfo='\nSize: '+sel.textContent;}
+    var _body='Dear galerie POSTOJ,\n\nI am interested in the following work:\n\n'+_data.title+'\n'+_data.artist+_sizeInfo+'\n'+_metaPlain+'\n\nPlease let me know more about the work and its availability.\n\nThank you.\n\nKind regards,\n\n[NAME]';
+    document.getElementById('lb-mailto').href='mailto:info@galeriepostoj.cz?subject='+encodeURIComponent('Interest in: '+_data.title)+'&body='+encodeURIComponent(_body);
+  }
+  window.openLightbox=function(data){
+    _data=data;
+    _imgs=data.imgs&&data.imgs.length?data.imgs:[data.img];
+    if(!data.imgs&&data.img2)_imgs.push(data.img2);
+    lb.classList.toggle('has-multi',_imgs.length>1);
+    lbDotsWrap.innerHTML='';
+    _imgs.forEach(function(){var d=document.createElement('span');d.className='lb-dot';lbDotsWrap.appendChild(d);});
+    setImg(0);
+    (function(){var t=data.title,m=t.match(/^(.*?)(,\s*\d{4})$/),el=document.getElementById('lb-title');if(m){el.innerHTML=m[1]+'<span class="lb-year">'+m[2]+'</span>';}else{el.textContent=t;}})();
+    var artistEl=document.getElementById('lb-artist');
+    artistEl.innerHTML='<a href="'+(data.artistHref||'/en/collectors?artist=jan-divis')+'">'+data.artist+'</a>';
+    document.getElementById('lb-meta').innerHTML=data.meta||'';
+    document.getElementById('lb-price').textContent=data.price||'';
+    document.getElementById('lb-mailto').style.display=data.price?'none':'';
+    document.getElementById('lb-mailto').textContent=data.btnLabel||'Request work';
+    if(lbSizes){
+      if(data.sizes&&data.sizes.length){
+        lbSizes.innerHTML='<div class="lb-sizes-label">Size</div><div class="lb-sizes-btns"></div>';
+        var btnsWrap=lbSizes.querySelector('.lb-sizes-btns');
+        var firstAvail=true;
+        data.sizes.forEach(function(sz){
+          var btn=document.createElement('button');
+          btn.className='lb-size-btn '+(sz.available?'sz-available':'sz-unavailable');
+          btn.textContent=sz.label;
+          if(sz.available&&firstAvail){btn.classList.add('sz-selected');firstAvail=false;}
+          if(sz.available){btn.addEventListener('click',function(){btnsWrap.querySelectorAll('.lb-size-btn.sz-available').forEach(function(b){b.classList.remove('sz-selected');});btn.classList.add('sz-selected');buildMailto();});}
+          btnsWrap.appendChild(btn);
+        });
+        lbSizes.classList.add('visible');
+      } else {
+        lbSizes.innerHTML='';lbSizes.classList.remove('visible');
+      }
+    }
+    buildMailto();
     var _sy=window.scrollY;
     document.body.style.position='fixed';document.body.style.top=-_sy+'px';document.body.style.width='100%';
     lb.classList.add('open');lb._scrollY=_sy;
-  }
-  document.querySelectorAll('.home-shop-card[data-li]').forEach(function(card){
-    card.addEventListener('click',function(){openItem(_d[+card.getAttribute('data-li')]);});
+    lb.classList.toggle('lb-scrollable',!!(data.sizes&&data.sizes.length));
+  };
+  if(lbPrev)lbPrev.addEventListener('click',function(){setImg(_idx-1);});
+  if(lbNext)lbNext.addEventListener('click',function(){setImg(_idx+1);});
+  var _tx=null;
+  lbWrap.addEventListener('touchstart',function(e){_tx=e.touches[0].clientX;},{passive:true});
+  lbWrap.addEventListener('touchend',function(e){if(_tx===null)return;var dx=e.changedTouches[0].clientX-_tx;if(Math.abs(dx)>40)setImg(dx<0?_idx+1:_idx-1);_tx=null;});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')cl();
+    if(e.key==='ArrowLeft')setImg(_idx-1);
+    if(e.key==='ArrowRight')setImg(_idx+1);
   });
   function cl(){
+    lb.classList.remove('open');
     var sy=lb._scrollY||0;
     document.body.style.position='';document.body.style.top='';document.body.style.width='';
     window.scrollTo(0,sy);
-    lb.classList.remove('open');
-    lbImg.src='';
   }
   lc.addEventListener('click',cl);
   lb.addEventListener('click',function(e){if(e.target===lb)cl();});
-  document.addEventListener('keydown',function(e){if(lb.classList.contains('open')&&e.key==='Escape')cl();});
 })();
 </script>
 <section class="founder-stmt">
-  <div class="fs-headline">Art lives underground.</div>
+  <div class="fs-headline page-section-h">Art lives underground.</div>
   <div class="fs-grid">
     <div class="fs-photo-col rv">
       <a href="/en/about" style="display:block;flex:1;min-height:0;"><img loading="lazy" src="../images/about-us/filip-kolar.webp" alt="Filip Kolář" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"></a>
-      <div class="fs-caption">Filip Kolář<span>Founder.<br>Art enthusiast.</span></div>
+      <div class="fs-caption">Filip Kolář<span>founder, art enthusiast</span></div>
     </div>
     <div class="fs-content rv">
       <p class="fs-text"><span class="fs-text-lead">We believe art belongs to everyone.<br><br></span><span class="fs-text-desk">That's why we built galerie POSTOJ in the Prague metro – in the space of a former currency exchange that used to rip off tourists. No closed gallery doors. No entry fee.</span><span class="fs-text-mob">We built galerie POSTOJ in the Prague metro – in the space of a former currency exchange that used to rip off tourists. No closed gallery doors. No entry fee.</span></p>
       <img width="1397" height="690" loading="lazy" class="fs-sig" src="../images/signature.png" alt="">
-      <a href="/en/about" class="btn fs-desktop-cta">How it started</a>
+      <a href="/en/about" class="btn fs-desktop-cta">How it started →</a>
     </div>
     <div class="fs-right-photo rv">
       <img class="fs-change-photo" loading="lazy" src="../images/metro-change.webp" alt="Former currency exchange space">
@@ -391,9 +401,9 @@ a.current-exh-title:hover{color:#fff;border-color:#fff;}
 })();
 </script>
 <style>
-#game-wrap{position:relative;width:100%;line-height:0;background:#0a0a0a;padding-right:3rem;}
-#game-wrap canvas{display:block;width:100%;height:auto;}
-@media(max-width:768px){#game-wrap{margin-top:0.5rem;padding-right:1.2rem;}}
+#game-wrap{position:relative;width:100%;line-height:0;background:#0a0a0a;padding-right:3rem;margin-top:2.5rem;}
+#game-wrap canvas{display:block;width:100%;height:auto;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;}
+@media(max-width:768px){#game-wrap{margin-top:0.5rem;padding-right:1.2rem;touch-action:none;}}
 </style>
 <div id="game-wrap"><canvas id="c"></canvas></div>
 <script>
@@ -667,19 +677,21 @@ loop();
 <style>
 .artists-section{padding:2rem 3rem 3rem;}
 .artists-tag{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:0.9rem;}
-.artists-heading{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:0.9;letter-spacing:-0.04em;color:#fff;margin-bottom:1.5rem;}
+.artists-heading{}
 .artists-body{font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.85;color:rgba(255,255,255,0.4);margin-bottom:0;}
+@media(min-width:769px){.artists-body{font-size:clamp(1.2rem,1.8vw,1.75rem);line-height:1.3;color:#fff;}}
 .artists-top{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-bottom:2.5rem;}
 .artists-quotes-col{padding-left:2rem;}
-.artists-oc-title{font-size:clamp(3rem,7vw,7rem);font-weight:900;line-height:0.88;letter-spacing:-0.04em;color:#fff;margin-bottom:1.2rem;}
+.artists-oc-title{margin-bottom:1.5rem;}
 .artists-oc-link{font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s,border-color 0.2s;display:inline-block;}
 .artists-oc-link:hover{color:#fff;border-color:#fff;}
+@media(min-width:769px){.artists-oc-link{font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:700;color:#fff;letter-spacing:0;text-transform:none;border-bottom:none;padding-bottom:0;transition:opacity 0.2s;}.artists-oc-link:hover{opacity:0.7;color:#fff;border-color:transparent;}}
 .artists-cards{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;}
 .artist-card{text-decoration:none;display:block;}
 .artist-card-img{aspect-ratio:3/4;overflow:hidden;margin-bottom:0.7rem;}
 .artist-card-img img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform 0.4s ease;}
 .artist-card:hover .artist-card-img img{transform:scale(1.05);}
-.artist-card-name{font-size:0.7rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:#fff;}
+.artist-card-name{font-size:1rem;font-weight:700;letter-spacing:0;text-transform:none;color:#fff;}
 .art-mob{display:none;}
 @media(max-width:768px){
   .artists-section{padding:1.5rem 1.2rem 1rem;}
@@ -694,13 +706,13 @@ loop();
 <section class="artists-section rv">
   <div class="artists-top">
     <div class="artists-text-col">
-      <div class="artists-heading">Artists first.</div>
+      <div class="artists-heading page-section-h">Artists first.</div>
       <p class="artists-body">Galerie POSTOJ is built on the people who create it. On their work, their courage, their imperfections, and their choices. We believe in honesty, fast answers, and real fairness. Every artist with us gets full space for their own concept, their own vision. Because galleries don't make exhibitions. Artists do. And we are here to give them the ultimate support in their journey.</p>
-      <a href="/en/artists" class="btn" style="margin-top:1.8rem;display:inline-block;">Meet the artists</a>
+      <a href="/en/artists" class="btn ew-btn" style="margin-top:1.8rem;">Meet the artists →</a>
     </div>
     <div class="artists-quotes-col">
-      <div class="artists-oc-title">Send us<br>your work.</div>
-      <a href="/en/open-call" class="artists-oc-link">Open Call →</a>
+      <div class="artists-oc-title page-section-h">Send us<br>your work.</div>
+      <a href="/en/open-call" class="artists-oc-link">Open call →</a>
     </div>
   </div>
   <div class="artists-cards">
