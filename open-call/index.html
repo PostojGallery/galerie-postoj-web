@@ -17,12 +17,12 @@
 .oc-req{font-size:clamp(1.2rem,1.8vw,1.75rem);line-height:1.3;color:#fff;padding:0.3rem 0;display:block;}
 .oc-form-col{padding:2rem 2.5rem 4rem 3rem;display:flex;flex-direction:column;}
 .form-group{margin-bottom:1.5rem;}
-.form-label{display:block;font-size:1.1rem;color:#fff;margin-bottom:0.6rem;}
+.form-label{display:block;font-size:clamp(1.2rem,1.8vw,1.75rem);line-height:1.3;font-weight:700;color:#fff;margin-bottom:0.6rem;}
 .form-input,.form-textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.3);color:#fff;font-family:inherit;font-size:clamp(1.2rem,1.8vw,1.75rem);padding:0.8rem 0;transition:border-color 0.2s;outline:none;cursor:text;box-sizing:border-box;}
 .form-input:focus,.form-textarea:focus{border-bottom-color:#fff;}
 .form-input.input-error{border-bottom-color:#ff4444;}
 .form-input::placeholder,.form-textarea::placeholder{color:rgba(255,255,255,0.4);}
-.form-textarea{resize:none;height:180px;line-height:1.6;}
+.form-textarea{resize:none;overflow:hidden;line-height:1.6;}
 .oc-submit{display:inline-block;background:#fff;color:#000;font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:700;line-height:1.3;padding:0.4em 0.8em;cursor:pointer;transition:background 0.2s,color 0.2s;border:none;font-family:inherit;text-decoration:none;}
 .oc-submit:hover{background:#0a0a0a;color:#fff;outline:1px solid #fff;}
 .oc-success-stickman{width:150px;display:block;margin-bottom:2rem;}
@@ -43,14 +43,7 @@
 <div class="oc-layout">
   <div class="oc-info rv">
     <div class="oc-headline">Pošli svoji<br>práci.</div>
-    <p class="oc-desc">Věříme, že umění patří všem – cítíš to stejně? Hledáme umělce, kteří jsou připraveni vystavovat ve veřejném prostoru.</p>
-    <div class="oc-reqs">
-      <div class="oc-reqs-label">Co hledáme</div>
-      <div class="oc-req">Umění, které pochopí každý. Žádný filosofický text.</div>
-      <div class="oc-req">Tvorbu, která provokuje. Ne dekoraci.</div>
-      <div class="oc-req">Motivaci, vášeň, posedlost.</div>
-      <div class="oc-req">Studenty, začínající umělce, tebe.</div>
-    </div>
+    <p class="oc-desc">Věříme, že umění patří všem – cítíš to stejně? Hledáme tvorbu, kterou pochopí každý. Žádný filosofický text. Něco, co provokuje. Ne dekoraci.</p>
   </div>
   <div class="oc-form-col rv" style="transition-delay:0.1s">
     <form id="oc-form" action="https://formspree.io/f/xvzdewkr" method="POST" novalidate>
@@ -58,7 +51,7 @@
       <div class="form-group"><label class="form-label" for="oc-name">Jméno a příjmení</label><input class="form-input" type="text" id="oc-name" name="name" placeholder="Hugo Provokoval"></div>
       <div class="form-group"><label class="form-label" for="oc-email">E-mail</label><input class="form-input" type="email" id="oc-email" name="email" placeholder="hugo@gmail.com"><span id="oc-email-err" style="display:none;font-size:0.65rem;color:#ff4444;margin-top:0.4rem;letter-spacing:0.06em;">Ne každé dílo vyjde na první pokus. Zadej prosím platný e-mail.</span></div>
       <div class="form-group"><label class="form-label" for="oc-web">Instagram</label><input class="form-input" type="text" id="oc-web" name="instagram" placeholder="@hugo_provokoval" required></div>
-      <div class="form-group"><label class="form-label" for="oc-statement">Umělecký statement</label><textarea class="form-textarea" id="oc-statement" name="statement" placeholder="Co chceš ve výstavě řešit a co si má divák odnést? Chceme emoce. Chceme reakci."></textarea></div>
+      <div class="form-group"><label class="form-label" for="oc-statement">Umělecký statement</label><textarea class="form-textarea" id="oc-statement" name="statement" rows="2" placeholder="Co chceš ve výstavě řešit a co si má divák odnést? Chceme emoce. Chceme reakci."></textarea></div>
       <button type="submit" class="oc-submit">Počítejte se mnou →</button>
     </form>
     <div id="oc-success" style="display:none;opacity:0;transition:opacity 0.4s;">
@@ -113,6 +106,12 @@
   emailInput.addEventListener('input',function(){
     if(validateEmail(this.value))hideEmailError();
   });
+})();
+(function(){
+  var ta=document.getElementById('oc-statement');
+  function growTA(){ta.style.height='auto';ta.style.height=ta.scrollHeight+'px';}
+  ta.addEventListener('input',growTA);
+  growTA();
 })();
 document.getElementById('oc-form').addEventListener('submit',function(e){
   e.preventDefault();
