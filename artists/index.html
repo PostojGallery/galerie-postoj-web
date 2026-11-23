@@ -59,7 +59,7 @@
   .ai-names-col{padding-top:2.5rem;padding-bottom:2.5rem;}
   .ai-name-item{font-size:clamp(3rem,6vw,6rem);font-weight:700;letter-spacing:-0.045em;line-height:0.86;color:#555;cursor:pointer;transition:color 0.15s;display:block;padding:0.1em 0.2em 0.22em 0;margin-bottom:-0.12em;}
   .ai-name-item.ai-name-active{color:#fff;}
-  .ai-name-item.ai-name-open{}
+  .ai-name-item.ai-name-open{padding-top:0.35em;}
   .ai-block{display:none;}
   .ai-block.ai-block-open{display:grid;grid-template-columns:repeat(4,1fr);column-gap:3rem;align-items:start;padding:2rem 0 4rem;}
   .ai-block-portrait img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;}
@@ -781,7 +781,7 @@
     if(doScroll){
       requestAnimationFrame(function(){
         var navH=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'))||72;
-        var top=item.getBoundingClientRect().top+window.scrollY-navH-8;
+        var top=item.getBoundingClientRect().top+window.scrollY-navH;
         window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
       });
     }
