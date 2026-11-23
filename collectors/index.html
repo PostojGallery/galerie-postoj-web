@@ -211,9 +211,7 @@
   <button id="lightbox-close">Zavřít ×</button>
   <div id="lightbox-inner">
     <div id="lb-img-wrap">
-      <button id="lb-prev" class="lb-nav-arrow">&#8249;</button>
       <img id="lb-img" src="" alt="">
-      <button id="lb-next" class="lb-nav-arrow">&#8250;</button>
       <div id="lb-dots"></div>
     </div>
     <div class="lightbox-info">
@@ -427,7 +425,6 @@
   var lbImg=document.getElementById('lb-img'),lbWrap=document.getElementById('lb-img-wrap');
   var lbDotsWrap=document.getElementById('lb-dots');
   var lbSizes=document.getElementById('lb-sizes');
-  var lbPrev=document.getElementById('lb-prev'),lbNext=document.getElementById('lb-next');
   if(!lb)return;
   var _imgs=[],_idx=0,_data={};
   function setImg(idx){
@@ -481,8 +478,7 @@
     lb.classList.add('open');lb._scrollY=_sy;
     lb.classList.toggle('lb-scrollable',!!(data.sizes&&data.sizes.length));
   };
-  if(lbPrev)lbPrev.addEventListener('click',function(){setImg(_idx-1);});
-  if(lbNext)lbNext.addEventListener('click',function(){setImg(_idx+1);});
+  lbImg.addEventListener('click',function(e){if(_imgs.length>1){if(e.clientX<lbImg.getBoundingClientRect().left+lbImg.offsetWidth/2){setImg(_idx-1);}else{setImg(_idx+1);}}});
   var _tx=null;
   lbWrap.addEventListener('touchstart',function(e){_tx=e.touches[0].clientX;},{passive:true});
   lbWrap.addEventListener('touchend',function(e){if(_tx===null)return;var dx=e.changedTouches[0].clientX-_tx;if(Math.abs(dx)>40)setImg(dx<0?_idx+1:_idx-1);_tx=null;});

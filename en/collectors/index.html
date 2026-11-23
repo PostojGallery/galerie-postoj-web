@@ -75,11 +75,6 @@
 .lb-size-btn.sz-available{color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.4);}
 .lb-size-btn.sz-available.sz-selected{background:#fff;color:#000;border-color:#fff;}
 .lb-size-btn.sz-unavailable{pointer-events:none;}
-.lb-nav-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.5);font-size:1.1rem;line-height:1;padding:0.55rem 0.7rem;transition:all 0.2s;z-index:3;display:none;cursor:pointer;}
-.lb-nav-arrow:hover{color:#fff;border-color:#fff;}
-#lb-prev{left:0;}
-#lb-next{right:0;}
-#lightbox.has-multi .lb-nav-arrow{display:block;}
 #lightbox.lb-scrollable{overflow-y:auto;-webkit-overflow-scrolling:touch;}
 #lightbox-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.6);font-family:inherit;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:pointer;transition:all 0.2s;}
 #lightbox-close:hover{border-color:#fff;color:#fff;}
@@ -88,7 +83,6 @@
 .work-reserved-badge{position:absolute;top:10px;left:10px;background:rgba(0,0,0,0.72);backdrop-filter:blur(4px);color:rgba(255,255,255,0.85);border:1px solid rgba(255,255,255,0.25);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.35rem 0.75rem;z-index:3;pointer-events:none;}
 .work-price-sold{display:none;}
 @media(max-width:768px){
-  .lb-nav-arrow{display:none!important;}
   .work-buy-label{display:none;}
   .collectors-hero{margin-top:70px;padding:1rem 1.2rem 0.8rem;}
   .collectors-intro{padding:0 1.2rem 1rem;max-width:none;}
@@ -276,9 +270,7 @@
   <button id="lightbox-close">Close ×</button>
   <div id="lightbox-inner">
     <div id="lb-img-wrap">
-      <button id="lb-prev" class="lb-nav-arrow">&#8249;</button>
       <img id="lb-img" src="" alt="">
-      <button id="lb-next" class="lb-nav-arrow">&#8250;</button>
       <div id="lb-dots"></div>
     </div>
     <div class="lightbox-info">
@@ -490,7 +482,6 @@
   var lbImg=document.getElementById('lb-img'),lbWrap=document.getElementById('lb-img-wrap');
   var lbDotsWrap=document.getElementById('lb-dots');
   var lbSizes=document.getElementById('lb-sizes');
-  var lbPrev=document.getElementById('lb-prev'),lbNext=document.getElementById('lb-next');
   if(!lb)return;
   var _imgs=[],_idx=0,_data={};
   function setImg(idx){
@@ -544,8 +535,7 @@
     lb.classList.add('open');lb._scrollY=_sy;
     lb.classList.toggle('lb-scrollable',!!(data.sizes&&data.sizes.length));
   };
-  if(lbPrev)lbPrev.addEventListener('click',function(){setImg(_idx-1);});
-  if(lbNext)lbNext.addEventListener('click',function(){setImg(_idx+1);});
+  lbImg.addEventListener('click',function(e){if(_imgs.length>1){if(e.clientX<lbImg.getBoundingClientRect().left+lbImg.offsetWidth/2){setImg(_idx-1);}else{setImg(_idx+1);}}});
   var _tx=null;
   lbWrap.addEventListener('touchstart',function(e){_tx=e.touches[0].clientX;},{passive:true});
   lbWrap.addEventListener('touchend',function(e){if(_tx===null)return;var dx=e.changedTouches[0].clientX-_tx;if(Math.abs(dx)>40)setImg(dx<0?_idx+1:_idx-1);_tx=null;});

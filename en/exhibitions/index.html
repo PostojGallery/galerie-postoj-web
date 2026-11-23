@@ -68,8 +68,6 @@
 .exh-current-section,.exh-archive-section{scroll-margin-top:80px;}
 #glb{position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:10000;display:none;touch-action:none;overflow:hidden;}
 #glb img{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);max-height:90vh;max-width:90vw;object-fit:contain;}
-#glb-prev,#glb-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid rgba(255,255,255,0.3);color:#fff;font-size:1.2rem;width:44px;height:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
-#glb-prev{left:1.5rem;}#glb-next{right:1.5rem;}
 #glb-close{position:absolute;top:1.5rem;right:2rem;background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);font-family:inherit;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:pointer;}
 #glb-count{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);display:flex;gap:6px;justify-content:center;align-items:center;}
 .glb-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.25);}
@@ -641,8 +639,6 @@
   </div>
 </div>
 <div id="glb">
-  <button id="glb-prev">←</button>
-  <button id="glb-next">→</button>
   <button id="glb-close">Close ×</button>
   <img id="glb-img" src="data:," alt="">
   <div id="glb-count"></div>
@@ -806,13 +802,11 @@ document.querySelectorAll('.ew-read').forEach(function(btn){
 });
 (function(){
   var lb=document.getElementById('glb'),lbi=document.getElementById('glb-img'),lbc=document.getElementById('glb-count');
-  var glbPrev=document.getElementById('glb-prev'),glbNext=document.getElementById('glb-next');
   var imgs=[],cur=0;
-  function setNav(show){glbPrev.style.display=show?'flex':'none';glbNext.style.display=show?'flex':'none';lbc.style.display=show?'':'none';}
+  function setNav(show){lbc.style.display=show?'':'none';}
   function show(){lbi.src=imgs[cur];if(lbc.children.length!==imgs.length){lbc.innerHTML='';imgs.forEach(function(){var d=document.createElement('span');d.className='glb-dot';lbc.appendChild(d);});}Array.from(lbc.children).forEach(function(d,i){d.classList.toggle('active',i===cur);});}
   function close(){lb.style.display='none';document.body.style.overflow='';}
-  glbPrev.onclick=function(e){e.stopPropagation();cur=(cur-1+imgs.length)%imgs.length;show();};
-  glbNext.onclick=function(e){e.stopPropagation();cur=(cur+1)%imgs.length;show();};
+
   document.getElementById('glb-close').onclick=function(e){e.stopPropagation();close();};
   lb.onclick=function(e){if(e.target===lb||e.target===lbi){if(e.clientX<window.innerWidth/2){cur=(cur-1+imgs.length)%imgs.length;}else{cur=(cur+1)%imgs.length;}show();}};
   document.addEventListener('keydown',function(e){if(lb.style.display!=='flex')return;if(e.key==='ArrowLeft'){cur=(cur-1+imgs.length)%imgs.length;show();}else if(e.key==='ArrowRight'){cur=(cur+1)%imgs.length;show();}else if(e.key==='Escape')close();});

@@ -49,8 +49,6 @@
 .fs-img-carousel{display:none;}
 #glb{position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:10000;display:none;touch-action:none;overflow:hidden;}
 #glb img{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);max-height:90vh;max-width:90vw;object-fit:contain;}
-#glb-prev,#glb-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid rgba(255,255,255,0.3);color:#fff;font-size:1.2rem;width:44px;height:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
-#glb-prev{left:1.5rem;}#glb-next{right:1.5rem;}
 #glb-close{position:absolute;top:1.5rem;right:2rem;background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);font-family:inherit;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:pointer;}
 #glb-count{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);display:flex;gap:6px;justify-content:center;align-items:center;}
 .glb-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.25);}
@@ -241,9 +239,7 @@
   <button id="lightbox-close">Close ×</button>
   <div id="lightbox-inner">
     <div id="lb-img-wrap">
-      <button id="lb-prev" class="lb-nav-arrow">&#8249;</button>
       <img id="lb-img" src="" alt="">
-      <button id="lb-next" class="lb-nav-arrow">&#8250;</button>
       <div id="lb-dots"></div>
     </div>
     <div class="lightbox-info">
@@ -262,7 +258,6 @@
   var lbImg=document.getElementById('lb-img'),lbWrap=document.getElementById('lb-img-wrap');
   var lbDotsWrap=document.getElementById('lb-dots');
   var lbSizes=document.getElementById('lb-sizes');
-  var lbPrev=document.getElementById('lb-prev'),lbNext=document.getElementById('lb-next');
   if(!lb)return;
   var _imgs=[],_idx=0,_data={};
   function setImg(idx){
@@ -316,8 +311,7 @@
     lb.classList.add('open');lb._scrollY=_sy;
     lb.classList.toggle('lb-scrollable',!!(data.sizes&&data.sizes.length));
   };
-  if(lbPrev)lbPrev.addEventListener('click',function(){setImg(_idx-1);});
-  if(lbNext)lbNext.addEventListener('click',function(){setImg(_idx+1);});
+  lbImg.addEventListener('click',function(e){if(_imgs.length>1){if(e.clientX<lbImg.getBoundingClientRect().left+lbImg.offsetWidth/2){setImg(_idx-1);}else{setImg(_idx+1);}}});
   var _tx=null;
   lbWrap.addEventListener('touchstart',function(e){_tx=e.touches[0].clientX;},{passive:true});
   lbWrap.addEventListener('touchend',function(e){if(_tx===null)return;var dx=e.changedTouches[0].clientX-_tx;if(Math.abs(dx)>40)setImg(dx<0?_idx+1:_idx-1);_tx=null;});
@@ -788,8 +782,6 @@ loop();
   </div>
 </div></site-footer>
 <div id="glb">
-  <button id="glb-prev">←</button>
-  <button id="glb-next">→</button>
   <button id="glb-close">Close ×</button>
   <img id="glb-img" src="data:," alt="">
   <div id="glb-count"></div>
@@ -818,12 +810,10 @@ loop();
   // lightbox for photo strip
   (function(){
     var lb=document.getElementById('glb'),lbi=document.getElementById('glb-img'),lbc=document.getElementById('glb-count');
-    var glbPrev=document.getElementById('glb-prev'),glbNext=document.getElementById('glb-next');
     var imgs=[],cur=0;
     function show(){lbi.src=imgs[cur];if(lbc.children.length!==imgs.length){lbc.innerHTML='';imgs.forEach(function(){var d=document.createElement('span');d.className='glb-dot';lbc.appendChild(d);});}Array.from(lbc.children).forEach(function(d,i){d.classList.toggle('active',i===cur);});}
     function close(){lb.style.display='none';document.body.style.overflow='';}
-    glbPrev.onclick=function(e){e.stopPropagation();cur=(cur-1+imgs.length)%imgs.length;show();};
-    glbNext.onclick=function(e){e.stopPropagation();cur=(cur+1)%imgs.length;show();};
+
     document.getElementById('glb-close').onclick=function(e){e.stopPropagation();close();};
     lb.onclick=function(e){if(e.target===lb||e.target===lbi){if(e.clientX<window.innerWidth/2){cur=(cur-1+imgs.length)%imgs.length;}else{cur=(cur+1)%imgs.length;}show();}};
     document.addEventListener('keydown',function(e){if(lb.style.display!=='flex')return;if(e.key==='ArrowLeft'){cur=(cur-1+imgs.length)%imgs.length;show();}else if(e.key==='ArrowRight'){cur=(cur+1)%imgs.length;show();}else if(e.key==='Escape')close();});
