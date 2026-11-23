@@ -23,18 +23,17 @@
 .form-input.input-error{border-bottom-color:#ff4444;}
 .form-input::placeholder,.form-textarea::placeholder{color:rgba(255,255,255,0.4);}
 .form-textarea{resize:none;height:180px;line-height:1.6;}
-.oc-submit{background:#fff;color:#000;font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:700;line-height:1.3;padding:0.4em 0.8em;cursor:pointer;transition:background 0.2s,color 0.2s;border:none;font-family:inherit;}
+.oc-submit{display:inline-block;background:#fff;color:#000;font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:700;line-height:1.3;padding:0.4em 0.8em;cursor:pointer;transition:background 0.2s,color 0.2s;border:none;font-family:inherit;text-decoration:none;}
 .oc-submit:hover{background:#0a0a0a;color:#fff;outline:1px solid #fff;}
-.oc-success-grid{display:grid;grid-template-columns:30% 1fr;gap:3rem;align-items:center;padding:3rem 0;}
-.oc-success-img{display:flex;align-items:center;justify-content:center;}
-.oc-success-img img{width:100%;max-width:200px;display:block;}
+.oc-success-stickman{width:150px;display:block;margin-bottom:2rem;}
+.oc-success-h{font-size:clamp(2rem,3vw,3rem);font-weight:700;letter-spacing:-0.04em;line-height:1;color:#fff;margin-bottom:1.5rem;}
+.oc-success-p{font-size:clamp(1.2rem,1.8vw,1.75rem);line-height:1.3;color:#fff;margin-bottom:2rem;}
 @media(max-width:768px){
   .oc-layout{grid-template-columns:1fr;margin-top:70px;min-height:auto;}
   .oc-info{padding:2rem 1.2rem;border-bottom:1px solid rgba(255,255,255,0.08);}
   .oc-desc{max-width:none;}
   .oc-form-col{padding:2rem 1.2rem 3rem;}
-  .oc-success-grid{grid-template-columns:1fr;gap:1.5rem;padding:2rem 0;text-align:center;}
-  .oc-success-img img{max-width:156px;margin:0 auto;}
+  .oc-success-stickman{width:100px;}
 }
 </style>
 </head>
@@ -63,18 +62,10 @@
       <button type="submit" class="oc-submit">Počítejte se mnou →</button>
     </form>
     <div id="oc-success" style="display:none;opacity:0;transition:opacity 0.4s;">
-      <div class="oc-success-grid">
-        <div class="oc-success-img">
-          <img src="../images/stickman-success.png" alt="">
-        </div>
-        <div class="oc-success-text">
-          <div style="font-size:clamp(1.6rem,2.8vw,2.6rem);font-weight:900;letter-spacing:-0.03em;line-height:0.95;margin-bottom:1.2rem;color:#fff;">Ozveme se ti dřív<br>než se postaví<br>metro D.</div>
-          <p style="font-size:0.95rem;line-height:1.85;color:rgba(255,255,255,0.5);margin-bottom:0;">Díky, že chceš být součástí příběhu galerie POSTOJ.</p>
-        </div>
-      </div>
-      <div style="padding-top:2rem;">
-        <a href="/" style="font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:2px;cursor:pointer;transition:color 0.2s;">← Zpět na hlavní stránku</a>
-      </div>
+      <img src="../images/stickman-success.png" alt="" class="oc-success-stickman">
+      <div class="oc-success-h">Ozveme se ti dřív,<br>než se postaví<br>metro D.</div>
+      <p class="oc-success-p">Díky, že chceš být součástí příběhu galerie POSTOJ.</p>
+      <a href="/" class="oc-submit">Zpět na hlavní stránku →</a>
     </div>
     <div id="oc-error" style="display:none;margin-top:1rem;font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.6;">Něco se pokazilo. Zkus to znovu nebo napiš na <a href="mailto:info@galeriepostoj.cz" style="color:#fff;border-bottom:1px solid rgba(255,255,255,0.3);">info@galeriepostoj.cz</a></div>
   </div>
