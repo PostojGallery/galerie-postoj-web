@@ -809,7 +809,7 @@
   items.forEach(function(item){
     item.addEventListener('click',function(){
       var id=item.getAttribute('data-ai');
-      if(currentOpen===id){closeBlock(id);}else{openBlock(id,false);}
+      if(currentOpen===id){closeBlock(id);}else{openBlock(id,true);}
     });
     item.addEventListener('mouseenter',function(){
       if(!currentOpen){hoverOverride=true;activatePreview(item.getAttribute('data-ai'));}
