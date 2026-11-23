@@ -535,7 +535,7 @@ function drawOverlay() {
     ctx.fillStyle = '#ffffff';
     const _sfs = MOB ? Math.round(1.2 * 16 / canvasScale) : Math.round(window.innerWidth * 0.018 / canvasScale);
     ctx.font      = `400 ${_sfs}px "Helvetica Neue",Helvetica,Arial,sans-serif`;
-    ctx.fillText(MOB ? 'Tap to start' : 'Press space or tap to start', CW / 2, GROUND / 2 + 6);
+    ctx.fillText(MOB ? 'TAP TO START' : 'PRESS SPACE OR TAP TO START', CW / 2, GROUND / 2 + 6);
     ctx.globalAlpha = 1;
   } else if (state === 'dead') {
     ctx.fillStyle = '#fff';
