@@ -65,6 +65,13 @@ const J2     = -10.0;
 const stickImg = new Image();
 stickImg.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5ZDbSAAACnElEQVR42u2d226EMAwFN1H+/5e3L0VCK7olwUns45nHqhXgiZ0r9PUCAAAAAAAAAAAAAAAAAAAAAHDD+xflZyyZ5V4GpBSpmFTyWDurESxOzZqlCE6MUj+MYDIYEAwIjjLAYh4MCPY+QlbLUgQjGlQXP2jBwRpeb9VphFC7mjSVQHxr2U+zIHL30NRb+NXvHj/bKXpVn19V5I4E7Pw3K/aB3ycYZA0KPGdlz6rV3XK/O1PlBlkrWvvnNSxKuJdpV1WTaxnY0evPkjvS4FrWrD2C9d+17mbzjHu26Cqaktye/nfkvj4D7lWqS8FWYmffYyml7B44hRpFPw3WX8EZHUEvm74sapRVUW7v361e8Fh5vZArOU8HPKNZH0Xq1j54V9ZajqwjiN0iOMJA6riW54bosg+OIteif/e0W9U8y90dqLuZ7PnoT1WTu3KOGuFcV/Em92nAZp17nrXbFLZE75CrMnd1LThqf6tKU8raTO/9LhUcJWszVomiJLfnXrLILqvlzgxstMUU14I9jpKV1pC3CfY6/VHcCbJg+kqWQiZE/nZWRa626CnrvTvEKh+7cSXYy0OvEi672XAVwCglOdNo20xw5P5W5fSGqeAjMBFKcs89yu2CKYxsZwkYeaMx3Tw4Mgpf4kGwOAhGMCCYaRCCAcFpKwSCIadghYWI2TRVqRBIMFIFBVtJzf7GhPRXV63lRjjo4DKDI32WiBKN2NyCOZwuLNhCLlIdCs682C8tmIwVFUzGigpGrKDgLFKjLpcWxNo8s8xKFmVYtEQjNiZlpljF94OjPe+UaRLZKioYsf6oFtL4b9qBBX+TjFj/1auOPgxibWcZ2/tghAqXaIjbyMlKo7JMhQMAAAAAAAAAAAAAAAAAAACAe/wApH7w0gNSqU4AAAAASUVORK5CYII=';
 
+// ── Responsive helpers ─────────────────────────────────────────────────────
+const MOB = window.innerWidth <= 768;
+let canvasScale = 1;
+let btnBounds = null, btnHover = false;
+window.addEventListener('resize', () => { canvasScale = canvas.getBoundingClientRect().width / CW || 1; });
+window.addEventListener('load',   () => { canvasScale = canvas.getBoundingClientRect().width / CW || 1; });
+
 // ── State ──────────────────────────────────────────────────────────────────
 let _startedAt = -1000;
 let state     = 'idle';
@@ -223,19 +230,33 @@ function drawOverlay() {
     ctx.font      = '400 9px monospace';
     ctx.fillText(BUILD, CW / 2, GROUND / 2 + 22);
   } else if (state === 'dead') {
+    ctx.fillStyle = 'rgba(0,0,0,0.72)';
+    ctx.fillRect(0, 0, CW, CH);
     ctx.fillStyle = '#fff';
-    ctx.font      = '700 17px "Helvetica Neue",Helvetica,Arial,sans-serif';
-    ctx.fillText('GAME  OVER', CW / 2, CH / 2 - 16);
-    // Retry icon
-    const bx = CW / 2 - 20, by = CH / 2 - 2;
-    ctx.strokeStyle = '#2e2e2e';
-    ctx.lineWidth   = 1.5;
-    ctx.beginPath();
-    ctx.roundRect(bx, by, 40, 34, 4);
-    ctx.stroke();
-    ctx.fillStyle = '#fff';
-    ctx.font      = '20px "Helvetica Neue",Helvetica,Arial,sans-serif';
-    ctx.fillText('↺', CW / 2, by + 25);
+    const _gofs = MOB ? Math.round(34 / canvasScale) : Math.min(Math.max(Math.round(window.innerWidth * 0.03 / canvasScale), Math.round(36 / canvasScale)), Math.round(48 / canvasScale));
+    ctx.font = `700 ${_gofs}px "Helvetica Neue",Helvetica,Arial,sans-serif`;
+    ctx.letterSpacing = '-0.045em';
+    ctx.fillText('Game over', CW / 2, CH / 2 - (MOB ? 28 : 16));
+    ctx.letterSpacing = '0px';
+    const _btfs = MOB ? Math.round(19.2 / canvasScale) : Math.min(Math.max(Math.round(window.innerWidth * 0.018 / canvasScale), Math.round(19.2 / canvasScale)), Math.round(28 / canvasScale));
+    ctx.font = `700 ${_btfs}px "Helvetica Neue",Helvetica,Arial,sans-serif`;
+    const _btnLabel = 'Play again →';
+    const _tw = ctx.measureText(_btnLabel).width;
+    const _bph = Math.round(0.8 * _btfs), _bpv = Math.round(0.4 * _btfs);
+    const bw = _tw + 2 * _bph, bh = Math.round(_btfs * 1.3) + 2 * _bpv;
+    const bx = CW / 2 - bw / 2, by = CH / 2 + Math.round(6 / canvasScale);
+    btnBounds = { x: bx, y: by, w: bw, h: bh };
+    ctx.fillStyle = btnHover ? '#0a0a0a' : '#ffffff';
+    ctx.fillRect(bx, by, bw, bh);
+    if (btnHover) {
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = Math.max(1, Math.round(1 / canvasScale));
+      ctx.strokeRect(bx, by, bw, bh);
+    }
+    ctx.fillStyle = btnHover ? '#ffffff' : '#000000';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(_btnLabel, CW / 2, by + bh / 2);
+    ctx.textBaseline = 'alphabetic';
   }
   ctx.textAlign = 'left';
 }
@@ -332,6 +353,7 @@ function startGame() {
   obstTimer = 0; jumpCount = 0;
   player.y = GROUND; player.vy = 0; player.onGround = true;
   legPhase = 0; airTilt = 0; groundOff = 0;
+  btnHover = false; btnBounds = null;
 }
 
 function loop() {
@@ -361,6 +383,16 @@ window.addEventListener('keydown', e => {
     handleInput();
   }
 });
+
+canvas.addEventListener('mousemove', e => {
+  if (state !== 'dead' || !btnBounds) { btnHover = false; return; }
+  const r = canvas.getBoundingClientRect();
+  const cx = (e.clientX - r.left) * (CW / r.width);
+  const cy = (e.clientY - r.top) * (CH / r.height);
+  btnHover = cx >= btnBounds.x && cx <= btnBounds.x + btnBounds.w &&
+             cy >= btnBounds.y && cy <= btnBounds.y + btnBounds.h;
+});
+canvas.addEventListener('mouseleave', () => { btnHover = false; });
 
 // Pointer (mouse + touch unified via Pointer Events API).
 // Registered ONCE here, never inside startGame/die/loop.
