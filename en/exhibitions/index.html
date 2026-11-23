@@ -801,33 +801,44 @@ document.querySelectorAll('.exh-expand-btn,.exh-more-btn').forEach(function(btn)
 document.querySelectorAll('.ew-read').forEach(function(btn){
   btn.addEventListener('click',function(){
     var expanded=this.getAttribute('aria-expanded')==='true';
-    var text=this.closest('.ew-col').querySelector('.ew-expanded');
+    var col=this.closest('.ew-col');
+    var text=col.querySelector('.ew-expanded');
     if(!text)return;
+    var sticky=col.querySelector('.ew-text-sticky');
     var self=this;
+    if(text._ewDone){text.removeEventListener('transitionend',text._ewDone);text._ewDone=null;}
     if(expanded){
-      text.style.maxHeight=text.scrollHeight+'px';
+      var curH=parseFloat(window.getComputedStyle(text).height)||0;
+      text.style.height=curH+'px';
       text.offsetHeight;
-      text.style.maxHeight='0';
+      text.style.height='0';
       self.setAttribute('aria-expanded','false');
       self.textContent=self.dataset.open;
-      text.addEventListener('transitionend',function done(){
+      var done=function(){
+        text._ewDone=null;
         text.classList.remove('open');
-        text.style.maxHeight='';
-        text.removeEventListener('transitionend',done);
-      },{once:true});
+        text.style.height='';
+        col.classList.remove('ew-col-open');
+        if(sticky)sticky.classList.remove('ew-text-open');
+      };
+      text._ewDone=done;
+      text.addEventListener('transitionend',done,{once:true});
     } else {
+      col.classList.add('ew-col-open');
+      if(sticky)sticky.classList.add('ew-text-open');
       text.classList.add('open');
+      text.style.height='0';
       text.offsetHeight;
       var targetH=text.scrollHeight;
-      text.style.maxHeight='0';
-      text.offsetHeight;
-      text.style.maxHeight=targetH+'px';
+      text.style.height=targetH+'px';
       self.setAttribute('aria-expanded','true');
       self.textContent=self.dataset.close;
-      text.addEventListener('transitionend',function done(){
-        text.style.maxHeight='none';
-        text.removeEventListener('transitionend',done);
-      },{once:true});
+      var done=function(){
+        text._ewDone=null;
+        text.style.height='auto';
+      };
+      text._ewDone=done;
+      text.addEventListener('transitionend',done,{once:true});
     }
   });
 });
