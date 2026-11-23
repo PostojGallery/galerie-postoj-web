@@ -63,6 +63,10 @@
   .ai-block{display:none;}
   .ai-block.ai-block-open{display:grid;grid-template-columns:repeat(4,1fr);column-gap:3rem;align-items:start;padding:2rem 0 4rem;}
   .ai-block-portrait img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;}
+  .ai-block[data-ai="jan-divis"] .ai-block-portrait{overflow:hidden;}
+  .ai-block[data-ai="jan-divis"] .ai-block-portrait img{transform:scale(1.3);transform-origin:50% 68%;object-position:50% 68%;}
+  .ai-preview-panel[data-ai="jan-divis"]{overflow:hidden;}
+  .ai-preview-panel[data-ai="jan-divis"] .ai-preview-img{transform:scale(1.3);transform-origin:50% 68%;object-position:50% 68%;}
   .ai-block-text{grid-column:2/4;font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:400;line-height:1.3;color:#fff;}
   .ai-block-bio{margin-bottom:1.2em;}
   .ai-block-exh{margin-bottom:0.8em;}
@@ -368,7 +372,7 @@
       <div class="artist-profile-grid">
         <div class="rv">
           <div class="artist-photo-wrap">
-            <img width="500" loading="lazy" src="../../images/jan-divis.webp" alt="Jan Diviš" style="width:100%;display:block;object-fit:cover;object-position:center 20%;aspect-ratio:3/4;">
+            <img width="500" loading="lazy" src="../../images/jan-divis.webp" alt="Jan Diviš" style="width:100%;display:block;object-fit:cover;object-position:50% 68%;aspect-ratio:3/4;transform:scale(1.3);transform-origin:50% 68%;">
             <div class="artist-photo-caption">Jan Diviš<span>Artist</span></div>
           </div>
         </div>
