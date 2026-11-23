@@ -212,9 +212,12 @@ function drawDebug() {
 function drawOverlay() {
   ctx.textAlign = 'center';
   if (state === 'idle') {
-    ctx.fillStyle = '#1e1e1e';
-    ctx.font      = '400 11px "Helvetica Neue",Helvetica,Arial,sans-serif';
-    ctx.fillText('PRESS SPACE OR TAP TO START', CW / 2, GROUND / 2 + 6);
+    const _lt = Date.now() % 900; ctx.globalAlpha = (_lt < 80 || (_lt > 140 && _lt < 200)) ? 1 : 0.15;
+    ctx.fillStyle = '#ffffff';
+    const _sfs = MOB ? Math.round(1.2 * 16 / canvasScale) : Math.round(window.innerWidth * 0.018 / canvasScale);
+    ctx.font      = `400 ${_sfs}px "Helvetica Neue",Helvetica,Arial,sans-serif`;
+    ctx.fillText(MOB ? 'TAP TO START' : 'PRESS SPACE OR TAP TO START', CW / 2, GROUND / 2 + 6);
+    ctx.globalAlpha = 1;
     // Build label on start screen
     ctx.fillStyle = '#1a1a1a';
     ctx.font      = '400 9px monospace';
