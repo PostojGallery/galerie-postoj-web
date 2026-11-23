@@ -540,7 +540,7 @@ function drawOverlay() {
     ctx.fillText(MOB ? 'TAP TO START' : 'PRESS SPACE OR TAP TO START', CW / 2, GROUND / 2 + 6);
     ctx.globalAlpha = 1;
   } else if (state === 'dead') {
-    ctx.fillStyle = '#0a0a0a';
+    ctx.fillStyle = 'rgba(10,10,10,0.72)';
     ctx.fillRect(0, 0, CW, CH);
     ctx.fillStyle = '#fff';
     const _gofs = MOB ? Math.round(34 / canvasScale) : Math.min(Math.max(Math.round(window.innerWidth * 0.03 / canvasScale), Math.round(36 / canvasScale)), Math.round(48 / canvasScale));
