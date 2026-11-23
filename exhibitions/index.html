@@ -6,7 +6,7 @@
 <meta name="description" content="Aktuální a archivní výstavy galerie POSTOJ v metru Praha – Náměstí Republiky. Současné umění dostupné každý den, pro každého.">
 <link rel="icon" type="image/png" href="../images/favicon.png?v=7">
 <title>Výstavy které hýbou společností | galerie POSTOJ</title>
-<link rel="stylesheet" href="../style.css?v=20261123b">
+<link rel="stylesheet" href="../style.css?v=20261123c">
 <style>
 .exh-layout{display:grid;grid-template-columns:340px 1fr;align-items:start;margin-top:60px;}
 .exh-sidebar{position:sticky;top:60px;height:calc(100vh - 60px);border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;}
@@ -800,8 +800,9 @@ document.querySelectorAll('.ew-read').forEach(function(btn){
     var expanded=this.getAttribute('aria-expanded')==='true';
     var text=this.closest('.ew-col').querySelector('.ew-expanded');
     if(!text)return;
-    if(expanded){text.classList.remove('open');this.setAttribute('aria-expanded','false');this.textContent=this.dataset.open;}
-    else{text.classList.add('open');this.setAttribute('aria-expanded','true');this.textContent=this.dataset.close;}
+    var sticky=this.closest('.ew-col').querySelector('.ew-text-sticky');
+    if(expanded){text.classList.remove('open');this.setAttribute('aria-expanded','false');this.textContent=this.dataset.open;if(sticky)sticky.classList.remove('ew-text-open');}
+    else{text.classList.add('open');this.setAttribute('aria-expanded','true');this.textContent=this.dataset.close;if(sticky)sticky.classList.add('ew-text-open');}
   });
 });
 (function(){
