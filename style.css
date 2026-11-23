@@ -151,6 +151,7 @@ site-footer{display:block;border-top:1px solid rgba(255,255,255,0.08);}
   .ew-wrap{display:block;}
   /* 1a. Title – sticky, same as archive titles */
   .ew-title{display:block;font-size:clamp(3rem,6vw,6rem);font-weight:700;letter-spacing:-0.045em;line-height:0.86;color:#fff;padding:0.1em 0.2em 0.22em 0;margin-bottom:-0.12em;}
+  .ew-text-wrap{flex:1;min-height:0;}
   .ew-text-sticky{position:sticky;top:calc(var(--nav-h,72px) + var(--ybar-h,64px) + 1.5rem);}
   .ew-colon{font-size:0;}
   .ew-sub{display:block;font-size:clamp(3rem,6vw,6rem);font-weight:700;letter-spacing:-0.045em;line-height:0.86;color:#fff;padding-bottom:0.5rem;}
