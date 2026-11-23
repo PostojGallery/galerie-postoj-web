@@ -1,33 +1,4 @@
 var isMobile=window.matchMedia('(max-width:768px)').matches||('ontouchstart' in window);
-var cdot=document.getElementById('cdot');
-if(!isMobile){
-  var _cw=document.getElementById('cw'),_cimg=_cw.querySelector('img');
-  var mx=-200,my=-200,cx=-200,cy=-200,lmx=-200,ldir=0,snapped=false;
-  document.addEventListener('mousemove',function(e){
-    var pg=document.getElementById('pg');if(pg){pg.style.display='none';}
-    cdot.style.left=e.clientX+'px';cdot.style.top=e.clientY+'px';
-    mx=e.clientX;my=e.clientY;
-    if(!snapped){cx=mx;cy=my;snapped=true;}
-    var dx=mx-lmx;if(dx>2)ldir=1;else if(dx<-2)ldir=-1;lmx=mx;
-    _cimg.style.transform='rotate('+(ldir*18)+'deg)';
-  },{passive:true});
-  (function loop(){
-    cx+=(mx-cx)*0.13;cy+=(my-cy)*0.13;
-    _cw.style.left=cx+'px';_cw.style.top=cy+'px';
-    var el=document.elementFromPoint(cx,cy);
-    document.body.classList.toggle('cursor-on-light',bgLuminance(el)>128);
-    requestAnimationFrame(loop);
-  })();
-  function bgLuminance(el){
-    while(el&&el.tagName!=='HTML'){
-      var bg=window.getComputedStyle(el).backgroundColor;
-      var m=bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?/);
-      if(m){var a=m[4]===undefined?1:parseFloat(m[4]);if(a>0.05){return 0.299*+m[1]+0.587*+m[2]+0.114*+m[3];}}
-      el=el.parentElement;
-    }
-    return 0;
-  }
-}
 window.addEventListener('scroll',function(){document.querySelector('nav').classList.toggle('scrolled',window.scrollY>60);},{passive:true});
 function _initBurger(){
   var burger=document.getElementById('nav-burger');
@@ -72,7 +43,7 @@ function _pjax(href,isPop){
     window.scrollTo(0,-_ft);
   }
   var pg=document.getElementById('pg');
-  if(pg)pg.style.cssText='position:fixed;inset:0;background:#0a0a0a;z-index:10000;opacity:1;animation:none;cursor:url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") 0 0,none;';
+  if(pg)pg.style.cssText='position:fixed;inset:0;background:#0a0a0a;z-index:10000;opacity:1;animation:none;';
   fetch(href).then(function(r){if(!r.ok)throw 0;return r.text();}).then(function(html){
     try{
       var nd=(new DOMParser()).parseFromString(html,'text/html');
@@ -96,19 +67,14 @@ function _pjax(href,isPop){
       if(nm&&om)om.setAttribute('content',nm.getAttribute('content'));
       document.querySelectorAll('head style:not(#postoj-cookie-css)').forEach(function(s){s.remove();});
       nd.querySelectorAll('head style').forEach(function(s){var n=document.createElement('style');n.textContent=s.textContent;document.head.appendChild(n);});
-      // Move #pg to <html> during swap so it stays in document (cursor stays covered)
-      var ePg=document.getElementById('pg'),eCdot=document.getElementById('cdot'),eCw=document.getElementById('cw');
-      if(ePg)document.documentElement.appendChild(ePg);if(eCdot)eCdot.remove();if(eCw)eCw.remove();
+      // Move #pg to <html> during swap so it stays in document
+      var ePg=document.getElementById('pg');
+      if(ePg)document.documentElement.appendChild(ePg);
       // Swap body
       document.body.innerHTML=nd.body.innerHTML;
       // Move #pg back to top of body, remove duplicate from new HTML
       var nPg=document.getElementById('pg');if(nPg)nPg.remove();
       if(ePg)document.body.insertBefore(ePg,document.body.firstChild);
-      // Re-insert cursor elements
-      var nCdot=document.getElementById('cdot');
-      if(nCdot&&eCdot)nCdot.replaceWith(eCdot);else if(eCdot){var ap=document.getElementById('pg');document.body.insertBefore(eCdot,ap?ap.nextSibling:document.body.firstChild);}
-      var nCw=document.getElementById('cw');
-      if(nCw&&eCw)nCw.replaceWith(eCw);else if(eCw){var ac=document.getElementById('cdot');document.body.insertBefore(eCw,ac?ac.nextSibling:document.body.firstChild);}
       // Update URL before executing scripts so location.search is correct
       if(!isPop)history.pushState({},document.title,href);
       // Execute page-specific inline scripts
