@@ -214,9 +214,9 @@
         <div class="work-img"><img loading="lazy" class="img-main" src="../images/shop/jan-divis/exit-wounds.webp" alt="Exit Wounds — Jan Diviš"><div class="work-buy-label">View work</div></div>
         <div class="work-info"><div class="work-title">Exit Wounds</div><div class="work-artist-name">Jan Diviš</div><div class="work-price">CZK 650</div></div>
       </div>
-      <div class="work-card" onclick="openLightbox({img:'../images/shop/jan-divis/in-abundance.webp',title:'In Abundance, 2026',artist:'Jan Diviš',artistHref:'/en/collectors?artist=jan-divis',meta:'Screen print, A2<br>Signed<br>CZK 1,400',price:'',btnLabel:'Request print'})">
+      <div class="work-card" onclick="openLightbox({img:'../images/shop/jan-divis/in-abundance.webp',title:'In Abundance, 2026',artist:'Jan Diviš',artistHref:'/en/collectors?artist=jan-divis',status:'in-production',format:'A2',price:''})">
         <div class="work-img"><img loading="lazy" class="img-main" src="../images/shop/jan-divis/in-abundance.webp" alt="In Abundance — Jan Diviš"><div class="work-buy-label">View work</div></div>
-        <div class="work-info"><div class="work-title">In Abundance</div><div class="work-artist-name">Jan Diviš</div><div class="work-price">CZK 1,400</div></div>
+        <div class="work-info"><div class="work-title">In Abundance</div><div class="work-artist-name">Jan Diviš</div><div class="work-price">Price on request</div></div>
       </div>
     </div>
     <a href="/en/collectors?artist=jan-divis" class="btn exh-shop-mob-cta">ALL PRINTS</a>
@@ -288,6 +288,11 @@
     document.getElementById('lb-price').textContent=data.price||'';
     document.getElementById('lb-mailto').style.display=data.price?'none':'';
     document.getElementById('lb-mailto').textContent=data.btnLabel||'Request work';
+    if(data.status==='in-production'){
+      document.getElementById('lb-meta').innerHTML='Print, '+(data.format||'')+'<br>Signed<br>In production \u2013 technique and price on request';
+      document.getElementById('lb-mailto').style.display='';
+      document.getElementById('lb-mailto').textContent='I\u2019m interested';
+    }
     if(lbSizes){
       if(data.sizes&&data.sizes.length){
         lbSizes.innerHTML='<div class="lb-sizes-label">Size</div><div class="lb-sizes-btns"></div>';
