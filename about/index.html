@@ -7,18 +7,20 @@
 <link rel="icon" type="image/png" href="/images/favicon.png?v=8">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <title>Věříme v umění pro všechny | galerie POSTOJ</title>
-<link rel="stylesheet" href="../style.css?v=20261122f">
+<link rel="stylesheet" href="../style.css?v=20261124a">
 <style>
-.about-founder{margin-top:0;padding:6rem 2.5rem 0;}
+.about-founder{margin-top:60px;padding:4rem 2.5rem 0;}
 .about-hero{margin-top:60px;padding:3rem 2.5rem 3rem;}
 .about-tagline{font-size:clamp(3rem,6vw,6rem);font-weight:700;letter-spacing:-0.045em;line-height:0.9;color:#fff;margin-bottom:2.5rem;}
-.about-stats-new{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:2rem;margin-bottom:3rem;}
+.about-stats-wrap{padding:4rem 2.5rem 0;}
+.about-press-wrap{padding:2rem 2.5rem 0;}
+.about-stats-new{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:2rem;margin-bottom:0;}
 .about-stat-item{display:flex;flex-direction:column;}
-.about-stat-num{font-size:clamp(2.5rem,4vw,4.5rem);font-weight:700;letter-spacing:-0.045em;line-height:0.9;color:#fff;white-space:nowrap;}
-.about-stat-label{font-size:1.1rem;font-weight:400;letter-spacing:0;text-transform:none;color:#fff;line-height:1.3;margin-top:0.6rem;}
-.about-press-label{font-size:1rem;font-weight:700;color:#fff;margin-bottom:1.2rem;}
-.about-press-logos{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;}
-.founder-grid{display:grid;grid-template-columns:300px 1fr;gap:4rem;align-items:stretch;}
+.about-stat-num{font-size:clamp(2.25rem,3.5vw,3.5rem);font-weight:700;letter-spacing:-0.04em;line-height:1;color:#fff;white-space:nowrap;}
+.about-stat-label{font-size:1.1rem;font-weight:400;letter-spacing:0;text-transform:none;color:#fff;line-height:1.4;margin-top:0.5rem;}
+.about-press-label{font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:1rem;}
+.about-press-logos{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.founder-grid{display:grid;grid-template-columns:300px 1fr;gap:4rem;align-items:start;}
 .founder-photo{position:relative;display:block;}
 .founder-photo img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;}
 .founder-caption{background:#fff;color:#000;padding:1rem 1.2rem;font-size:0.8rem;font-weight:700;}
@@ -33,8 +35,8 @@
 .founder-logos{margin-top:auto;padding-top:1.5rem;}
 .founder-logos-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1.2rem;}
 .founder-logos-row{display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;}
-.logo-item{background:#fff;padding:8px 14px;display:inline-flex;align-items:center;justify-content:center;filter:none;}
-.logo-item img{max-height:32px;width:auto;display:block;}
+.logo-item{background:#fff;width:160px;height:56px;padding:10px;display:flex;align-items:center;justify-content:center;filter:none;box-sizing:border-box;}
+.logo-item img{max-width:100%;max-height:100%;object-fit:contain;display:block;}
 .about-stats{margin-top:2rem;}
 .stats-grid{display:grid;grid-template-columns:repeat(5,1fr);}
 .stat-item{padding:1.5rem 2.5rem;border-right:1px solid rgba(255,255,255,0.05);display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;box-sizing:border-box;}
@@ -55,8 +57,8 @@
 .ts{grid-column:1;grid-row:1;opacity:0;pointer-events:none;transition:opacity 0.5s;}
 .ts.active{opacity:1;pointer-events:auto;}
 .ts-stars{font-size:0.85rem;color:#fff;margin-bottom:0.6rem;}
-.ts-text{font-size:1.3rem;line-height:1.5;color:#fff;font-weight:700;font-style:normal;margin-bottom:0.6rem;}
-.ts-author{font-size:0.9rem;letter-spacing:0;text-transform:none;color:#fff;}
+.ts-text{font-size:clamp(1.2rem,1.8vw,1.75rem);line-height:1.5;color:#fff;font-weight:700;font-style:normal;margin-bottom:0.6rem;}
+.ts-author{font-size:1.1rem;letter-spacing:0;text-transform:none;color:#fff;}
 .ts-footer{margin-top:1.2rem;}
 .ts-dots{display:flex;gap:0.5rem;}
 .tsd{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);cursor:pointer;transition:background 0.2s;}
@@ -93,7 +95,7 @@
 .navsteva-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
 .navsteva-ph-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.25);pointer-events:none;white-space:nowrap;}
 .navsteva-info{display:flex;flex-direction:column;gap:1.2rem;}
-.navsteva-heading{font-size:clamp(1.4rem,2.2vw,2rem);font-weight:900;line-height:0.92;letter-spacing:-0.03em;color:#fff;margin-bottom:0;}
+.navsteva-heading{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;line-height:0.92;letter-spacing:-0.03em;color:#fff;margin-bottom:0;}
 .navsteva-addr{color:#fff;font-size:1.1rem;line-height:1.4;font-weight:400;}
 .navsteva-hours{color:#fff;font-size:1.1rem;line-height:1.4;}
 .navsteva-link{display:block;color:#fff;text-decoration:underline;text-underline-offset:3px;font-size:1.1rem;line-height:1.4;transition:opacity 0.2s;}
@@ -119,7 +121,7 @@
 .metro-ph{position:relative;aspect-ratio:3/2;background:#2a2a2a;overflow:hidden;}
 .metro-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
 .metro-ph-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.25);pointer-events:none;white-space:nowrap;}
-.metro-ph-cap{color:#fff;font-size:0.9rem;margin-top:0.5rem;}
+.metro-ph-cap{color:#fff;font-size:1.1rem;margin-top:0.5rem;}
 .metro-body{max-width:640px;margin-bottom:1.5rem;}
 .metro-btn{display:inline-block;background:#fff;color:#000;font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:700;line-height:1.3;padding:0.4em 0.8em;text-decoration:none;font-family:inherit;cursor:pointer;transition:background 0.2s,color 0.2s;}
 .metro-btn:hover{background:#0a0a0a;color:#fff;outline:1px solid #fff;}
@@ -139,8 +141,10 @@
 .aglb-dot.active{background:#fff;}
 @media(max-width:768px){
   html,body{overflow-x:hidden;}
-  .about-founder{margin-top:0;padding:3rem 1.2rem 0;}
+  .about-founder{margin-top:60px;padding:3rem 1.2rem 0;}
   .about-hero{margin-top:70px;padding:1.5rem 1.2rem 2rem;}
+  .about-stats-wrap{padding:2rem 1.2rem 0;}
+  .about-press-wrap{padding:1.5rem 1.2rem 0;}
   .about-stats-new{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem 1rem;}
   .about-stats-new .about-stat-item:nth-child(5){grid-column:1/-1;}
   .about-press-logos img{height:24px;}
@@ -192,27 +196,6 @@
 <body><div id="pg"></div>
 <nav><a href="/" class="nav-logo">galerie POSTOJ</a><button class="nav-burger" id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button><ul class="nav-links"><li><a href="/artists" >Umělci</a></li><li><a href="/exhibitions" >Výstavy</a></li><li><a href="/collectors">Shop</a></li><li><a href="/about" class=active>O nás</a></li><li class="nav-lang"><a href="/en/about">EN</a></li></ul></nav>
 
-<section class="about-hero">
-  <div class="about-tagline rv">Umění pro lidi, ne pro elitu.</div>
-  <div class="about-stats-new">
-    <div class="about-stat-item rv"><span class="about-stat-num" data-target="80000" data-suffix="+">0</span><span class="about-stat-label">Lidí denně projde kolem</span></div>
-    <div class="about-stat-item rv" style="transition-delay:0.05s"><span class="about-stat-num" data-target="1000" data-suffix="+">0</span><span class="about-stat-label">Návštěvníků na vernisážích</span></div>
-    <div class="about-stat-item rv" style="transition-delay:0.1s"><span class="about-stat-num" data-target="12">0</span><span class="about-stat-label">Umělců</span></div>
-    <div class="about-stat-item rv" style="transition-delay:0.15s"><span class="about-stat-num" data-target="10">0</span><span class="about-stat-label">Výstav od roku 2022</span></div>
-    <div class="about-stat-item rv" style="transition-delay:0.2s"><span class="about-stat-num">∞</span><span class="about-stat-label">Úsměvů a reakcí</span></div>
-  </div>
-  <div class="rv">
-    <div class="about-press-label">Psali o nás</div>
-    <div class="about-press-logos">
-      <div class="logo-item"><img loading="lazy" src="../images/logo-respekt-v2.png" alt="Respekt"></div>
-      <div class="logo-item"><img loading="lazy" src="../images/logo-denikn-v2.png" alt="Deník N"></div>
-      <div class="logo-item"><img loading="lazy" src="../images/logo-artmap-v2.png" alt="ArtMap"></div>
-      <div class="logo-item"><img loading="lazy" src="../images/logo-ct-v2.png" alt="ČT"></div>
-      <div class="logo-item"><img loading="lazy" src="../images/logo-a2.png" alt="A2"></div>
-      <div class="logo-item"><img loading="lazy" src="../images/logo-rozhlas.png" alt="Český rozhlas"></div>
-    </div>
-  </div>
-</section>
 <section class="about-founder">
   <div class="founder-grid">
     <div class="rv">
@@ -229,6 +212,26 @@
     </div>
   </div>
 </section>
+<div class="about-stats-wrap">
+  <div class="about-stats-new">
+    <div class="about-stat-item rv"><span class="about-stat-num" data-target="80000" data-suffix="+">0</span><span class="about-stat-label">Lidí denně projde kolem</span></div>
+    <div class="about-stat-item rv" style="transition-delay:0.05s"><span class="about-stat-num" data-target="1000" data-suffix="+">0</span><span class="about-stat-label">Návštěvníků na vernisážích</span></div>
+    <div class="about-stat-item rv" style="transition-delay:0.1s"><span class="about-stat-num" data-target="12">0</span><span class="about-stat-label">Umělců</span></div>
+    <div class="about-stat-item rv" style="transition-delay:0.15s"><span class="about-stat-num" data-target="10">0</span><span class="about-stat-label">Výstav od roku 2022</span></div>
+    <div class="about-stat-item rv" style="transition-delay:0.2s"><span class="about-stat-num">∞</span><span class="about-stat-label">Úsměvů a reakcí</span></div>
+  </div>
+</div>
+<div class="about-press-wrap rv">
+  <div class="about-press-label">Psali o nás</div>
+  <div class="about-press-logos">
+    <div class="logo-item"><img loading="lazy" src="../images/logo-respekt-v2.png" alt="Respekt"></div>
+    <div class="logo-item"><img loading="lazy" src="../images/logo-denikn-v2.png" alt="Deník N"></div>
+    <div class="logo-item"><img loading="lazy" src="../images/logo-artmap-v2.png" alt="ArtMap"></div>
+    <div class="logo-item"><img loading="lazy" src="../images/logo-ct-v2.png" alt="ČT"></div>
+    <div class="logo-item"><img loading="lazy" src="../images/logo-a2.png" alt="A2"></div>
+    <div class="logo-item"><img loading="lazy" src="../images/logo-rozhlas.png" alt="Český rozhlas"></div>
+  </div>
+</div>
 <section class="about-story">
   <div class="metro-section rv">
     <div class="whw-heading">Galerie v metru.</div>
