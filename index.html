@@ -207,11 +207,11 @@
         <div class="work-img"><img loading="lazy" class="img-main" src="images/shop/jan-divis/t-shirts/Gallery/preview.webp" alt="Gallery Tričko — Jan Diviš"><div class="work-buy-label">Detail díla</div></div>
         <div class="work-info"><div class="work-title">Tričko Gallery</div><div class="work-artist-name">Jan Diviš</div><div class="work-price">1 300 Kč</div></div>
       </div>
-      <div class="work-card" onclick="openLightbox({img:'images/shop/jan-divis/escalators.webp',title:'Escalators, 2026',artist:'Jan Diviš',artistHref:'/collectors?artist=jan-divis',meta:'RISO tisk, A3<br>Limitovaná edice 42 ks, signováno a číslováno<br>1 000 Kč',price:'',btnLabel:'Poptat ilustraci'})">
+      <div class="work-card" onclick="openLightbox({img:'images/shop/jan-divis/escalators.webp',title:'Escalators, 2026',artist:'Jan Diviš',artistHref:'/collectors?artist=jan-divis',meta:'RISO tisk, A3<br>Limitovaná edice 42 ks, signováno a číslováno<br>1 000 Kč',price:'',btnLabel:'Mám zájem'})">
         <div class="work-img"><img loading="lazy" class="img-main" src="images/shop/jan-divis/escalators.webp" alt="Escalators — Jan Diviš"><div class="work-buy-label">Detail díla</div></div>
         <div class="work-info"><div class="work-title">Escalators</div><div class="work-artist-name">Jan Diviš</div><div class="work-price">1 000 Kč</div></div>
       </div>
-      <div class="work-card" onclick="openLightbox({img:'images/shop/jan-divis/exit-wounds.webp',title:'Exit Wounds, 2026',artist:'Jan Diviš',artistHref:'/collectors?artist=jan-divis',meta:'RISO tisk, A3<br>Signováno<br>650 Kč',price:'',btnLabel:'Poptat ilustraci'})">
+      <div class="work-card" onclick="openLightbox({img:'images/shop/jan-divis/exit-wounds.webp',title:'Exit Wounds, 2026',artist:'Jan Diviš',artistHref:'/collectors?artist=jan-divis',meta:'RISO tisk, A3<br>Signováno<br>650 Kč',price:'',btnLabel:'Mám zájem'})">
         <div class="work-img"><img loading="lazy" class="img-main" src="images/shop/jan-divis/exit-wounds.webp" alt="Exit Wounds — Jan Diviš"><div class="work-buy-label">Detail díla</div></div>
         <div class="work-info"><div class="work-title">Exit Wounds</div><div class="work-artist-name">Jan Diviš</div><div class="work-price">650 Kč</div></div>
       </div>
@@ -249,7 +249,7 @@
       <div class="lightbox-meta" id="lb-meta"></div>
       <div class="lightbox-price" id="lb-price"></div>
       <div class="lb-sizes" id="lb-sizes"></div>
-      <a id="lb-mailto" href="#" class="btn">Poptat dílo</a>
+      <a id="lb-mailto" href="#" class="btn">Mám zájem</a>
     </div>
   </div>
 </div>
@@ -287,7 +287,7 @@
     document.getElementById('lb-meta').innerHTML=data.meta||'';
     document.getElementById('lb-price').textContent=data.price||'';
     document.getElementById('lb-mailto').style.display=data.price?'none':'';
-    document.getElementById('lb-mailto').textContent=data.btnLabel||'Poptat d\u00edlo';
+    document.getElementById('lb-mailto').textContent=data.btnLabel||'M\u00e1m z\u00e1jem';
     if(data.status==='in-production'){
       document.getElementById('lb-meta').innerHTML='Tisk, '+(data.format||'')+'<br>Signov\xe1no<br>P\u0159ipravujeme \u2013 technika a cena na dotaz';
       document.getElementById('lb-mailto').style.display='';

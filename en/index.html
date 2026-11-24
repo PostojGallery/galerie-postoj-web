@@ -206,11 +206,11 @@
         <div class="work-img"><img loading="lazy" class="img-main" src="../images/shop/jan-divis/t-shirts/Gallery/preview.webp" alt="Gallery T-Shirt — Jan Diviš"><div class="work-buy-label">View work</div></div>
         <div class="work-info"><div class="work-title">Gallery T-Shirt</div><div class="work-artist-name">Jan Diviš</div><div class="work-price">CZK 1,300</div></div>
       </div>
-      <div class="work-card" onclick="openLightbox({img:'../images/shop/jan-divis/escalators.webp',title:'Escalators, 2026',artist:'Jan Diviš',artistHref:'/en/collectors?artist=jan-divis',meta:'Risograph print, A3<br>Limited edition of 42, signed and numbered<br>CZK 1,000',price:'',btnLabel:'Request print'})">
+      <div class="work-card" onclick="openLightbox({img:'../images/shop/jan-divis/escalators.webp',title:'Escalators, 2026',artist:'Jan Diviš',artistHref:'/en/collectors?artist=jan-divis',meta:'Risograph print, A3<br>Limited edition of 42, signed and numbered<br>CZK 1,000',price:'',btnLabel:'I’m interested'})">
         <div class="work-img"><img loading="lazy" class="img-main" src="../images/shop/jan-divis/escalators.webp" alt="Escalators — Jan Diviš"><div class="work-buy-label">View work</div></div>
         <div class="work-info"><div class="work-title">Escalators</div><div class="work-artist-name">Jan Diviš</div><div class="work-price">CZK 1,000</div></div>
       </div>
-      <div class="work-card" onclick="openLightbox({img:'../images/shop/jan-divis/exit-wounds.webp',title:'Exit Wounds, 2026',artist:'Jan Diviš',artistHref:'/en/collectors?artist=jan-divis',meta:'Risograph print, A3<br>Signed<br>CZK 650',price:'',btnLabel:'Request print'})">
+      <div class="work-card" onclick="openLightbox({img:'../images/shop/jan-divis/exit-wounds.webp',title:'Exit Wounds, 2026',artist:'Jan Diviš',artistHref:'/en/collectors?artist=jan-divis',meta:'Risograph print, A3<br>Signed<br>CZK 650',price:'',btnLabel:'I’m interested'})">
         <div class="work-img"><img loading="lazy" class="img-main" src="../images/shop/jan-divis/exit-wounds.webp" alt="Exit Wounds — Jan Diviš"><div class="work-buy-label">View work</div></div>
         <div class="work-info"><div class="work-title">Exit Wounds</div><div class="work-artist-name">Jan Diviš</div><div class="work-price">CZK 650</div></div>
       </div>
@@ -249,7 +249,7 @@
       <div class="lightbox-meta" id="lb-meta"></div>
       <div class="lightbox-price" id="lb-price"></div>
       <div class="lb-sizes" id="lb-sizes"></div>
-      <a id="lb-mailto" href="#" class="btn">Request work</a>
+      <a id="lb-mailto" href="#" class="btn">I’m interested</a>
     </div>
   </div>
 </div>
@@ -287,7 +287,7 @@
     document.getElementById('lb-meta').innerHTML=data.meta||'';
     document.getElementById('lb-price').textContent=data.price||'';
     document.getElementById('lb-mailto').style.display=data.price?'none':'';
-    document.getElementById('lb-mailto').textContent=data.btnLabel||'Request work';
+    document.getElementById('lb-mailto').textContent=data.btnLabel||'I’m interested';
     if(data.status==='in-production'){
       document.getElementById('lb-meta').innerHTML='Print, '+(data.format||'')+'<br>Signed<br>In production \u2013 technique and price on request';
       document.getElementById('lb-mailto').style.display='';
