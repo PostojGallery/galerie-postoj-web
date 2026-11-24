@@ -9,7 +9,7 @@
 <title>We believe in art for everyone | galerie POSTOJ</title>
 <link rel="stylesheet" href="../../style.css?v=20261122f">
 <style>
-.about-founder{margin-top:0;padding:6rem 2.5rem;}
+.about-founder{margin-top:0;padding:6rem 2.5rem 0;}
 .about-hero{margin-top:60px;padding:3rem 2.5rem 3rem;}
 .about-tagline{font-size:clamp(3rem,6vw,6rem);font-weight:700;letter-spacing:-0.045em;line-height:0.9;color:#fff;margin-bottom:2.5rem;}
 .about-stats-new{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:2rem;margin-bottom:3rem;}
@@ -18,7 +18,7 @@
 .about-stat-label{font-size:1.1rem;font-weight:400;letter-spacing:0;text-transform:none;color:#fff;line-height:1.3;margin-top:0.6rem;}
 .about-press-label{font-size:1rem;font-weight:700;color:#fff;margin-bottom:1.2rem;}
 .about-press-logos{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
-.about-press-logos img{height:32px;width:auto;display:block;filter:brightness(0) invert(1);opacity:0.7;}
+.about-press-logos img{height:32px;width:auto;display:block;filter:brightness(0) invert(1);opacity:1;}
 .founder-grid{display:grid;grid-template-columns:300px 1fr;gap:4rem;align-items:stretch;}
 .founder-photo{position:relative;display:block;}
 .founder-photo img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;}
@@ -28,7 +28,7 @@
 .founder-eyebrow{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:2rem;}
 .founder-quote{font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.8;color:rgba(255,255,255,0.75);margin-bottom:1.5rem;padding-left:1.5rem;border-left:2px solid rgba(255,255,255,0.12);font-style:italic;}
 .founder-quote p{margin-bottom:1rem;}.founder-quote p:last-child{margin-bottom:0;}
-.founder-sig{height:50px;width:auto;filter:invert(1);opacity:0.6;margin-bottom:1.2rem;}
+.founder-sig{height:70px;width:auto;align-self:flex-start;filter:invert(1);opacity:1;margin-top:1.5rem;margin-bottom:0;}
 .founder-email a{color:rgba(255,255,255,0.4);text-decoration:none;cursor:pointer;font-size:0.85rem;border-bottom:1px solid rgba(255,255,255,0.15);transition:color 0.2s;}
 .founder-email a:hover{color:#fff;}
 .founder-logos{margin-top:auto;padding-top:1.5rem;}
@@ -46,14 +46,14 @@
 .whw-row{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;}
 .whw-text-col{padding:1.2rem 2.5rem 2rem;}
 .whw-tag{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1.2rem;}
-.whw-heading{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;line-height:0.92;letter-spacing:-0.03em;margin-bottom:1.5rem;color:#fff;}
-.whw-text{font-size:0.95rem;line-height:1.85;color:rgba(255,255,255,0.5);margin-bottom:0.8rem;}
+.whw-heading{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;line-height:0.92;letter-spacing:-0.03em;margin-bottom:1.2rem;color:#fff;}
+.whw-text{font-size:clamp(1.2rem,1.8vw,1.75rem);line-height:1.3;color:#fff;margin-bottom:0.8rem;max-width:640px;}
 .whw-cta{display:inline-block;margin-top:1.5rem;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s,border-color 0.2s;}
 .whw-cta:hover{color:#fff;border-color:#fff;}
 .whw-testimonials{display:flex;align-items:flex-start;justify-content:center;padding:1.2rem 3rem 2rem;}
 .ts-eyebrow{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:1.5rem;}
-.ts-slider{position:relative;min-height:200px;}
-.ts{position:absolute;top:0;left:0;width:100%;opacity:0;pointer-events:none;transition:opacity 0.5s;}
+.ts-slider{display:grid;}
+.ts{grid-column:1;grid-row:1;opacity:0;pointer-events:none;transition:opacity 0.5s;}
 .ts.active{opacity:1;pointer-events:auto;}
 .ts-stars{font-size:0.85rem;color:#fff;margin-bottom:0.6rem;}
 .ts-text{font-size:1.3rem;line-height:1.5;color:#fff;font-weight:700;font-style:normal;margin-bottom:0.6rem;}
@@ -95,33 +95,33 @@
 .navsteva-ph-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.25);pointer-events:none;white-space:nowrap;}
 .navsteva-info{display:flex;flex-direction:column;gap:1.2rem;}
 .navsteva-heading{font-size:clamp(1.4rem,2.2vw,2rem);font-weight:900;line-height:0.92;letter-spacing:-0.03em;color:#fff;margin-bottom:0;}
-.navsteva-addr{color:#fff;font-size:1.05rem;line-height:1.5;font-weight:400;}
-.navsteva-hours{color:rgba(255,255,255,0.65);font-size:1rem;line-height:1.65;}
+.navsteva-addr{color:#fff;font-size:clamp(1.2rem,1.8vw,1.75rem);line-height:1.3;font-weight:400;}
+.navsteva-hours{color:#fff;font-size:clamp(1.2rem,1.8vw,1.75rem);line-height:1.3;}
 .navsteva-link{display:block;color:#fff;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(255,255,255,0.4);font-size:1rem;line-height:1.8;transition:opacity 0.2s;}
 .navsteva-link:hover{opacity:0.6;}
 .navsteva-contacts{display:flex;flex-direction:column;}
-.navsteva-steps{display:grid;grid-template-columns:repeat(3,1fr);}
-.navsteva-step{border-top:1px solid rgba(255,255,255,0.3);padding-top:1.5rem;padding-right:3rem;display:flex;flex-direction:column;}
-.navsteva-step:last-child{padding-right:0;}
+.navsteva-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0 3rem;}
+.navsteva-step{border-top:1px solid rgba(255,255,255,0.3);padding-top:1.5rem;display:flex;flex-direction:column;}
+
 .navsteva-step-q{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:0.4rem;}
-.navsteva-step-txt{font-size:0.95rem;color:rgba(255,255,255,0.6);margin-bottom:1rem;flex:1;}
+.navsteva-step-txt{font-size:clamp(1.2rem,1.8vw,1.75rem);line-height:1.3;color:#fff;margin-bottom:1rem;flex:1;}
 .navsteva-step-link{font-size:1rem;font-weight:700;color:#fff;text-decoration:none;transition:opacity 0.2s;}
 .navsteva-step-link:hover{opacity:0.6;}
-.prve-section{padding:6rem 0;}
+.prve-section{padding:6rem 0 0;}
 .prve-ph{position:relative;height:70vh;min-height:400px;background:#2a2a2a;overflow:hidden;}
 .prve-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
 .prve-ph-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.25);pointer-events:none;white-space:nowrap;}
 .prve-cols{display:grid;grid-template-columns:1fr 1fr;gap:4rem;padding:2rem 2.5rem 0;}
 .prve-left{display:flex;flex-direction:column;gap:1.5rem;}
 .prve-right{display:flex;flex-direction:column;justify-content:center;}
-.metro-section{padding:6rem 2.5rem;}
+.metro-section{padding:6rem 2.5rem 0;}
 .metro-photos{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:2rem;}
 .metro-photo-wrap{display:flex;flex-direction:column;}
 .metro-ph{position:relative;aspect-ratio:3/2;background:#2a2a2a;overflow:hidden;}
 .metro-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
 .metro-ph-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.25);pointer-events:none;white-space:nowrap;}
 .metro-ph-cap{color:#fff;font-size:0.9rem;margin-top:0.5rem;}
-.metro-body{max-width:600px;margin-bottom:2rem;}
+.metro-body{max-width:640px;margin-bottom:1.5rem;}
 .metro-btn{display:inline-block;background:#fff;color:#000;font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:700;line-height:1.3;padding:0.4em 0.8em;text-decoration:none;font-family:inherit;cursor:pointer;transition:background 0.2s,color 0.2s;}
 .metro-btn:hover{background:#0a0a0a;color:#fff;outline:1px solid #fff;}
 .about-history{padding:3rem 0 2rem;}
@@ -140,7 +140,7 @@
 .aglb-dot.active{background:#fff;}
 @media(max-width:768px){
   html,body{overflow-x:hidden;}
-  .about-founder{margin-top:0;padding:3rem 1.2rem;}
+  .about-founder{margin-top:0;padding:3rem 1.2rem 0;}
   .about-hero{margin-top:70px;padding:1.5rem 1.2rem 2rem;}
   .about-stats-new{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem 1rem;}
   .about-stats-new .about-stat-item:nth-child(5){grid-column:1/-1;}
@@ -174,10 +174,11 @@
   .navsteva-top{grid-template-columns:1fr;gap:2rem;margin-bottom:3rem;}
   .navsteva-steps{grid-template-columns:1fr;gap:2.5rem;}
   .navsteva-step{padding-right:0;}
-  .prve-section{padding:3rem 0;}
+  .founder-sig{height:50px;}
+  .prve-section{padding:3rem 0 0;}
   .prve-ph{height:50vh;min-height:280px;}
   .prve-cols{grid-template-columns:1fr;gap:2.5rem;padding:2rem 1.2rem 0;}
-  .metro-section{padding:3rem 1.2rem;}
+  .metro-section{padding:3rem 1.2rem 0;}
   .metro-photos{grid-template-columns:1fr;}
 }
 @media(min-width:769px){
@@ -206,7 +207,7 @@
     <div class="about-press-logos">
       <img loading="lazy" src="../../images/logo-respekt-v2.png" alt="Respekt">
       <img loading="lazy" src="../../images/logo-denikn-v2.png" alt="Deník N">
-      <img loading="lazy" src="../../images/logo-artmap-v2.png" alt="ArtMap">
+      <img loading="lazy" src="../../images/logo-artmap-white.png" alt="ArtMap">
       <img loading="lazy" src="../../images/logo-ct-transparent.png" alt="ČT">
       <img loading="lazy" src="../../images/logo-a2-transparent.png" alt="A2">
       <img loading="lazy" src="../../images/logo-rozhlas.png" alt="Český rozhlas">
@@ -224,17 +225,17 @@
     <div class="rv founder-right" style="transition-delay:0.12s">
       <div class="whw-heading">Art belongs to everyone.</div>
       <p class="whw-text">We believe contemporary art should be accessible to everyone – regardless of age, education or profession. Traditional galleries build barriers. We break them down.</p>
-      <img width="1397" height="690" class="founder-sig" src="../../images/signature.png" alt="">
+      <img class="founder-sig" src="../../images/signature.png" alt="">
     </div>
   </div>
 </section>
 <section class="about-story">
   <div class="metro-section rv">
-    <div class="whw-heading" style="margin-bottom:2rem;">Gallery in the metro.</div>
+    <div class="whw-heading">Gallery in the metro.</div>
     <div class="metro-photos">
       <div class="metro-photo-wrap">
         <div class="metro-ph">
-          <img src="../../images/about/smenarna.webp" alt="Exchange office in the vestibule of Náměstí Republiky metro, 2019" loading="lazy">
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" loading="lazy">
           <span class="metro-ph-label">foto: směnárna CHANGE</span>
         </div>
         <div class="metro-ph-cap">2019</div>
@@ -251,7 +252,7 @@
   </div>
   <div class="prve-section">
     <div class="prve-ph rv">
-      <img src="../../images/about/vernisaz.webp" width="1500" height="1500" alt="Vernisáž galerie POSTOJ ve vestibulu metra" loading="lazy">
+      <img src="../../images/about/vernisaz.webp" width="1570" height="1536" alt="Vernisáž galerie POSTOJ ve vestibulu metra" loading="lazy">
     </div>
     <div class="prve-cols rv">
       <div class="prve-left">
