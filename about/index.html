@@ -88,6 +88,25 @@
   .info-col{padding:1.2rem 1.2rem;border-right:none;border-bottom:none;}
   .info-col:first-child{padding-left:1.2rem;}
 }
+.navsteva-section{padding:6rem 2.5rem 4rem;}
+.navsteva-top{display:grid;grid-template-columns:60fr 40fr;gap:3rem;align-items:end;margin-bottom:6rem;}
+.navsteva-ph{position:relative;aspect-ratio:3/2;background:#2a2a2a;overflow:hidden;}
+.navsteva-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+.navsteva-ph-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.25);pointer-events:none;white-space:nowrap;}
+.navsteva-info{display:flex;flex-direction:column;gap:1.2rem;}
+.navsteva-heading{font-size:clamp(1.4rem,2.2vw,2rem);font-weight:900;line-height:0.92;letter-spacing:-0.03em;color:#fff;margin-bottom:0;}
+.navsteva-addr{color:#fff;font-size:1.05rem;line-height:1.5;font-weight:400;}
+.navsteva-hours{color:rgba(255,255,255,0.65);font-size:1rem;line-height:1.65;}
+.navsteva-link{display:block;color:#fff;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(255,255,255,0.4);font-size:1rem;line-height:1.8;transition:opacity 0.2s;}
+.navsteva-link:hover{opacity:0.6;}
+.navsteva-contacts{display:flex;flex-direction:column;}
+.navsteva-steps{display:grid;grid-template-columns:repeat(3,1fr);}
+.navsteva-step{border-top:1px solid rgba(255,255,255,0.3);padding-top:1.5rem;padding-right:3rem;display:flex;flex-direction:column;}
+.navsteva-step:last-child{padding-right:0;}
+.navsteva-step-q{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:0.4rem;}
+.navsteva-step-txt{font-size:0.95rem;color:rgba(255,255,255,0.6);margin-bottom:1rem;flex:1;}
+.navsteva-step-link{font-size:1rem;font-weight:700;color:#fff;text-decoration:none;transition:opacity 0.2s;}
+.navsteva-step-link:hover{opacity:0.6;}
 .prve-section{padding:6rem 0;}
 .prve-ph{position:relative;height:70vh;min-height:400px;background:#2a2a2a;overflow:hidden;}
 .prve-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
@@ -151,6 +170,10 @@
   .whw-map-col iframe{width:100%;}
   .ts-stick{width:105px!important;max-width:105px!important;transform:translateX(-5mm);}
   .about-history{padding:2rem 0 1rem;}
+  .navsteva-section{padding:3rem 1.2rem;}
+  .navsteva-top{grid-template-columns:1fr;gap:2rem;margin-bottom:3rem;}
+  .navsteva-steps{grid-template-columns:1fr;gap:2.5rem;}
+  .navsteva-step{padding-right:0;}
   .prve-section{padding:3rem 0;}
   .prve-ph{height:50vh;min-height:280px;}
   .prve-cols{grid-template-columns:1fr;gap:2.5rem;padding:2rem 1.2rem 0;}
@@ -229,8 +252,8 @@
   </div>
   <div class="prve-section">
     <div class="prve-ph rv">
-      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Vernižáž galerie POSTOJ ve vestibulu metra" loading="lazy">
-      <span class="prve-ph-label">foto: plný vestibul na vernižáži</span>
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Vernisáž galerie POSTOJ ve vestibulu metra" loading="lazy">
+      <span class="prve-ph-label">foto: plný vestibul na vernisáži</span>
     </div>
     <div class="prve-cols rv">
       <div class="prve-left">
@@ -248,44 +271,41 @@
       </div>
     </div>
   </div>
-  <div class="info-bar rv">
-    <div class="info-col">
-      <div class="info-col-label">Adresa</div>
-      <div class="info-val" style="margin-bottom:0.3rem;color:#fff;">galerie POSTOJ</div>
-      <div class="info-val">Vestibule metra B / Náměstí Republiky / Praha 1, 110 00</div>
-      <a href="https://maps.app.goo.gl/9uux1FFqeDotEiwm9" target="_blank" rel="noopener" class="info-map-link">Zobrazit na mapě →</a>
-    </div>
-    <div class="info-col">
-      <div class="info-col-label">Otevírací doba</div>
-      <div class="info-row">
-        <div class="info-sub">Po — Ne</div>
-        <div class="info-val">24 / 7</div>
+  <div class="navsteva-section rv">
+    <div class="navsteva-top">
+      <div class="navsteva-ph">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Vstup do galerie POSTOJ ve vestibulu metra Náměstí Republiky" loading="lazy">
+        <span class="navsteva-ph-label">foto: vestibul s ukazateli</span>
       </div>
-      <div class="info-row">
-        <div class="info-sub">Vstup</div>
-        <div class="info-val">Zdarma</div>
-      </div>
-    </div>
-    <div class="info-col">
-      <div class="info-col-label">Kontakt</div>
-      <div class="info-row">
-        <div class="info-sub">Produkce</div>
-        <div class="info-val">Anna Gotvaldová<br><a href="mailto:anna.gotvaldova@galeriepostoj.cz" style="color:#fff;text-decoration:none;cursor:pointer;">anna.gotvaldova@galeriepostoj.cz</a></div>
-      </div>
-      <div class="info-row">
-        <div class="info-sub">E-mail</div>
-        <div class="info-val"><a href="mailto:info@galeriepostoj.cz" style="color:#fff;text-decoration:none;cursor:pointer;">info@galeriepostoj.cz</a></div>
+      <div class="navsteva-info">
+        <div class="navsteva-heading">Návštěva</div>
+        <div>
+          <p class="navsteva-addr"><strong>Vestibul metra B</strong><br><strong>Náměstí Republiky, Praha 1</strong></p>
+          <p class="navsteva-hours">Po – Ne, 24 / 7<br>Vstup zdarma</p>
+        </div>
+        <a href="https://maps.app.goo.gl/9uux1FFqeDotEiwm9" target="_blank" rel="noopener" class="navsteva-link">Zobrazit na mapě →</a>
+        <div class="navsteva-contacts">
+          <a href="mailto:info@galeriepostoj.cz" class="navsteva-link">info@galeriepostoj.cz</a>
+          <a href="https://www.instagram.com/galeriepostoj/" target="_blank" rel="noopener" class="navsteva-link">Instagram</a>
+          <a href="https://www.facebook.com/galeriepostoj/" target="_blank" rel="noopener" class="navsteva-link">Facebook</a>
+        </div>
       </div>
     </div>
-    <div class="info-col">
-      <div class="info-col-label">Sleduj nás</div>
-      <div class="info-row">
-        <div class="info-sub">Instagram</div>
-        <div class="info-val"><a href="https://www.instagram.com/galeriepostoj/" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;cursor:pointer;">@galeriepostoj</a></div>
+    <div class="navsteva-steps">
+      <div class="navsteva-step">
+        <div class="navsteva-step-q">Chcete nás podpořit?</div>
+        <div class="navsteva-step-txt">Partnerství, sponzoring, spolupráce.</div>
+        <a href="mailto:info@galeriepostoj.cz" class="navsteva-step-link">Napište nám →</a>
       </div>
-      <div class="info-row">
-        <div class="info-sub">Facebook</div>
-        <div class="info-val"><a href="https://www.facebook.com/galeriepostoj/" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;cursor:pointer;">galerie POSTOJ</a></div>
+      <div class="navsteva-step">
+        <div class="navsteva-step-q">Jste umělec?</div>
+        <div class="navsteva-step-txt">Pošli nám svoji práci.</div>
+        <a href="/open-call" class="navsteva-step-link">Open call →</a>
+      </div>
+      <div class="navsteva-step">
+        <div class="navsteva-step-q">Jste novinář?</div>
+        <div class="navsteva-step-txt">Fotky, texty a kontakty na jednom místě.</div>
+        <a href="https://drive.google.com/drive/u/0/folders/16z95_Pth5_9bxexHs3gC4aYe29cUpJyW" target="_blank" rel="noopener" class="navsteva-step-link">Press kit →</a>
       </div>
     </div>
   </div>
