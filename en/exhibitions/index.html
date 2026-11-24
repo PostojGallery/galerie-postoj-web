@@ -806,35 +806,21 @@ document.querySelectorAll('.ew-read').forEach(function(btn){
     if(!text)return;
     var sticky=col.querySelector('.ew-text-sticky');
     var actions=col.querySelector('.ew-actions');
-    var TR='height 0.3s ease';
-    if(text._ewDone){text.removeEventListener('transitionend',text._ewDone);text._ewDone=null;}
-    var curH=text.getBoundingClientRect().height;
     if(expanded){
       var actionsTop=actions?actions.getBoundingClientRect().top:0;
-      text.style.transition='none';
-      text.style.height=curH+'px';
-      text.offsetHeight;
-      text.style.transition=TR;
       text.style.height='0';
-      var onClose=function(){text.style.transition='';text._ewDone=null;if(actions){var d=actions.getBoundingClientRect().top-actionsTop;if(d)window.scrollBy(0,d);}col.classList.remove('ew-col-open');if(sticky)sticky.classList.remove('ew-text-open');};
-      text._ewDone=onClose;
-      text.addEventListener('transitionend',onClose,{once:true});
+      col.classList.remove('ew-col-open');
+      if(sticky)sticky.classList.remove('ew-text-open');
+      if(actions){var d=actions.getBoundingClientRect().top-actionsTop;if(d)window.scrollBy(0,d);}
       this.setAttribute('aria-expanded','false');
       this.textContent=this.dataset.open;
     } else {
       var introTop=sticky?sticky.getBoundingClientRect().top:0;
       col.classList.add('ew-col-open');
       if(sticky)sticky.classList.add('ew-text-open');
-      text.style.transition='none';
-      text.style.height=curH+'px';
-      text.offsetHeight;
+      text.style.height='auto';
       var scrollDelta=sticky?sticky.getBoundingClientRect().top-introTop:0;
       if(scrollDelta)window.scrollBy(0,scrollDelta);
-      text.style.transition=TR;
-      text.style.height=text.scrollHeight+'px';
-      var onOpen=function(){text.style.transition='';text.style.height='auto';text._ewDone=null;};
-      text._ewDone=onOpen;
-      text.addEventListener('transitionend',onOpen,{once:true});
       this.setAttribute('aria-expanded','true');
       this.textContent=this.dataset.close;
     }
