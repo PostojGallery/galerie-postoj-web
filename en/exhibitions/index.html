@@ -805,22 +805,19 @@ document.querySelectorAll('.ew-read').forEach(function(btn){
     var text=col.querySelector('.ew-expanded');
     if(!text)return;
     var sticky=col.querySelector('.ew-text-sticky');
-    var actions=col.querySelector('.ew-actions');
     if(expanded){
-      var actionsTop=actions?actions.getBoundingClientRect().top:0;
       text.style.height='0';
+      if(sticky)sticky.style.marginTop='';
       col.classList.remove('ew-col-open');
       if(sticky)sticky.classList.remove('ew-text-open');
-      if(actions){var d=actions.getBoundingClientRect().top-actionsTop;if(d)window.scrollBy(0,d);}
       this.setAttribute('aria-expanded','false');
       this.textContent=this.dataset.open;
     } else {
-      var introTop=sticky?sticky.getBoundingClientRect().top:0;
+      var offset=sticky?sticky.getBoundingClientRect().top-col.getBoundingClientRect().top:0;
       col.classList.add('ew-col-open');
       if(sticky)sticky.classList.add('ew-text-open');
+      if(sticky)sticky.style.marginTop=offset+'px';
       text.style.height='auto';
-      var scrollDelta=sticky?sticky.getBoundingClientRect().top-introTop:0;
-      if(scrollDelta)window.scrollBy(0,scrollDelta);
       this.setAttribute('aria-expanded','true');
       this.textContent=this.dataset.close;
     }
