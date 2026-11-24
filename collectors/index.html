@@ -6,7 +6,7 @@
 <meta name="description" content="Originální umělecká díla z výstav galerie POSTOJ. Podpořte mladé české umělce a staňte se součástí příběhu současného umění.">
 <link rel="icon" type="image/png" href="../images/favicon.png?v=7">
 <title>Příběh pokračuje s vámi | galerie POSTOJ</title>
-<link rel="stylesheet" href="../style.css?v=20261122w">
+<link rel="stylesheet" href="../style.css?v=20261124d">
 <style>
 .collectors-hero{margin-top:60px;padding:2rem 2.5rem 1.5rem;}
 .collectors-hero-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1rem;}
@@ -221,6 +221,7 @@
       <div class="lightbox-price" id="lb-price"></div>
       <div class="lb-sizes" id="lb-sizes"></div>
       <a id="lb-mailto" href="#" class="btn">Poptat dílo</a>
+      <div id="lb-soldout"></div>
     </div>
   </div>
 </div>
@@ -455,19 +456,24 @@
     document.getElementById('lb-mailto').style.display=data.price?'none':'';
     document.getElementById('lb-mailto').textContent=data.btnLabel||'Poptat dílo';
     if(lbSizes){
+      var lbSoldout=document.getElementById('lb-soldout');
+      if(lbSoldout)lbSoldout.style.display='none';
       if(data.sizes&&data.sizes.length){
         lbSizes.innerHTML='<div class="lb-sizes-label">Velikost</div><div class="lb-sizes-btns"></div>';
         var btnsWrap=lbSizes.querySelector('.lb-sizes-btns');
         var firstAvail=true;
+        var allUnavail=!data.sizes.some(function(sz){return sz.available;});
         data.sizes.forEach(function(sz){
           var btn=document.createElement('button');
           btn.className='lb-size-btn '+(sz.available?'sz-available':'sz-unavailable');
+          if(!sz.available){btn.setAttribute('aria-disabled','true');btn.setAttribute('aria-label',sz.label+' – vyprodáno');}
           btn.textContent=sz.label;
           if(sz.available&&firstAvail){btn.classList.add('sz-selected');firstAvail=false;}
           if(sz.available){btn.addEventListener('click',function(){btnsWrap.querySelectorAll('.lb-size-btn.sz-available').forEach(function(b){b.classList.remove('sz-selected');});btn.classList.add('sz-selected');buildMailto();});}
           btnsWrap.appendChild(btn);
         });
         lbSizes.classList.add('visible');
+        if(allUnavail){document.getElementById('lb-mailto').style.display='none';if(lbSoldout){lbSoldout.textContent='Vyprodáno';lbSoldout.style.display='';}}
       } else {
         lbSizes.innerHTML='';lbSizes.classList.remove('visible');
       }
