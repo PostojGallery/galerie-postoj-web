@@ -434,8 +434,9 @@
     var _metaPlain=(_data.meta||'').replace(/<br\s*\/?>\s*/gi,'\n');
     var _sizeInfo='';
     if(lbSizes&&lbSizes.classList.contains('visible')){var sel=lbSizes.querySelector('.sz-selected');if(sel)_sizeInfo='\nSize: '+sel.textContent;}
-    var _body='Dear galerie POSTOJ team,\n\nI am interested in the following artwork:\n\n'+_data.title+'\n'+_data.artist+_sizeInfo+'\n'+_metaPlain+'\n\nI would appreciate more information about the artwork and its availability.\n\nThank you.\n\nKind regards,\n\n[FULL NAME]';
-    document.getElementById('lb-mailto').href='mailto:info@galeriepostoj.cz?subject='+encodeURIComponent('Inquiry about artwork: '+_data.title)+'&body='+encodeURIComponent(_body);
+    var _isTshirt=!!(_data.sizes&&_data.sizes.length);
+    var _body='Dear galerie POSTOJ team,\n\nI am interested in the following '+(_isTshirt?'t-shirt':'artwork')+':\n\n'+_data.title+'\n'+_data.artist+_sizeInfo+'\n'+_metaPlain+'\n\nI would appreciate more information about the '+(_isTshirt?'t-shirt':'artwork')+' and its availability.\n\nThank you.\n\nKind regards,\n\n[FULL NAME]';
+    document.getElementById('lb-mailto').href='mailto:info@galeriepostoj.cz?subject='+encodeURIComponent((_isTshirt?'Inquiry about: ':'Inquiry about artwork: ')+_data.title)+'&body='+encodeURIComponent(_body);
   }
   window.openLightbox=function(data){
     _data=data;

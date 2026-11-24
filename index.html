@@ -270,8 +270,9 @@
     var _metaPlain=(_data.meta||'').replace(/<br\s*\/?>\s*/gi,'\n');
     var _sizeInfo='';
     if(lbSizes&&lbSizes.classList.contains('visible')){var sel=lbSizes.querySelector('.sz-selected');if(sel)_sizeInfo='\nVelikost: '+sel.textContent;}
-    var _body='P\u011bkn\u00fd den do galerie POSTOJ,\n\nm\u00e1m z\u00e1jem o n\u00e1sleduj\u00edc\u00ed d\u00edlo:\n\n'+_data.title+'\n'+_data.artist+_sizeInfo+'\n'+_metaPlain+'\n\nPros\u00edm o v\u00edce informac\u00ed o d\u00edle a jeho dostupnosti.\n\nD\u011bkuji.\n\nS p\u0159\u00e1telsk\u00fdm pozdravem,\n\n[JM\u00c9NO A P\u0158\u00cdJMEN\u00cd]';
-    document.getElementById('lb-mailto').href='mailto:info@galeriepostoj.cz?subject='+encodeURIComponent('Z\u00e1jem o d\u00edlo: '+_data.title)+'&body='+encodeURIComponent(_body);
+    var _isTshirt=!!(_data.sizes&&_data.sizes.length);
+    var _body='P\u011bkn\u00fd den do galerie POSTOJ,\n\nm\u00e1m z\u00e1jem o n\u00e1sleduj\u00edc\u00ed '+(_isTshirt?'tri\u010dko':'d\u00edlo')+':\n\n'+_data.title+'\n'+_data.artist+_sizeInfo+'\n'+_metaPlain+'\n\nPros\u00edm o v\u00edce informac\u00ed o '+(_isTshirt?'tri\u010dku':'d\u00edle')+' a jeho dostupnosti.\n\nD\u011bkuji.\n\nS p\u0159\u00e1telsk\u00fdm pozdravem,\n\n[JM\u00c9NO A P\u0158\u00cdJMEN\u00cd]';
+    document.getElementById('lb-mailto').href='mailto:info@galeriepostoj.cz?subject='+encodeURIComponent((_isTshirt?'Z\u00e1jem o: ':'Z\u00e1jem o d\u00edlo: ')+_data.title)+'&body='+encodeURIComponent(_body);
   }
   window.openLightbox=function(data){
     _data=data;

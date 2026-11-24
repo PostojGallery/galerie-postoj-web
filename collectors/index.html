@@ -438,8 +438,9 @@
     var _metaPlain=(_data.meta||'').replace(/<br\s*\/?>\s*/gi,'\n');
     var _sizeInfo='';
     if(lbSizes&&lbSizes.classList.contains('visible')){var sel=lbSizes.querySelector('.sz-selected');if(sel)_sizeInfo='\nVelikost: '+sel.textContent;}
-    var _body='Pěkný den do galerie POSTOJ,\n\nmám zájem o následující dílo:\n\n'+_data.title+'\n'+_data.artist+_sizeInfo+'\n'+_metaPlain+'\n\nProsím o více informací o díle a jeho dostupnosti.\n\nDěkuji.\n\nS přátelským pozdravem,\n\n[JMÉNO A PŘÍJMENÍ]';
-    document.getElementById('lb-mailto').href='mailto:info@galeriepostoj.cz?subject='+encodeURIComponent('Zájem o dílo: '+_data.title)+'&body='+encodeURIComponent(_body);
+    var _isTshirt=!!(_data.sizes&&_data.sizes.length);
+    var _body='Pěkný den do galerie POSTOJ,\n\nmám zájem o následující '+(_isTshirt?'tričko':'dílo')+':\n\n'+_data.title+'\n'+_data.artist+_sizeInfo+'\n'+_metaPlain+'\n\nProsím o více informací o '+(_isTshirt?'tričku':'díle')+' a jeho dostupnosti.\n\nDěkuji.\n\nS přátelským pozdravem,\n\n[JMÉNO A PŘÍJMENÍ]';
+    document.getElementById('lb-mailto').href='mailto:info@galeriepostoj.cz?subject='+encodeURIComponent((_isTshirt?'Zájem o: ':'Zájem o dílo: ')+_data.title)+'&body='+encodeURIComponent(_body);
   }
   window.openLightbox=function(data){
     _data=data;
