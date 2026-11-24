@@ -159,7 +159,7 @@ site-footer{display:block;border-top:1px solid rgba(255,255,255,0.08);}
   /* 1b. 4-column grid */
   .ew-row{display:grid;grid-template-columns:repeat(4,1fr);align-items:stretch;margin-top:1.5rem;}
   .ew-poster{display:flex;align-items:flex-start;}
-  .ew-poster img{width:100%;height:auto;display:block;aspect-ratio:2/3;}
+  .ew-poster img{width:100%;height:auto;display:block;}
   .ew-col{grid-column:2/4;padding-left:2rem;display:flex;flex-direction:column;gap:1em;}
   .ew-col.ew-col-open{align-self:start;}
   .ew-key{font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:400;line-height:1.3;color:#fff;}
