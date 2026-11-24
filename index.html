@@ -688,7 +688,7 @@ function drawScore() {
   const sf = MOB ? 26 : 14;
   ctx.textAlign = 'right';
   ctx.font      = `700 ${sf}px "Helvetica Neue",Helvetica,Arial,sans-serif`;
-  ctx.fillStyle = '#2a2a2a';
+  ctx.fillStyle = '#4f4f4f';
   ctx.fillText('HI ' + String(hiScore).padStart(5, '0'), CW - 14, MOB ? 20 : 22);
   ctx.fillStyle = '#ffffff';
   ctx.fillText(String(score).padStart(5, '0'), CW - 14, MOB ? 48 : 40);
