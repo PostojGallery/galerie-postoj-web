@@ -6,7 +6,7 @@
 <meta name="description" content="Current and archived exhibitions at galerie POSTOJ in the Prague metro — Náměstí Republiky. Contemporary art accessible every day, for everyone.">
 <link rel="icon" type="image/png" href="../../images/favicon.png?v=7">
 <title>Exhibitions that move society | galerie POSTOJ</title>
-<link rel="stylesheet" href="../../style.css?v=20261124a">
+<link rel="stylesheet" href="../../style.css?v=20261124b">
 <style>
 .exh-layout{display:grid;grid-template-columns:340px 1fr;align-items:start;margin-top:60px;}
 .exh-sidebar{position:sticky;top:60px;height:calc(100vh - 60px);border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;}
@@ -805,19 +805,36 @@ document.querySelectorAll('.ew-read').forEach(function(btn){
     var text=col.querySelector('.ew-expanded');
     if(!text)return;
     var sticky=col.querySelector('.ew-text-sticky');
+    var actions=col.querySelector('.ew-actions');
+    var TR='height 0.3s ease';
     if(text._ewDone){text.removeEventListener('transitionend',text._ewDone);text._ewDone=null;}
+    var curH=text.getBoundingClientRect().height;
     if(expanded){
-      text.classList.remove('open');
-      text.style.height='';
-      col.classList.remove('ew-col-open');
-      if(sticky)sticky.classList.remove('ew-text-open');
+      var actionsTop=actions?actions.getBoundingClientRect().top:0;
+      text.style.transition='none';
+      text.style.height=curH+'px';
+      text.offsetHeight;
+      text.style.transition=TR;
+      text.style.height='0';
+      var onClose=function(){text.style.transition='';text._ewDone=null;if(actions){var d=actions.getBoundingClientRect().top-actionsTop;if(d)window.scrollBy(0,d);}col.classList.remove('ew-col-open');if(sticky)sticky.classList.remove('ew-text-open');};
+      text._ewDone=onClose;
+      text.addEventListener('transitionend',onClose,{once:true});
       this.setAttribute('aria-expanded','false');
       this.textContent=this.dataset.open;
     } else {
+      var introTop=sticky?sticky.getBoundingClientRect().top:0;
       col.classList.add('ew-col-open');
       if(sticky)sticky.classList.add('ew-text-open');
-      text.classList.add('open');
-      text.style.height='';
+      text.style.transition='none';
+      text.style.height=curH+'px';
+      text.offsetHeight;
+      var scrollDelta=sticky?sticky.getBoundingClientRect().top-introTop:0;
+      if(scrollDelta)window.scrollBy(0,scrollDelta);
+      text.style.transition=TR;
+      text.style.height=text.scrollHeight+'px';
+      var onOpen=function(){text.style.transition='';text.style.height='auto';text._ewDone=null;};
+      text._ewDone=onOpen;
+      text.addEventListener('transitionend',onOpen,{once:true});
       this.setAttribute('aria-expanded','true');
       this.textContent=this.dataset.close;
     }
