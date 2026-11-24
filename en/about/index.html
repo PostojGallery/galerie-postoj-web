@@ -52,12 +52,12 @@
 .whw-cta:hover{color:#fff;border-color:#fff;}
 .whw-testimonials{display:flex;align-items:flex-start;justify-content:center;padding:1.2rem 3rem 2rem;}
 .ts-eyebrow{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:1.5rem;}
-.ts-slider{position:relative;min-height:140px;}
+.ts-slider{position:relative;min-height:200px;}
 .ts{position:absolute;top:0;left:0;width:100%;opacity:0;pointer-events:none;transition:opacity 0.5s;}
 .ts.active{opacity:1;pointer-events:auto;}
-.ts-stars{font-size:0.85rem;color:rgba(255,255,255,0.35);margin-bottom:0.6rem;}
-.ts-text{font-size:1rem;line-height:1.7;color:rgba(255,255,255,0.8);font-weight:400;margin-bottom:0.4rem;}
-.ts-author{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.28);}
+.ts-stars{font-size:0.85rem;color:#fff;margin-bottom:0.6rem;}
+.ts-text{font-size:1.3rem;line-height:1.5;color:#fff;font-weight:700;font-style:normal;margin-bottom:0.6rem;}
+.ts-author{font-size:0.9rem;letter-spacing:0;text-transform:none;color:#fff;}
 .ts-footer{margin-top:1.2rem;}
 .ts-dots{display:flex;gap:0.5rem;}
 .tsd{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);cursor:pointer;transition:background 0.2s;}
@@ -88,6 +88,13 @@
   .info-col{padding:1.2rem 1.2rem;border-right:none;border-bottom:none;}
   .info-col:first-child{padding-left:1.2rem;}
 }
+.prve-section{padding:6rem 0;}
+.prve-ph{position:relative;height:70vh;min-height:400px;background:#2a2a2a;overflow:hidden;}
+.prve-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+.prve-ph-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.25);pointer-events:none;white-space:nowrap;}
+.prve-cols{display:grid;grid-template-columns:1fr 1fr;gap:4rem;padding:2rem 2.5rem 0;}
+.prve-left{display:flex;flex-direction:column;gap:1.5rem;}
+.prve-right{display:flex;flex-direction:column;justify-content:center;}
 .metro-section{padding:6rem 2.5rem;}
 .metro-photos{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:2rem;}
 .metro-photo-wrap{display:flex;flex-direction:column;}
@@ -144,6 +151,9 @@
   .whw-map-col iframe{width:100%;}
   .ts-stick{width:105px!important;max-width:105px!important;transform:translateX(-5mm);}
   .about-history{padding:2rem 0 1rem;}
+  .prve-section{padding:3rem 0;}
+  .prve-ph{height:50vh;min-height:280px;}
+  .prve-cols{grid-template-columns:1fr;gap:2.5rem;padding:2rem 1.2rem 0;}
   .metro-section{padding:3rem 1.2rem;}
   .metro-photos{grid-template-columns:1fr;}
 }
@@ -196,26 +206,6 @@
   </div>
 </section>
 <section class="about-story">
-  <div class="whw-row rv">
-    <div class="whw-text-col">
-      <div class="whw-heading">Art belongs to everyone.</div>
-      <p class="whw-text">We believe contemporary art should be accessible to everyone — regardless of age, education or profession. Traditional galleries put up barriers. We break them down.</p>
-      <button id="about-video-btn" class="btn" style="margin-top:1.5rem;display:inline-block;cursor:pointer;border:none;">Video from the latest exhibition</button>
-    </div>
-    <div class="whw-testimonials">
-      <div style="display:flex;align-items:center;gap:2.5rem;width:100%;">
-        <div style="flex:1;">
-          <div class="ts-slider">
-          <div class="ts active"><div class="ts-stars">★★★★★</div><p class="ts-text">"Sometimes you just want to get through. Then you see a painting and you have to come closer."</p><div class="ts-author">Jarmila Č.</div></div>
-          <div class="ts"><div class="ts-stars">★★★★★</div><p class="ts-text">"Brilliant initiative! More art in public spaces."</p><div class="ts-author">Václav V.</div></div>
-          <div class="ts"><div class="ts-stars">★★★★★</div><p class="ts-text">"Unique initiative! A place to pause in the heart of Prague."</p><div class="ts-author">Jiří V.</div></div>
-          </div>
-          <div class="ts-footer"><div class="ts-dots"><span class="tsd active"></span><span class="tsd"></span><span class="tsd"></span></div></div>
-        </div>
-        <img src="../../images/run.png" alt="" class="ts-stick" style="width:120px;filter:invert(1);flex-shrink:1;align-self:flex-end;max-width:20vw;">
-      </div>
-    </div>
-  </div>
   <div class="metro-section rv">
     <div class="whw-heading" style="margin-bottom:2rem;">Gallery in the metro.</div>
     <div class="metro-photos">
@@ -237,17 +227,25 @@
     <p class="whw-text metro-body">Exhibitions take place in the vestibule of the Náměstí Republiky metro station. Not where you’d expect a gallery, right? There used to be an exchange office here, offering sixteen crowns for a euro at a time when the usual rate was far higher. We couldn’t let that be. And so, in 2022, the story of galerie POSTOJ began here.</p>
     <a href="/en/exhibitions" class="metro-btn">Explore exhibitions →</a>
   </div>
-  <div class="about-history rv">
-    <div class="hist-strip">
-      <div class="hist-real"><img loading="lazy" src="../../images/about-us/1.webp" alt=""></div>
-      <div class="hist-real"><img loading="lazy" src="../../images/about-us/2.webp" alt=""></div>
-      <div class="hist-real"><img loading="lazy" src="../../images/about-us/3.webp" alt=""></div>
-      <div class="hist-real"><img loading="lazy" src="../../images/about-us/4.webp" alt=""></div>
-      <div class="hist-real"><img loading="lazy" src="../../images/about-us/5.webp" alt=""></div>
-      <div class="hist-real"><img loading="lazy" src="../../images/about-us/6.webp" alt=""></div>
-      <div class="hist-real"><img loading="lazy" src="../../images/about-us/7.webp" alt=""></div>
-      <div class="hist-real"><img loading="lazy" src="../../images/about-us/8.webp" alt=""></div>
-      <div class="hist-real"><img loading="lazy" src="../../images/about-us/9.webp" alt=""></div>
+  <div class="prve-section">
+    <div class="prve-ph rv">
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Vernižáž galerie POSTOJ ve vestibulu metra" loading="lazy">
+      <span class="prve-ph-label">foto: plný vestibul na vernižáži</span>
+    </div>
+    <div class="prve-cols rv">
+      <div class="prve-left">
+        <div class="whw-heading">First exhibitions.</div>
+        <p class="whw-text">We support young artists – whether it’s your first exhibition or your fifth. Freedom of concept, no compromises. We believe in honesty and we’re here to support you.</p>
+        <div><a href="/en/artists" class="metro-btn">Meet the artists →</a></div>
+      </div>
+      <div class="prve-right">
+        <div class="ts-slider">
+          <div class="ts active"><div class="ts-stars">★★★★★</div><p class="ts-text">“Sometimes you just want to get through. Then you see a painting and you have to come closer.”</p><div class="ts-author">Jarmila Č.</div></div>
+          <div class="ts"><div class="ts-stars">★★★★★</div><p class="ts-text">“Brilliant initiative! More art in public spaces.”</p><div class="ts-author">Václav V.</div></div>
+          <div class="ts"><div class="ts-stars">★★★★★</div><p class="ts-text">“Unique initiative! A place to pause in the heart of Prague.”</p><div class="ts-author">Jiří V.</div></div>
+        </div>
+        <div class="ts-footer"><div class="ts-dots"><span class="tsd active"></span><span class="tsd"></span><span class="tsd"></span></div></div>
+      </div>
     </div>
   </div>
   <div class="info-bar rv">
@@ -288,24 +286,6 @@
       <div class="info-row">
         <div class="info-sub">Facebook</div>
         <div class="info-val"><a href="https://www.facebook.com/galeriepostoj/" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;cursor:pointer;">galerie POSTOJ</a></div>
-      </div>
-    </div>
-  </div>
-  <div class="whw-row rv">
-    <div class="whw-text-col">
-      <div class="whw-heading">First exhibitions.</div>
-      <p class="whw-text">We support young artists — whether it's your first or fifth show. Freedom of concept, no compromises. We believe in honesty, and we're here to back you up.</p>
-      <a href="/en/artists" class="btn" style="margin-top:1.5rem;display:inline-block;">Meet the artists</a>
-    </div>
-    <div class="whw-oc-col">
-      <div class="whw-oc">
-        <div class="whw-oc-inner">
-          <img width="200" loading="lazy" src="../../images/pointing.webp" alt="" class="whw-oc-stick">
-          <div class="whw-oc-text-side">
-            <div class="whw-oc-heading">Send us your work.</div>
-            <a href="/en/open-call" class="whw-cta" style="display:inline-block;margin-top:1.2rem;">Open Call →</a>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -370,6 +350,7 @@
 })();
 (function(){
   var btn=document.getElementById('about-video-btn');
+  if(!btn)return;
   var vlb=document.getElementById('about-vlb');
   var player=document.getElementById('about-vlb-player');
   var closeBtn=document.getElementById('about-vlb-close');
