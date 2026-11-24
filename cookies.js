@@ -81,7 +81,7 @@
     '#cbar-text{flex:1;}'+
     '#cbar-btns{display:flex;gap:0.75rem;align-items:center;flex-shrink:0;}'+
     '.cbtn{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:0.7rem;'+
-    'letter-spacing:0.13em;text-transform:uppercase;font-weight:700;cursor:none;'+
+    'letter-spacing:0.13em;text-transform:uppercase;font-weight:700;cursor:pointer;'+
     'padding:0.65rem 1.3rem;transition:background 0.2s,color 0.2s,border-color 0.2s;}'+
     '.cbtn-primary{background:#fff;color:#000;border:1px solid #fff;}'+
     '.cbtn-primary:hover{background:#0a0a0a;color:#fff;}'+
@@ -106,7 +106,7 @@
     'color:rgba(255,255,255,0.2);padding-top:0.25rem;flex-shrink:0;white-space:nowrap;}'+
     '.ctoggle{position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0;margin-top:0.15rem;}'+
     '.ctoggle input{opacity:0;width:0;height:0;position:absolute;}'+
-    '.ctoggle-s{position:absolute;cursor:none;inset:0;background:rgba(255,255,255,0.1);'+
+    '.ctoggle-s{position:absolute;cursor:pointer;inset:0;background:rgba(255,255,255,0.1);'+
     'border-radius:12px;transition:background 0.2s;}'+
     '.ctoggle-s::before{content:"";position:absolute;height:18px;width:18px;left:3px;bottom:3px;'+
     'background:rgba(255,255,255,0.35);border-radius:50%;transition:transform 0.2s,background 0.2s;}'+
@@ -114,10 +114,10 @@
     '.ctoggle input:checked+.ctoggle-s::before{transform:translateX(20px);background:#0a0a0a;}'+
     '#cmodal-save{margin-top:2rem;width:100%;text-align:center;background:#fff;color:#000;'+
     'font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.9rem 2rem;'+
-    'font-weight:700;font-family:inherit;cursor:none;border:none;transition:background 0.2s;}'+
+    'font-weight:700;font-family:inherit;cursor:pointer;border:none;transition:background 0.2s;}'+
     '#cmodal-save:hover{background:#e8e8e8;}'+
     '#cmodal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;'+
-    'font-size:1.4rem;line-height:1;color:rgba(255,255,255,0.25);cursor:none;'+
+    'font-size:1.4rem;line-height:1;color:rgba(255,255,255,0.25);cursor:pointer;'+
     'font-family:inherit;padding:0.3rem 0.6rem;transition:color 0.2s;}'+
     '#cmodal-close:hover{color:#fff;}'+
     '@media(max-width:768px){'+
