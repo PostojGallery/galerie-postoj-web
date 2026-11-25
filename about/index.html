@@ -116,7 +116,12 @@
 .prve-left{display:flex;flex-direction:column;gap:1.5rem;}
 .prve-right{display:flex;flex-direction:column;justify-content:center;}
 .metro-section{padding:6rem 2.5rem 0;}
-.metro-photos{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:2rem;}
+.metro-cols{display:grid;grid-template-columns:1fr 1fr;column-gap:12px;row-gap:0;grid-template-areas:"ph19 ph26" "text ph26" "btn  ph26";}
+.metro-ph19{grid-area:ph19;margin-bottom:2rem;}
+.metro-ph26{grid-area:ph26;}
+.metro-ph26 .metro-photo-wrap{position:sticky;top:calc(var(--nav-h,60px) + 2rem);}
+.metro-cols > p{grid-area:text;}
+.metro-cols > .metro-btn{grid-area:btn;justify-self:start;}
 .metro-photo-wrap{display:flex;flex-direction:column;}
 .metro-ph{position:relative;aspect-ratio:3/2;background:#2a2a2a;overflow:hidden;}
 .metro-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
@@ -185,7 +190,10 @@
   .prve-ph{max-width:100%;}
   .prve-cols{grid-template-columns:1fr;gap:2.5rem;padding:2rem 1.2rem 0;}
   .metro-section{padding:3rem 1.2rem 0;}
-  .metro-photos{grid-template-columns:1fr;}
+  .metro-cols{grid-template-columns:1fr;grid-template-areas:none;row-gap:12px;}
+  .metro-ph19,.metro-ph26{grid-area:auto;margin-bottom:0;}
+  .metro-cols > p,.metro-cols > .metro-btn{grid-area:auto;}
+  .metro-ph26 .metro-photo-wrap{position:static;}
 }
 @media(min-width:769px){
   .stat-item{border-right:none;}
@@ -240,23 +248,27 @@
 <section class="about-story">
   <div class="metro-section rv">
     <div class="whw-heading">Galerie v metru.</div>
-    <div class="metro-photos">
-      <div class="metro-photo-wrap">
-        <div class="metro-ph">
-          <img src="../images/about/smenarna.webp" width="620" height="349" alt="Směnárna CHANGE ve vestibulu metra Náměstí Republiky" loading="lazy">
-          <div class="metro-ph-credit">Foto: Michaela Danelová / iROZHLAS.cz</div>
+    <div class="metro-cols">
+      <div class="metro-ph19">
+        <div class="metro-photo-wrap">
+          <div class="metro-ph">
+            <img src="../images/about/smenarna.webp" width="620" height="349" alt="Směnárna CHANGE ve vestibulu metra Náměstí Republiky" loading="lazy">
+            <div class="metro-ph-credit">Foto: Michaela Danelová / iROZHLAS.cz</div>
+          </div>
+          <div class="metro-ph-cap">2019</div>
         </div>
-        <div class="metro-ph-cap">2019</div>
       </div>
-      <div class="metro-photo-wrap">
-        <div class="metro-ph">
-          <img src="../images/about/break-the-pattern.webp" width="1600" height="1066" alt="Galerie POSTOJ – výstava Break The Pattern, Go To Therapy, 2026" loading="lazy">
+      <div class="metro-ph26">
+        <div class="metro-photo-wrap">
+          <div class="metro-ph">
+            <img src="../images/about/break-the-pattern.webp" width="1600" height="1066" alt="Galerie POSTOJ – výstava Break The Pattern, Go To Therapy, 2026" loading="lazy">
+          </div>
+          <div class="metro-ph-cap">2026</div>
         </div>
-        <div class="metro-ph-cap">2026</div>
       </div>
+      <p class="whw-text metro-body">Výstavy probíhájí ve vestibulu metra Náměstí Republiky. Tady byste galerii asi nečekali, co? Stávala tu směnárna, která nabízela šestnáct korun za euro v době, kdy byl běžný kurz výrazně jinde. To jsme nemohli nechat. A tak zde v roce 2022 začal příběh galerie POSTOJ.</p>
+      <a href="/exhibitions" class="metro-btn">Prozkoumejte výstavy →</a>
     </div>
-    <p class="whw-text metro-body">Výstavy probíhájí ve vestibulu metra Náměstí Republiky. Tady byste galerii asi nečekali, co? Stávala tu směnárna, která nabízela šestnáct korun za euro v době, kdy byl běžný kurz výrazně jinde. To jsme nemohli nechat. A tak zde v roce 2022 začal příběh galerie POSTOJ.</p>
-    <a href="/exhibitions" class="metro-btn">Prozkoumejte výstavy →</a>
   </div>
   <div class="prve-section">
     <div class="prve-ph rv">
