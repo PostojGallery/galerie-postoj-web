@@ -172,7 +172,7 @@ site-footer{display:block;border-top:1px solid rgba(255,255,255,0.08);}
   .ew-actions{display:flex;align-items:center;gap:1em;margin-top:auto;}
   .ew-btn{display:inline-block;background:#fff;color:#000;font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:700;line-height:1.3;padding:0.4em 0.8em;text-decoration:none;font-family:inherit;cursor:pointer;transition:background 0.2s,color 0.2s;text-transform:none;letter-spacing:0;}
   .ew-btn:hover{background:#0a0a0a;color:#fff;outline:1px solid #fff;}
-  .ew-read{font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:700;line-height:1.3;color:#fff;background:none;border:none;padding:0;cursor:pointer;font-family:inherit;transition:opacity 0.2s;}
+  .ew-read{font-size:clamp(1.2rem,1.8vw,1.75rem);font-weight:400;line-height:1.3;color:#fff;background:none;border:none;padding:0;cursor:pointer;font-family:inherit;transition:opacity 0.2s;}
   .ew-read:hover{opacity:0.7;}
   /* 1c. Photo row – full bleed, no gaps */
   .exh-current-section .exh-photos-outer{margin-top:1.5rem;margin-left:-2.5rem;margin-right:-2.5rem;}
