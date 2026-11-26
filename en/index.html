@@ -783,6 +783,35 @@ new IntersectionObserver(entries => {
   </div>
 </section>
 <style>.oc-mob-strip{display:none;}@media(max-width:768px){.oc-mob-strip{display:block;}}</style>
+<style>
+@media(max-width:768px){
+  /* Headings */
+  .page-section-h{font-size:clamp(2.25rem,9vw,3rem);font-weight:700;}
+  /* Current exhibition */
+  .current-exh-label{display:none;}
+  .current-exh-date{color:#fff;}
+  .current-exh-desc{color:#fff;font-size:1.2rem;line-height:1.3;}
+  .work-title,.work-artist-name,.work-price{color:#fff;}
+  /* CTA in exh info (was hidden) → full-width ew-btn */
+  .exh-info-cta{display:block!important;background:#fff;color:#000;font-size:1.2rem!important;font-weight:700!important;line-height:1.3!important;padding:0.6em 1em!important;letter-spacing:0!important;text-transform:none!important;width:100%;box-sizing:border-box;text-align:center;text-decoration:none;margin-top:1.2rem;}
+  /* Shop mob CTA → full-width ew-btn */
+  .exh-shop-mob-cta{background:#fff;color:#000;font-size:1.2rem;font-weight:700;line-height:1.3;padding:0.6em 1em;letter-spacing:0;text-transform:none;width:calc(100% - 2.4rem);margin-left:1.2rem;margin-right:1.2rem;text-align:center;box-sizing:border-box;}
+  /* Founder stmt */
+  .fs-text{color:#fff;font-style:normal;border-left:none;padding-left:0;font-size:1.2rem;line-height:1.3;}
+  .fs-caption{position:static;opacity:1;padding:0.4rem 0 0;background:none;color:#fff;font-size:1rem;line-height:1.4;}
+  .fs-caption span{color:rgba(255,255,255,0.6);font-size:0.85rem;letter-spacing:0;text-transform:none;}
+  .fs-desktop-cta{background:#fff;color:#000;font-size:1.2rem;font-weight:700;line-height:1.3;padding:0.6em 1em;letter-spacing:0;text-transform:none;display:block;width:100%;box-sizing:border-box;text-align:center;text-decoration:none;margin-top:1.2rem;}
+  /* ew-btn on mobile */
+  .ew-btn{background:#fff;color:#000;font-size:1.2rem;font-weight:700;line-height:1.3;padding:0.6em 1em;letter-spacing:0;text-transform:none;display:block;width:100%;box-sizing:border-box;text-align:center;text-decoration:none;}
+  /* Artists section */
+  .artists-tag{display:none;}
+  .artists-body{color:#fff;font-size:1.2rem;line-height:1.3;font-style:normal;}
+  /* Open call strip */
+  .oc-eyebrow{display:none;}
+  .oc-desc{color:#fff;font-size:1.2rem;line-height:1.3;}
+  .oc-action .btn{background:#fff;color:#000;font-size:1.2rem;font-weight:700;line-height:1.3;padding:0.6em 1em;letter-spacing:0;text-transform:none;display:block;width:100%;box-sizing:border-box;text-align:center;}
+}
+</style>
 <section class="oc-mob-strip">
   <div class="oc-grid">
     <div class="oc-stick-col"><img width="200" loading="lazy" class="oc-stick" src="../images/pointing.webp" alt=""></div>
